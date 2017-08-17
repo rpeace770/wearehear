@@ -1,0 +1,2 @@
+class Bouquet < ApplicationRecord
+end
