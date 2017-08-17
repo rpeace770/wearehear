@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sender_id: 1
+  receiver_id: 1
+  track_id: 1
+  custom_location: MyString
+  location_id: 1
+  expiration_date: 2017-08-17 17:36:45
+  comment: MyText
+  photo: MyString
+
+two:
+  sender_id: 1
+  receiver_id: 1
+  track_id: 1
+  custom_location: MyString
+  location_id: 1
+  expiration_date: 2017-08-17 17:36:45
+  comment: MyText
+  photo: MyString
