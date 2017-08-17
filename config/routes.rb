@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   get 'bouquets/confirm/:id', to: 'bouquets#confirm'
   get 'bouquets/:id', to: 'bouquets#show'
 
-  root '/', to: 'bouquets#new'
+  root 'bouquets#new'
 end
