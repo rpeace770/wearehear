@@ -19,3 +19,7 @@ end
 10.times do
   Bouquet.create(sender_name: Faker::Name.first_name, receiver_name: Faker::Name.first_name, song_id: rand(1..10), custom_location: Faker::Hipster.word, location_id: rand(1..10), expiration_date: (Time.now + 700000), comment: Faker::Hipster.sentence(5), photo: "lightbulb.png")
 end
+
+30.times do
+  User.create(provider: "spotify", uid: Faker::Internet.password, email: Faker::Internet.email, password: "password", username: Faker::Internet.user_name, bithdate: Time.now, image: "lightbulb.png")
+end
