@@ -13,9 +13,10 @@ require 'faker'
 end
 
 10.times do
-  Bouquet.create(song_id: rand(1..10), custom_location: Faker::Hipster.word, location_id: rand(1..10), expiration_date: (Time.now + 700000), comment: Faker::Hipster.sentence(5), photo: "lightbulb.png")
+  Song.create(artist: Faker::RockBand.name, album: Faker::Hipster.word, track: Faker::Hipster.sentence(3))
 end
 
 10.times do
-  Song.create(artist: Faker::RockBand.name, album: Faker::Hipster.word, track: Faker::Hipster.sentence(3))
+  Bouquet.create(song_id: rand(1..10), custom_location: Faker::Hipster.word, location_id: rand(1..10), expiration_date: (Time.now + 700000), comment: Faker::Hipster.sentence(5), photo: "lightbulb.png")
 end
+
