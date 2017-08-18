@@ -1,0 +1,13 @@
+<h1> send a bouquet! </h1>
+
+<div>
+<%= form_for @text, url: '/texts/send_text' do |f| %>
+<%= f.label :number %>
+<%= f.text_field :number %><br>
+<%= f.label :sender %>
+<%= f.text_field :sender %><br>
+<%= f.submit 'Send Text' %>
+<% end %>
+
+</div>
+

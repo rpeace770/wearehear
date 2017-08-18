@@ -1,13 +1,12 @@
 require 'twilio-ruby'
 
 class TwiliosController < ApplicationController
-# require 'rubygems'
-
 
 def index
 
 end
 
+def
 
 def send_text_message
   # account_sid = 'AC95dba1864d9daff62e736a02d0402d21'
