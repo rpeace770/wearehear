@@ -274,4 +274,8 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+
+  keys = Rails.application.secrets
+
+  config.omniauth :spotify, '7a4280c69bd540d588a6540f043ffa48', 'b07dd2e7bab84c498c5e804b64a267eb', scope: 'playlist-read-private user-read-private user-read-email'
 end
