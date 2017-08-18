@@ -21,5 +21,5 @@ end
 end
 
 30.times do
-  User.create(provider: "spotify", uid: Faker::Internet.password, email: Faker::Internet.email, password: "password", username: Faker::Internet.user_name, bithdate: Time.now, image: "lightbulb.png")
+  User.create(provider: "spotify", uid: Faker::Internet.password, email: Faker::Internet.email, password: "password", username: Faker::Internet.user_name, birthdate: Time.now, image: "lightbulb.png")
 end
