@@ -10,15 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170817223645) do
+ActiveRecord::Schema.define(version: 20170818165654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bouquets", force: :cascade do |t|
+    t.string "sender_name"
+    t.string "receiver_name"
     t.integer "sender_id"
     t.integer "receiver_id"
-    t.integer "track_id"
+    t.integer "song_id"
     t.string "custom_location"
     t.integer "location_id"
     t.datetime "expiration_date"

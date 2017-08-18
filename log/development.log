@@ -535,3 +535,273 @@ Completed 200 OK in 14ms (Views: 12.5ms | ActiveRecord: 0.0ms)
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "Rush"], ["album", "banjo"], ["track", "Kinfolk wayfarers pickled vinegar."], ["created_at", "2017-08-18 16:52:55.226598"], ["updated_at", "2017-08-18 16:52:55.226598"]]
   [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
   [1m[36mBouquet Load (0.3ms)[0m  [1m[34mSELECT  "bouquets".* FROM "bouquets" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (110.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "wearehear_development"[0m
+  [1m[35m (110.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "wearehear_test"[0m
+  [1m[35m (365.6ms)[0m  [1m[35mCREATE DATABASE "wearehear_development" ENCODING = 'unicode'[0m
+  [1m[35m (285.3ms)[0m  [1m[35mCREATE DATABASE "wearehear_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "bouquets" CASCADE[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "bouquets" ("id" bigserial primary key, "sender_id" integer, "receiver_id" integer, "track_id" integer, "custom_location" character varying, "location_id" integer, "expiration_date" timestamp, "comment" text, "photo" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "locations" CASCADE[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "locations" ("id" bigserial primary key, "lat" integer, "lng" integer, "city" character varying, "state" character varying, "country" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "songs" CASCADE[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "songs" ("id" bigserial primary key, "artist" character varying, "album" character varying, "track" character varying, "spotify_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20170817223645)[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20170817223237),
+(20170817223348);
+
+[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-08-18 16:59:36.929136"], ["updated_at", "2017-08-18 16:59:36.929136"]]
+  [1m[35m (15.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "bouquets" CASCADE[0m
+  [1m[35m (22.6ms)[0m  [1m[35mCREATE TABLE "bouquets" ("id" bigserial primary key, "sender_id" integer, "receiver_id" integer, "track_id" integer, "custom_location" character varying, "location_id" integer, "expiration_date" timestamp, "comment" text, "photo" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "locations" CASCADE[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "locations" ("id" bigserial primary key, "lat" integer, "lng" integer, "city" character varying, "state" character varying, "country" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "songs" CASCADE[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE TABLE "songs" ("id" bigserial primary key, "artist" character varying, "album" character varying, "track" character varying, "spotify_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20170817223645)[0m
+  [1m[35m (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20170817223237),
+(20170817223348);
+
+[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-08-18 16:59:37.068238"], ["updated_at", "2017-08-18 16:59:37.068238"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7926829025639619690)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateBouquets (20170818165654)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (18.2ms)[0m  [1m[35mCREATE TABLE "bouquets" ("id" bigserial primary key, "sender_name" character varying, "receiver_name" character varying, "sender_id" integer, "receiver_id" integer, "song_id" integer, "custom_location" character varying, "location_id" integer, "expiration_date" timestamp, "comment" text, "photo" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7926829025639619690)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (110.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "wearehear_development"[0m
+  [1m[35m (110.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "wearehear_test"[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7926829025639619690)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateLocations (20170817223237)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "locations" ("id" bigserial primary key, "lat" integer, "lng" integer, "city" character varying, "state" character varying, "country" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170817223237"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSongs (20170817223348)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "songs" ("id" bigserial primary key, "artist" character varying, "album" character varying, "track" character varying, "spotify_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170817223348"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBouquets (20170818165654)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "bouquets" ("id" bigserial primary key, "sender_name" character varying, "receiver_name" character varying, "sender_id" integer, "receiver_id" integer, "song_id" integer, "custom_location" character varying, "location_id" integer, "expiration_date" timestamp, "comment" text, "photo" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170818165654"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-08-18 17:00:14.890276"], ["updated_at", "2017-08-18 17:00:14.890276"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7926829025639619690)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", 87], ["lng", 82], ["city", "Port Ludieport"], ["state", "Tennessee"], ["country", "El Salvador"], ["created_at", "2017-08-18 17:00:20.611074"], ["updated_at", "2017-08-18 17:00:20.611074"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", 4], ["lng", -147], ["city", "Port Orland"], ["state", "Vermont"], ["country", "Antigua and Barbuda"], ["created_at", "2017-08-18 17:00:20.614489"], ["updated_at", "2017-08-18 17:00:20.614489"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", -87], ["lng", -112], ["city", "Immanuelton"], ["state", "Alaska"], ["country", "Cook Islands"], ["created_at", "2017-08-18 17:00:20.616458"], ["updated_at", "2017-08-18 17:00:20.616458"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", 77], ["lng", 167], ["city", "Mosheport"], ["state", "Iowa"], ["country", "Switzerland"], ["created_at", "2017-08-18 17:00:20.618494"], ["updated_at", "2017-08-18 17:00:20.618494"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", 6], ["lng", 112], ["city", "East Natashafort"], ["state", "Nevada"], ["country", "Gibraltar"], ["created_at", "2017-08-18 17:00:20.620744"], ["updated_at", "2017-08-18 17:00:20.620744"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", 8], ["lng", -94], ["city", "Lake Roselyn"], ["state", "Washington"], ["country", "French Guiana"], ["created_at", "2017-08-18 17:00:20.622918"], ["updated_at", "2017-08-18 17:00:20.622918"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", 68], ["lng", 26], ["city", "Flaviefort"], ["state", "Arkansas"], ["country", "Netherlands"], ["created_at", "2017-08-18 17:00:20.625145"], ["updated_at", "2017-08-18 17:00:20.625145"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", 56], ["lng", 168], ["city", "Oberbrunnerhaven"], ["state", "Wisconsin"], ["country", "Andorra"], ["created_at", "2017-08-18 17:00:20.627358"], ["updated_at", "2017-08-18 17:00:20.627358"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", -76], ["lng", 5], ["city", "Yundtville"], ["state", "Nebraska"], ["country", "Christmas Island"], ["created_at", "2017-08-18 17:00:20.629302"], ["updated_at", "2017-08-18 17:00:20.629302"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", 72], ["lng", 146], ["city", "New Baby"], ["state", "Missouri"], ["country", "Guernsey"], ["created_at", "2017-08-18 17:00:20.631169"], ["updated_at", "2017-08-18 17:00:20.631169"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "The Cure"], ["album", "church-key"], ["track", "Lo-fi single-origin coffee pickled franzen street ethical."], ["created_at", "2017-08-18 17:00:20.643139"], ["updated_at", "2017-08-18 17:00:20.643139"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "The Cure"], ["album", "ethical"], ["track", "Post-ironic diy sustainable lumbersexual."], ["created_at", "2017-08-18 17:00:20.645667"], ["updated_at", "2017-08-18 17:00:20.645667"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "The Pretenders"], ["album", "artisan"], ["track", "Heirloom occupy ennui slow-carb."], ["created_at", "2017-08-18 17:00:20.647495"], ["updated_at", "2017-08-18 17:00:20.647495"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "Iron Maiden"], ["album", "leggings"], ["track", "Lumbersexual carry cleanse williamsburg hella salvia."], ["created_at", "2017-08-18 17:00:20.649330"], ["updated_at", "2017-08-18 17:00:20.649330"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "Sex Pistols"], ["album", "vice"], ["track", "Farm-to-table flexitarian migas gluten-free stumptown organic forage tote bag."], ["created_at", "2017-08-18 17:00:20.651274"], ["updated_at", "2017-08-18 17:00:20.651274"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "Thievery Corporation"], ["album", "hoodie"], ["track", "Meh twee tattooed art party post-ironic keytar neutra kale chips."], ["created_at", "2017-08-18 17:00:20.653322"], ["updated_at", "2017-08-18 17:00:20.653322"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "Red Hot Chili Peppers"], ["album", "kombucha"], ["track", "Drinking hammock bitters chartreuse xoxo ramps put a bird on it."], ["created_at", "2017-08-18 17:00:20.655094"], ["updated_at", "2017-08-18 17:00:20.655094"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "The Kinks"], ["album", "PBR&B"], ["track", "Post-ironic asymmetrical meh."], ["created_at", "2017-08-18 17:00:20.656757"], ["updated_at", "2017-08-18 17:00:20.656757"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "Iron Maiden"], ["album", "tattooed"], ["track", "Aesthetic tote bag selfies xoxo."], ["created_at", "2017-08-18 17:00:20.658397"], ["updated_at", "2017-08-18 17:00:20.658397"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "U2"], ["album", "everyday"], ["track", "Hoodie flexitarian ethical."], ["created_at", "2017-08-18 17:00:20.660197"], ["updated_at", "2017-08-18 17:00:20.660197"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", 54], ["lng", -97], ["city", "Jacobichester"], ["state", "California"], ["country", "Guinea"], ["created_at", "2017-08-18 17:00:37.927853"], ["updated_at", "2017-08-18 17:00:37.927853"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", 82], ["lng", 109], ["city", "Lake Blanche"], ["state", "Wyoming"], ["country", "Jordan"], ["created_at", "2017-08-18 17:00:37.931088"], ["updated_at", "2017-08-18 17:00:37.931088"]]
+  [1m[35m (4.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", -79], ["lng", -47], ["city", "Bashirianport"], ["state", "Wyoming"], ["country", "New Zealand"], ["created_at", "2017-08-18 17:00:37.937680"], ["updated_at", "2017-08-18 17:00:37.937680"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", 81], ["lng", -160], ["city", "South Germaine"], ["state", "Maryland"], ["country", "Cyprus"], ["created_at", "2017-08-18 17:00:37.939866"], ["updated_at", "2017-08-18 17:00:37.939866"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", -38], ["lng", 68], ["city", "South Amberberg"], ["state", "Montana"], ["country", "Falkland Islands (Malvinas)"], ["created_at", "2017-08-18 17:00:37.942377"], ["updated_at", "2017-08-18 17:00:37.942377"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", -31], ["lng", 142], ["city", "South Jodie"], ["state", "Mississippi"], ["country", "Saudi Arabia"], ["created_at", "2017-08-18 17:00:37.944596"], ["updated_at", "2017-08-18 17:00:37.944596"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", -7], ["lng", 6], ["city", "Susiebury"], ["state", "Iowa"], ["country", "Egypt"], ["created_at", "2017-08-18 17:00:37.946819"], ["updated_at", "2017-08-18 17:00:37.946819"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", 69], ["lng", 54], ["city", "North Haleyville"], ["state", "Virginia"], ["country", "Russian Federation"], ["created_at", "2017-08-18 17:00:37.948914"], ["updated_at", "2017-08-18 17:00:37.948914"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", 50], ["lng", -111], ["city", "New Russbury"], ["state", "Kansas"], ["country", "Palestinian Territory"], ["created_at", "2017-08-18 17:00:37.950855"], ["updated_at", "2017-08-18 17:00:37.950855"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", -12], ["lng", -85], ["city", "Narcisoview"], ["state", "Arizona"], ["country", "Burkina Faso"], ["created_at", "2017-08-18 17:00:37.952834"], ["updated_at", "2017-08-18 17:00:37.952834"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "Kansas"], ["album", "DIY"], ["track", "Brooklyn sriracha tacos etsy keffiyeh hammock portland kogi."], ["created_at", "2017-08-18 17:00:37.967948"], ["updated_at", "2017-08-18 17:00:37.967948"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "The Bee Gees"], ["album", "listicle"], ["track", "Umami semiotics lo-fi kickstarter truffaut butcher."], ["created_at", "2017-08-18 17:00:37.970726"], ["updated_at", "2017-08-18 17:00:37.970726"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "Tool"], ["album", "pour-over"], ["track", "Meh selfies venmo tumblr +1 portland scenester kickstarter."], ["created_at", "2017-08-18 17:00:37.972912"], ["updated_at", "2017-08-18 17:00:37.972912"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "The Rolling Stones"], ["album", "keytar"], ["track", "Celiac street poutine etsy pabst."], ["created_at", "2017-08-18 17:00:37.974726"], ["updated_at", "2017-08-18 17:00:37.974726"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "Soundgarden"], ["album", "crucifix"], ["track", "Chartreuse meggings stumptown pour-over pickled yr."], ["created_at", "2017-08-18 17:00:37.976664"], ["updated_at", "2017-08-18 17:00:37.976664"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "Iron Maiden"], ["album", "kickstarter"], ["track", "Wayfarers chicharrones health +1 fixie."], ["created_at", "2017-08-18 17:00:37.978610"], ["updated_at", "2017-08-18 17:00:37.978610"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "Buffalo Springfield"], ["album", "90's"], ["track", "Salvia schlitz freegan semiotics heirloom austin locavore."], ["created_at", "2017-08-18 17:00:37.980230"], ["updated_at", "2017-08-18 17:00:37.980230"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "The Beach Boys"], ["album", "tofu"], ["track", "Cold-pressed truffaut keytar knausgaard."], ["created_at", "2017-08-18 17:00:37.982074"], ["updated_at", "2017-08-18 17:00:37.982074"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "The Jimi Hendrix Experience"], ["album", "DIY"], ["track", "Banjo park disrupt."], ["created_at", "2017-08-18 17:00:37.983934"], ["updated_at", "2017-08-18 17:00:37.983934"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "Blind Faith"], ["album", "hashtag"], ["track", "Diy pitchfork master polaroid typewriter neutra."], ["created_at", "2017-08-18 17:00:37.985649"], ["updated_at", "2017-08-18 17:00:37.985649"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLocation Load (0.1ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSong Load (0.1ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLocation Load (0.1ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mSong Load (0.1ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mSong Load (0.1ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLocation Load (0.1ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSong Load (0.1ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mBouquet Load (0.5ms)[0m  [1m[34mSELECT  "bouquets".* FROM "bouquets" ORDER BY "bouquets"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mSong Load (0.3ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mSong Load (0.3ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" ORDER BY "songs"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mBouquet Load (0.2ms)[0m  [1m[34mSELECT  "bouquets".* FROM "bouquets" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
