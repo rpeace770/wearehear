@@ -1,8 +1,8 @@
 Started GET "/" for 127.0.0.1 at 2017-08-17 17:47:52 -0500
-  
+
 ActiveRecord::NoDatabaseError (FATAL:  database "wearehear_development" does not exist
 ):
-  
+
 activerecord (5.1.3) lib/active_record/connection_adapters/postgresql_adapter.rb:699:in `rescue in connect'
 activerecord (5.1.3) lib/active_record/connection_adapters/postgresql_adapter.rb:695:in `connect'
 activerecord (5.1.3) lib/active_record/connection_adapters/postgresql_adapter.rb:220:in `initialize'
@@ -52,7 +52,7 @@ puma (3.10.0) lib/puma/server.rb:301:in `block in run'
 puma (3.10.0) lib/puma/thread_pool.rb:120:in `call'
 puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
 Started GET "/" for 127.0.0.1 at 2017-08-17 17:48:16 -0500
-  
+
 ActiveRecord::PendingMigrationError (
 
 Migrations are pending. To resolve this issue, run:
@@ -60,7 +60,7 @@ Migrations are pending. To resolve this issue, run:
         bin/rails db:migrate RAILS_ENV=development
 
 ):
-  
+
 activerecord (5.1.3) lib/active_record/migration.rb:576:in `check_pending!'
 activerecord (5.1.3) lib/active_record/migration.rb:553:in `call'
 actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
@@ -885,18 +885,18 @@ Started GET "/users/auth/spotify" for 127.0.0.1 at 2017-08-18 13:51:29 -0500
 Started GET "/users/auth/spotify" for 127.0.0.1 at 2017-08-18 13:51:47 -0500
 Started GET "/users/auth/spotify" for 127.0.0.1 at 2017-08-18 13:51:47 -0500
 Started GET "/users/auth/spotify" for 127.0.0.1 at 2017-08-18 13:55:59 -0500
-  
+
 ArgumentError ('/auth/spotify/callback' is not a supported controller name. This can lead to potential routing problems. See http://guides.rubyonrails.org/routing.html#specifying-a-controller-to-use):
-  
+
 config/routes.rb:2:in `block in <top (required)>'
 config/routes.rb:1:in `<top (required)>'
 Started GET "/users/auth/spotify" for 127.0.0.1 at 2017-08-18 13:57:03 -0500
 Started GET "/users/auth/spotify" for 127.0.0.1 at 2017-08-18 13:57:06 -0500
 Started GET "/users/auth/spotify" for 127.0.0.1 at 2017-08-18 13:57:07 -0500
 Started GET "/logout" for 127.0.0.1 at 2017-08-18 13:57:14 -0500
-  
+
 ActionController::RoutingError (No route matches [GET] "/logout"):
-  
+
 actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
 web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
@@ -1001,11 +1001,11 @@ Processing by CallbacksController#spotify as HTML
 Completed 500 Internal Server Error in 174ms (ActiveRecord: 2.5ms)
 
 
-  
+
 ActiveRecord::NotNullViolation (PG::NotNullViolation: ERROR:  null value in column "email" violates not-null constraint
 DETAIL:  Failing row contains (1, null, $2a$11$sYHY/HZlH4UwhtuZSPQtk.Skx2Eajji1zUzd3u5iOwAZusxXx5Gou, null, null, null, 1, 2017-08-18 19:04:13.199319, 2017-08-18 19:04:13.199319, 127.0.0.1, 127.0.0.1, 2017-08-18 19:04:13.199909, 2017-08-18 19:04:13.199909, spotify, 1220909326, null, null, null).
 : INSERT INTO "users" ("email", "encrypted_password", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at", "provider", "uid") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"):
-  
+
 app/controllers/callbacks_controller.rb:4:in `spotify'
 Started GET "/" for 127.0.0.1 at 2017-08-18 15:30:54 -0500
   [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
@@ -1029,15 +1029,15 @@ Processing by CallbacksController#spotify as HTML
 Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
 
 
-  
+
 NoMethodError (undefined method `pry' for #<Binding:0x007fa928d76b20>):
-  
+
 app/controllers/callbacks_controller.rb:3:in `spotify'
 Started GET "/auth/spotify/callback?code=AQC3qAljnvnR4UfoBKtUv8OI2hoUAp9aZc1nQExYOKQ6U7zmZbiX2Jj7nanjUnWwSlx-sj2SIVcmjX1A_fRQTW0-IyjTGShYAExyCaoQHVlJ4IQi4juttW3EsK40rMK9A0239J8-gvOtrOde8f0CtpM9xnIMl23es6sl-0gS-uh9sdK_aLLjl3HPBSQ9J5SgnK23ftfB_FXdwwZZ4Je8_Mw&state=cdfe103ecddcb542bbacc6fe100483a3bd9360c9c4238e43" for 127.0.0.1 at 2017-08-18 15:33:09 -0500
   [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  
+
 RuntimeError (Could not find a valid mapping for path "/auth/spotify/callback"):
-  
+
 devise (4.3.0) lib/devise/mapping.rb:49:in `find_by_path!'
 devise (4.3.0) lib/devise/omniauth.rb:17:in `block in <top (required)>'
 omniauth (1.6.1) lib/omniauth/strategy.rb:478:in `call'
@@ -1117,16 +1117,16 @@ Started GET "/auth/spotify/callback?error=access_denied&state=45f656efb5c0625637
 Completed 500 Internal Server Error in 425824ms (ActiveRecord: 2.9ms)
 
 
-  
+
 ActiveRecord::NotNullViolation (PG::NotNullViolation: ERROR:  null value in column "email" violates not-null constraint
 DETAIL:  Failing row contains (2, null, $2a$11$4Sc/1OfXW07XXcy9fSVl2.x8Q7in68ANyTlS5n12EqDG74EQfbXSW, null, null, null, 1, 2017-08-18 20:40:55.339316, 2017-08-18 20:40:55.339316, 127.0.0.1, 127.0.0.1, 2017-08-18 20:40:55.34001, 2017-08-18 20:40:55.34001, spotify, radiohead770, null, null, null).
 : INSERT INTO "users" ("email", "encrypted_password", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at", "provider", "uid") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"):
-  
+
 app/controllers/callbacks_controller.rb:8:in `spotify'
 Started GET "/" for 127.0.0.1 at 2017-08-18 15:40:55 -0500
-  
+
 RuntimeError (Could not find a valid mapping for path "/auth/spotify/callback"):
-  
+
 devise (4.3.0) lib/devise/mapping.rb:49:in `find_by_path!'
 devise (4.3.0) lib/devise/omniauth.rb:17:in `block in <top (required)>'
 omniauth (1.6.1) lib/omniauth/strategy.rb:478:in `call'
@@ -1192,9 +1192,9 @@ Completed 200 OK in 52ms (Views: 26.0ms | ActiveRecord: 4.1ms)
 Started GET "/auth/spotify" for 127.0.0.1 at 2017-08-18 15:41:08 -0500
 Started GET "/auth/spotify" for 127.0.0.1 at 2017-08-18 15:41:08 -0500
 Started GET "/auth/spotify/callback?code=AQAcfgnDgofJas8C5_aMT3_VZm3y2v2Lv1FJMLYJsy2jnQd1VO_XI6LwlREA5J6TYw2Rw3hfSszmI6YDCrumKVnDmID8q2hPm6uNdS3vbZrM-fWUE1cc5-qmonIZr-j0xcgqVdHdA0TQnDFWvzfoZnAtNXM4JnQspB2VFbKeKzRXLYAmwug57TRYRT-PiABKem5zj85uLbF6yVDc7pN9OEo&state=0ccf6a1d8a5fbd22cbc2ca79b01dc5841293220d76ff366b" for 127.0.0.1 at 2017-08-18 15:41:14 -0500
-  
+
 ActionController::RoutingError (undefined local variable or method `request' for main:Object):
-  
+
 app/controllers/callbacks_controller.rb:15:in `<top (required)>'
 Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-18 15:41:52 -0500
 Processing by Devise::SessionsController#new as HTML
@@ -1220,9 +1220,9 @@ Processing by CallbacksController#spotify as HTML
 Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
 
 
-  
+
 NoMethodError (undefined method `provider' for #<Hash:0x007f985bcba818>):
-  
+
 app/models/user.rb:9:in `from_omniauth'
 app/controllers/callbacks_controller.rb:5:in `spotify'
 Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-18 15:43:00 -0500
@@ -1241,9 +1241,9 @@ Processing by CallbacksController#spotify as HTML
 Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
 
 
-  
+
 NoMethodError (undefined method `provider' for #<Hash:0x007f985be99aa8>):
-  
+
 app/models/user.rb:9:in `from_omniauth'
 app/controllers/callbacks_controller.rb:5:in `spotify'
 Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-18 15:43:30 -0500
@@ -1262,14 +1262,14 @@ Processing by CallbacksController#spotify as HTML
 Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
 
 
-  
+
 ActiveModel::UnknownAttributeError (unknown attribute 'birthdate' for User.):
-  
+
 app/controllers/callbacks_controller.rb:5:in `spotify'
 Started GET "/auth/spotify/callback?code=AQDbtRN2cGvB-m_tSksvKvBu_tmrQpEL5PefPA5Pr_xDRpjMcDi00xfTFTgXhUkG-d9geLW9TvFvedvCeK0HsNYneF13e7Gs7lSOTSHB8CYTC4yVFGNwOykV4YjsPm-cJlgmmKDp8z7ldDORwoSlHz91VZkMZuHngBNCRRO2jmVlqvZzohvIz8FTJshwV85dSpDw43lIh-01rnbjsvUcBKk&state=0daf66c1d7005377b0454afb3905c8be0c5e1196d9b86b44" for 127.0.0.1 at 2017-08-18 15:43:49 -0500
-  
+
 RuntimeError (Could not find a valid mapping for path "/auth/spotify/callback"):
-  
+
 devise (4.3.0) lib/devise/mapping.rb:49:in `find_by_path!'
 devise (4.3.0) lib/devise/omniauth.rb:17:in `block in <top (required)>'
 omniauth (1.6.1) lib/omniauth/strategy.rb:478:in `call'
@@ -1343,11 +1343,11 @@ Processing by CallbacksController#spotify as HTML
 Completed 500 Internal Server Error in 8ms (ActiveRecord: 1.6ms)
 
 
-  
+
 ActiveRecord::NotNullViolation (PG::NotNullViolation: ERROR:  null value in column "email" violates not-null constraint
 DETAIL:  Failing row contains (3, null, , null, null, null, 1, 2017-08-18 20:43:57.616646, 2017-08-18 20:43:57.616646, 127.0.0.1, 127.0.0.1, 2017-08-18 20:43:57.618989, 2017-08-18 20:43:57.618989, spotify, radiohead770, null, null, null).
 : INSERT INTO "users" ("email", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at", "provider", "uid") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"):
-  
+
 app/controllers/callbacks_controller.rb:7:in `spotify'
   [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
   [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at", "provider", "uid") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", nil], ["sign_in_count", 1], ["current_sign_in_at", "2017-08-18 20:43:57.617775"], ["last_sign_in_at", "2017-08-18 20:43:57.617775"], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["created_at", "2017-08-18 20:43:57.772131"], ["updated_at", "2017-08-18 20:43:57.772131"], ["provider", "spotify"], ["uid", "radiohead770"]]
@@ -1355,11 +1355,11 @@ app/controllers/callbacks_controller.rb:7:in `spotify'
 Completed 500 Internal Server Error in 160ms (ActiveRecord: 146.5ms)
 
 
-  
+
 ActiveRecord::NotNullViolation (PG::NotNullViolation: ERROR:  null value in column "email" violates not-null constraint
 DETAIL:  Failing row contains (4, null, , null, null, null, 1, 2017-08-18 20:43:57.617775, 2017-08-18 20:43:57.617775, 127.0.0.1, 127.0.0.1, 2017-08-18 20:43:57.772131, 2017-08-18 20:43:57.772131, spotify, radiohead770, null, null, null).
 : INSERT INTO "users" ("email", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at", "provider", "uid") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"):
-  
+
 app/controllers/callbacks_controller.rb:7:in `spotify'
 Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-18 15:46:18 -0500
 Processing by Devise::SessionsController#new as HTML
@@ -1377,9 +1377,9 @@ Processing by CallbacksController#spotify as HTML
 Completed 500 Internal Server Error in 11522ms (ActiveRecord: 0.0ms)
 
 
-  
+
 NoMethodError (undefined method `provider' for #<Hash:0x007f9856a9b2f8>):
-  
+
 app/models/user.rb:9:in `from_omniauth'
 app/controllers/callbacks_controller.rb:6:in `spotify'
 Started GET "/auth/spotify/callback?code=AQBI5uzAfhQNhWqtuLfJLwtWOWKr73gXDXfrOEUN1sM6nzfodRFV397x8Vw95MTc6wvSTIk9RNZDSsCejmZlAoSPmbkvuNx6cZBlxArzLf4YR_fTwCjtCB8MLh6ruaZu9N5T-Ala7qlbb1uo0PoEZ1BfjbGJ6N8UnAL53ze9ESs42P7SwoXj-oM9iINb4STtjfGTjXcqS3CdJMex0CRZxWQ&state=54172380457fb396edfb357ddfd30a2f16aef39d194111ee" for 127.0.0.1 at 2017-08-18 15:46:40 -0500
@@ -1395,17 +1395,17 @@ Started GET "/" for 127.0.0.1 at 2017-08-18 15:46:47 -0500
 Completed 500 Internal Server Error in 9873ms (ActiveRecord: 0.0ms)
 
 
-  
+
 NoMethodError (undefined method `provider' for #<Hash:0x007f985a7e81b0>):
-  
+
 app/models/user.rb:9:in `from_omniauth'
 app/controllers/callbacks_controller.rb:6:in `spotify'
 Completed 500 Internal Server Error in 84673ms (ActiveRecord: 0.0ms)
 
 
-  
+
 NoMethodError (undefined method `provider' for #<Hash:0x007f985a04b240>):
-  
+
 app/models/user.rb:9:in `from_omniauth'
 app/controllers/callbacks_controller.rb:6:in `spotify'
 Started GET "/" for 127.0.0.1 at 2017-08-18 15:48:32 -0500
@@ -1430,15 +1430,15 @@ Processing by CallbacksController#spotify as HTML
 Completed 500 Internal Server Error in 73257ms (ActiveRecord: 0.0ms)
 
 
-  
+
 NoMethodError (undefined method `provider' for #<Hash:0x007fc345103280>):
-  
+
 app/models/user.rb:9:in `from_omniauth'
 app/controllers/callbacks_controller.rb:6:in `spotify'
 Started GET "/auth/spotify/callback?code=AQCQ6_cpLAd3LHlDDdoO29yY6_h7xAIsqVrXIDdv3dhbAW7q805grMVa25NHPzcxALc46kA7GHfkR5Vo42VdtOpQfKNXxaI5j6l1p8MhsT4qE3TxBA1EYLognRZ0AUkH6A5cz-09asUYnFh7rE9oJLgKNI6bMX8FPRat2jpsImUILCsPXmAwUPdtcPITztBBSP6yR92YlDkSnOsg6RObbEw&state=b8eb09e6d3614f90c8b24c88141c2198bf7fa67d9b4d3cef" for 127.0.0.1 at 2017-08-18 15:50:08 -0500
-  
+
 RuntimeError (Could not find a valid mapping for path "/auth/spotify/callback"):
-  
+
 devise (4.3.0) lib/devise/mapping.rb:49:in `find_by_path!'
 devise (4.3.0) lib/devise/omniauth.rb:17:in `block in <top (required)>'
 omniauth (1.6.1) lib/omniauth/strategy.rb:478:in `call'
@@ -1511,14 +1511,14 @@ Processing by CallbacksController#spotify as HTML
 Completed 500 Internal Server Error in 3857ms (ActiveRecord: 3.0ms)
 
 
-  
+
 ActiveModel::UnknownAttributeError (unknown attribute 'birthdate' for User.):
-  
+
 app/controllers/callbacks_controller.rb:6:in `spotify'
 Started GET "/auth/spotify/callback?error=access_denied&state=54172380457fb396edfb357ddfd30a2f16aef39d194111ee" for 127.0.0.1 at 2017-08-18 15:50:55 -0500
-  
+
 RuntimeError (Could not find a valid mapping for path "/auth/spotify/callback"):
-  
+
 devise (4.3.0) lib/devise/mapping.rb:49:in `find_by_path!'
 devise (4.3.0) lib/devise/omniauth.rb:17:in `block in <top (required)>'
 omniauth (1.6.1) lib/omniauth/strategy.rb:478:in `call'
@@ -1641,9 +1641,9 @@ Completed 200 OK in 66ms (Views: 31.7ms | ActiveRecord: 5.6ms)
 Started GET "/auth/spotify" for 127.0.0.1 at 2017-08-18 16:59:25 -0500
 Started GET "/auth/spotify" for 127.0.0.1 at 2017-08-18 16:59:25 -0500
 Started GET "/auth/spotify/callback?error=access_denied&state=9e5e7fbd23d21c2d8726a7fe269ed3700956ab821147492e" for 127.0.0.1 at 2017-08-18 16:59:43 -0500
-  
+
 RuntimeError (Could not find a valid mapping for path "/auth/spotify/callback"):
-  
+
 devise (4.3.0) lib/devise/mapping.rb:49:in `find_by_path!'
 devise (4.3.0) lib/devise/omniauth.rb:17:in `block in <top (required)>'
 omniauth (1.6.1) lib/omniauth/strategy.rb:478:in `call'
@@ -1721,9 +1721,9 @@ Processing by CallbacksController#spotify as HTML
 Completed 500 Internal Server Error in 192ms (ActiveRecord: 2.9ms)
 
 
-  
+
 NameError (undefined local variable or method `user' for #<Class:0x007f876a995360>):
-  
+
 app/models/user.rb:18:in `from_omniauth'
 app/controllers/callbacks_controller.rb:5:in `spotify'
 Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-18 17:01:18 -0500
@@ -1756,9 +1756,9 @@ Completed 200 OK in 17ms (Views: 14.1ms | ActiveRecord: 0.3ms)
 
 
 Started GET "/profile" for 127.0.0.1 at 2017-08-18 17:01:26 -0500
-  
+
 ActionController::RoutingError (No route matches [GET] "/profile"):
-  
+
 actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
 web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
@@ -1790,10 +1790,10 @@ puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
 <<<<<<< HEAD
 Started GET "/" for 127.0.0.1 at 2017-08-18 17:27:52 -0500
-  
+
 ActiveRecord::NoDatabaseError (FATAL:  database "wearehear_development" does not exist
 ):
-  
+
 activerecord (5.1.3) lib/active_record/connection_adapters/postgresql_adapter.rb:699:in `rescue in connect'
 activerecord (5.1.3) lib/active_record/connection_adapters/postgresql_adapter.rb:695:in `connect'
 activerecord (5.1.3) lib/active_record/connection_adapters/postgresql_adapter.rb:220:in `initialize'
@@ -2154,16 +2154,16 @@ Processing by CallbacksController#spotify as HTML
 Completed 500 Internal Server Error in 165ms (ActiveRecord: 1.0ms)
 
 
-  
+
 NoMethodError (undefined method `birthdate=' for #<User:0x007fbadb2733f8>):
-  
+
 app/models/user.rb:17:in `block in from_omniauth'
 app/models/user.rb:9:in `from_omniauth'
 app/controllers/callbacks_controller.rb:5:in `spotify'
 Started GET "/auth/spotify/callback?code=AQAlaNg8OvtUXwlf1Qqex7FGtklIaDzqkQrEf--kd2KJxMpW2BWTFj-qUzhX3rfn4vio1bgLopkxiajvCoX_3V_gygPovfw1Z3zjhwXBpy1VIUaUIuZ2I9EKqeaUGTJgc0daQxnX31LryVAY62z5VC66U0mv6RnRbceqIqNG-xTksXi8EcwfpU1cqvaPmGzmfSuLvXEQUk9b7ZOBdCUDCPAGJZvC0FLRarX0-WVaOmolkoJONCgwclx-_rhzQXXpvsRvrFYCwxfC3bfCs8SISyD41LKQGSJ314sqdBe0vM-i4PgK-b6Ojis&state=0cc70d2ba5bae6f453a33af0c5dbe4f98901576d61e13fad" for 127.0.0.1 at 2017-08-18 17:31:11 -0500
-  
+
 RuntimeError (Could not find a valid mapping for path "/auth/spotify/callback"):
-  
+
 devise (4.3.0) lib/devise/mapping.rb:49:in `find_by_path!'
 devise (4.3.0) lib/devise/omniauth.rb:17:in `block in <top (required)>'
 omniauth (1.6.1) lib/omniauth/strategy.rb:478:in `call'
@@ -2222,9 +2222,9 @@ Processing by CallbacksController#spotify as HTML
 Completed 500 Internal Server Error in 137ms (ActiveRecord: 0.3ms)
 
 
-  
+
 NoMethodError (undefined method `birthdate=' for #<User:0x007fbad51a6750>):
-  
+
 app/models/user.rb:17:in `block in from_omniauth'
 app/models/user.rb:9:in `from_omniauth'
 app/controllers/callbacks_controller.rb:5:in `spotify'
@@ -2250,16 +2250,16 @@ Processing by CallbacksController#spotify as HTML
 Completed 500 Internal Server Error in 137ms (ActiveRecord: 0.3ms)
 
 
-  
+
 NoMethodError (undefined method `birthdate=' for #<User:0x007fbad8bbd560>):
-  
+
 app/models/user.rb:17:in `block in from_omniauth'
 app/models/user.rb:9:in `from_omniauth'
 app/controllers/callbacks_controller.rb:5:in `spotify'
 Started GET "/auth/spotify/callback?code=AQADOLym-ldmuTPeV1O3zOHcB919RkWFcRCgvZQRVc2c9l79_Y1ftM326_8x_YOaKh3nkP7xBn_WYF2UoD1-DQXmuGMzgE_nxVVhOAN_rNuOzSJhReUG0TNG2RlTYKuc5iQneIkzvDU4kxTSimwIDA3rVlSAwsfbgYnlNUkxUnL_R3aFgcmfDehlKm4J8j2oZ5tEDAURgi-ZsZuLAdtAFCdWzenJFZdY2Eo8BlfU8GAb9NgSqOqe8Ai6LzaL0E8mzrb_jx_vMXuWQeuykoLtVRyWRO4p_gHI6g_TWsjsvBmxEtQ1W8y0U2M&state=e5fb3c4e4becd73da57c6fabf0081cd39c616f0e38f8724a" for 127.0.0.1 at 2017-08-18 17:33:31 -0500
-  
+
 RuntimeError (Could not find a valid mapping for path "/auth/spotify/callback"):
-  
+
 devise (4.3.0) lib/devise/mapping.rb:49:in `find_by_path!'
 devise (4.3.0) lib/devise/omniauth.rb:17:in `block in <top (required)>'
 omniauth (1.6.1) lib/omniauth/strategy.rb:478:in `call'
@@ -2380,7 +2380,7 @@ This may happen for two reasons:
 Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms)
 
 
-  
+
 AbstractController::ActionNotFound (Could not find devise mapping for path "/api.spotify.com/v1/search".
 This may happen for two reasons:
 
@@ -2396,7 +2396,7 @@ This may happen for two reasons:
    @request.env["devise.mapping"] = Devise.mappings[:user]
 
 ):
-  
+
 devise (4.3.0) app/controllers/devise_controller.rb:88:in `unknown_action!'
 devise (4.3.0) app/controllers/devise_controller.rb:63:in `assert_is_devise_resource!'
 activesupport (5.1.3) lib/active_support/callbacks.rb:413:in `block in make_lambda'
@@ -2484,9 +2484,9 @@ Completed 200 OK in 224ms (Views: 191.6ms | ActiveRecord: 3.9ms)
 
 
 Started POST "/search" for 127.0.0.1 at 2017-08-18 17:59:05 -0500
-  
+
 ActionController::RoutingError (No route matches [POST] "/search"):
-  
+
 actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
 web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
@@ -2536,7 +2536,7 @@ This may happen for two reasons:
 Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms)
 
 
-  
+
 AbstractController::ActionNotFound (Could not find devise mapping for path "/search".
 This may happen for two reasons:
 
@@ -2552,7 +2552,7 @@ This may happen for two reasons:
    @request.env["devise.mapping"] = Devise.mappings[:user]
 
 ):
-  
+
 devise (4.3.0) app/controllers/devise_controller.rb:88:in `unknown_action!'
 devise (4.3.0) app/controllers/devise_controller.rb:63:in `assert_is_devise_resource!'
 activesupport (5.1.3) lib/active_support/callbacks.rb:413:in `block in make_lambda'
@@ -2651,7 +2651,7 @@ This may happen for two reasons:
 Completed 404 Not Found in 2ms (ActiveRecord: 0.0ms)
 
 
-  
+
 AbstractController::ActionNotFound (Could not find devise mapping for path "/search".
 This may happen for two reasons:
 
@@ -2667,7 +2667,7 @@ This may happen for two reasons:
    @request.env["devise.mapping"] = Devise.mappings[:user]
 
 ):
-  
+
 devise (4.3.0) app/controllers/devise_controller.rb:88:in `unknown_action!'
 devise (4.3.0) app/controllers/devise_controller.rb:63:in `assert_is_devise_resource!'
 activesupport (5.1.3) lib/active_support/callbacks.rb:413:in `block in make_lambda'
@@ -2774,7 +2774,7 @@ This may happen for two reasons:
 Completed 404 Not Found in 2ms (ActiveRecord: 0.0ms)
 
 
-  
+
 AbstractController::ActionNotFound (Could not find devise mapping for path "/search".
 This may happen for two reasons:
 
@@ -2790,7 +2790,7 @@ This may happen for two reasons:
    @request.env["devise.mapping"] = Devise.mappings[:user]
 
 ):
-  
+
 devise (4.3.0) app/controllers/devise_controller.rb:88:in `unknown_action!'
 devise (4.3.0) app/controllers/devise_controller.rb:63:in `assert_is_devise_resource!'
 activesupport (5.1.3) lib/active_support/callbacks.rb:413:in `block in make_lambda'
@@ -2897,7 +2897,7 @@ This may happen for two reasons:
 Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms)
 
 
-  
+
 AbstractController::ActionNotFound (Could not find devise mapping for path "/search".
 This may happen for two reasons:
 
@@ -2913,7 +2913,7 @@ This may happen for two reasons:
    @request.env["devise.mapping"] = Devise.mappings[:user]
 
 ):
-  
+
 devise (4.3.0) app/controllers/devise_controller.rb:88:in `unknown_action!'
 devise (4.3.0) app/controllers/devise_controller.rb:63:in `assert_is_devise_resource!'
 activesupport (5.1.3) lib/active_support/callbacks.rb:413:in `block in make_lambda'
@@ -2992,9 +2992,9 @@ puma (3.10.0) lib/puma/server.rb:301:in `block in run'
 puma (3.10.0) lib/puma/thread_pool.rb:120:in `call'
 puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
 Started POST "/search" for 127.0.0.1 at 2017-08-18 18:02:06 -0500
-  
+
 ActionController::RoutingError (No route matches [POST] "/search"):
-  
+
 actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
 web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
@@ -3044,7 +3044,7 @@ This may happen for two reasons:
 Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms)
 
 
-  
+
 AbstractController::ActionNotFound (Could not find devise mapping for path "/search".
 This may happen for two reasons:
 
@@ -3060,7 +3060,7 @@ This may happen for two reasons:
    @request.env["devise.mapping"] = Devise.mappings[:user]
 
 ):
-  
+
 devise (4.3.0) app/controllers/devise_controller.rb:88:in `unknown_action!'
 devise (4.3.0) app/controllers/devise_controller.rb:63:in `assert_is_devise_resource!'
 activesupport (5.1.3) lib/active_support/callbacks.rb:413:in `block in make_lambda'
@@ -3167,7 +3167,7 @@ This may happen for two reasons:
 Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms)
 
 
-  
+
 AbstractController::ActionNotFound (Could not find devise mapping for path "/search".
 This may happen for two reasons:
 
@@ -3183,7 +3183,7 @@ This may happen for two reasons:
    @request.env["devise.mapping"] = Devise.mappings[:user]
 
 ):
-  
+
 devise (4.3.0) app/controllers/devise_controller.rb:88:in `unknown_action!'
 devise (4.3.0) app/controllers/devise_controller.rb:63:in `assert_is_devise_resource!'
 activesupport (5.1.3) lib/active_support/callbacks.rb:413:in `block in make_lambda'
@@ -3262,9 +3262,9 @@ puma (3.10.0) lib/puma/server.rb:301:in `block in run'
 puma (3.10.0) lib/puma/thread_pool.rb:120:in `call'
 puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
 Started POST "/search" for 127.0.0.1 at 2017-08-18 18:08:00 -0500
-  
+
 LoadError (Unable to autoload constant SpotifySearchController, expected /Users/apprentice/wearehear/app/controllers/spotify_search_controller.rb to define it):
-  
+
 activesupport (5.1.3) lib/active_support/dependencies.rb:511:in `load_missing_constant'
 activesupport (5.1.3) lib/active_support/dependencies.rb:202:in `const_missing'
 activesupport (5.1.3) lib/active_support/inflector/methods.rb:269:in `const_get'
@@ -3334,9 +3334,9 @@ Completed 200 OK in 36ms (Views: 13.0ms | ActiveRecord: 3.4ms)
 
 
 Started POST "/search" for 127.0.0.1 at 2017-08-18 18:08:08 -0500
-  
+
 LoadError (Unable to autoload constant SpotifySearchController, expected /Users/apprentice/wearehear/app/controllers/spotify_search_controller.rb to define it):
-  
+
 activesupport (5.1.3) lib/active_support/dependencies.rb:511:in `load_missing_constant'
 activesupport (5.1.3) lib/active_support/dependencies.rb:202:in `const_missing'
 activesupport (5.1.3) lib/active_support/inflector/methods.rb:269:in `const_get'
@@ -3398,9 +3398,9 @@ puma (3.10.0) lib/puma/server.rb:301:in `block in run'
 puma (3.10.0) lib/puma/thread_pool.rb:120:in `call'
 puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
 Started POST "/search" for 127.0.0.1 at 2017-08-18 18:11:04 -0500
-  
+
 LoadError (Unable to autoload constant SpotifySearchController, expected /Users/apprentice/wearehear/app/controllers/spotify_search_controller.rb to define it):
-  
+
 activesupport (5.1.3) lib/active_support/dependencies.rb:511:in `load_missing_constant'
 activesupport (5.1.3) lib/active_support/dependencies.rb:202:in `const_missing'
 activesupport (5.1.3) lib/active_support/inflector/methods.rb:269:in `const_get'
@@ -3469,15 +3469,15 @@ Processing by BouquetsController#new as HTML
 Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.3ms)
 
 
-  
+
 ActionView::Template::Error (First argument in form cannot contain nil or be empty):
     1: <h1>This is the new page</h1>
-    2: 
+    2:
     3: <%= form_for @music, url: {action:"search"} do %>
     4:   <%=label_tag :search %>
     5:   <%= text_field_tag :search %>
     6:   <%= submit_tag :search %>
-  
+
 app/views/bouquets/new.html.erb:3:in `_app_views_bouquets_new_html_erb___4218682991918981317_70261815250020'
 Started GET "/" for 127.0.0.1 at 2017-08-18 18:11:20 -0500
 Processing by BouquetsController#new as HTML
@@ -3487,15 +3487,15 @@ Processing by BouquetsController#new as HTML
 Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.3ms)
 
 
-  
+
 ActionView::Template::Error (undefined method `model_name' for {:url=>{:action=>"search"}}:Hash):
     1: <h1>This is the new page</h1>
-    2: 
+    2:
     3: <%= form_for  url: {action:"search"} do %>
     4:   <%=label_tag :search %>
     5:   <%= text_field_tag :search %>
     6:   <%= submit_tag :search %>
-  
+
 app/views/bouquets/new.html.erb:3:in `_app_views_bouquets_new_html_erb___4218682991918981317_70261808540720'
 Started GET "/" for 127.0.0.1 at 2017-08-18 18:11:48 -0500
 Processing by BouquetsController#new as HTML
@@ -3505,7 +3505,7 @@ Processing by BouquetsController#new as HTML
 Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.3ms)
 
 
-  
+
 SyntaxError (/Users/apprentice/wearehear/app/views/bouquets/new.html.erb:3: syntax error, unexpected tIDENTIFIER, expecting keyword_end
 ...fer.append=  form_for @song url: {action:"search"} do @outpu...
 ...                               ^
@@ -3513,7 +3513,7 @@ SyntaxError (/Users/apprentice/wearehear/app/views/bouquets/new.html.erb:3: synt
 ...@song url: {action:"search"} do @output_buffer.safe_append='
 ...                               ^
 /Users/apprentice/wearehear/app/views/bouquets/new.html.erb:10: syntax error, unexpected keyword_ensure, expecting end-of-input):
-  
+
 app/views/bouquets/new.html.erb:3: syntax error, unexpected tIDENTIFIER, expecting keyword_end
 app/views/bouquets/new.html.erb:3: syntax error, unexpected keyword_do_block, expecting keyword_end
 app/views/bouquets/new.html.erb:10: syntax error, unexpected keyword_ensure, expecting end-of-input
@@ -3525,15 +3525,15 @@ Processing by BouquetsController#new as HTML
 Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.5ms)
 
 
-  
+
 ActionView::Template::Error (First argument in form cannot contain nil or be empty):
     1: <h1>This is the new page</h1>
-    2: 
+    2:
     3: <%= form_for @song, url: {action:"search"} do %>
     4:   <%=label_tag :search %>
     5:   <%= text_field_tag :search %>
     6:   <%= submit_tag :search %>
-  
+
 app/views/bouquets/new.html.erb:3:in `_app_views_bouquets_new_html_erb___4218682991918981317_70261836697180'
 Started GET "/" for 127.0.0.1 at 2017-08-18 18:12:19 -0500
 Processing by BouquetsController#new as HTML
@@ -3543,15 +3543,15 @@ Processing by BouquetsController#new as HTML
 Completed 500 Internal Server Error in 117ms (ActiveRecord: 0.3ms)
 
 
-  
+
 ActionView::Template::Error (undefined local variable or method `search' for #<#<Class:0x007fce3427cf90>:0x007fce2df86ee0>):
     1: <h1>This is the new page</h1>
-    2: 
+    2:
     3: <%= form_tag search do %>
     4:   <%=label_tag :search %>
     5:   <%= text_field_tag :search %>
     6:   <%= submit_tag :search %>
-  
+
 app/views/bouquets/new.html.erb:3:in `_app_views_bouquets_new_html_erb___4218682991918981317_70261755624540'
 Started GET "/" for 127.0.0.1 at 2017-08-18 18:12:32 -0500
 Processing by BouquetsController#new as HTML
@@ -3562,9 +3562,9 @@ Completed 200 OK in 16ms (Views: 13.5ms | ActiveRecord: 0.3ms)
 
 
 Started POST "/search" for 127.0.0.1 at 2017-08-18 18:12:48 -0500
-  
+
 LoadError (Unable to autoload constant SpotifySearchController, expected /Users/apprentice/wearehear/app/controllers/spotify_search_controller.rb to define it):
-  
+
 activesupport (5.1.3) lib/active_support/dependencies.rb:511:in `load_missing_constant'
 activesupport (5.1.3) lib/active_support/dependencies.rb:202:in `const_missing'
 activesupport (5.1.3) lib/active_support/inflector/methods.rb:269:in `const_get'
@@ -5522,10 +5522,12 @@ Migrating to AddBirthdateToUsers (20170818221536)
   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
   [1m[36mBouquet Load (0.3ms)[0m  [1m[34mSELECT "bouquets".* FROM "bouquets" WHERE "bouquets"."sender_id" = $1[0m  [["sender_id", 15]]
+<<<<<<< HEAD
 >>>>>>> b9f4c8f1f4e152344e9e3e3dbc8c0a6202751f2c
+<<<<<<< HEAD
 Started GET "/bouquets/show?artist_name=&song_name=&album_name=" for 127.0.0.1 at 2017-08-19 12:51:24 -0500
   [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  
+
 ActiveRecord::PendingMigrationError (
 
 Migrations are pending. To resolve this issue, run:
@@ -5533,7 +5535,7 @@ Migrations are pending. To resolve this issue, run:
         bin/rails db:migrate RAILS_ENV=development
 
 ):
-  
+
 activerecord (5.1.3) lib/active_record/migration.rb:576:in `check_pending!'
 activerecord (5.1.3) lib/active_record/migration.rb:553:in `call'
 actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
@@ -5541,6 +5543,60 @@ activesupport (5.1.3) lib/active_support/callbacks.rb:97:in `run_callbacks'
 actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
 actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
 actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+=======
+=======
+Started GET "/" for 127.0.0.1 at 2017-08-18 17:43:15 -0500
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+Completed 401 Unauthorized in 65ms (ActiveRecord: 5.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 17:43:16 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-18 17:43:16 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (1.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (14.4ms)
+Completed 200 OK in 190ms (Views: 187.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/spotify" for 127.0.0.1 at 2017-08-18 17:43:18 -0500
+Started GET "/auth/spotify" for 127.0.0.1 at 2017-08-18 17:43:18 -0500
+Started GET "/auth/spotify/callback?code=AQB5qZnA33C3iRE_SaDhMYoBSQujCtwMtfz9_PEWOuVhYPHgvmRVgihK3GtynPOQC8N7cJiro8HyzYiF09Ktqr7nzjzB7ehnqofQ3sGcDiFRf82hqRQ05q-UTlnhabYZxlVWkV-ClQveOVypfN3ummQkRvBrJt2xEu58jsu3WfpjhVDL43liV1MWRbwYnjc7o2iprIVbXCJO9buSeimsb27HIL79fzqRSwUaLX0uHw4XAT5imKFCffDGtqK2EHxTHGV1E33cvunojILpYQkxsa0YV0wDo0d3YH_4NcqDWKHN8ajFJK0fo80&state=02c13715418fee3461081f706d1827c6ad5ca4d0076e6aba" for 127.0.0.1 at 2017-08-18 17:43:19 -0500
+Processing by CallbacksController#spotify as HTML
+  Parameters: {"code"=>"AQB5qZnA33C3iRE_SaDhMYoBSQujCtwMtfz9_PEWOuVhYPHgvmRVgihK3GtynPOQC8N7cJiro8HyzYiF09Ktqr7nzjzB7ehnqofQ3sGcDiFRf82hqRQ05q-UTlnhabYZxlVWkV-ClQveOVypfN3ummQkRvBrJt2xEu58jsu3WfpjhVDL43liV1MWRbwYnjc7o2iprIVbXCJO9buSeimsb27HIL79fzqRSwUaLX0uHw4XAT5imKFCffDGtqK2EHxTHGV1E33cvunojILpYQkxsa0YV0wDo0d3YH_4NcqDWKHN8ajFJK0fo80", "state"=>"02c13715418fee3461081f706d1827c6ad5ca4d0076e6aba"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2 ORDER BY "users"."id" ASC LIMIT $3[0m  [["provider", "spotify"], ["uid", "radiohead770"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "rpeace770@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["email", "rpeace770@gmail.com"], ["encrypted_password", "$2a$11$r8Bf0VawJuivZo4MttV.OO8zrhY9cMZRSHlFHn.R4Ns.gRNEXL//a"], ["created_at", "2017-08-18 22:43:20.225135"], ["updated_at", "2017-08-18 22:43:20.225135"], ["provider", "spotify"], ["uid", "radiohead770"], ["username", "radiohead770"], ["birthdate", "1985-05-03 00:00:00"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2017-08-18 22:43:20.271895"], ["last_sign_in_at", "2017-08-18 22:43:20.271895"], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["updated_at", "2017-08-18 22:43:20.272673"], ["id", 31]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 205ms (ActiveRecord: 3.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 17:43:20 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 19ms (Views: 15.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at 2017-08-18 17:44:17 -0500
+
+ActionController::RoutingError (No route matches [GET] "/users/sign_out"):
+
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+>>>>>>> master
 web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
 web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
@@ -5568,9 +5624,10 @@ puma (3.10.0) lib/puma/server.rb:437:in `process_client'
 puma (3.10.0) lib/puma/server.rb:301:in `block in run'
 puma (3.10.0) lib/puma/thread_pool.rb:120:in `call'
 puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+<<<<<<< HEAD
 Started GET "/bouquets/show" for 127.0.0.1 at 2017-08-19 12:51:35 -0500
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  
+
 ActiveRecord::PendingMigrationError (
 
 Migrations are pending. To resolve this issue, run:
@@ -5578,7 +5635,7 @@ Migrations are pending. To resolve this issue, run:
         bin/rails db:migrate RAILS_ENV=development
 
 ):
-  
+
 activerecord (5.1.3) lib/active_record/migration.rb:576:in `check_pending!'
 activerecord (5.1.3) lib/active_record/migration.rb:553:in `call'
 actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
@@ -5586,6 +5643,29 @@ activesupport (5.1.3) lib/active_support/callbacks.rb:97:in `run_callbacks'
 actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
 actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
 actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+=======
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-18 17:46:06 -0500
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 4ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 17:46:06 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 28ms (Views: 24.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at 2017-08-18 17:46:07 -0500
+
+ActionController::RoutingError (No route matches [GET] "/users/sign_out"):
+
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+>>>>>>> master
 web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
 web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
@@ -5613,9 +5693,10 @@ puma (3.10.0) lib/puma/server.rb:437:in `process_client'
 puma (3.10.0) lib/puma/server.rb:301:in `block in run'
 puma (3.10.0) lib/puma/thread_pool.rb:120:in `call'
 puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+<<<<<<< HEAD
 Started GET "/" for 127.0.0.1 at 2017-08-19 13:40:27 -0500
   [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  
+
 ActiveRecord::PendingMigrationError (
 
 Migrations are pending. To resolve this issue, run:
@@ -5623,7 +5704,7 @@ Migrations are pending. To resolve this issue, run:
         bin/rails db:migrate RAILS_ENV=development
 
 ):
-  
+
 activerecord (5.1.3) lib/active_record/migration.rb:576:in `check_pending!'
 activerecord (5.1.3) lib/active_record/migration.rb:553:in `call'
 actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
@@ -5631,6 +5712,37 @@ activesupport (5.1.3) lib/active_support/callbacks.rb:97:in `run_callbacks'
 actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
 actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
 actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+=======
+Started GET "/" for 127.0.0.1 at 2017-08-18 17:46:11 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 16ms (Views: 12.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 17:46:32 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 16ms (Views: 12.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 17:48:01 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 16ms (Views: 13.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users/sign_out" for 127.0.0.1 at 2017-08-18 17:48:03 -0500
+
+ActionController::RoutingError (No route matches [POST] "/users/sign_out"):
+
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+>>>>>>> master
 web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
 web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
@@ -5658,6 +5770,7 @@ puma (3.10.0) lib/puma/server.rb:437:in `process_client'
 puma (3.10.0) lib/puma/server.rb:301:in `block in run'
 puma (3.10.0) lib/puma/thread_pool.rb:120:in `call'
 puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+<<<<<<< HEAD
   [1m[35m (4.0ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7926829025639619690)[0m
   [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
 Migrating to AddBirthdateToUsers (20170818221536)
@@ -5939,9 +6052,9 @@ Completed 200 OK in 17ms (Views: 13.6ms | ActiveRecord: 0.3ms)
 
 
 Started POST "/search" for 127.0.0.1 at 2017-08-19 13:41:27 -0500
-  
+
 LoadError (Unable to autoload constant SpotifySearchController, expected /Users/apprentice/wearehear/app/controllers/spotify_search_controller.rb to define it):
-  
+
 activesupport (5.1.3) lib/active_support/dependencies.rb:511:in `load_missing_constant'
 activesupport (5.1.3) lib/active_support/dependencies.rb:202:in `const_missing'
 activesupport (5.1.3) lib/active_support/inflector/methods.rb:269:in `const_get'
@@ -5954,6 +6067,387 @@ activesupport (5.1.3) lib/active_support/dependencies.rb:613:in `constantize'
 actionpack (5.1.3) lib/action_dispatch/http/request.rb:82:in `controller_class'
 actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:43:in `controller'
 actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:29:in `serve'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:834:in `call'
+omniauth (1.6.1) lib/omniauth/strategy.rb:189:in `call!'
+omniauth (1.6.1) lib/omniauth/strategy.rb:167:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.3) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.3) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+=======
+Started GET "/" for 127.0.0.1 at 2017-08-18 17:55:34 -0500
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 387ms (Views: 337.8ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 17:55:45 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 20ms (Views: 16.5ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users/sign_out" for 127.0.0.1 at 2017-08-18 17:55:47 -0500
+
+ActionController::RoutingError (No route matches [POST] "/users/sign_out"):
+
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `call'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/users/sign_out" for 127.0.0.1 at 2017-08-18 18:00:35 -0500
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+
+ActionController::RoutingError (No route matches [GET] "/users/sign_out"):
+
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+>>>>>>> master
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `call'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+<<<<<<< HEAD
+Started GET "/bouquets/show" for 127.0.0.1 at 2017-08-19 13:43:32 -0500
+Processing by BouquetsController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering bouquets/show.html.erb within layouts/application
+  Rendered bouquets/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 16ms (Views: 12.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at 2017-08-19 13:43:54 -0500
+=======
+Started GET "/users/sign_out" for 127.0.0.1 at 2017-08-18 18:00:36 -0500
+>>>>>>> master
+
+ActionController::RoutingError (No route matches [GET] "/users/sign_out"):
+
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `call'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+<<<<<<< HEAD
+Started GET "/bouquets/show" for 127.0.0.1 at 2017-08-19 13:44:03 -0500
+Processing by BouquetsController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering bouquets/show.html.erb within layouts/application
+  Rendered bouquets/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 18ms (Views: 14.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-19 13:44:07 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 17ms (Views: 14.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-19 13:47:53 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 22ms (Views: 19.0ms | ActiveRecord: 0.3ms)
+
+
+=======
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:00:40 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 231ms (Views: 192.2ms | ActiveRecord: 4.6ms)
+
+
+Started POST "/users/sign_out" for 127.0.0.1 at 2017-08-18 18:00:41 -0500
+
+ActionController::RoutingError (No route matches [POST] "/users/sign_out"):
+
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `call'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/users/new" for 127.0.0.1 at 2017-08-18 18:01:03 -0500
+
+ActionController::RoutingError (No route matches [GET] "/users/new"):
+
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `call'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-08-18 18:01:24 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 468ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:01:25 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 15ms (Views: 11.8ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users/sign_out" for 127.0.0.1 at 2017-08-18 18:01:27 -0500
+
+ActionController::RoutingError (No route matches [POST] "/users/sign_out"):
+
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `call'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started POST "/users/sign_out" for 127.0.0.1 at 2017-08-18 18:03:35 -0500
+
+ActionController::RoutingError (No route matches [POST] "/users/sign_out"):
+
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `call'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:03:39 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 17ms (Views: 13.2ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-08-18 18:03:41 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 4ms (ActiveRecord: 0.4ms)
+
+
+
+ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken):
+
+actionpack (5.1.3) lib/action_controller/metal/request_forgery_protection.rb:195:in `handle_unverified_request'
+actionpack (5.1.3) lib/action_controller/metal/request_forgery_protection.rb:227:in `handle_unverified_request'
+devise (4.3.0) lib/devise/controllers/helpers.rb:253:in `handle_unverified_request'
+actionpack (5.1.3) lib/action_controller/metal/request_forgery_protection.rb:222:in `verify_authenticity_token'
+activesupport (5.1.3) lib/active_support/callbacks.rb:413:in `block in make_lambda'
+activesupport (5.1.3) lib/active_support/callbacks.rb:197:in `call'
+activesupport (5.1.3) lib/active_support/callbacks.rb:197:in `block (2 levels) in halting'
+actionpack (5.1.3) lib/abstract_controller/callbacks.rb:12:in `call'
+actionpack (5.1.3) lib/abstract_controller/callbacks.rb:12:in `block (2 levels) in <module:Callbacks>'
+activesupport (5.1.3) lib/active_support/callbacks.rb:198:in `call'
+activesupport (5.1.3) lib/active_support/callbacks.rb:198:in `block in halting'
+activesupport (5.1.3) lib/active_support/callbacks.rb:507:in `call'
+activesupport (5.1.3) lib/active_support/callbacks.rb:507:in `block in invoke_before'
+activesupport (5.1.3) lib/active_support/callbacks.rb:507:in `each'
+activesupport (5.1.3) lib/active_support/callbacks.rb:507:in `invoke_before'
+activesupport (5.1.3) lib/active_support/callbacks.rb:130:in `run_callbacks'
+actionpack (5.1.3) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.1.3) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.1.3) lib/active_support/notifications.rb:166:in `block in instrument'
+activesupport (5.1.3) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.1.3) lib/active_support/notifications.rb:166:in `instrument'
+actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.1.3) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
+activerecord (5.1.3) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
+actionpack (5.1.3) lib/abstract_controller/base.rb:124:in `process'
+actionview (5.1.3) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.3) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.3) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.3) lib/action_dispatch/routing/mapper.rb:16:in `block in <class:Constraints>'
+actionpack (5.1.3) lib/action_dispatch/routing/mapper.rb:46:in `call'
+actionpack (5.1.3) lib/action_dispatch/routing/mapper.rb:46:in `serve'
 actionpack (5.1.3) lib/action_dispatch/journey/router.rb:46:in `block in serve'
 actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `each'
 actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `serve'
@@ -6002,69 +6496,758 @@ puma (3.10.0) lib/puma/server.rb:437:in `process_client'
 puma (3.10.0) lib/puma/server.rb:301:in `block in run'
 puma (3.10.0) lib/puma/thread_pool.rb:120:in `call'
 puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-Started GET "/bouquets/show" for 127.0.0.1 at 2017-08-19 13:43:32 -0500
-Processing by BouquetsController#show as HTML
-  Parameters: {"id"=>"show"}
-  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
-  Rendering bouquets/show.html.erb within layouts/application
-  Rendered bouquets/show.html.erb within layouts/application (0.3ms)
-Completed 200 OK in 16ms (Views: 12.6ms | ActiveRecord: 0.3ms)
-
-
-Started GET "/users/sign_out" for 127.0.0.1 at 2017-08-19 13:43:54 -0500
-  
-ActionController::RoutingError (No route matches [GET] "/users/sign_out"):
-  
-actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
-web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
-web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
-web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
-web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
-actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
-railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
-railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
-activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
-activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
-activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
-railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
-sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
-actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
-actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
-rack (2.0.3) lib/rack/method_override.rb:22:in `call'
-rack (2.0.3) lib/rack/runtime.rb:22:in `call'
-activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
-actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
-rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
-railties (5.1.3) lib/rails/engine.rb:522:in `call'
-puma (3.10.0) lib/puma/configuration.rb:225:in `call'
-puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
-puma (3.10.0) lib/puma/server.rb:437:in `process_client'
-puma (3.10.0) lib/puma/server.rb:301:in `block in run'
-puma (3.10.0) lib/puma/thread_pool.rb:120:in `call'
-puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-Started GET "/bouquets/show" for 127.0.0.1 at 2017-08-19 13:44:03 -0500
-Processing by BouquetsController#show as HTML
-  Parameters: {"id"=>"show"}
-  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
-  Rendering bouquets/show.html.erb within layouts/application
-  Rendered bouquets/show.html.erb within layouts/application (0.5ms)
-Completed 200 OK in 18ms (Views: 14.8ms | ActiveRecord: 0.5ms)
-
-
-Started GET "/" for 127.0.0.1 at 2017-08-19 13:44:07 -0500
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:05:06 -0500
 Processing by BouquetsController#new as HTML
-  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
   Rendering bouquets/new.html.erb within layouts/application
-  Rendered bouquets/new.html.erb within layouts/application (0.9ms)
-Completed 200 OK in 17ms (Views: 14.1ms | ActiveRecord: 0.3ms)
+  Rendered bouquets/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 35ms (Views: 11.2ms | ActiveRecord: 3.2ms)
 
 
-Started GET "/" for 127.0.0.1 at 2017-08-19 13:47:53 -0500
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:05:07 -0500
 Processing by BouquetsController#new as HTML
-  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
   Rendering bouquets/new.html.erb within layouts/application
-  Rendered bouquets/new.html.erb within layouts/application (1.7ms)
-Completed 200 OK in 22ms (Views: 19.0ms | ActiveRecord: 0.3ms)
+  Rendered bouquets/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 15ms (Views: 10.7ms | ActiveRecord: 0.8ms)
 
 
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-08-18 18:05:08 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"CVst1urIo0+5kGphHUKR4wVqEDUfHQdhxofFZ6V2sBFDn6fBKAL0fKgS2ziz1bhRMUNHKukIhfFaI6y6WjIGyQ=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 41ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:05:08 -0500
+Processing by BouquetsController#new as HTML
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-18 18:05:08 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (1.2ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (8.5ms)
+Completed 200 OK in 25ms (Views: 23.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/spotify" for 127.0.0.1 at 2017-08-18 18:05:12 -0500
+Started GET "/auth/spotify/callback?code=AQCNbYdm41m3eWvTUJ_2siXfg0hhG8d9XB_HQ_hNNjAO23xMQDUDvk17OwLsOcr9fjTlPEV9fl__TO_3tV9onfGuxqPkavCXBDz45IPnL05Ft7IykYMA8NyJGaQ2vQGvHDscf7W0GkfLbwGt7e-aG_wnv1j8a01vUFaveeRQHLvEfPPDz1MezIaeDoZJx_R7GyVNYPGELoDmnQrPKyy2m0AKhghxPIr1KDf7MusRyzdwnVRj2jw0ex4g5tjwe0Tmh8_mLJD3F75v5k7_Gj8DEXCCZ0wbLpcNuxxA9N_qgK8uf2l9-jneYzE&state=e8250e048a0b596cf7fc7a53107c0a8d5b61438c2f4d38e8" for 127.0.0.1 at 2017-08-18 18:05:12 -0500
+Processing by CallbacksController#spotify as HTML
+  Parameters: {"code"=>"AQCNbYdm41m3eWvTUJ_2siXfg0hhG8d9XB_HQ_hNNjAO23xMQDUDvk17OwLsOcr9fjTlPEV9fl__TO_3tV9onfGuxqPkavCXBDz45IPnL05Ft7IykYMA8NyJGaQ2vQGvHDscf7W0GkfLbwGt7e-aG_wnv1j8a01vUFaveeRQHLvEfPPDz1MezIaeDoZJx_R7GyVNYPGELoDmnQrPKyy2m0AKhghxPIr1KDf7MusRyzdwnVRj2jw0ex4g5tjwe0Tmh8_mLJD3F75v5k7_Gj8DEXCCZ0wbLpcNuxxA9N_qgK8uf2l9-jneYzE", "state"=>"e8250e048a0b596cf7fc7a53107c0a8d5b61438c2f4d38e8"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2 ORDER BY "users"."id" ASC LIMIT $3[0m  [["provider", "spotify"], ["uid", "radiohead770"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "sign_in_count" = $2, "updated_at" = $3 WHERE "users"."id" = $4[0m  [["current_sign_in_at", "2017-08-18 23:05:13.703742"], ["sign_in_count", 2], ["updated_at", "2017-08-18 23:05:13.704504"], ["id", 31]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 7ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:05:13 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 14ms (Views: 10.9ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-08-18 18:05:17 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"kj469zSxuQz9Gkp1yyW2jPnQLr9jxctIpq1StB3PQzevNKGzaWLi2MLZiBvAeqFSbM7UxYOSV5g91X8aRO0pnQ=="}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 5ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:05:17 -0500
+Processing by BouquetsController#new as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-18 18:05:17 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (1.0ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 22ms (Views: 21.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/spotify" for 127.0.0.1 at 2017-08-18 18:05:18 -0500
+Started GET "/auth/spotify/callback?code=AQBJudLhShx6EJrDt6oS1_qsmWHSbSk2QZrH0y4OZVjvGR6gcOreX38Cv4CG4i9_CyRVkI8Wt02PBLFCnx4QvhK92nsyhjLYqMksys1z_eeJcHK31ir9LdJs8mWev2S_bN_D3-2Hxxr69ACxNkZvloHn9M8s8S_JUbxqzxsl9Y6m1T3lfXgH4FLJ2xwnj0N4LMphOTxIJ6YpdaLRHMPvSePVW7VsLj-eBVMGhc8KRTEGRS-rSfv5zRsdIyaUtnUiUfXTOKhzCemJjkqtz9shs3VqTPP4jysm1bkux0PKaTJ6P4R1fYp7PKc&state=3580c2707311a4264416af3bb09ebc436a05f7c19e3393dc" for 127.0.0.1 at 2017-08-18 18:05:18 -0500
+Processing by CallbacksController#spotify as HTML
+  Parameters: {"code"=>"AQBJudLhShx6EJrDt6oS1_qsmWHSbSk2QZrH0y4OZVjvGR6gcOreX38Cv4CG4i9_CyRVkI8Wt02PBLFCnx4QvhK92nsyhjLYqMksys1z_eeJcHK31ir9LdJs8mWev2S_bN_D3-2Hxxr69ACxNkZvloHn9M8s8S_JUbxqzxsl9Y6m1T3lfXgH4FLJ2xwnj0N4LMphOTxIJ6YpdaLRHMPvSePVW7VsLj-eBVMGhc8KRTEGRS-rSfv5zRsdIyaUtnUiUfXTOKhzCemJjkqtz9shs3VqTPP4jysm1bkux0PKaTJ6P4R1fYp7PKc", "state"=>"3580c2707311a4264416af3bb09ebc436a05f7c19e3393dc"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2 ORDER BY "users"."id" ASC LIMIT $3[0m  [["provider", "spotify"], ["uid", "radiohead770"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-08-18 23:05:19.378079"], ["last_sign_in_at", "2017-08-18 23:05:13.703742"], ["sign_in_count", 3], ["updated_at", "2017-08-18 23:05:19.379293"], ["id", 31]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 6ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:05:19 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 15ms (Views: 12.5ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-08-18 18:05:20 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"/neb+fjip0z/JEL+BZsy9ScMrkjAhXZATqOCRim8PswYiyDwenwAcsDrlMeNC9g7H7T/TuGZXTGDB05os85G4Q=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 5ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:05:21 -0500
+Processing by BouquetsController#new as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-18 18:05:21 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (1.1ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 26ms (Views: 24.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-18 18:05:47 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (1.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 24ms (Views: 22.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/spotify" for 127.0.0.1 at 2017-08-18 18:05:50 -0500
+Started GET "/auth/spotify/callback?code=AQBY8uVSvkPsQNfBTxnpbu0v_fwkdyaH14pzkZqppk68DVRgnBboUym-NAq64trHTvrvpz-nau2EVz8mDFMDYA41rHGZ04GirVD3A6LLl-x7D7vKXBDDwfX6BApDb7qol4ZPMe33hJcd264skWxpMeUArSQ-wmZImm-NwdNQ_qSF3uP64alLQp3KfWIQFO9KhMJB3Gn5bBpIXImOJvmDF0a9eGooBAeF6_cHbRJBq2qVtvqLoUkM32Seru-VniFMmytIhrqnlVbkPnnGi95-zey9PI-YR1qSI44hG310H-KnnZjNxpnbd0E&state=f3e79cd0dfc3b6f32ed618381748673309b810f01422b362" for 127.0.0.1 at 2017-08-18 18:05:50 -0500
+Processing by CallbacksController#spotify as HTML
+  Parameters: {"code"=>"AQBY8uVSvkPsQNfBTxnpbu0v_fwkdyaH14pzkZqppk68DVRgnBboUym-NAq64trHTvrvpz-nau2EVz8mDFMDYA41rHGZ04GirVD3A6LLl-x7D7vKXBDDwfX6BApDb7qol4ZPMe33hJcd264skWxpMeUArSQ-wmZImm-NwdNQ_qSF3uP64alLQp3KfWIQFO9KhMJB3Gn5bBpIXImOJvmDF0a9eGooBAeF6_cHbRJBq2qVtvqLoUkM32Seru-VniFMmytIhrqnlVbkPnnGi95-zey9PI-YR1qSI44hG310H-KnnZjNxpnbd0E", "state"=>"f3e79cd0dfc3b6f32ed618381748673309b810f01422b362"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2 ORDER BY "users"."id" ASC LIMIT $3[0m  [["provider", "spotify"], ["uid", "radiohead770"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-08-18 23:05:50.545922"], ["last_sign_in_at", "2017-08-18 23:05:19.378079"], ["sign_in_count", 4], ["updated_at", "2017-08-18 23:05:50.547146"], ["id", 31]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 7ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:05:50 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 16ms (Views: 13.0ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-08-18 18:05:52 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"7kdhQw0I7mOaU1Y9vPmLHVcIkx+2PKYmakK0bW7uKA3/vXPvbsGwSuVt236ls58fF2p+0iUWdoER0eyv4TNn/g=="}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 7ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:05:52 -0500
+Processing by BouquetsController#new as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-18 18:05:52 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (1.0ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 24ms (Views: 22.2ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-08-18 18:09:14 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"le4tvy4gHthW71vzVAEGtcgW21zuAmKxSSxzt76gFGRgGjYUnZBSai+mejIqRsXB0yk+4esDSj9KBSMDpXlGuw=="}
+Redirected to http://localhost:3000/
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:09:14 -0500
+Processing by BouquetsController#new as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-18 18:09:14 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (1.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 33ms (Views: 30.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/spotify" for 127.0.0.1 at 2017-08-18 18:09:19 -0500
+Started GET "/auth/spotify/callback?code=AQAe6i3p1hViTX7fwF0_7mpxLn7I23G5yKICy0hiIWzNHSu8LMYe2KaMzAKO2pWv9IoUGNfZjIu2RTb15oIx9L6zRyiCkhdv8Z6_RMI1T2CNRArvdEvJSIGUEpXaK9QthqAWOFwogcXyewro1JQ9AnGv_e_TGAF7ciSfGfh23lbWHL9wzgu3BotSV1_tXDkkez4LomYja401uL7BTkXZXSUK3b0qGRPn97OneL4wzq7bmDp6_b0TBQgCSB944e0YdoUOabbV4MKxiZ3vHhMpjB4Tk5sFiRJpsq_MToCwXcKNKfmUHY0BX8M&state=1afa9b7a4f0e9cb4d9bff15429f7725c8fe5c32ba47d0b45" for 127.0.0.1 at 2017-08-18 18:09:19 -0500
+Processing by CallbacksController#spotify as HTML
+  Parameters: {"code"=>"AQAe6i3p1hViTX7fwF0_7mpxLn7I23G5yKICy0hiIWzNHSu8LMYe2KaMzAKO2pWv9IoUGNfZjIu2RTb15oIx9L6zRyiCkhdv8Z6_RMI1T2CNRArvdEvJSIGUEpXaK9QthqAWOFwogcXyewro1JQ9AnGv_e_TGAF7ciSfGfh23lbWHL9wzgu3BotSV1_tXDkkez4LomYja401uL7BTkXZXSUK3b0qGRPn97OneL4wzq7bmDp6_b0TBQgCSB944e0YdoUOabbV4MKxiZ3vHhMpjB4Tk5sFiRJpsq_MToCwXcKNKfmUHY0BX8M", "state"=>"1afa9b7a4f0e9cb4d9bff15429f7725c8fe5c32ba47d0b45"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2 ORDER BY "users"."id" ASC LIMIT $3[0m  [["provider", "spotify"], ["uid", "radiohead770"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-08-18 23:09:19.830795"], ["last_sign_in_at", "2017-08-18 23:05:50.545922"], ["sign_in_count", 5], ["updated_at", "2017-08-18 23:09:19.831630"], ["id", 31]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 6ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:09:19 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 22ms (Views: 19.5ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-08-18 18:09:21 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"4eANcZJezFe014ivPuqh+8l1/jlp9QXTaLZ7wp2Cl2wUFBbaIe6A5c2eqW5ArWKP0kobhGz0LV1rnyt2hlvFsw=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 6ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:09:21 -0500
+Processing by BouquetsController#new as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-18 18:09:21 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (1.2ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 25ms (Views: 23.7ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-08-18 18:09:30 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"d4UTsAeog2uMv4SPj8Zp9M6KYH0N0OC6ZvdxHHItj+Wr4mxd42hP/lpYAisdKIR8ABqhnVQDvtnlaPlqx3W+rQ=="}
+Redirected to http://localhost:3000/
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:09:30 -0500
+Processing by BouquetsController#new as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-18 18:09:30 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (1.1ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 23ms (Views: 22.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/spotify" for 127.0.0.1 at 2017-08-18 18:16:22 -0500
+Started GET "/auth/spotify/callback?code=AQBGkkC0ck2AVLmB4CqLSQkTFP9bZie5_Bhe0WIyBKCI0e00TqIjyaNo_X7zRefhKwdg3XgkJKU2jHVft0L_yveF8L-OjPCZVh8em1ZS0mIynfdeRyKL8LeFljwMOfckWFEm1acZXifEXuxxiSW39bhEXCW5X36OKR_zWo2VkO_LbmHHKIZzSs2CF_eCPgxuAKtxUoJv7YmoEeFUTItEYXVAujldxqnFwM82w127__0d1h72AjzSdf5hBMFafQXNQDkJ-PdGJBiLXmJqLPY3AjCDT-mt0URoqIShiiO1Mfyd8ziyPto0gHc&state=6b24a2f3e17848b1e8ec787a6182e9466e71f9de2e36d2ca" for 127.0.0.1 at 2017-08-18 18:16:37 -0500
+Processing by CallbacksController#spotify as HTML
+  Parameters: {"code"=>"AQBGkkC0ck2AVLmB4CqLSQkTFP9bZie5_Bhe0WIyBKCI0e00TqIjyaNo_X7zRefhKwdg3XgkJKU2jHVft0L_yveF8L-OjPCZVh8em1ZS0mIynfdeRyKL8LeFljwMOfckWFEm1acZXifEXuxxiSW39bhEXCW5X36OKR_zWo2VkO_LbmHHKIZzSs2CF_eCPgxuAKtxUoJv7YmoEeFUTItEYXVAujldxqnFwM82w127__0d1h72AjzSdf5hBMFafQXNQDkJ-PdGJBiLXmJqLPY3AjCDT-mt0URoqIShiiO1Mfyd8ziyPto0gHc", "state"=>"6b24a2f3e17848b1e8ec787a6182e9466e71f9de2e36d2ca"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2 ORDER BY "users"."id" ASC LIMIT $3[0m  [["provider", "spotify"], ["uid", "radiohead770"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-08-18 23:16:38.752307"], ["last_sign_in_at", "2017-08-18 23:09:19.830795"], ["sign_in_count", 6], ["updated_at", "2017-08-18 23:16:38.753155"], ["id", 31]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 32ms (ActiveRecord: 5.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:16:38 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 17ms (Views: 14.3ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-08-18 18:16:46 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"MG6OHaSOaaXozegGcRat8UrCR6zvo1vIK5O0Tl0khAnsCfHwQE6lMD4qbqLj+EB5hFKGTLZwBauoDDw46Hy1QQ=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 7ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:16:46 -0500
+Processing by BouquetsController#new as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-18 18:16:46 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (1.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 25ms (Views: 23.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-18 18:16:49 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (1.6ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (7.6ms)
+Completed 200 OK in 27ms (Views: 25.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/spotify" for 127.0.0.1 at 2017-08-18 18:16:51 -0500
+Started GET "/auth/spotify/callback?code=AQBEuun5NPavt_2x4wIlyxgt6j5T9dVlSs7YDnDx9TtJuHn-11X6BsEdFh81kqD61gnSJAI7BesdGEPnV_ZqOIOXK26QqBQZqVb9hFoaFxWlgXhETd6WuKlyCQFIstCl_6zB_4A02bbavptwxAVG4gja2GkbX3QuTRF9K-6tiDIbx_iyoJWe6DGTeby_96FF_bIbFAThZJYSyq5vy8ghgABkpsOSztEDJV--Opnahg6ywcegWELmZgyzddRqUf0PtqzodBs9TP6DtNe-WNvZ2xYXn_kolZcTF4X9hIgOzloTaFdYesy1md4&state=fb73bdeb6a1e384077084a9617e03e4a5275c73a09d0ce64" for 127.0.0.1 at 2017-08-18 18:16:51 -0500
+Processing by CallbacksController#spotify as HTML
+  Parameters: {"code"=>"AQBEuun5NPavt_2x4wIlyxgt6j5T9dVlSs7YDnDx9TtJuHn-11X6BsEdFh81kqD61gnSJAI7BesdGEPnV_ZqOIOXK26QqBQZqVb9hFoaFxWlgXhETd6WuKlyCQFIstCl_6zB_4A02bbavptwxAVG4gja2GkbX3QuTRF9K-6tiDIbx_iyoJWe6DGTeby_96FF_bIbFAThZJYSyq5vy8ghgABkpsOSztEDJV--Opnahg6ywcegWELmZgyzddRqUf0PtqzodBs9TP6DtNe-WNvZ2xYXn_kolZcTF4X9hIgOzloTaFdYesy1md4", "state"=>"fb73bdeb6a1e384077084a9617e03e4a5275c73a09d0ce64"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2 ORDER BY "users"."id" ASC LIMIT $3[0m  [["provider", "spotify"], ["uid", "radiohead770"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-08-18 23:16:51.532737"], ["last_sign_in_at", "2017-08-18 23:16:38.752307"], ["sign_in_count", 7], ["updated_at", "2017-08-18 23:16:51.533533"], ["id", 31]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 7ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:16:51 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 18ms (Views: 14.4ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-08-18 18:16:53 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"J/rYLyS/Pfyi9ojnMQSBWK6RgpPKgVFrgdKnikclOUDleB8fX8kyeKc2gmLX24tbOGDgHtVCHLj9Lef+4dyyIw=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 5ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:16:53 -0500
+Processing by BouquetsController#new as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-18 18:16:53 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (1.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 27ms (Views: 25.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-18 18:16:54 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (1.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 27ms (Views: 25.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-18 18:17:27 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (1.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (6.1ms)
+Completed 200 OK in 28ms (Views: 27.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/spotify" for 127.0.0.1 at 2017-08-18 18:17:29 -0500
+Started GET "/auth/spotify/callback?code=AQBEM1F0u9WppyTw_2h5U-UP1fDi3MfqHu_yZhg5qGNoaakCRdq9mcm-GXzbZaSHqu14fe6Jm_8nwnsmNz2hab1aheix4WI8HvaPRLiOF_X-YljI2VTBmgkYVTO6mcPQSmk1YFt4ddof69dQuuGjEVa5jwF3BPl3My1Z7J9YZwbYqWyKrs3_uGvGe3-oGfBIhkKD2Rm4j5iVrNZk_lRAPY3_0-ed3BbKHsZXMKk9_5IimDobCT5f0rkHqEyKVM5S38RP97mmYkhCPZ91AhVLq_KJfY3X-QGJUBMslgJWKfjg1xRY_yArafE&state=eb1612fa162bb909e8b9340992283624cc7675f27255bd2b" for 127.0.0.1 at 2017-08-18 18:17:29 -0500
+Processing by CallbacksController#spotify as HTML
+  Parameters: {"code"=>"AQBEM1F0u9WppyTw_2h5U-UP1fDi3MfqHu_yZhg5qGNoaakCRdq9mcm-GXzbZaSHqu14fe6Jm_8nwnsmNz2hab1aheix4WI8HvaPRLiOF_X-YljI2VTBmgkYVTO6mcPQSmk1YFt4ddof69dQuuGjEVa5jwF3BPl3My1Z7J9YZwbYqWyKrs3_uGvGe3-oGfBIhkKD2Rm4j5iVrNZk_lRAPY3_0-ed3BbKHsZXMKk9_5IimDobCT5f0rkHqEyKVM5S38RP97mmYkhCPZ91AhVLq_KJfY3X-QGJUBMslgJWKfjg1xRY_yArafE", "state"=>"eb1612fa162bb909e8b9340992283624cc7675f27255bd2b"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2 ORDER BY "users"."id" ASC LIMIT $3[0m  [["provider", "spotify"], ["uid", "radiohead770"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-08-18 23:17:29.610236"], ["last_sign_in_at", "2017-08-18 23:16:51.532737"], ["sign_in_count", 8], ["updated_at", "2017-08-18 23:17:29.611009"], ["id", 31]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 6ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:17:29 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 15ms (Views: 12.0ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-08-18 18:17:32 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"DvX9SRy5TrApIH5yusv6C02dA245lBDEZasCcti7T7S585JicrjDNAByPzdGlj79hrBcdg7ro4KNJahN1PGb6A=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 4ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:17:32 -0500
+Processing by BouquetsController#new as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-18 18:17:32 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (1.1ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 22ms (Views: 21.1ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-08-18 18:17:34 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"jKDg4JDAS+vZu6KEB1jJSSoQgH37xR+xhhv0nJPETnUCwFKmMKhLs4y+t1+NSsB2WedcJVUu+z/Rp0Bi1gqbWQ=="}
+Redirected to http://localhost:3000/
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:17:34 -0500
+Processing by BouquetsController#new as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-18 18:17:34 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (1.0ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 22ms (Views: 21.1ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-08-18 18:17:35 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"BtC58v/GshmYXi+Vg6LWEWSn4tfVdDxCYt93F5L7rt+IsAu0X66yQc1bOk4JsN8uF1A+j3uf2Mw1Y8Pp1zV78w=="}
+Redirected to http://localhost:3000/
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:17:35 -0500
+Processing by BouquetsController#new as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-18 18:17:35 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (1.0ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 21ms (Views: 20.1ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-08-18 18:17:35 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Tji02X2w/02uwCsuWwOqJMGsor+bs1l7DONASWnqybDAWAaf3dj/FfvFPvXREaMbslt+5zVYvfVbX/S3LCQcnA=="}
+Redirected to http://localhost:3000/
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:17:35 -0500
+Processing by BouquetsController#new as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-18 18:17:35 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (0.9ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 23ms (Views: 21.9ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-08-18 18:17:35 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"gNaweHfzYM5cWzliH7UuilYj6nXPE2Gyr63PHVRRHOUOtgI+15tglgleLLmVpye1JdQ2LWH4hTz4EXvjEZ/JyQ=="}
+Redirected to http://localhost:3000/
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:17:35 -0500
+Processing by BouquetsController#new as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-18 18:17:35 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (0.9ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 23ms (Views: 22.3ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-08-18 18:17:35 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"DZ9iMBnYwgV69HAniMaeg6IlhhV6XTnkbaKum5kM5EGD/9B2ubDCXS/xZfwC1Je80dJaTdS23Wo6Hhpl3MIxbQ=="}
+Redirected to http://localhost:3000/
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:17:35 -0500
+Processing by BouquetsController#new as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-18 18:17:35 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (1.1ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 22ms (Views: 20.5ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-08-18 18:17:36 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"fS4m/GGh0imbvFyalOYVKzbuyDLjH0zGEano7OYCqVjzTpS6wcnScc65SUEe9BwURRkUak30qEhGFVwSo8x8dA=="}
+Redirected to http://localhost:3000/
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:17:36 -0500
+Processing by BouquetsController#new as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-18 18:17:36 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (0.9ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 21ms (Views: 20.4ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-08-18 18:19:54 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"cmp3uz/ZYgkQTSHz41KIybN8EfRKR8wUX6Dz8DgfmqP8CsX9n7FiUUVINChpQIH2wIvNrOSsKJoIHEcOfdFPjw=="}
+Redirected to http://localhost:3000/
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:19:54 -0500
+Processing by BouquetsController#new as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-18 18:19:54 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (0.9ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 22ms (Views: 21.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/spotify" for 127.0.0.1 at 2017-08-18 18:19:55 -0500
+Started GET "/auth/spotify/callback?code=AQDG2jTBb_TKMdO3gR4g0GTnTAH-Z9Dw2Im6WtmMBISu6PzFhZshvJ_7PbHgoBdYAo-DsvxWSK4Pqmna97RSxxfYXPMQww5P4ChW4SxMztdLT8dVsSXHd2AvD5FBLddIvEJq64mZDoEN2acctawWD4LgEjCXr2TAtCVtj1eygmaa2091BQ9UcDNUQDDCHr6lqZHYwVKnRX_6MoTHS1NRXrx8KpjdRLwMJWveIiCITN5SKlLDN7rG8vuuqUaat-CTkmrR7sNrVXuTQLQvuwdDA3E0vdo9vdjuzoxe5vp_5xYEqbBdf7sTZZc&state=33478d5c083f09a50fc007462dbb8d57ee3dee799b28d32e" for 127.0.0.1 at 2017-08-18 18:19:55 -0500
+Processing by CallbacksController#spotify as HTML
+  Parameters: {"code"=>"AQDG2jTBb_TKMdO3gR4g0GTnTAH-Z9Dw2Im6WtmMBISu6PzFhZshvJ_7PbHgoBdYAo-DsvxWSK4Pqmna97RSxxfYXPMQww5P4ChW4SxMztdLT8dVsSXHd2AvD5FBLddIvEJq64mZDoEN2acctawWD4LgEjCXr2TAtCVtj1eygmaa2091BQ9UcDNUQDDCHr6lqZHYwVKnRX_6MoTHS1NRXrx8KpjdRLwMJWveIiCITN5SKlLDN7rG8vuuqUaat-CTkmrR7sNrVXuTQLQvuwdDA3E0vdo9vdjuzoxe5vp_5xYEqbBdf7sTZZc", "state"=>"33478d5c083f09a50fc007462dbb8d57ee3dee799b28d32e"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2 ORDER BY "users"."id" ASC LIMIT $3[0m  [["provider", "spotify"], ["uid", "radiohead770"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-08-18 23:19:56.208059"], ["last_sign_in_at", "2017-08-18 23:17:29.610236"], ["sign_in_count", 9], ["updated_at", "2017-08-18 23:19:56.208812"], ["id", 31]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 6ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:19:56 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 13ms (Views: 10.1ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-08-18 18:20:02 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"WXttpt4NQrJXOHjeOk5DUPA7U3H+BplvHfNLMu7XCNfXG9/gfmVC6gI9bQWwXEpvg8yPKVDtfeFKT//Mqxnd+w=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 4ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:20:02 -0500
+Processing by BouquetsController#new as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-18 18:20:02 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (2.2ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (7.6ms)
+Completed 200 OK in 41ms (Views: 28.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-18 18:22:06 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (1.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 29ms (Views: 27.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/spotify" for 127.0.0.1 at 2017-08-18 18:22:07 -0500
+Started GET "/auth/spotify/callback?code=AQA5TUj0PSO9mygGDUCt25TY1z5crc1t8ZpSVIENaE6t-YQMr2qCkhQMFt-knlqLc-6RDmHhc5Fq5M-krykZDdBzlm02OhbnZX2y8TC-RR5x5896UwzQ2O1MqW0rAlZ_kSLAwpdays-5cijMhke-bZ9EB2du8NMkPnyvlH1XV2SdG0lBWoII-7AqCK91a4-09wqdSUz1o_2CW_mQ04YpouwmHd2FJk0hMRRyvHX77BYtB7UCYYVndyW_25L_rnzlDIwG3exYaNjb2gWHDVdUgQwRqckQTy4Cz0GcUQmO1Lb4rpYdSZnoFrE&state=9e06b985e4e3bae744910415fd8597566c5f28b459a61e2c" for 127.0.0.1 at 2017-08-18 18:22:25 -0500
+Processing by CallbacksController#spotify as HTML
+  Parameters: {"code"=>"AQA5TUj0PSO9mygGDUCt25TY1z5crc1t8ZpSVIENaE6t-YQMr2qCkhQMFt-knlqLc-6RDmHhc5Fq5M-krykZDdBzlm02OhbnZX2y8TC-RR5x5896UwzQ2O1MqW0rAlZ_kSLAwpdays-5cijMhke-bZ9EB2du8NMkPnyvlH1XV2SdG0lBWoII-7AqCK91a4-09wqdSUz1o_2CW_mQ04YpouwmHd2FJk0hMRRyvHX77BYtB7UCYYVndyW_25L_rnzlDIwG3exYaNjb2gWHDVdUgQwRqckQTy4Cz0GcUQmO1Lb4rpYdSZnoFrE", "state"=>"9e06b985e4e3bae744910415fd8597566c5f28b459a61e2c"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2 ORDER BY "users"."id" ASC LIMIT $3[0m  [["provider", "spotify"], ["uid", "radiohead770"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-08-18 23:22:26.623575"], ["last_sign_in_at", "2017-08-18 23:19:56.208059"], ["sign_in_count", 10], ["updated_at", "2017-08-18 23:22:26.624322"], ["id", 31]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 6ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:22:26 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 17ms (Views: 13.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:22:28 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 23ms (Views: 19.2ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-08-18 18:22:29 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"jZ/xSjdX0IvlzD6sg1swjhmKwsBlvOg/qNCXPRBeSakNriZKPL8424RliUWYrnrt1vJNFl1HrFuRs5SR3Obtrw=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 5ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:22:29 -0500
+Processing by BouquetsController#new as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-18 18:22:29 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (1.2ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 26ms (Views: 24.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/spotify" for 127.0.0.1 at 2017-08-18 18:22:30 -0500
+Started GET "/auth/spotify/callback?code=AQBSm05Q8iQ8FhjSD42La2kfvyRYJnwiSA1ERcox_GdBU47WuMBJnRorG5LRFwvadOOwABNNTr90r5EG76heqOSKj1YbV9Rs0ksYGalsXHVQWLxLnuhh5LH2M5QoA9tioY6wpfPvGYXAdCD2BOcgi-fQV8myJ7v3j1PHCs43EWh_hlh6Dj0k81mDmOZUZv1aiVMVfpo-dHFiJDmlU9qDSJuOcxg1WGFnME4NUMSvQF13Dc5COZjVsOGC9TBwqLZre-RLFMcTx7rJG-KIAqpV97NXntBYI6YpIWnyoQNRfgWFBUcHAEwX4Ow&state=b2b4350504775b3d992d23b3c1cbd188ceb1c820b5401a51" for 127.0.0.1 at 2017-08-18 18:22:30 -0500
+Processing by CallbacksController#spotify as HTML
+  Parameters: {"code"=>"AQBSm05Q8iQ8FhjSD42La2kfvyRYJnwiSA1ERcox_GdBU47WuMBJnRorG5LRFwvadOOwABNNTr90r5EG76heqOSKj1YbV9Rs0ksYGalsXHVQWLxLnuhh5LH2M5QoA9tioY6wpfPvGYXAdCD2BOcgi-fQV8myJ7v3j1PHCs43EWh_hlh6Dj0k81mDmOZUZv1aiVMVfpo-dHFiJDmlU9qDSJuOcxg1WGFnME4NUMSvQF13Dc5COZjVsOGC9TBwqLZre-RLFMcTx7rJG-KIAqpV97NXntBYI6YpIWnyoQNRfgWFBUcHAEwX4Ow", "state"=>"b2b4350504775b3d992d23b3c1cbd188ceb1c820b5401a51"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2 ORDER BY "users"."id" ASC LIMIT $3[0m  [["provider", "spotify"], ["uid", "radiohead770"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-08-18 23:22:31.236236"], ["last_sign_in_at", "2017-08-18 23:22:26.623575"], ["sign_in_count", 11], ["updated_at", "2017-08-18 23:22:31.236998"], ["id", 31]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 6ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:22:31 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 15ms (Views: 11.9ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-08-18 18:22:32 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"aULN4Yl23uMYbyp+78SR13R4TcLzf/WgZ+ebDfVy9N8LMWI72HOkuHMgH4hsW6mc6EgHKnSQol0HdD8LODnW6Q=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 4ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:22:32 -0500
+Processing by BouquetsController#new as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-18 18:22:32 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (1.2ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 21ms (Views: 20.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-18 18:22:33 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (1.2ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 23ms (Views: 22.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/spotify" for 127.0.0.1 at 2017-08-18 18:22:34 -0500
+Started GET "/auth/spotify/callback?code=AQDCdbAX0Igi7lsxI6gdbzsiO1Ys3cXKSaWGzqIwP46P2hmUVmlB6D-_HwkLXcAkr7-J2i_i8YCWKJRCkospvyj65DQu1JbnyMIkeur6B15z3hJvCmtQY1yvtaMjVeNF6ROsszizRngoveFO42TmU79YfwBlq5kOfJN5A-HbtfCoBEv5Wqf9XXEf-vGIKv2FHQ-YwqGvIRRSy_0hFF8M7E5QU6tG9hNl_uaoAsCBk2U0gZ64j62nv9lZSF-kFfnCu_01A7wI_IUlKeSOkBPOByXRd7fhfT_DDVKtWLHVttAHsybgw4hTj18&state=7df44e8a488ad31d0a78dc1f26b8ffb2fad997eb13a3d108" for 127.0.0.1 at 2017-08-18 18:22:34 -0500
+Processing by CallbacksController#spotify as HTML
+  Parameters: {"code"=>"AQDCdbAX0Igi7lsxI6gdbzsiO1Ys3cXKSaWGzqIwP46P2hmUVmlB6D-_HwkLXcAkr7-J2i_i8YCWKJRCkospvyj65DQu1JbnyMIkeur6B15z3hJvCmtQY1yvtaMjVeNF6ROsszizRngoveFO42TmU79YfwBlq5kOfJN5A-HbtfCoBEv5Wqf9XXEf-vGIKv2FHQ-YwqGvIRRSy_0hFF8M7E5QU6tG9hNl_uaoAsCBk2U0gZ64j62nv9lZSF-kFfnCu_01A7wI_IUlKeSOkBPOByXRd7fhfT_DDVKtWLHVttAHsybgw4hTj18", "state"=>"7df44e8a488ad31d0a78dc1f26b8ffb2fad997eb13a3d108"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2 ORDER BY "users"."id" ASC LIMIT $3[0m  [["provider", "spotify"], ["uid", "radiohead770"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-08-18 23:22:35.328812"], ["last_sign_in_at", "2017-08-18 23:22:31.236236"], ["sign_in_count", 12], ["updated_at", "2017-08-18 23:22:35.332683"], ["id", 31]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 9ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:22:35 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-08-18 18:22:37 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"BV28zx4b+pisimxfglHVct7IgEcDjCmqJemjSkZ5ei/rDPKEnGMTu8I3arnYyh0jdhP5p4D/9S+IrLdYi3qbSQ=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 5ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-18 18:22:37 -0500
+Processing by BouquetsController#new as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-18 18:22:37 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (1.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (6.1ms)
+Completed 200 OK in 23ms (Views: 22.5ms | ActiveRecord: 0.0ms)
