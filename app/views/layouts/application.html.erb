@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Wearehear</title>
+    <title>WeAreHear</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0", user-scalable="no">
 
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <%= javascript_include_tag 'application' %>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDo2l9bHOpF6W1lxwIdI0njMBESuZEhzk&callback=initMap" type="text/javascript" async defer></script>
+
+  </head>
+  <nav>
+  <p><%= link_to "Sign The Fuck Out", destroy_user_session_path, :method => :delete %></p>
+  </nav>
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>

@@ -5,8 +5,7 @@ class User < ApplicationRecord
   has_many :sent_bouquets, class_name: :Bouquet, foreign_key: :sender_id
   has_many :received_bouquets, class_name: :Bouquet, foreign_key: :receiver_id
 
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,
+  devise :database_authenticatable, :trackable, :validatable,
         :omniauthable, :omniauth_providers => [:spotify]
 
   def self.from_omniauth(auth)
