@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   get 'bouquets/new', to: 'bouquets#new'
   get 'bouquets/confirm/:id', to: 'bouquets#confirm'
   get 'bouquets/:id', to: 'bouquets#show'
-
+  post 'spotify_search', to: 'spotify_search#index'
   root 'bouquets#new'
 end
