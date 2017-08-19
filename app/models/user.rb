@@ -1,6 +1,10 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+
+  has_many :sent_bouquets, class_name: :Bouquet, foreign_key: :sender_id
+  has_many :received_bouquets, class_name: :Bouquet, foreign_key: :receiver_id
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
         :omniauthable, :omniauth_providers => [:spotify]
