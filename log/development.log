@@ -5523,3 +5523,548 @@ Migrating to AddBirthdateToUsers (20170818221536)
   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
   [1m[36mBouquet Load (0.3ms)[0m  [1m[34mSELECT "bouquets".* FROM "bouquets" WHERE "bouquets"."sender_id" = $1[0m  [["sender_id", 15]]
 >>>>>>> b9f4c8f1f4e152344e9e3e3dbc8c0a6202751f2c
+Started GET "/bouquets/show?artist_name=&song_name=&album_name=" for 127.0.0.1 at 2017-08-19 12:51:24 -0500
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.1.3) lib/active_record/migration.rb:576:in `check_pending!'
+activerecord (5.1.3) lib/active_record/migration.rb:553:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.3) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `call'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/bouquets/show" for 127.0.0.1 at 2017-08-19 12:51:35 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.1.3) lib/active_record/migration.rb:576:in `check_pending!'
+activerecord (5.1.3) lib/active_record/migration.rb:553:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.3) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `call'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2017-08-19 13:40:27 -0500
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.1.3) lib/active_record/migration.rb:576:in `check_pending!'
+activerecord (5.1.3) lib/active_record/migration.rb:553:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.3) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `call'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  [1m[35m (4.0ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7926829025639619690)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddBirthdateToUsers (20170818221536)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (30.5ms)[0m  [1m[35mALTER TABLE "users" ADD "birthdate" timestamp[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170818221536"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7926829025639619690)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (13.4ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", 13], ["lng", -178], ["city", "Gottliebview"], ["state", "Oklahoma"], ["country", "Samoa"], ["created_at", "2017-08-19 18:41:01.902580"], ["updated_at", "2017-08-19 18:41:01.902580"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", 53], ["lng", 35], ["city", "East Janessa"], ["state", "Connecticut"], ["country", "Morocco"], ["created_at", "2017-08-19 18:41:01.918654"], ["updated_at", "2017-08-19 18:41:01.918654"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", 68], ["lng", -127], ["city", "Port Oscarbury"], ["state", "Florida"], ["country", "Armenia"], ["created_at", "2017-08-19 18:41:01.921066"], ["updated_at", "2017-08-19 18:41:01.921066"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", 54], ["lng", 47], ["city", "Mantechester"], ["state", "Maine"], ["country", "Ethiopia"], ["created_at", "2017-08-19 18:41:01.923423"], ["updated_at", "2017-08-19 18:41:01.923423"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", 22], ["lng", 58], ["city", "North Annabelle"], ["state", "North Carolina"], ["country", "Latvia"], ["created_at", "2017-08-19 18:41:01.925378"], ["updated_at", "2017-08-19 18:41:01.925378"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", -44], ["lng", 49], ["city", "Mikaylaville"], ["state", "New Hampshire"], ["country", "Macedonia"], ["created_at", "2017-08-19 18:41:01.927506"], ["updated_at", "2017-08-19 18:41:01.927506"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", -25], ["lng", 103], ["city", "Metachester"], ["state", "Arkansas"], ["country", "Finland"], ["created_at", "2017-08-19 18:41:01.929762"], ["updated_at", "2017-08-19 18:41:01.929762"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", -61], ["lng", -38], ["city", "East Dorthahaven"], ["state", "Maine"], ["country", "Cook Islands"], ["created_at", "2017-08-19 18:41:01.932139"], ["updated_at", "2017-08-19 18:41:01.932139"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", -60], ["lng", -168], ["city", "Purdystad"], ["state", "Texas"], ["country", "Republic of Korea"], ["created_at", "2017-08-19 18:41:01.934055"], ["updated_at", "2017-08-19 18:41:01.934055"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", 28], ["lng", -6], ["city", "West Dane"], ["state", "Illinois"], ["country", "Uganda"], ["created_at", "2017-08-19 18:41:01.935826"], ["updated_at", "2017-08-19 18:41:01.935826"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "Frank Zappa and the Mothers of Invention"], ["album", "marfa"], ["track", "Flexitarian typewriter iphone hella."], ["created_at", "2017-08-19 18:41:01.948033"], ["updated_at", "2017-08-19 18:41:01.948033"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "Radiohead"], ["album", "paleo"], ["track", "Farm-to-table slow-carb kogi normcore helvetica next level."], ["created_at", "2017-08-19 18:41:01.951626"], ["updated_at", "2017-08-19 18:41:01.951626"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "Steely Dan"], ["album", "pinterest"], ["track", "Before they sold out tumblr seitan."], ["created_at", "2017-08-19 18:41:01.953755"], ["updated_at", "2017-08-19 18:41:01.953755"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "The Bee Gees"], ["album", "ethical"], ["track", "90's umami godard tumblr tacos."], ["created_at", "2017-08-19 18:41:01.955942"], ["updated_at", "2017-08-19 18:41:01.955942"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "Jethro Tull"], ["album", "normcore"], ["track", "Schlitz cred gastropub."], ["created_at", "2017-08-19 18:41:01.958053"], ["updated_at", "2017-08-19 18:41:01.958053"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "Parliament Funkadelic"], ["album", "dreamcatcher"], ["track", "Shabby chic schlitz sriracha."], ["created_at", "2017-08-19 18:41:01.960211"], ["updated_at", "2017-08-19 18:41:01.960211"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "Sly and the Family Stone"], ["album", "selfies"], ["track", "Taxidermy pitchfork squid try-hard food truck stumptown."], ["created_at", "2017-08-19 18:41:01.962128"], ["updated_at", "2017-08-19 18:41:01.962128"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "Red Hot Chili Peppers"], ["album", "chartreuse"], ["track", "Gluten-free food truck keffiyeh direct trade park knausgaard seitan."], ["created_at", "2017-08-19 18:41:01.964003"], ["updated_at", "2017-08-19 18:41:01.964003"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "Slayer"], ["album", "kitsch"], ["track", "Cold-pressed shabby chic franzen farm-to-table pitchfork muggle magic pinterest kickstarter."], ["created_at", "2017-08-19 18:41:01.965899"], ["updated_at", "2017-08-19 18:41:01.965899"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "Genesis"], ["album", "hoodie"], ["track", "3 wolf moon diy readymade listicle."], ["created_at", "2017-08-19 18:41:01.967676"], ["updated_at", "2017-08-19 18:41:01.967676"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (2.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "cecil@macgyver.biz"], ["LIMIT", 1]]
+  [1m[35mSQL (15.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "cecil@macgyver.biz"], ["encrypted_password", "$2a$11$H9fH7w1W7hW2Gsch1NPH9OSpTz4XukGaRsEhih7MAz3iQjzqVkF3."], ["created_at", "2017-08-19 18:41:02.175370"], ["updated_at", "2017-08-19 18:41:02.175370"], ["provider", "spotify"], ["uid", "M6Sw358oI"], ["username", "rudolph"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-19 18:41:01.969308"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "loraine@corwinlynch.net"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "loraine@corwinlynch.net"], ["encrypted_password", "$2a$11$9K6OTj5J3CQJygJlcXx9j.GYo.hlm8Il51PcauQfcojBpz3Qt.QWW"], ["created_at", "2017-08-19 18:41:02.326999"], ["updated_at", "2017-08-19 18:41:02.326999"], ["provider", "spotify"], ["uid", "Td1eIdJ9"], ["username", "maurine.wiegand"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-19 18:41:02.192570"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "rogelio_wuckert@franecki.net"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "rogelio_wuckert@franecki.net"], ["encrypted_password", "$2a$11$QX/FppjNeBM5usv5P46ocerjyr7d0OEi7JgYgKG1C2q1tEb.laTwi"], ["created_at", "2017-08-19 18:41:02.464219"], ["updated_at", "2017-08-19 18:41:02.464219"], ["provider", "spotify"], ["uid", "Y82rHcZuRy5"], ["username", "abagail"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-19 18:41:02.329241"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "lorenza.ankunding@rogahn.net"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "lorenza.ankunding@rogahn.net"], ["encrypted_password", "$2a$11$2JwO2uOZA.jphn7GqGF00uXoZqrxTqImVnuZXchIM02lXkvYGWyKi"], ["created_at", "2017-08-19 18:41:02.601182"], ["updated_at", "2017-08-19 18:41:02.601182"], ["provider", "spotify"], ["uid", "4pWh76T1Mk"], ["username", "maybelle"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-19 18:41:02.466606"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "pat@hirthe.co"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "pat@hirthe.co"], ["encrypted_password", "$2a$11$amdW7Rb9XD2ZZJ7uRInQSe7ImJJMLIglHFGCJ6eQDDTqn4zi2UKHK"], ["created_at", "2017-08-19 18:41:02.737313"], ["updated_at", "2017-08-19 18:41:02.737313"], ["provider", "spotify"], ["uid", "QlWv1s08B75"], ["username", "johanna"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-19 18:41:02.603307"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demarco@raynorhowe.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "demarco@raynorhowe.org"], ["encrypted_password", "$2a$11$gphG5jtaKHNmgopITQc14ekMXzsPKjykgMoeanZbhtHKnjmhBJu.i"], ["created_at", "2017-08-19 18:41:02.873670"], ["updated_at", "2017-08-19 18:41:02.873670"], ["provider", "spotify"], ["uid", "CaZrUbO3"], ["username", "kaelyn"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-19 18:41:02.739559"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "alexandria@kuvalis.co"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "alexandria@kuvalis.co"], ["encrypted_password", "$2a$11$dospwHwt/ZY2JUJDEK.yS.ktoo20l1sVZG0Yl1ZVlE48SjryIpAty"], ["created_at", "2017-08-19 18:41:03.010115"], ["updated_at", "2017-08-19 18:41:03.010115"], ["provider", "spotify"], ["uid", "JrB5FzUq1dW3D"], ["username", "ryan.spencer"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-19 18:41:02.875858"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "benedict.jones@swaniawskihowe.net"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "benedict.jones@swaniawskihowe.net"], ["encrypted_password", "$2a$11$1X3KOfUCLVZTvELJPvIaNua9uKBcnU08oXpIXzRXy0/baEAoEo78G"], ["created_at", "2017-08-19 18:41:03.147672"], ["updated_at", "2017-08-19 18:41:03.147672"], ["provider", "spotify"], ["uid", "N2Ay7eRmRjB0M"], ["username", "arielle"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-19 18:41:03.012343"]]
+  [1m[35m (20.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "reva.goodwin@treutel.info"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "reva.goodwin@treutel.info"], ["encrypted_password", "$2a$11$.6/hxj.2gUU2EJhNokaptOPg4zuKUMcNGV/VeUrSEf0RbEhLY6ODy"], ["created_at", "2017-08-19 18:41:03.304658"], ["updated_at", "2017-08-19 18:41:03.304658"], ["provider", "spotify"], ["uid", "JrJ0VyPs07"], ["username", "roxanne_wuckert"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-19 18:41:03.169764"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "vicente.kulas@gleasonbeatty.info"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "vicente.kulas@gleasonbeatty.info"], ["encrypted_password", "$2a$11$VDjV/brK2q5ifne0sAAu.Oqh5OBgHx8BBkfaiDSYNYhKj/EhS9G4W"], ["created_at", "2017-08-19 18:41:03.441420"], ["updated_at", "2017-08-19 18:41:03.441420"], ["provider", "spotify"], ["uid", "YkJw39I4"], ["username", "holly_witting"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-19 18:41:03.307110"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "rosendo@shieldshintz.biz"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "rosendo@shieldshintz.biz"], ["encrypted_password", "$2a$11$BYwQDpHQBzJZi55b1K4uluWi7SYIJ.n/Q6vKzTcnAH8PhH3mF.HMa"], ["created_at", "2017-08-19 18:41:03.578170"], ["updated_at", "2017-08-19 18:41:03.578170"], ["provider", "spotify"], ["uid", "4pUiO2Ed6h10"], ["username", "magali"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-19 18:41:03.443556"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "rupert@corwinmante.name"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "rupert@corwinmante.name"], ["encrypted_password", "$2a$11$HJfugzFaMr4.61rSQ8WI7eHsNgSyYuGMSMPCoVhy66.IPurBozn1S"], ["created_at", "2017-08-19 18:41:03.714610"], ["updated_at", "2017-08-19 18:41:03.714610"], ["provider", "spotify"], ["uid", "Zr4g0a86Lq"], ["username", "elvera_hills"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-19 18:41:03.580313"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "vince@lubowitz.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "vince@lubowitz.com"], ["encrypted_password", "$2a$11$fhNQutVtBS.Qck4/Bh367.sdDBb.fRws3M52QdY9jfUi3x1QEpjKK"], ["created_at", "2017-08-19 18:41:03.850781"], ["updated_at", "2017-08-19 18:41:03.850781"], ["provider", "spotify"], ["uid", "W4EtMtH3LiV1TmVg"], ["username", "burley_kuhlman"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-19 18:41:03.716835"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "lucius@connelly.co"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "lucius@connelly.co"], ["encrypted_password", "$2a$11$UkFnCrC0ZbBEXKIYD5EFSeWHxtgqgGrYuxV0bc3aQNPx/omyeiUia"], ["created_at", "2017-08-19 18:41:03.986905"], ["updated_at", "2017-08-19 18:41:03.986905"], ["provider", "spotify"], ["uid", "ZfH16rPc4uUo70"], ["username", "sigurd"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-19 18:41:03.852961"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "haie@bergnaumweinat.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "haie@bergnaumweinat.org"], ["encrypted_password", "$2a$11$NTmgAa6mpVVOVobOp53V0.jIVC.zA7A9tRymdTFP14Vhcy3h9hN0a"], ["created_at", "2017-08-19 18:41:04.123684"], ["updated_at", "2017-08-19 18:41:04.123684"], ["provider", "spotify"], ["uid", "ZvRa5lQ10"], ["username", "laurianne"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-19 18:41:03.989061"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ceasar_ledner@jenkinsterry.name"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "ceasar_ledner@jenkinsterry.name"], ["encrypted_password", "$2a$11$ms3eUmuf2vHNqJf0iXdATejbvqvb6V1wekVqlzfwA/xp2.bvlutoe"], ["created_at", "2017-08-19 18:41:04.260239"], ["updated_at", "2017-08-19 18:41:04.260239"], ["provider", "spotify"], ["uid", "96VgGnEbBc3"], ["username", "aisha"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-19 18:41:04.125833"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "boyd@kihn.net"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "boyd@kihn.net"], ["encrypted_password", "$2a$11$evGqFPvQEevcx9G9HJ81Iu3eEQ1c43eX33/ekXFQNcl2erN8xYgGq"], ["created_at", "2017-08-19 18:41:04.397754"], ["updated_at", "2017-08-19 18:41:04.397754"], ["provider", "spotify"], ["uid", "6bUrH80a18Ph8"], ["username", "albin.stokes"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-19 18:41:04.262308"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "kallie@becker.biz"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "kallie@becker.biz"], ["encrypted_password", "$2a$11$ptmtpFxtEl6MGTI29l03fulYLNDpOUKMn/02J8CcIMsrESAtSgH3C"], ["created_at", "2017-08-19 18:41:04.534903"], ["updated_at", "2017-08-19 18:41:04.534903"], ["provider", "spotify"], ["uid", "NyWgK62vZn5bGhY9"], ["username", "andy"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-19 18:41:04.400076"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "kim.bernhard@schummgerlach.name"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "kim.bernhard@schummgerlach.name"], ["encrypted_password", "$2a$11$g2arGVAk4EKis6wUp/9mkeDKViAywSStCTCrYlusGkztLQxpV6Wzq"], ["created_at", "2017-08-19 18:41:04.671632"], ["updated_at", "2017-08-19 18:41:04.671632"], ["provider", "spotify"], ["uid", "B6KgZ015EmSu"], ["username", "eli"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-19 18:41:04.537158"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "leon.bergnaum@reinger.biz"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "leon.bergnaum@reinger.biz"], ["encrypted_password", "$2a$11$g1.0Icar.sT1CW9/xNgazes2YauxUf7JKjVGl./f6Dc7M5PbVxQIi"], ["created_at", "2017-08-19 18:41:04.808592"], ["updated_at", "2017-08-19 18:41:04.808592"], ["provider", "spotify"], ["uid", "Dc9rXjMwDa7h9p"], ["username", "ricky.hudson"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-19 18:41:04.674164"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "montana.schuppe@lynchrunte.net"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "montana.schuppe@lynchrunte.net"], ["encrypted_password", "$2a$11$f1dzPiipoXPinxMZpyBvgulz5Od6l..S8glAo/1XQlwL078hI2y5u"], ["created_at", "2017-08-19 18:41:04.948141"], ["updated_at", "2017-08-19 18:41:04.948141"], ["provider", "spotify"], ["uid", "J848D14vY"], ["username", "kaylie.waters"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-19 18:41:04.811079"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "robyn@jenkintroman.name"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "robyn@jenkintroman.name"], ["encrypted_password", "$2a$11$r3tBFCSETo2ieoYxclR56.udASbzcXwVDWTOfSEdJUKSlUHiyMTHa"], ["created_at", "2017-08-19 18:41:05.093136"], ["updated_at", "2017-08-19 18:41:05.093136"], ["provider", "spotify"], ["uid", "KxQaWsFo5lYb4u"], ["username", "herbert"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-19 18:41:04.958210"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jimmy@lockman.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "jimmy@lockman.com"], ["encrypted_password", "$2a$11$yzRRynDM0HFo1VcjwMM0POt.3tlNTMHvNiYiTZzz1efo5l46opDrO"], ["created_at", "2017-08-19 18:41:05.230862"], ["updated_at", "2017-08-19 18:41:05.230862"], ["provider", "spotify"], ["uid", "L19s06M8JzPmUiH"], ["username", "rhea"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-19 18:41:05.095795"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "warren@abernathy.net"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "warren@abernathy.net"], ["encrypted_password", "$2a$11$PgfJ5or98RN7NCeYdUiXAOKy41iHKgKnf7WNvU3KT2Fs7cR4udZ9y"], ["created_at", "2017-08-19 18:41:05.368630"], ["updated_at", "2017-08-19 18:41:05.368630"], ["provider", "spotify"], ["uid", "1eOzDcP1AfL6Fv0j"], ["username", "arvid"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-19 18:41:05.233385"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "crawford_koepp@swift.info"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "crawford_koepp@swift.info"], ["encrypted_password", "$2a$11$6rEfdsU1EOOdeRsy9ZWRo.Bl2utpVoOld8Y9bagBGovL09C2AE0lO"], ["created_at", "2017-08-19 18:41:05.505708"], ["updated_at", "2017-08-19 18:41:05.505708"], ["provider", "spotify"], ["uid", "Kd1mT85kH"], ["username", "gunner"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-19 18:41:05.371349"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "gayle@johns.name"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "gayle@johns.name"], ["encrypted_password", "$2a$11$g9l9n1o2KMscv8bwuzCoTuPUTyxA1CiCy5wT4W0zrgN5JfY3MaMPC"], ["created_at", "2017-08-19 18:41:05.643065"], ["updated_at", "2017-08-19 18:41:05.643065"], ["provider", "spotify"], ["uid", "JaBhGr2n6"], ["username", "vida"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-19 18:41:05.507957"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "johnpaul_olson@gibson.co"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "johnpaul_olson@gibson.co"], ["encrypted_password", "$2a$11$yLJuPE9mI/HrC5NnayT6/.DZpoViabJvdHn1ZESFqQnBkOkD2Sw42"], ["created_at", "2017-08-19 18:41:05.779874"], ["updated_at", "2017-08-19 18:41:05.779874"], ["provider", "spotify"], ["uid", "9p0qW8DwVq4d"], ["username", "saul.shanahan"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-19 18:41:05.645374"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "lilian_wunsch@armstrong.biz"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "lilian_wunsch@armstrong.biz"], ["encrypted_password", "$2a$11$nKUvSPU/tH/5LhiQW/VCQOTuvSfCI1XC.msNDMdkJnB1Iko06R1Kq"], ["created_at", "2017-08-19 18:41:05.916280"], ["updated_at", "2017-08-19 18:41:05.916280"], ["provider", "spotify"], ["uid", "LyR3C7VbAdCa"], ["username", "noe"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-19 18:41:05.782305"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "raul.koch@herzogreinger.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "raul.koch@herzogreinger.com"], ["encrypted_password", "$2a$11$dsJLcbs5.sKt7hc8cHYZq.f5HXxz8aOb2RQNf/1TuER.M9UVqsD0G"], ["created_at", "2017-08-19 18:41:06.053126"], ["updated_at", "2017-08-19 18:41:06.053126"], ["provider", "spotify"], ["uid", "X7LjEoHf078q9e"], ["username", "toy"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-19 18:41:05.918701"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fernando.jacobi@ebertmurazik.biz"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "fernando.jacobi@ebertmurazik.biz"], ["encrypted_password", "$2a$11$snHDd/bmcJ7P4ZLw8ZRJie5J5cJBpkUc1dPVGjiHuoS282v4UQ/D."], ["created_at", "2017-08-19 18:41:06.190248"], ["updated_at", "2017-08-19 18:41:06.190248"], ["provider", "spotify"], ["uid", "SeDp8s2w"], ["username", "chris_weimann"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-19 18:41:06.055391"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[35mSQL (16.7ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "receiver_id", "song_id", "custom_location", "location_id", "expiration_date", "comment", "photo", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["sender_name", "Devonte"], ["receiver_name", "Abby"], ["sender_id", 30], ["receiver_id", 17], ["song_id", 10], ["custom_location", "roof"], ["location_id", 10], ["expiration_date", "2017-08-27 21:07:46.203546"], ["comment", "Hella distillery celiac irony brooklyn authentic ethical."], ["photo", "lightbulb.png"], ["created_at", "2017-08-19 18:41:06.248002"], ["updated_at", "2017-08-19 18:41:06.248002"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "receiver_id", "song_id", "custom_location", "location_id", "expiration_date", "comment", "photo", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["sender_name", "Kailyn"], ["receiver_name", "Jena"], ["sender_id", 19], ["receiver_id", 3], ["song_id", 8], ["custom_location", "bitters"], ["location_id", 1], ["expiration_date", "2017-08-27 21:07:46.266461"], ["comment", "Wayfarers cornhole church-key trust fund gluten-free plaid xoxo crucifix locavore skateboard."], ["photo", "lightbulb.png"], ["created_at", "2017-08-19 18:41:06.272027"], ["updated_at", "2017-08-19 18:41:06.272027"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "receiver_id", "song_id", "custom_location", "location_id", "expiration_date", "comment", "photo", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["sender_name", "Maritza"], ["receiver_name", "Holly"], ["sender_id", 10], ["receiver_id", 21], ["song_id", 2], ["custom_location", "pabst"], ["location_id", 7], ["expiration_date", "2017-08-27 21:07:46.273982"], ["comment", "Goth food truck occupy master hoodie offal."], ["photo", "lightbulb.png"], ["created_at", "2017-08-19 18:41:06.278930"], ["updated_at", "2017-08-19 18:41:06.278930"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "receiver_id", "song_id", "custom_location", "location_id", "expiration_date", "comment", "photo", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["sender_name", "Nels"], ["receiver_name", "Bessie"], ["sender_id", 24], ["receiver_id", 27], ["song_id", 2], ["custom_location", "kogi"], ["location_id", 10], ["expiration_date", "2017-08-27 21:07:46.280693"], ["comment", "Quinoa yolo organic twee tote bag gastropub."], ["photo", "lightbulb.png"], ["created_at", "2017-08-19 18:41:06.285442"], ["updated_at", "2017-08-19 18:41:06.285442"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "receiver_id", "song_id", "custom_location", "location_id", "expiration_date", "comment", "photo", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["sender_name", "Sarina"], ["receiver_name", "Estella"], ["sender_id", 2], ["receiver_id", 10], ["song_id", 9], ["custom_location", "iPhone"], ["location_id", 8], ["expiration_date", "2017-08-27 21:07:46.287491"], ["comment", "Shoreditch marfa five dollar toast skateboard farm-to-table iphone raw denim intelligentsia flexitarian."], ["photo", "lightbulb.png"], ["created_at", "2017-08-19 18:41:06.293047"], ["updated_at", "2017-08-19 18:41:06.293047"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "receiver_id", "song_id", "custom_location", "location_id", "expiration_date", "comment", "photo", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["sender_name", "Joseph"], ["receiver_name", "Izaiah"], ["sender_id", 24], ["receiver_id", 17], ["song_id", 8], ["custom_location", "etsy"], ["location_id", 4], ["expiration_date", "2017-08-27 21:07:46.295259"], ["comment", "Waistcoat pug polaroid readymade lumbersexual retro celiac."], ["photo", "lightbulb.png"], ["created_at", "2017-08-19 18:41:06.301235"], ["updated_at", "2017-08-19 18:41:06.301235"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.1ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSong Load (0.1ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "receiver_id", "song_id", "custom_location", "location_id", "expiration_date", "comment", "photo", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["sender_name", "Dakota"], ["receiver_name", "Heloise"], ["sender_id", 13], ["receiver_id", 15], ["song_id", 8], ["custom_location", "skateboard"], ["location_id", 1], ["expiration_date", "2017-08-27 21:07:46.303119"], ["comment", "Loko pickled beard franzen banjo lumbersexual synth."], ["photo", "lightbulb.png"], ["created_at", "2017-08-19 18:41:06.307711"], ["updated_at", "2017-08-19 18:41:06.307711"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.1ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mSong Load (0.1ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "receiver_id", "song_id", "custom_location", "location_id", "expiration_date", "comment", "photo", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["sender_name", "Gabe"], ["receiver_name", "Anastacio"], ["sender_id", 30], ["receiver_id", 7], ["song_id", 1], ["custom_location", "ramps"], ["location_id", 8], ["expiration_date", "2017-08-27 21:07:46.309427"], ["comment", "Helvetica etsy portland 90's green juice loko food truck pitchfork pinterest."], ["photo", "lightbulb.png"], ["created_at", "2017-08-19 18:41:06.313718"], ["updated_at", "2017-08-19 18:41:06.313718"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.1ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mSong Load (0.1ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "receiver_id", "song_id", "custom_location", "location_id", "expiration_date", "comment", "photo", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["sender_name", "Tatyana"], ["receiver_name", "Woodrow"], ["sender_id", 20], ["receiver_id", 4], ["song_id", 3], ["custom_location", "selvage"], ["location_id", 5], ["expiration_date", "2017-08-27 21:07:46.315492"], ["comment", "Bespoke locavore pickled readymade williamsburg chillwave muggle magic."], ["photo", "lightbulb.png"], ["created_at", "2017-08-19 18:41:06.320275"], ["updated_at", "2017-08-19 18:41:06.320275"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.1ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mSong Load (0.1ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "receiver_id", "song_id", "custom_location", "location_id", "expiration_date", "comment", "photo", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["sender_name", "Julia"], ["receiver_name", "Mortimer"], ["sender_id", 20], ["receiver_id", 12], ["song_id", 2], ["custom_location", "hammock"], ["location_id", 3], ["expiration_date", "2017-08-27 21:07:46.322058"], ["comment", "Lumbersexual letterpress poutine park food truck skateboard."], ["photo", "lightbulb.png"], ["created_at", "2017-08-19 18:41:06.327103"], ["updated_at", "2017-08-19 18:41:06.327103"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for 127.0.0.1 at 2017-08-19 13:41:18 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 194ms (Views: 159.6ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-19 13:41:22 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 17ms (Views: 13.6ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/search" for 127.0.0.1 at 2017-08-19 13:41:27 -0500
+  
+LoadError (Unable to autoload constant SpotifySearchController, expected /Users/apprentice/wearehear/app/controllers/spotify_search_controller.rb to define it):
+  
+activesupport (5.1.3) lib/active_support/dependencies.rb:511:in `load_missing_constant'
+activesupport (5.1.3) lib/active_support/dependencies.rb:202:in `const_missing'
+activesupport (5.1.3) lib/active_support/inflector/methods.rb:269:in `const_get'
+activesupport (5.1.3) lib/active_support/inflector/methods.rb:269:in `block in constantize'
+activesupport (5.1.3) lib/active_support/inflector/methods.rb:267:in `each'
+activesupport (5.1.3) lib/active_support/inflector/methods.rb:267:in `inject'
+activesupport (5.1.3) lib/active_support/inflector/methods.rb:267:in `constantize'
+activesupport (5.1.3) lib/active_support/dependencies.rb:582:in `get'
+activesupport (5.1.3) lib/active_support/dependencies.rb:613:in `constantize'
+actionpack (5.1.3) lib/action_dispatch/http/request.rb:82:in `controller_class'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:43:in `controller'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:29:in `serve'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:834:in `call'
+omniauth (1.6.1) lib/omniauth/strategy.rb:189:in `call!'
+omniauth (1.6.1) lib/omniauth/strategy.rb:167:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.3) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.3) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `call'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/bouquets/show" for 127.0.0.1 at 2017-08-19 13:43:32 -0500
+Processing by BouquetsController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering bouquets/show.html.erb within layouts/application
+  Rendered bouquets/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 16ms (Views: 12.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at 2017-08-19 13:43:54 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/users/sign_out"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `call'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/bouquets/show" for 127.0.0.1 at 2017-08-19 13:44:03 -0500
+Processing by BouquetsController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering bouquets/show.html.erb within layouts/application
+  Rendered bouquets/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 18ms (Views: 14.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-19 13:44:07 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 17ms (Views: 14.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-19 13:47:53 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 22ms (Views: 19.0ms | ActiveRecord: 0.3ms)
+
+
