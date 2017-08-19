@@ -1,12 +1,10 @@
-# require 'net/http'
-# require 'uri'
+
 
 class SpotifySearchController < ApplicationController
   def index
   	
   	spotify_url = "https://api.spotify.com/v1/"
     artist = params[:search].gsub(/ /, "+")
-    track = ""
     searchURL = "#{spotify_url}search?q=#{artist}&type=artist,track"
 
     access_token = ENV['ACCESS_TOKEN']
@@ -69,3 +67,4 @@ end
 	# end
 
  #  end
+
