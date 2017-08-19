@@ -10,21 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20170818184716) do
-=======
 ActiveRecord::Schema.define(version: 20170818221536) do
->>>>>>> master
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-<<<<<<< HEAD
-  create_table "texts", force: :cascade do |t|
-    t.string "number"
-    t.string "message"
-    t.string "sender"
-=======
   create_table "bouquets", force: :cascade do |t|
     t.string "sender_name"
     t.string "receiver_name"
@@ -36,13 +26,10 @@ ActiveRecord::Schema.define(version: 20170818221536) do
     t.datetime "expiration_date"
     t.text "comment"
     t.string "photo"
->>>>>>> master
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< HEAD
-=======
   create_table "locations", force: :cascade do |t|
     t.integer "lat"
     t.integer "lng"
@@ -58,6 +45,14 @@ ActiveRecord::Schema.define(version: 20170818221536) do
     t.string "album"
     t.string "track"
     t.integer "spotify_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "texts", force: :cascade do |t|
+    t.string "number"
+    t.string "message"
+    t.string "sender"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -85,5 +80,4 @@ ActiveRecord::Schema.define(version: 20170818221536) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
->>>>>>> master
 end

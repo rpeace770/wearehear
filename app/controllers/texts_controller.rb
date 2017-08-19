@@ -2,21 +2,16 @@ require 'twilio-ruby'
 
 class TextsController <  ApplicationController
 
-  def index
-    @text = Text.new
-  end
-
-  def send_text
+  def create
     @text = Text.new(text_params)
-    @text.send_sms(@text.clean_number, @text.message, @text.sender)
-    redirect_back fallback_location: "http://www.rubyonrails.org"
+    @text.send_sms(@text.clean_number, @text.sender)
+    redirect_to '/'
+    # change redirect to current_user show page
   end
 
+  private
+    def text_params
+      params.require(:text).permit(:number, :sender)
+    end
 
-
-private
-
-  def text_params
-     params.require(:text).permit(:number, :message, :sender)
-  end
 end
