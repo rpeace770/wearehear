@@ -5,6 +5,16 @@ class BouquetsController < ApplicationController
     render json: @locations.to_json
   end
 
+  def locations
+    locations = []
+    user = User.find(current_user.id)
+    bouquets = user.sent_bouquets + user.received_bouquets
+    bouquets.each do |bouquet|
+      locations << Location.find(bouquet.location_id)
+    end
+    render json: locations.to_json
+  end
+
   def new
   end
 

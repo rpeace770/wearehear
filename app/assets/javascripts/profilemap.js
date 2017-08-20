@@ -2,7 +2,7 @@ var profilemap;
 
   function initProfileMap() {
     $.ajax({
-      url: "/bouquets/all",
+      url: "/bouquets/locations",
       method: "post"
     })
     .done(function(response) {

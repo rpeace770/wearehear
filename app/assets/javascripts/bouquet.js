@@ -84,6 +84,7 @@ function clearOverlays() {
     markersArray.push(marker);
   }
 initProfileMap();
+// initHeatMap();
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
