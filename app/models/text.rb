@@ -16,12 +16,13 @@ class Text < ApplicationRecord
     photo = 'https://media.giphy.com/media/SRO0ZwmImic0/giphy.gif'
     #replace link with unique url and bouquet.photo, passed in as params
 
+
   @client = Twilio::REST::Client.new twilio_account_sid, twilio_auth_token
 
   @client.messages.create({
     from: from,
     to: '+1'+number,
-    body: sender + "sent you a bouquet from WeAreHear! Click " + link + " to view it!",
+    body: sender + " sent you a bouquet from WeAreHear! Click " + link + " to view it!",
     media_url: photo})
   end
 
