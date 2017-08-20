@@ -1,3 +1,14 @@
+
+<h1>This is the new page</h1>
+
+<%= form_tag spotify_search_path, :method => 'post' do %>
+  <p>
+    <%= select_tag(:search_type, options_for_select([["artist"],["track"]])) %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
 <h1>Create a new Bouquet</h1>
 
 <div id="person">
