@@ -1,3 +1,18 @@
-<h1>This is the user show page</h1>
-
-<div id="profilemap"></div>
+<% if current_user && @user && current_user.id == @user.id %>
+  <div class="container">
+    <% if @user.username %>
+      <h1>Hiya, <%= @user.username %>!</h1>
+    <% else %>
+      <h1>Hiya!</h1>
+    <% end %>
+    <% if @user.picture_url != nil %>
+      <img src="<%= @user.picture_url %>" alt="profile_picture">
+    <% end %>
+    <h4>Bouquets sent: <%= @user.sent_bouquets.count %></h4>
+    <h4>Member since: <%= pretty_date(@user.created_at) %></h4>
+    <p><% link_to "Edit my profile", profile_path
+    <div id="profilemap"></div>
+  </div>
+<% else %>
+  <h3>Nothing to see here...</h3>
+<% end %>
