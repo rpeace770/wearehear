@@ -36,10 +36,12 @@ class BouquetsController < ApplicationController
 
   def confirm
     @bouquet = Bouquet.find(params[:id])
+    @location = Location.find(@bouquet.location_id)
   end
 
   def show
     @bouquet = Bouquet.find(params[:id])
+    @location = Location.find(@bouquet.location_id)
   end
 
   private
