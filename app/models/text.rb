@@ -1,5 +1,4 @@
 class Text < ApplicationRecord
-  # include Messenger
 
   def clean_number
     number = self.number.scan(/\d+/).join
