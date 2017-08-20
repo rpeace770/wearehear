@@ -83,7 +83,7 @@ function clearOverlays() {
     });
     markersArray.push(marker);
   }
-initProfileMap();
+
 // initHeatMap();
 }
 
@@ -94,7 +94,3 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
                         'Error: Your browser doesn\'t support geolocation.');
   infoWindow.open(map);
 }
-
-
-$(document).ready(function() {
-});
