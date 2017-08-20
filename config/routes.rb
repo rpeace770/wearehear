@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   post 'spotify_search', to: 'spotify_search#index'
   get '/auth/spotify/callback', to: 'callbacks#spotify'
   post 'search', to: 'spotify_search#search'
-  get 'bouquets/all', to: 'bouquets#all'
+  post 'bouquets/all', to: 'bouquets#all'
   root 'bouquets#new'
 end

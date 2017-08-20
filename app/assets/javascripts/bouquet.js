@@ -43,9 +43,9 @@ function clearOverlays() {
           } else {
             result = results[0];
           }
-        document.getElementById("city").value = result.address_components[3].long_name;
-        document.getElementById("state").value = result.address_components[5].long_name;
-        document.getElementById("country").value = result.address_components[6].long_name;
+        // document.getElementById("city").value = result.address_components[3].long_name;
+        // document.getElementById("state").value = result.address_components[5].long_name;
+        // document.getElementById("country").value = result.address_components[6].long_name;
         }
       });
     }, function() {
@@ -74,7 +74,6 @@ function clearOverlays() {
     //     document.getElementById("country").value = response.results[0].address_components[6].long_name;
     //   }
     // });
-
   });
 
   function placeMarker(location) {
@@ -84,7 +83,7 @@ function clearOverlays() {
     });
     markersArray.push(marker);
   }
-
+initProfileMap();
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {

@@ -31,6 +31,14 @@ div#person {
   margin: auto;
 }
 
+#profilemap {
+  width: 30%;
+  height: 400px;
+  background-color: grey;
+  margin: auto;
+}
+
+
 /* CSS FOR THE SEARCH MAP */
 /*
       #map {

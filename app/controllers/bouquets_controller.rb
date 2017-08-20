@@ -1,8 +1,8 @@
 class BouquetsController < ApplicationController
 
   def all
-    @bouquets = Bouquet.all
-    render json: @bouquets.to_json
+    @locations = Location.all
+    render json: @locations.to_json
   end
 
   def new

@@ -15199,3 +15199,453 @@ Completed 404 Not Found in 16ms (ActiveRecord: 5.4ms)
 ActiveRecord::RecordNotFound (Couldn't find Bouquet with 'id'=all):
   
 app/controllers/bouquets_controller.rb:18:in `show'
+Started GET "/" for 127.0.0.1 at 2017-08-20 09:58:53 -0500
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BouquetsController#new as HTML
+Completed 401 Unauthorized in 9ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-20 09:58:53 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (1.2ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (13.1ms)
+Completed 200 OK in 341ms (Views: 319.8ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/bouquets/all" for 127.0.0.1 at 2017-08-20 09:58:54 -0500
+Processing by BouquetsController#show as */*
+  Parameters: {"id"=>"all"}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/spotify" for 127.0.0.1 at 2017-08-20 09:58:56 -0500
+Started GET "/auth/spotify/callback?code=AQC3s2M4YLDD01Vyk_MEzqQzMACQhG_Gv1JgKib2KuYFT0C8GXGkOWN81q-sYOcswnLdqELPIh0G6DsWeH3xSmvKka2oeTADf5QANOFY6v8OE4uXJ7LgfZ36I5yfipl5OjplkC8gyMPNUtXBnV1Fo-wX0638Pd-UyGDL8ax505mFueMemK0njC-toYQD8BYQonWeBiZR7P1TpWYuBXZQ5PdTI9g23jbM2v6MiDN1VzmHAxCgMEleq3W9-Z9ejmMQIEWBRnG12TSNCj_mRLQ_eu6h2odvuF0mL5zaaeu73UBQ6WqBUIspRjM&state=ed41e279d977d78c5f64220ae13b24c0a73777e54ec6cd09" for 127.0.0.1 at 2017-08-20 09:59:09 -0500
+Processing by CallbacksController#spotify as HTML
+  Parameters: {"code"=>"AQC3s2M4YLDD01Vyk_MEzqQzMACQhG_Gv1JgKib2KuYFT0C8GXGkOWN81q-sYOcswnLdqELPIh0G6DsWeH3xSmvKka2oeTADf5QANOFY6v8OE4uXJ7LgfZ36I5yfipl5OjplkC8gyMPNUtXBnV1Fo-wX0638Pd-UyGDL8ax505mFueMemK0njC-toYQD8BYQonWeBiZR7P1TpWYuBXZQ5PdTI9g23jbM2v6MiDN1VzmHAxCgMEleq3W9-Z9ejmMQIEWBRnG12TSNCj_mRLQ_eu6h2odvuF0mL5zaaeu73UBQ6WqBUIspRjM", "state"=>"ed41e279d977d78c5f64220ae13b24c0a73777e54ec6cd09"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2 ORDER BY "users"."id" ASC LIMIT $3[0m  [["provider", "spotify"], ["uid", "radiohead770"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "sign_in_count" = $2, "updated_at" = $3 WHERE "users"."id" = $4[0m  [["current_sign_in_at", "2017-08-20 14:59:10.615142"], ["sign_in_count", 2], ["updated_at", "2017-08-20 14:59:10.617159"], ["id", 31]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 16ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-20 09:59:10 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (8.4ms)
+Completed 200 OK in 45ms (Views: 39.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/bouquets/all" for 127.0.0.1 at 2017-08-20 09:59:10 -0500
+Processing by BouquetsController#show as */*
+  Parameters: {"id"=>"all"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (0.4ms)[0m  [1m[34mSELECT  "bouquets".* FROM "bouquets" WHERE "bouquets"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 27ms (ActiveRecord: 5.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Bouquet with 'id'=all):
+  
+app/controllers/bouquets_controller.rb:18:in `show'
+Started GET "/" for 127.0.0.1 at 2017-08-20 10:00:33 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 126ms (Views: 121.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/bouquets/all" for 127.0.0.1 at 2017-08-20 10:00:33 -0500
+Processing by BouquetsController#show as */*
+  Parameters: {"id"=>"all"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (0.7ms)[0m  [1m[34mSELECT  "bouquets".* FROM "bouquets" WHERE "bouquets"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 13ms (ActiveRecord: 2.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Bouquet with 'id'=all):
+  
+app/controllers/bouquets_controller.rb:18:in `show'
+Started GET "/" for 127.0.0.1 at 2017-08-20 10:02:24 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 91ms (Views: 87.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-20 10:02:46 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 89ms (Views: 83.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-20 10:05:07 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 30ms (Views: 26.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/user/profile" for 127.0.0.1 at 2017-08-20 10:36:11 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/user/profile"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `call'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2017-08-20 10:52:10 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 29ms (Views: 25.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-20 10:52:30 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 27ms (Views: 20.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-20 10:52:54 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 89ms (Views: 83.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/bouquets/all" for 127.0.0.1 at 2017-08-20 10:52:54 -0500
+Processing by BouquetsController#show as */*
+  Parameters: {"id"=>"all"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (0.3ms)[0m  [1m[34mSELECT  "bouquets".* FROM "bouquets" WHERE "bouquets"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 4ms (ActiveRecord: 0.8ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Bouquet with 'id'=all):
+  
+app/controllers/bouquets_controller.rb:18:in `show'
+Started GET "/" for 127.0.0.1 at 2017-08-20 10:53:42 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 92ms (Views: 87.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/bouquets/all" for 127.0.0.1 at 2017-08-20 10:53:42 -0500
+Processing by BouquetsController#show as */*
+  Parameters: {"id"=>"all"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (0.9ms)[0m  [1m[34mSELECT  "bouquets".* FROM "bouquets" WHERE "bouquets"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 5ms (ActiveRecord: 1.4ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Bouquet with 'id'=all):
+  
+app/controllers/bouquets_controller.rb:18:in `show'
+Started GET "/" for 127.0.0.1 at 2017-08-20 10:54:20 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 106ms (Views: 79.7ms | ActiveRecord: 3.4ms)
+
+
+Started POST "/bouquets/all" for 127.0.0.1 at 2017-08-20 10:54:20 -0500
+Processing by BouquetsController#all as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (0.8ms)[0m  [1m[34mSELECT "bouquets".* FROM "bouquets"[0m
+Completed 200 OK in 42ms (Views: 0.4ms | ActiveRecord: 6.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-20 10:55:34 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 90ms (Views: 84.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-20 10:56:06 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 104ms (Views: 100.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/bouquets/all" for 127.0.0.1 at 2017-08-20 10:56:07 -0500
+Processing by BouquetsController#all as */*
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (3.0ms)[0m  [1m[34mSELECT "bouquets".* FROM "bouquets"[0m
+Completed 200 OK in 16ms (Views: 0.2ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-20 10:58:12 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 89ms (Views: 83.8ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/bouquets/all" for 127.0.0.1 at 2017-08-20 10:58:13 -0500
+Processing by BouquetsController#all as */*
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (0.6ms)[0m  [1m[34mSELECT "bouquets".* FROM "bouquets"[0m
+Completed 200 OK in 16ms (Views: 0.2ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-20 10:58:43 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 32ms (Views: 28.1ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/bouquets/all" for 127.0.0.1 at 2017-08-20 10:58:44 -0500
+Processing by BouquetsController#all as */*
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (0.6ms)[0m  [1m[34mSELECT "bouquets".* FROM "bouquets"[0m
+Completed 200 OK in 13ms (Views: 0.2ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-20 11:00:00 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 97ms (Views: 91.2ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/bouquets/all" for 127.0.0.1 at 2017-08-20 11:00:00 -0500
+Processing by BouquetsController#all as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (0.3ms)[0m  [1m[34mSELECT "bouquets".* FROM "bouquets"[0m
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-20 11:00:22 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 100ms (Views: 95.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-20 11:01:13 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 80ms (Views: 75.4ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/bouquets/all" for 127.0.0.1 at 2017-08-20 11:01:14 -0500
+Processing by BouquetsController#all as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (0.8ms)[0m  [1m[34mSELECT "bouquets".* FROM "bouquets"[0m
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 1.3ms)
+
+
+  [1m[36mBouquet Load (0.5ms)[0m  [1m[34mSELECT "bouquets".* FROM "bouquets"[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "bouquets"[0m
+  [1m[36mBouquet Load (0.3ms)[0m  [1m[34mSELECT  "bouquets".* FROM "bouquets" ORDER BY "bouquets"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mBouquet Load (0.4ms)[0m  [1m[34mSELECT  "bouquets".* FROM "bouquets" ORDER BY "bouquets"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+Started GET "/" for 127.0.0.1 at 2017-08-20 11:12:16 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 41ms (Views: 17.8ms | ActiveRecord: 3.9ms)
+
+
+Started POST "/bouquets/all" for 127.0.0.1 at 2017-08-20 11:12:16 -0500
+Processing by BouquetsController#all as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (0.4ms)[0m  [1m[34mSELECT  "bouquets".* FROM "bouquets" LIMIT $1[0m  [["LIMIT", 11]]
+Completed 500 Internal Server Error in 158ms (ActiveRecord: 0.5ms)
+
+
+  
+  [1m[36mCACHE Bouquet Load (0.0ms)[0m  [1m[34mSELECT  "bouquets".* FROM "bouquets" LIMIT $1[0m  [["LIMIT", 11]]
+NameError (undefined local variable or method `bouquets' for #<BouquetsController:0x007ff41b601528>):
+  
+app/controllers/bouquets_controller.rb:6:in `all'
+Started GET "/" for 127.0.0.1 at 2017-08-20 11:12:51 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 52ms (Views: 22.1ms | ActiveRecord: 2.9ms)
+
+
+Started POST "/bouquets/all" for 127.0.0.1 at 2017-08-20 11:12:52 -0500
+Processing by BouquetsController#all as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.5ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+Completed 200 OK in 32ms (Views: 1.1ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-20 11:15:08 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 80ms (Views: 75.0ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/bouquets/all" for 127.0.0.1 at 2017-08-20 11:15:09 -0500
+Processing by BouquetsController#all as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-20 11:16:27 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 100ms (Views: 94.1ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/bouquets/all" for 127.0.0.1 at 2017-08-20 11:16:27 -0500
+Processing by BouquetsController#all as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.5ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-20 11:16:52 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 85ms (Views: 81.3ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/bouquets/all" for 127.0.0.1 at 2017-08-20 11:16:52 -0500
+Processing by BouquetsController#all as */*
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.4ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+Completed 200 OK in 13ms (Views: 0.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-20 11:18:26 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 91ms (Views: 86.1ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/bouquets/all" for 127.0.0.1 at 2017-08-20 11:18:27 -0500
+Processing by BouquetsController#all as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.5ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+Completed 200 OK in 11ms (Views: 2.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-20 11:18:59 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 82ms (Views: 79.3ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/bouquets/all" for 127.0.0.1 at 2017-08-20 11:18:59 -0500
+Processing by BouquetsController#all as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.4ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-20 11:20:49 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 86ms (Views: 82.0ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/bouquets/all" for 127.0.0.1 at 2017-08-20 11:20:50 -0500
+Processing by BouquetsController#all as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mLocation Load (1.1ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-20 11:21:07 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 34ms (Views: 30.1ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/bouquets/all" for 127.0.0.1 at 2017-08-20 11:21:07 -0500
+Processing by BouquetsController#all as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.4ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-20 11:21:57 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 90ms (Views: 86.1ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/bouquets/all" for 127.0.0.1 at 2017-08-20 11:21:57 -0500
+Processing by BouquetsController#all as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.4ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+Completed 200 OK in 9ms (Views: 0.5ms | ActiveRecord: 1.1ms)
+
+
