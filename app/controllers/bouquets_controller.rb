@@ -9,7 +9,7 @@ class BouquetsController < ApplicationController
   def locations
     locations = []
     user = User.find(current_user.id)
-    bouquets = user.sent_bouquets + user.received_bouquets
+    bouquets = user.sent_bouquets
     bouquets.each do |bouquet|
       locations << Location.find(bouquet.location_id)
     end
@@ -21,7 +21,17 @@ class BouquetsController < ApplicationController
   end
 
   def create
-    # Use form data to create new bouquet.
+    @song = Song.find_or_create_by(song_params)
+    @location = Location.find_or_create_by(location_params)
+    @bouquet = Bouquet.new(bouquet_params)
+    @bouquet.sender_id = current_user.id
+    @bouquet.location_id = @location.id
+    @bouquet.song_id = @song.id
+    if @bouquet.save
+      redirect_to "/bouquets/confirm/#{@bouquet.id}"
+    else
+      redirect_to "/bouquets/new"
+    end
   end
 
   def confirm
@@ -32,4 +42,16 @@ class BouquetsController < ApplicationController
     @bouquet = Bouquet.find(params[:id])
   end
 
+  private
+    def bouquet_params
+      params.require(:bouquet).permit(:sender_name, :receiver_name, :custom_location, :comment)
+    end
+
+    def song_params
+      params.require(:song).permit(:track, :artist, :album)
+    end
+
+    def location_params
+      params.require(:location).permit(:lat, :lng)
+    end
 end
