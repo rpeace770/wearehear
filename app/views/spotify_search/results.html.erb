@@ -1,31 +1,31 @@
 <h1>Results</h1>
 <div>
-	<%if @artist_data != nil %>	
+	<%if @artist_data != nil %>
 	<h2> Artist </h2>
 		<% @tracks_info.each do |track| %>
-		  
-		  <iframe src="https://open.spotify.com/embed?uri=spotify:track:<%=track[:track_id] %>"
-		        frameborder="0" allowtransparency="true" width="250" height="100"></iframe>
-		  
+		 <iframe src="https://open.spotify.com/embed?uri=spotify:track:<%=track[:track_id] %>"
+		        frameborder="0" allowtransparency="true" width="250" height="330"></iframe>
+     <%=button_to "add song to bouquet", bouquets_create_path, form_class:"add_song_button" %>
 		<% end %>
 
 	<% else %>
 	  <h2>Zero results</h2>
+	  <%=link_to "search again", bouquets_new_path %>
 	<%end %>
 </div>
 
 <div>
 	<%if @tracks != nil %>
-			<h2>tracks</h2>
+			<h2>Tracks</h2>
 
 				<% @tracks.each do |track| %>
 				<iframe src="https://open.spotify.com/embed?uri=spotify:track:<%=track['id'] %>"
-				        frameborder="0" allowtransparency="true" width="250" height="100"></iframe>
-				  
-			       
+				        frameborder="0" allowtransparency="true" width="250" height="330"></iframe>
 			<%end %>
 
 	<% else %>
 		<h2>Zero results</h2>
 	<%end %>
 </div>
+
+<%=link_to "back to search", bouquets_new_path %>
