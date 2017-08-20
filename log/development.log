@@ -25191,3 +25191,1387 @@ Processing by BouquetsController#show as HTML
 Completed 200 OK in 23ms (Views: 19.4ms | ActiveRecord: 0.8ms)
 
 
+  [1m[35m (0.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "wearehear_development"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "wearehear_test"[0m
+  [1m[35m (393.8ms)[0m  [1m[35mCREATE DATABASE "wearehear_development" ENCODING = 'unicode'[0m
+  [1m[35m (293.3ms)[0m  [1m[35mCREATE DATABASE "wearehear_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "bouquets" CASCADE[0m
+  [1m[35m (19.6ms)[0m  [1m[35mCREATE TABLE "bouquets" ("id" bigserial primary key, "sender_name" character varying, "receiver_name" character varying, "sender_id" integer, "receiver_id" integer, "song_id" integer, "custom_location" character varying, "location_id" integer, "expiration_date" timestamp, "comment" text, "photo" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "locations" CASCADE[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "locations" ("id" bigserial primary key, "lat" integer, "lng" integer, "city" character varying, "state" character varying, "country" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "songs" CASCADE[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "songs" ("id" bigserial primary key, "artist" character varying, "album" character varying, "track" character varying, "spotify_id" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "texts" CASCADE[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "texts" ("id" bigserial primary key, "number" character varying, "sender" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "provider" character varying, "uid" character varying, "phone" character varying, "username" character varying, "picture_url" character varying, "birthdate" timestamp)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35m (34.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (15.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20170819192637)[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20170817223237),
+(20170817223348),
+(20170818165654),
+(20170818173145),
+(20170818173638),
+(20170818173845),
+(20170818184716),
+(20170818221536);
+
+[0m
+  [1m[35m (17.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-08-20 17:35:56.111482"], ["updated_at", "2017-08-20 17:35:56.111482"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "bouquets" CASCADE[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "bouquets" ("id" bigserial primary key, "sender_name" character varying, "receiver_name" character varying, "sender_id" integer, "receiver_id" integer, "song_id" integer, "custom_location" character varying, "location_id" integer, "expiration_date" timestamp, "comment" text, "photo" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "locations" CASCADE[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "locations" ("id" bigserial primary key, "lat" integer, "lng" integer, "city" character varying, "state" character varying, "country" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "songs" CASCADE[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "songs" ("id" bigserial primary key, "artist" character varying, "album" character varying, "track" character varying, "spotify_id" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "texts" CASCADE[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "texts" ("id" bigserial primary key, "number" character varying, "sender" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "provider" character varying, "uid" character varying, "phone" character varying, "username" character varying, "picture_url" character varying, "birthdate" timestamp)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20170819192637)[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20170817223237),
+(20170817223348),
+(20170818165654),
+(20170818173145),
+(20170818173638),
+(20170818173845),
+(20170818184716),
+(20170818221536);
+
+[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-08-20 17:35:56.203813"], ["updated_at", "2017-08-20 17:35:56.203813"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", 89], ["lng", -164], ["city", "Vivienton"], ["state", "Louisiana"], ["country", "Algeria"], ["created_at", "2017-08-20 17:35:56.917004"], ["updated_at", "2017-08-20 17:35:56.917004"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", 62], ["lng", -157], ["city", "New Danteburgh"], ["state", "Hawaii"], ["country", "Belize"], ["created_at", "2017-08-20 17:35:56.919866"], ["updated_at", "2017-08-20 17:35:56.919866"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", -42], ["lng", 140], ["city", "Allenbury"], ["state", "Wisconsin"], ["country", "Turkmenistan"], ["created_at", "2017-08-20 17:35:56.922277"], ["updated_at", "2017-08-20 17:35:56.922277"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", -43], ["lng", 89], ["city", "East Aileenville"], ["state", "Delaware"], ["country", "Republic of Korea"], ["created_at", "2017-08-20 17:35:56.924628"], ["updated_at", "2017-08-20 17:35:56.924628"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", -84], ["lng", 115], ["city", "Doyletown"], ["state", "Virginia"], ["country", "French Polynesia"], ["created_at", "2017-08-20 17:35:56.927001"], ["updated_at", "2017-08-20 17:35:56.927001"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", 56], ["lng", -80], ["city", "Port Felicitytown"], ["state", "Pennsylvania"], ["country", "Malawi"], ["created_at", "2017-08-20 17:35:56.929349"], ["updated_at", "2017-08-20 17:35:56.929349"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", 7], ["lng", 135], ["city", "North Danialland"], ["state", "Washington"], ["country", "Turkey"], ["created_at", "2017-08-20 17:35:56.931871"], ["updated_at", "2017-08-20 17:35:56.931871"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", -74], ["lng", -145], ["city", "West Barbara"], ["state", "Oregon"], ["country", "French Guiana"], ["created_at", "2017-08-20 17:35:56.933979"], ["updated_at", "2017-08-20 17:35:56.933979"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", -5], ["lng", 33], ["city", "Lake Jasenside"], ["state", "Iowa"], ["country", "Uruguay"], ["created_at", "2017-08-20 17:35:56.935933"], ["updated_at", "2017-08-20 17:35:56.935933"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "city", "state", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["lat", 1], ["lng", -32], ["city", "West Cedrick"], ["state", "Montana"], ["country", "Netherlands"], ["created_at", "2017-08-20 17:35:56.938032"], ["updated_at", "2017-08-20 17:35:56.938032"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "spotify_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["artist", "Daughter"], ["album", "Not To Disappear"], ["track", "No Care"], ["spotify_id", "26Ggcaz8arFAehpsfFTiRj"], ["created_at", "2017-08-20 17:35:56.950411"], ["updated_at", "2017-08-20 17:35:56.950411"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "spotify_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["artist", "Beyoncé"], ["album", "Beyoncé"], ["track", "Partition"], ["spotify_id", "5hgnY0mVcVetszbb85qeDg"], ["created_at", "2017-08-20 17:35:56.953050"], ["updated_at", "2017-08-20 17:35:56.953050"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "spotify_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["artist", "Joseph"], ["album", "I'm Alone,No You're Not"], ["track", "Blood & Tears"], ["spotify_id", "7B4iQ8RPM3U7gKgySIq8yv"], ["created_at", "2017-08-20 17:35:56.955308"], ["updated_at", "2017-08-20 17:35:56.955308"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "spotify_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["artist", "The Big Moon"], ["album", "Love in the 4th Dimension"], ["track", "The End"], ["spotify_id", "6Eq7yjlMipfXATKb2ggndn"], ["created_at", "2017-08-20 17:35:56.957561"], ["updated_at", "2017-08-20 17:35:56.957561"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "spotify_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["artist", "Balmorhea"], ["album", "All Is Wild, All Is Silent"], ["track", "Truth"], ["spotify_id", "52IFQxFkt9fyYmIu1omQ69"], ["created_at", "2017-08-20 17:35:56.959565"], ["updated_at", "2017-08-20 17:35:56.959565"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "spotify_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["artist", "Marika Hackman"], ["album", "I'm Not Your Man"], ["track", "Boyfriend"], ["spotify_id", "68wm2y2dmgLzlwSIEi5IaD"], ["created_at", "2017-08-20 17:35:56.961612"], ["updated_at", "2017-08-20 17:35:56.961612"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "spotify_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["artist", "John Van Deusen"], ["album", "The Universal Sigh"], ["track", "I Was Sick"], ["spotify_id", "2QA0rBbtFRuxQpI7HbXtDf"], ["created_at", "2017-08-20 17:35:56.963440"], ["updated_at", "2017-08-20 17:35:56.963440"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "spotify_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["artist", "Warpaint"], ["album", "Warpaint"], ["track", "Disco//very"], ["spotify_id", "37Oojxm0tKyUFiyfn52LHU"], ["created_at", "2017-08-20 17:35:56.965290"], ["updated_at", "2017-08-20 17:35:56.965290"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "spotify_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["artist", "Angel Olsen"], ["album", "Burn Your Fire For No Witness"], ["track", "Forgive/Forgotten"], ["spotify_id", "2QGSwm7GoxcIcDDFpH8USV"], ["created_at", "2017-08-20 17:35:56.966978"], ["updated_at", "2017-08-20 17:35:56.966978"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "spotify_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["artist", "Kanye West"], ["album", "The Life of Pablo"], ["track", "Ultralight Beam"], ["spotify_id", "1eQBEelI2NCy7AUTerX0KS"], ["created_at", "2017-08-20 17:35:56.968936"], ["updated_at", "2017-08-20 17:35:56.968936"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "derek@littel.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "derek@littel.org"], ["encrypted_password", "$2a$11$ydKrlqhCG3ZYAcRjzNXRq.3p7m88KJ2qFrh9sqfY11mFs44yWmAHS"], ["created_at", "2017-08-20 17:35:57.210621"], ["updated_at", "2017-08-20 17:35:57.210621"], ["provider", "spotify"], ["uid", "EtKhKaV7KrMsBo6"], ["username", "kaci"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-20 17:35:56.970724"]]
+  [1m[35m (15.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "concepcion@torphy.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "concepcion@torphy.com"], ["encrypted_password", "$2a$11$BDFt/IY2J/JBYV/U2TxfgujZO84IeD/rgUqyz5ZPAbSL5gXYTNLie"], ["created_at", "2017-08-20 17:35:57.363398"], ["updated_at", "2017-08-20 17:35:57.363398"], ["provider", "spotify"], ["uid", "S606P50y"], ["username", "coleman"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-20 17:35:57.228514"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "danika@nitzsche.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "danika@nitzsche.org"], ["encrypted_password", "$2a$11$YnwXZSAm1f4d70hkLlqRNuE0TgvRUqvwvwZNbqoRERNFxvjGWDCQ2"], ["created_at", "2017-08-20 17:35:57.501463"], ["updated_at", "2017-08-20 17:35:57.501463"], ["provider", "spotify"], ["uid", "U9Un23Vg7iM"], ["username", "maud.mclaughlin"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-20 17:35:57.365398"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "junius@leannon.co"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "junius@leannon.co"], ["encrypted_password", "$2a$11$O0eFy/5WJB7ge7ElrJsKb.zcflleuFBonKo7zy3GG0Jmrc1Y71YD6"], ["created_at", "2017-08-20 17:35:57.637976"], ["updated_at", "2017-08-20 17:35:57.637976"], ["provider", "spotify"], ["uid", "TmWrZe2xHoR2CoP"], ["username", "grady_wiegand"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-20 17:35:57.503605"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "marques_reinger@padbergbeier.biz"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "marques_reinger@padbergbeier.biz"], ["encrypted_password", "$2a$11$o8NVP7HYAiIul338XzvJvuWb7TWFLDB.M/xm2JKQWGv4yOgZXMKX2"], ["created_at", "2017-08-20 17:35:57.774128"], ["updated_at", "2017-08-20 17:35:57.774128"], ["provider", "spotify"], ["uid", "9tF5Kj7w"], ["username", "darren"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-20 17:35:57.640159"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dedric_dibbert@darebatz.info"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "dedric_dibbert@darebatz.info"], ["encrypted_password", "$2a$11$7NoNF5.J9ar1XyoAHU7aWOOCnd1Wq8.19BtFilr.IUDjRS/0fkFcC"], ["created_at", "2017-08-20 17:35:57.911404"], ["updated_at", "2017-08-20 17:35:57.911404"], ["provider", "spotify"], ["uid", "44Lg8mO2U"], ["username", "janea.trantow"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-20 17:35:57.776319"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "elisa@dach.net"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "elisa@dach.net"], ["encrypted_password", "$2a$11$aaGgd3ZjyxxloMUXT/5nm.Q2mBpvBpzeTz7bKwzG9JzOyvg9HwY4i"], ["created_at", "2017-08-20 17:35:58.048006"], ["updated_at", "2017-08-20 17:35:58.048006"], ["provider", "spotify"], ["uid", "TjClZ94tJyA2CwOe"], ["username", "hope"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-20 17:35:57.913586"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ezra.gislason@hackett.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "ezra.gislason@hackett.com"], ["encrypted_password", "$2a$11$TPistL4u05lUalOHyfvGNOX.u9/i4C1S4ZiQNU4/pdYAaB/Ec8kXO"], ["created_at", "2017-08-20 17:35:58.184525"], ["updated_at", "2017-08-20 17:35:58.184525"], ["provider", "spotify"], ["uid", "GzIhKnO2Wu40Xv1"], ["username", "zaria"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-20 17:35:58.050255"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "katrine@hintz.name"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "katrine@hintz.name"], ["encrypted_password", "$2a$11$NOsPlWZms/Q7Wo0qZHt1BOI5pbZt4v/Zm36PtzcrnkDRrW0dxr7uW"], ["created_at", "2017-08-20 17:35:58.320694"], ["updated_at", "2017-08-20 17:35:58.320694"], ["provider", "spotify"], ["uid", "38Bc7mA2Wu"], ["username", "kaci_gaylord"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-20 17:35:58.186510"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "viola.sporer@christiansen.co"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "viola.sporer@christiansen.co"], ["encrypted_password", "$2a$11$aQpOC68JVfWfztk6Z6KmZuNz9NA9ke6n171OEli7DhG2PHf2zYRpq"], ["created_at", "2017-08-20 17:35:58.458126"], ["updated_at", "2017-08-20 17:35:58.458126"], ["provider", "spotify"], ["uid", "BkVmKk6fB"], ["username", "sylvia.cremin"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-20 17:35:58.322804"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "nellie.frami@jacobikoch.io"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "nellie.frami@jacobikoch.io"], ["encrypted_password", "$2a$11$N7/XARJcdxug64e8zU9Y6.2.Medn2yFSLhfaqsdw9vVWCW1euztQe"], ["created_at", "2017-08-20 17:35:58.594342"], ["updated_at", "2017-08-20 17:35:58.594342"], ["provider", "spotify"], ["uid", "MuR7JwLz"], ["username", "emerson.klein"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-20 17:35:58.460267"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "rylan@runte.info"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "rylan@runte.info"], ["encrypted_password", "$2a$11$s2J3NP0U37Sn9SW2MdObV.FHuLnrLfhx.rG4dkggeCY2AOsE1IVre"], ["created_at", "2017-08-20 17:35:58.730967"], ["updated_at", "2017-08-20 17:35:58.730967"], ["provider", "spotify"], ["uid", "WyMn9gEn"], ["username", "rosanna_keebler"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-20 17:35:58.596639"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "malvina_reinger@ullrichlind.net"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "malvina_reinger@ullrichlind.net"], ["encrypted_password", "$2a$11$ZAcb6mbWHX7X7PdBcTOVpeZV4jPp8b3/NqrKa0fbEswyMWDqYTFAm"], ["created_at", "2017-08-20 17:35:58.867591"], ["updated_at", "2017-08-20 17:35:58.867591"], ["provider", "spotify"], ["uid", "Le9i7iZ6"], ["username", "minerva.hand"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-20 17:35:58.733140"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "maddison_tremblay@rowe.biz"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "maddison_tremblay@rowe.biz"], ["encrypted_password", "$2a$11$DCiaizD6G79Ge9X0WcrUsufaVxB1lEn6DWqJOj74MXwgdPzY3611C"], ["created_at", "2017-08-20 17:35:59.004666"], ["updated_at", "2017-08-20 17:35:59.004666"], ["provider", "spotify"], ["uid", "W1Rl57YcM9Zw"], ["username", "scotty"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-20 17:35:58.869800"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "clement@zulauf.info"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "clement@zulauf.info"], ["encrypted_password", "$2a$11$lmZ7wTZQ6xDdd0fGWX4l6uhfteGZN.L7oyHGWOQekBBpcP1LMkjSa"], ["created_at", "2017-08-20 17:35:59.141457"], ["updated_at", "2017-08-20 17:35:59.141457"], ["provider", "spotify"], ["uid", "F7MfVaXmDcS7"], ["username", "nola"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-20 17:35:59.007017"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "cornelius@boyer.biz"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "cornelius@boyer.biz"], ["encrypted_password", "$2a$11$bBJtnDZqzJfG6BGdVpV2fuRRI0pkouNu6Fn7iU1MY.LSL39CUvARW"], ["created_at", "2017-08-20 17:35:59.277654"], ["updated_at", "2017-08-20 17:35:59.277654"], ["provider", "spotify"], ["uid", "Mz0tXsAeAnV9"], ["username", "aglae"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-20 17:35:59.143676"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "merritt@bauchfeil.biz"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "merritt@bauchfeil.biz"], ["encrypted_password", "$2a$11$I2y9VGFTmohcxftg3Dx9ReLOWYxok9nj4bbQ3pV29jHycydmfb77G"], ["created_at", "2017-08-20 17:35:59.414994"], ["updated_at", "2017-08-20 17:35:59.414994"], ["provider", "spotify"], ["uid", "Mz9lWoKtIuDr1tW"], ["username", "haskell.rosenbaum"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-20 17:35:59.279810"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "geo@bode.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "geo@bode.org"], ["encrypted_password", "$2a$11$4Ezuwv6LzmgVLMT1pC1/C.atBRkoUzUqwLojYfDPlssY/W2dBzM/i"], ["created_at", "2017-08-20 17:35:59.551355"], ["updated_at", "2017-08-20 17:35:59.551355"], ["provider", "spotify"], ["uid", "SjUzCrYjKa"], ["username", "damian"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-20 17:35:59.417064"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "birdie_medhurst@marquardt.net"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "birdie_medhurst@marquardt.net"], ["encrypted_password", "$2a$11$ktiIbUF3HXKstk5wWYjxwukGjrEAbFBJbeh5J2qfvTauhYaQQ27a6"], ["created_at", "2017-08-20 17:35:59.688408"], ["updated_at", "2017-08-20 17:35:59.688408"], ["provider", "spotify"], ["uid", "PbOiZfI2"], ["username", "cara_rice"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-20 17:35:59.553645"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "kellen@dickinson.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "kellen@dickinson.org"], ["encrypted_password", "$2a$11$uv9xg/WDDARXp6q604gNUOeOBMp.Mn4llmdCR.anVunDhJgke85NW"], ["created_at", "2017-08-20 17:35:59.824801"], ["updated_at", "2017-08-20 17:35:59.824801"], ["provider", "spotify"], ["uid", "JgD23qD1"], ["username", "jordan"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-20 17:35:59.690660"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sid_renner@bodehomenick.co"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "sid_renner@bodehomenick.co"], ["encrypted_password", "$2a$11$cKBeQgsHKe1tMTCF2PeotO1dvpuFuufsnA/IdXZsoHrrfCVLYDBpi"], ["created_at", "2017-08-20 17:35:59.962332"], ["updated_at", "2017-08-20 17:35:59.962332"], ["provider", "spotify"], ["uid", "D5LlPkZrQl5oNjVo"], ["username", "gaylord"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-20 17:35:59.827448"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "cletus_howe@vandervort.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "cletus_howe@vandervort.org"], ["encrypted_password", "$2a$11$Uh0dklPFJ6SjVlRcl.MhUOkun0wiYUYaH.xY7N8osx27ak.C6T7N."], ["created_at", "2017-08-20 17:36:00.100134"], ["updated_at", "2017-08-20 17:36:00.100134"], ["provider", "spotify"], ["uid", "1q26NxAr"], ["username", "carmelo"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-20 17:35:59.964506"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "lucie@barrows.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "lucie@barrows.com"], ["encrypted_password", "$2a$11$HHNI79z5FS/gmDssyq3V.ee3bxa6VYgRbZ3xshH9rj3vJb4Q1NvvG"], ["created_at", "2017-08-20 17:36:00.236576"], ["updated_at", "2017-08-20 17:36:00.236576"], ["provider", "spotify"], ["uid", "ZtU15zXyNrQwCzT5"], ["username", "amelia"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-20 17:36:00.102515"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bettie.maggio@tillmankozey.biz"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "bettie.maggio@tillmankozey.biz"], ["encrypted_password", "$2a$11$ZRRGVFw57aHibTfxfthaauuzhECn5KWuLvXFMsqPA1My6u5hEjvRK"], ["created_at", "2017-08-20 17:36:00.373120"], ["updated_at", "2017-08-20 17:36:00.373120"], ["provider", "spotify"], ["uid", "6yXsUlG3J4Rf"], ["username", "malcolm"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-20 17:36:00.238630"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jeanne@ferrywaelchi.co"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "jeanne@ferrywaelchi.co"], ["encrypted_password", "$2a$11$obKD667dYcULJrfXrsgDE.5yyIey/0hQdGktyvXqpSjjYziE2NS8C"], ["created_at", "2017-08-20 17:36:00.510531"], ["updated_at", "2017-08-20 17:36:00.510531"], ["provider", "spotify"], ["uid", "5j0t6a7w4"], ["username", "berry"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-20 17:36:00.375281"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "leif.oberbrunner@damore.info"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "leif.oberbrunner@damore.info"], ["encrypted_password", "$2a$11$tykGSAH7PIGRm5dy69Zmze22BPt0QaofxJ6y1G2iS8XRNiuL832um"], ["created_at", "2017-08-20 17:36:00.647550"], ["updated_at", "2017-08-20 17:36:00.647550"], ["provider", "spotify"], ["uid", "PbQ7Xj4r96CmNf9b"], ["username", "carli_abshire"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-20 17:36:00.512955"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "thalia.bashirian@cronincrist.info"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "thalia.bashirian@cronincrist.info"], ["encrypted_password", "$2a$11$kHGtqlSkcN/RpOarwPwAf.shegirbpxxYJlKO2LRO.bOD78dCVkSm"], ["created_at", "2017-08-20 17:36:00.784529"], ["updated_at", "2017-08-20 17:36:00.784529"], ["provider", "spotify"], ["uid", "5iTd2qOyLtO"], ["username", "joesph"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-20 17:36:00.650264"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jerrold_beatty@emmerichokuneva.biz"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "jerrold_beatty@emmerichokuneva.biz"], ["encrypted_password", "$2a$11$Bq/5Zl5kfV/iCpb3BB8sBevHUVfiZH2pAYmiZgSob8sAz/7i7CQCG"], ["created_at", "2017-08-20 17:36:00.921591"], ["updated_at", "2017-08-20 17:36:00.921591"], ["provider", "spotify"], ["uid", "F5L8JiOgZ1Hm"], ["username", "krystel"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-20 17:36:00.786857"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "cathy.shanahan@tremblay.io"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "cathy.shanahan@tremblay.io"], ["encrypted_password", "$2a$11$Wg2KoQ8PJUM2fONJRDrljujgFPIOnQguOljJtAJ2is9p0BInUt09a"], ["created_at", "2017-08-20 17:36:01.058357"], ["updated_at", "2017-08-20 17:36:01.058357"], ["provider", "spotify"], ["uid", "BoG9Lo3a0iExGf4"], ["username", "oral"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-20 17:36:00.923933"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "terry@welch.io"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "terry@welch.io"], ["encrypted_password", "$2a$11$LKDo9CMXJqHbzDp4sf/Dw.TpVtUIEg4NjxlSDiNXH/LeBUWb2D60K"], ["created_at", "2017-08-20 17:36:01.194640"], ["updated_at", "2017-08-20 17:36:01.194640"], ["provider", "spotify"], ["uid", "RvYeQyTcM17wZ83"], ["username", "ashton"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-20 17:36:01.060552"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "receiver_id", "song_id", "custom_location", "location_id", "expiration_date", "comment", "photo", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["sender_name", "Cheyenne"], ["receiver_name", "Myrl"], ["sender_id", 25], ["receiver_id", 16], ["song_id", 7], ["custom_location", "cardigan"], ["location_id", 2], ["expiration_date", "2017-08-28 20:02:41.209146"], ["comment", "Keytar tousled 3 wolf moon drinking photo booth."], ["photo", "lightbulb.png"], ["created_at", "2017-08-20 17:36:01.244091"], ["updated_at", "2017-08-20 17:36:01.244091"]]
+  [1m[35m (15.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "receiver_id", "song_id", "custom_location", "location_id", "expiration_date", "comment", "photo", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["sender_name", "Greyson"], ["receiver_name", "Jaiden"], ["sender_id", 30], ["receiver_id", 4], ["song_id", 1], ["custom_location", "chicharrones"], ["location_id", 10], ["expiration_date", "2017-08-28 20:02:41.261640"], ["comment", "Shoreditch aesthetic cliche distillery pickled."], ["photo", "lightbulb.png"], ["created_at", "2017-08-20 17:36:01.268005"], ["updated_at", "2017-08-20 17:36:01.268005"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "receiver_id", "song_id", "custom_location", "location_id", "expiration_date", "comment", "photo", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["sender_name", "Tony"], ["receiver_name", "Domenica"], ["sender_id", 17], ["receiver_id", 25], ["song_id", 7], ["custom_location", "seitan"], ["location_id", 6], ["expiration_date", "2017-08-28 20:02:41.269806"], ["comment", "Kickstarter normcore tote bag trust fund cornhole fingerstache."], ["photo", "lightbulb.png"], ["created_at", "2017-08-20 17:36:01.274963"], ["updated_at", "2017-08-20 17:36:01.274963"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "receiver_id", "song_id", "custom_location", "location_id", "expiration_date", "comment", "photo", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["sender_name", "Ashlynn"], ["receiver_name", "Roberta"], ["sender_id", 15], ["receiver_id", 18], ["song_id", 1], ["custom_location", "kinfolk"], ["location_id", 2], ["expiration_date", "2017-08-28 20:02:41.276829"], ["comment", "+1 crucifix ugh brunch bespoke skateboard."], ["photo", "lightbulb.png"], ["created_at", "2017-08-20 17:36:01.281553"], ["updated_at", "2017-08-20 17:36:01.281553"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "receiver_id", "song_id", "custom_location", "location_id", "expiration_date", "comment", "photo", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["sender_name", "Javonte"], ["receiver_name", "Katelyn"], ["sender_id", 12], ["receiver_id", 25], ["song_id", 2], ["custom_location", "loko"], ["location_id", 3], ["expiration_date", "2017-08-28 20:02:41.283153"], ["comment", "Cleanse craft beer williamsburg iphone literally paleo 3 wolf moon."], ["photo", "lightbulb.png"], ["created_at", "2017-08-20 17:36:01.287513"], ["updated_at", "2017-08-20 17:36:01.287513"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "receiver_id", "song_id", "custom_location", "location_id", "expiration_date", "comment", "photo", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["sender_name", "Emilia"], ["receiver_name", "Georgianna"], ["sender_id", 13], ["receiver_id", 5], ["song_id", 5], ["custom_location", "8-bit"], ["location_id", 4], ["expiration_date", "2017-08-28 20:02:41.289213"], ["comment", "Yolo hammock fanny pack keytar aesthetic next level thundercats."], ["photo", "lightbulb.png"], ["created_at", "2017-08-20 17:36:01.293703"], ["updated_at", "2017-08-20 17:36:01.293703"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.1ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mSong Load (0.1ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "receiver_id", "song_id", "custom_location", "location_id", "expiration_date", "comment", "photo", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["sender_name", "Melvin"], ["receiver_name", "Zackery"], ["sender_id", 8], ["receiver_id", 11], ["song_id", 6], ["custom_location", "kickstarter"], ["location_id", 4], ["expiration_date", "2017-08-28 20:02:41.295554"], ["comment", "Chillwave gluten-free franzen raw denim wolf master fanny pack kinfolk."], ["photo", "lightbulb.png"], ["created_at", "2017-08-20 17:36:01.299889"], ["updated_at", "2017-08-20 17:36:01.299889"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.1ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSong Load (0.1ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "receiver_id", "song_id", "custom_location", "location_id", "expiration_date", "comment", "photo", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["sender_name", "Ignacio"], ["receiver_name", "London"], ["sender_id", 13], ["receiver_id", 18], ["song_id", 3], ["custom_location", "90's"], ["location_id", 2], ["expiration_date", "2017-08-28 20:02:41.301549"], ["comment", "Poutine direct trade crucifix yr pug sartorial whatever."], ["photo", "lightbulb.png"], ["created_at", "2017-08-20 17:36:01.305806"], ["updated_at", "2017-08-20 17:36:01.305806"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.1ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mSong Load (0.1ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "receiver_id", "song_id", "custom_location", "location_id", "expiration_date", "comment", "photo", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["sender_name", "Prudence"], ["receiver_name", "Kristoffer"], ["sender_id", 3], ["receiver_id", 18], ["song_id", 1], ["custom_location", "etsy"], ["location_id", 10], ["expiration_date", "2017-08-28 20:02:41.307505"], ["comment", "Selvage thundercats yuccie vegan humblebrag lumbersexual celiac pbr&b."], ["photo", "lightbulb.png"], ["created_at", "2017-08-20 17:36:01.311752"], ["updated_at", "2017-08-20 17:36:01.311752"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.1ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mSong Load (0.1ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "receiver_id", "song_id", "custom_location", "location_id", "expiration_date", "comment", "photo", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["sender_name", "Maynard"], ["receiver_name", "Dale"], ["sender_id", 1], ["receiver_id", 23], ["song_id", 10], ["custom_location", "keytar"], ["location_id", 7], ["expiration_date", "2017-08-28 20:02:41.313398"], ["comment", "Brunch neutra direct trade austin mlkshk squid carry pug wes anderson."], ["photo", "lightbulb.png"], ["created_at", "2017-08-20 17:36:01.317647"], ["updated_at", "2017-08-20 17:36:01.317647"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7926829025639619690)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7926829025639619690)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2017-08-20 12:36:49 -0500
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BouquetsController#new as HTML
+Completed 401 Unauthorized in 20ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-20 12:36:50 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (1.0ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (25.6ms)
+Completed 200 OK in 618ms (Views: 594.2ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/auth/spotify" for 127.0.0.1 at 2017-08-20 12:36:54 -0500
+Started GET "/auth/spotify/callback?code=AQCuMKPTtbXcg0KC0btkUUqO_edCxLBgrNVtAk66FSvFEPATNZ-re7PY-p7-oKLxjthUg8lvDp_-EpIhOHYKYQ5V8yXAhhzjD_J40Wy1rZfFvcvR36JNsXxFgJYNlJTj8rhdqWXQVjJezjKofRGqhEDD9AHe49QPyTRN_POp1RLDDeC0SOTdEhxz0dvAkwWhJanef3GOvSbKb0s4j3KZsLV8aF3XmUe0rEXzUg6j25i32F3y24rmDYNtSvTJXtt8IO-MeE0MbD5V7wwls94MmH4An_OpJZnBkUTlQoumom2uFo5rCEcc1RQ&state=13e13e621971aecf8fc54f305dece6a112a5f80b5169ecf4" for 127.0.0.1 at 2017-08-20 12:37:12 -0500
+Processing by CallbacksController#spotify as HTML
+  Parameters: {"code"=>"AQCuMKPTtbXcg0KC0btkUUqO_edCxLBgrNVtAk66FSvFEPATNZ-re7PY-p7-oKLxjthUg8lvDp_-EpIhOHYKYQ5V8yXAhhzjD_J40Wy1rZfFvcvR36JNsXxFgJYNlJTj8rhdqWXQVjJezjKofRGqhEDD9AHe49QPyTRN_POp1RLDDeC0SOTdEhxz0dvAkwWhJanef3GOvSbKb0s4j3KZsLV8aF3XmUe0rEXzUg6j25i32F3y24rmDYNtSvTJXtt8IO-MeE0MbD5V7wwls94MmH4An_OpJZnBkUTlQoumom2uFo5rCEcc1RQ", "state"=>"13e13e621971aecf8fc54f305dece6a112a5f80b5169ecf4"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2 ORDER BY "users"."id" ASC LIMIT $3[0m  [["provider", "spotify"], ["uid", "1220909326"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sinclairswan@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["email", "sinclairswan@gmail.com"], ["encrypted_password", "$2a$11$1VWmLMJ1ZD69dJGhNibmy.OEU//GOH.qrrMDjl0cjFI.6tTd6US5K"], ["created_at", "2017-08-20 17:37:13.371515"], ["updated_at", "2017-08-20 17:37:13.371515"], ["provider", "spotify"], ["uid", "1220909326"], ["birthdate", "1979-09-23 00:00:00"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2017-08-20 17:37:13.375288"], ["last_sign_in_at", "2017-08-20 17:37:13.375288"], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["updated_at", "2017-08-20 17:37:13.375947"], ["id", 31]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 169ms (ActiveRecord: 3.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-20 12:37:13 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 27ms (Views: 22.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-20 12:37:59 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 26ms (Views: 18.8ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 12:38:04 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nktnpx5JBT7szzXj6arvliMaXHN75I1FnDQ482741kJZbwDOE9kpM8COlL1f1MVGk/R72dCTe8OoXoYDlXaUkw==", "search"=>"pisgpshg"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 21370ms (ActiveRecord: 0.3ms)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/spotify_search_controller.rb:24:in `index'
+Started GET "/" for 127.0.0.1 at 2017-08-20 12:39:48 -0500
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 281ms (Views: 243.1ms | ActiveRecord: 4.8ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 12:41:08 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HQvSyDQtmEF0T0+WwM8XAvJAbamySHfyj52R5ZkuqwjaL7WhOb20TFgO7sh2sT3SQq5KAxk/gXS79y8VYqDp2Q==", "search"=>"phfpdhs"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 924ms (ActiveRecord: 3.4ms)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/spotify_search_controller.rb:24:in `index'
+Started GET "/" for 127.0.0.1 at 2017-08-20 12:41:18 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 69ms (Views: 20.4ms | ActiveRecord: 3.2ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 12:41:21 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FbPndrmeiXztB1yQ7ik00iM5wk1TyldKfegWwTPM+UvSl4AftA6lccFG/c5YVx4Ck9fl5/i9ocxJgqgxyEK7mg==", "search"=>"dgsdghsd"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 348ms (ActiveRecord: 0.4ms)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/spotify_search_controller.rb:24:in `index'
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 12:41:41 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FbPndrmeiXztB1yQ7ik00iM5wk1TyldKfegWwTPM+UvSl4AftA6lccFG/c5YVx4Ck9fl5/i9ocxJgqgxyEK7mg==", "search"=>"dgsdghsd"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 375ms (ActiveRecord: 2.8ms)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/spotify_search_controller.rb:24:in `index'
+Started GET "/" for 127.0.0.1 at 2017-08-20 12:43:29 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 45ms (Views: 19.0ms | ActiveRecord: 4.5ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 12:43:34 -0500
+  
+SyntaxError (/Users/apprentice/wearehear/app/controllers/spotify_search_controller.rb:40: syntax error, unexpected keyword_end, expecting end-of-input):
+  
+app/controllers/spotify_search_controller.rb:40: syntax error, unexpected keyword_end, expecting end-of-input
+Started GET "/" for 127.0.0.1 at 2017-08-20 12:43:45 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 43ms (Views: 17.4ms | ActiveRecord: 2.8ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 12:43:48 -0500
+  
+SyntaxError (/Users/apprentice/wearehear/app/controllers/spotify_search_controller.rb:40: syntax error, unexpected keyword_end, expecting end-of-input):
+  
+app/controllers/spotify_search_controller.rb:40: syntax error, unexpected keyword_end, expecting end-of-input
+Started GET "/" for 127.0.0.1 at 2017-08-20 12:43:57 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 43ms (Views: 17.6ms | ActiveRecord: 2.9ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 12:44:01 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"x670GvN1lLENUz4SKovmBVftIAXI6qjtDZ4KbzrAeroAipNz/uW4vCESn0yc9czV5wMHr2OdXms59LSfwU44aw==", "search"=>"hdlfhds"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 155972ms (Views: 41.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 12:48:11 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"x670GvN1lLENUz4SKovmBVftIAXI6qjtDZ4KbzrAeroAipNz/uW4vCESn0yc9czV5wMHr2OdXms59LSfwU44aw==", "search"=>"hdlfhds"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 3802ms (Views: 28.4ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/spotify_search" for 127.0.0.1 at 2017-08-20 12:48:27 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/spotify_search"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `call'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2017-08-20 12:48:45 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 31ms (Views: 27.5ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 12:48:49 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sSlnS4BimsvnsWxsiGCKpyZ08WXAGgnr17B6DmSC1QF2DQAijfK2xsvwzTI+HqB3lprWz2tt/23j2sT+nwyX0A==", "search"=>"jsd;gjasdg"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 7066ms (Views: 21.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-20 12:49:07 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 28ms (Views: 24.8ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 12:49:10 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ozSGSxSaBWcy/VWcFptUFGag8CXLCNiSDd7TJ6fbmHVkEOEiGQopah689MKg5X7E1k7Xj2B/LhQ5tG3XXFXapA==", "search"=>"asdhgosdahgsdjhg"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 3640ms (Views: 17.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/spotify_search" for 127.0.0.1 at 2017-08-20 12:49:30 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/spotify_search"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `call'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2017-08-20 12:50:27 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 23ms (Views: 20.0ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 12:50:32 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dbp6FVD8ei96/Xwml+XIM8bimzfFlXIpzkZN7VvfWg3Knh18XWxWIla83Xghm+Ljdgy8nW7ihK/6LPMdoFEY3A==", "search"=>"oshoagofsaof"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 385ms (Views: 15.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/search" for 127.0.0.1 at 2017-08-20 12:51:10 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/search"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `call'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 12:51:44 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dbp6FVD8ei96/Xwml+XIM8bimzfFlXIpzkZN7VvfWg3Knh18XWxWIla83Xghm+Ljdgy8nW7ihK/6LPMdoFEY3A==", "search"=>"oshoagofsaof"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 4993ms (Views: 23.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-20 12:51:56 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 23ms (Views: 19.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 12:52:02 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bgHjdKWL4lkI4Jmp7wPIvrm91DY4Ne5PYcpR1L6WYPipJYQdqBvOVCShOPdZfeJuCVPznJNCGMlVoO8kRRgiKQ==", "search"=>"aogoesgfogd"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 3624ms (Views: 27.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/bouquets/new" for 127.0.0.1 at 2017-08-20 12:52:09 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 24ms (Views: 20.9ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 12:52:35 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"u6cloF0it47anxrd4smp59gukzke+hEU8MClavDqFfV8g0LJULKbg/beu4NUt4M3aMC0k7WN55LEqhuaC2RXJA==", "search"=>"chicken"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 5283ms (Views: 20.7ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 12:53:41 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"u6cloF0it47anxrd4smp59gukzke+hEU8MClavDqFfV8g0LJULKbg/beu4NUt4M3aMC0k7WN55LEqhuaC2RXJA==", "search"=>"psdjgpdsfgjp"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 3050ms (Views: 20.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/bouquets/new" for 127.0.0.1 at 2017-08-20 12:53:52 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 27ms (Views: 22.8ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 12:54:05 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HCTkZOVCJqDr7BPC0UuT5238cbqmN/c523t4v35RrwrbAIMN6NIKrcetspxnNbk33RJWEA1AAb/vEcZPhd/t2w==", "search"=>"taylor swift"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 6989ms (Views: 16.8ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:01:44 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HCTkZOVCJqDr7BPC0UuT5238cbqmN/c523t4v35RrwrbAIMN6NIKrcetspxnNbk33RJWEA1AAb/vEcZPhd/t2w==", "search"=>"taylor swift"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 647ms (Views: 20.7ms | ActiveRecord: 3.4ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:03:03 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HCTkZOVCJqDr7BPC0UuT5238cbqmN/c523t4v35RrwrbAIMN6NIKrcetspxnNbk33RJWEA1AAb/vEcZPhd/t2w==", "search"=>"taylor swift"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 575ms (Views: 21.3ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:03:13 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HCTkZOVCJqDr7BPC0UuT5238cbqmN/c523t4v35RrwrbAIMN6NIKrcetspxnNbk33RJWEA1AAb/vEcZPhd/t2w==", "search"=>"taylor swift"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 943ms (Views: 28.0ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:04:19 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HCTkZOVCJqDr7BPC0UuT5238cbqmN/c523t4v35RrwrbAIMN6NIKrcetspxnNbk33RJWEA1AAb/vEcZPhd/t2w==", "search"=>"taylor swift"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 577ms (Views: 21.0ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:04:48 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HCTkZOVCJqDr7BPC0UuT5238cbqmN/c523t4v35RrwrbAIMN6NIKrcetspxnNbk33RJWEA1AAb/vEcZPhd/t2w==", "search"=>"taylor swift"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 959ms (Views: 21.6ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:05:32 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HCTkZOVCJqDr7BPC0UuT5238cbqmN/c523t4v35RrwrbAIMN6NIKrcetspxnNbk33RJWEA1AAb/vEcZPhd/t2w==", "search"=>"taylor swift"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 571ms (Views: 22.9ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:06:16 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HCTkZOVCJqDr7BPC0UuT5238cbqmN/c523t4v35RrwrbAIMN6NIKrcetspxnNbk33RJWEA1AAb/vEcZPhd/t2w==", "search"=>"taylor swift"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 1013ms (Views: 19.5ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:16:30 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HCTkZOVCJqDr7BPC0UuT5238cbqmN/c523t4v35RrwrbAIMN6NIKrcetspxnNbk33RJWEA1AAb/vEcZPhd/t2w==", "search"=>"taylor swift"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 1054ms (Views: 19.5ms | ActiveRecord: 4.1ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:17:00 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HCTkZOVCJqDr7BPC0UuT5238cbqmN/c523t4v35RrwrbAIMN6NIKrcetspxnNbk33RJWEA1AAb/vEcZPhd/t2w==", "search"=>"taylor swift"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 579ms (Views: 16.8ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:17:16 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HCTkZOVCJqDr7BPC0UuT5238cbqmN/c523t4v35RrwrbAIMN6NIKrcetspxnNbk33RJWEA1AAb/vEcZPhd/t2w==", "search"=>"taylor swift"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 987ms (Views: 16.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:17:51 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HCTkZOVCJqDr7BPC0UuT5238cbqmN/c523t4v35RrwrbAIMN6NIKrcetspxnNbk33RJWEA1AAb/vEcZPhd/t2w==", "search"=>"taylor swift"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 561ms (Views: 31.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/bouquets/new" for 127.0.0.1 at 2017-08-20 13:19:02 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 37ms (Views: 30.9ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:20:26 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CPubP4UhZXNTOSq1rcvVXoRiizHYQLHVcuDHSihj+6/P3/xWiLFJfn94i+sbtf+ONIysm3M3R1NGinm60+25fg==", "search"=>"jolene"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 942ms (Views: 17.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/bouquets/new" for 127.0.0.1 at 2017-08-20 13:22:08 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 51ms (Views: 21.4ms | ActiveRecord: 5.0ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:22:17 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YkNHnwgZ5riNewB2xZNfFLL0VJ9BUr8dM0cfJJROFsilZyD2BYnKtaE6oShz7XXEAhpzNeolSZsHLaHUb8BUGQ==", "search"=>"joelene"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 989ms (Views: 20.2ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:22:30 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YkNHnwgZ5riNewB2xZNfFLL0VJ9BUr8dM0cfJJROFsilZyD2BYnKtaE6oShz7XXEAhpzNeolSZsHLaHUb8BUGQ==", "search"=>"jolene"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 632ms (Views: 24.2ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:23:59 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YkNHnwgZ5riNewB2xZNfFLL0VJ9BUr8dM0cfJJROFsilZyD2BYnKtaE6oShz7XXEAhpzNeolSZsHLaHUb8BUGQ==", "search"=>"Boyfriend"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 986ms (Views: 20.8ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:24:33 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YkNHnwgZ5riNewB2xZNfFLL0VJ9BUr8dM0cfJJROFsilZyD2BYnKtaE6oShz7XXEAhpzNeolSZsHLaHUb8BUGQ==", "search"=>"Marika Hackman"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 958ms (Views: 18.3ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:24:51 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YkNHnwgZ5riNewB2xZNfFLL0VJ9BUr8dM0cfJJROFsilZyD2BYnKtaE6oShz7XXEAhpzNeolSZsHLaHUb8BUGQ==", "search"=>"Jolene"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 614ms (Views: 20.8ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:25:06 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YkNHnwgZ5riNewB2xZNfFLL0VJ9BUr8dM0cfJJROFsilZyD2BYnKtaE6oShz7XXEAhpzNeolSZsHLaHUb8BUGQ==", "search"=>"Jolene Dolly Parton"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 403ms (Views: 21.7ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:25:16 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YkNHnwgZ5riNewB2xZNfFLL0VJ9BUr8dM0cfJJROFsilZyD2BYnKtaE6oShz7XXEAhpzNeolSZsHLaHUb8BUGQ==", "search"=>"Jolene, Dolly Parton"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 799ms (Views: 16.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:25:29 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YkNHnwgZ5riNewB2xZNfFLL0VJ9BUr8dM0cfJJROFsilZyD2BYnKtaE6oShz7XXEAhpzNeolSZsHLaHUb8BUGQ==", "search"=>"Beyonce"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 590ms (Views: 30.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:26:22 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YkNHnwgZ5riNewB2xZNfFLL0VJ9BUr8dM0cfJJROFsilZyD2BYnKtaE6oShz7XXEAhpzNeolSZsHLaHUb8BUGQ==", "search"=>"Dolly Parton, Jolene"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 835ms (Views: 23.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/bouquets/new" for 127.0.0.1 at 2017-08-20 13:26:25 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 29ms (Views: 25.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/bouquets/new" for 127.0.0.1 at 2017-08-20 13:28:15 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 53ms (Views: 24.6ms | ActiveRecord: 2.7ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:28:23 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9TNe4QkZBUg7ydA+IjOOoXLsDiuN4qpms59ilOm7zLEyFzmIBIkpRReIcWCUTaRxwgIpgSaVXOCH9dxkEjWOYA==", "search"=>"Jolene Dolly Parton"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 834ms (Views: 29.7ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:31:30 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9TNe4QkZBUg7ydA+IjOOoXLsDiuN4qpms59ilOm7zLEyFzmIBIkpRReIcWCUTaRxwgIpgSaVXOCH9dxkEjWOYA==", "search"=>"cash"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 765ms (Views: 25.6ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:34:37 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9TNe4QkZBUg7ydA+IjOOoXLsDiuN4qpms59ilOm7zLEyFzmIBIkpRReIcWCUTaRxwgIpgSaVXOCH9dxkEjWOYA==", "search"=>"i and love and you"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 1915ms (Views: 21.0ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:35:21 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9TNe4QkZBUg7ydA+IjOOoXLsDiuN4qpms59ilOm7zLEyFzmIBIkpRReIcWCUTaRxwgIpgSaVXOCH9dxkEjWOYA==", "search"=>"i and love and you"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 2376ms (Views: 23.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:37:30 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9TNe4QkZBUg7ydA+IjOOoXLsDiuN4qpms59ilOm7zLEyFzmIBIkpRReIcWCUTaRxwgIpgSaVXOCH9dxkEjWOYA==", "search"=>"jolene"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 1104ms (Views: 21.7ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:43:38 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9TNe4QkZBUg7ydA+IjOOoXLsDiuN4qpms59ilOm7zLEyFzmIBIkpRReIcWCUTaRxwgIpgSaVXOCH9dxkEjWOYA==", "search"=>"jolene"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 1057ms (Views: 22.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/spotify_search?form_class=add_song_button" for 127.0.0.1 at 2017-08-20 13:43:45 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"authenticity_token"=>"hbnlkMAOEr2myzPTVh0H11fDoKelbZvnWZ1fZoC4OZdCnYL5zZ4+sIqKko3gYy0H5y2HDQ4abWFt9+GWezZ7Rg==", "form_class"=>"add_song_button"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.6ms)
+
+
+  
+NoMethodError (undefined method `gsub' for nil:NilClass):
+  
+app/controllers/spotify_search_controller.rb:7:in `index'
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:44:44 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9TNe4QkZBUg7ydA+IjOOoXLsDiuN4qpms59ilOm7zLEyFzmIBIkpRReIcWCUTaRxwgIpgSaVXOCH9dxkEjWOYA==", "search"=>"the maytails"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 799ms (Views: 18.9ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:44:53 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9TNe4QkZBUg7ydA+IjOOoXLsDiuN4qpms59ilOm7zLEyFzmIBIkpRReIcWCUTaRxwgIpgSaVXOCH9dxkEjWOYA==", "search"=>"toots"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (3.6ms)
+Completed 500 Internal Server Error in 611ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"", :controller=>"spotify_search", :form_class=>"add_song_button"}):
+     5: 		<% @tracks_info.each do |track| %>
+     6: 		 <iframe src="https://open.spotify.com/embed?uri=spotify:track:<%=track[:track_id] %>"
+     7: 		        frameborder="0" allowtransparency="true" width="250" height="330"></iframe>
+     8:      <%=button_to "add song to bouquet", action:"", form_class:"add_song_button" %>
+     9: 		<% end %>
+    10: 
+    11: 	<% else %>
+  
+app/views/spotify_search/results.html.erb:8:in `block in _app_views_spotify_search_results_html_erb__4216674678049097489_70270999597280'
+app/views/spotify_search/results.html.erb:5:in `each'
+app/views/spotify_search/results.html.erb:5:in `_app_views_spotify_search_results_html_erb__4216674678049097489_70270999597280'
+app/controllers/spotify_search_controller.rb:39:in `index'
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:45:16 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9TNe4QkZBUg7ydA+IjOOoXLsDiuN4qpms59ilOm7zLEyFzmIBIkpRReIcWCUTaRxwgIpgSaVXOCH9dxkEjWOYA==", "search"=>"toots"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (2.6ms)
+Completed 500 Internal Server Error in 612ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"new", :controller=>"spotify_search", :form_class=>"add_song_button"}):
+     5: 		<% @tracks_info.each do |track| %>
+     6: 		 <iframe src="https://open.spotify.com/embed?uri=spotify:track:<%=track[:track_id] %>"
+     7: 		        frameborder="0" allowtransparency="true" width="250" height="330"></iframe>
+     8:      <%=button_to "add song to bouquet", action:"new", form_class:"add_song_button" %>
+     9: 		<% end %>
+    10: 
+    11: 	<% else %>
+  
+app/views/spotify_search/results.html.erb:8:in `block in _app_views_spotify_search_results_html_erb__4216674678049097489_70270988761580'
+app/views/spotify_search/results.html.erb:5:in `each'
+app/views/spotify_search/results.html.erb:5:in `_app_views_spotify_search_results_html_erb__4216674678049097489_70270988761580'
+app/controllers/spotify_search_controller.rb:39:in `index'
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:45:23 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9TNe4QkZBUg7ydA+IjOOoXLsDiuN4qpms59ilOm7zLEyFzmIBIkpRReIcWCUTaRxwgIpgSaVXOCH9dxkEjWOYA==", "search"=>"toots"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (2.3ms)
+Completed 500 Internal Server Error in 629ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"new", :controller=>"spotify_search", :form_class=>"add_song_button"}):
+     5: 		<% @tracks_info.each do |track| %>
+     6: 		 <iframe src="https://open.spotify.com/embed?uri=spotify:track:<%=track[:track_id] %>"
+     7: 		        frameborder="0" allowtransparency="true" width="250" height="330"></iframe>
+     8:      <%=button_to "add song to bouquet", action:"new", form_class:"add_song_button" %>
+     9: 		<% end %>
+    10: 
+    11: 	<% else %>
+  
+app/views/spotify_search/results.html.erb:8:in `block in _app_views_spotify_search_results_html_erb__4216674678049097489_70271013018840'
+app/views/spotify_search/results.html.erb:5:in `each'
+app/views/spotify_search/results.html.erb:5:in `_app_views_spotify_search_results_html_erb__4216674678049097489_70271013018840'
+app/controllers/spotify_search_controller.rb:39:in `index'
+Started GET "/bouquets/new" for 127.0.0.1 at 2017-08-20 13:46:53 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 22ms (Views: 18.8ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:46:58 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SPBIqaxaAxzOM/hNHTp39lgFXcT03rHVCqrqAquO9bCP1C/AocovEeJyWROrRF0m6Ot6bl+pR1M+wFTyUAC3YQ==", "search"=>"toots"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 704ms (Views: 20.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:49:25 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SPBIqaxaAxzOM/hNHTp39lgFXcT03rHVCqrqAquO9bCP1C/AocovEeJyWROrRF0m6Ot6bl+pR1M+wFTyUAC3YQ==", "search"=>"toots"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 1053ms (Views: 27.3ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:50:10 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SPBIqaxaAxzOM/hNHTp39lgFXcT03rHVCqrqAquO9bCP1C/AocovEeJyWROrRF0m6Ot6bl+pR1M+wFTyUAC3YQ==", "search"=>"toots"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 633ms (Views: 25.0ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:53:05 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SPBIqaxaAxzOM/hNHTp39lgFXcT03rHVCqrqAquO9bCP1C/AocovEeJyWROrRF0m6Ot6bl+pR1M+wFTyUAC3YQ==", "search"=>"toots"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 678ms (Views: 26.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:53:27 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SPBIqaxaAxzOM/hNHTp39lgFXcT03rHVCqrqAquO9bCP1C/AocovEeJyWROrRF0m6Ot6bl+pR1M+wFTyUAC3YQ==", "search"=>"toots"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 612ms (Views: 23.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:53:51 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SPBIqaxaAxzOM/hNHTp39lgFXcT03rHVCqrqAquO9bCP1C/AocovEeJyWROrRF0m6Ot6bl+pR1M+wFTyUAC3YQ==", "search"=>"toots"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (13.9ms)
+Completed 200 OK in 684ms (Views: 39.6ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:54:53 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SPBIqaxaAxzOM/hNHTp39lgFXcT03rHVCqrqAquO9bCP1C/AocovEeJyWROrRF0m6Ot6bl+pR1M+wFTyUAC3YQ==", "search"=>"toots"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 1056ms (Views: 24.0ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:56:06 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SPBIqaxaAxzOM/hNHTp39lgFXcT03rHVCqrqAquO9bCP1C/AocovEeJyWROrRF0m6Ot6bl+pR1M+wFTyUAC3YQ==", "search"=>"toots"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 618ms (Views: 24.8ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:56:41 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SPBIqaxaAxzOM/hNHTp39lgFXcT03rHVCqrqAquO9bCP1C/AocovEeJyWROrRF0m6Ot6bl+pR1M+wFTyUAC3YQ==", "search"=>"toots"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 1086ms (Views: 25.8ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:57:02 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SPBIqaxaAxzOM/hNHTp39lgFXcT03rHVCqrqAquO9bCP1C/AocovEeJyWROrRF0m6Ot6bl+pR1M+wFTyUAC3YQ==", "search"=>"toots"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 667ms (Views: 24.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:57:22 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SPBIqaxaAxzOM/hNHTp39lgFXcT03rHVCqrqAquO9bCP1C/AocovEeJyWROrRF0m6Ot6bl+pR1M+wFTyUAC3YQ==", "search"=>"toots"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 629ms (Views: 27.5ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 13:57:47 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SPBIqaxaAxzOM/hNHTp39lgFXcT03rHVCqrqAquO9bCP1C/AocovEeJyWROrRF0m6Ot6bl+pR1M+wFTyUAC3YQ==", "search"=>"toots"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 637ms (Views: 27.7ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 14:00:06 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SPBIqaxaAxzOM/hNHTp39lgFXcT03rHVCqrqAquO9bCP1C/AocovEeJyWROrRF0m6Ot6bl+pR1M+wFTyUAC3YQ==", "search"=>"toots"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 1060ms (Views: 26.3ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 14:00:42 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SPBIqaxaAxzOM/hNHTp39lgFXcT03rHVCqrqAquO9bCP1C/AocovEeJyWROrRF0m6Ot6bl+pR1M+wFTyUAC3YQ==", "search"=>"toots"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 1087ms (Views: 25.3ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 14:01:03 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SPBIqaxaAxzOM/hNHTp39lgFXcT03rHVCqrqAquO9bCP1C/AocovEeJyWROrRF0m6Ot6bl+pR1M+wFTyUAC3YQ==", "search"=>"toots"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 627ms (Views: 26.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 14:01:14 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SPBIqaxaAxzOM/hNHTp39lgFXcT03rHVCqrqAquO9bCP1C/AocovEeJyWROrRF0m6Ot6bl+pR1M+wFTyUAC3YQ==", "search"=>"toots"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 1110ms (Views: 47.3ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 14:02:01 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SPBIqaxaAxzOM/hNHTp39lgFXcT03rHVCqrqAquO9bCP1C/AocovEeJyWROrRF0m6Ot6bl+pR1M+wFTyUAC3YQ==", "search"=>"toots"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 634ms (Views: 26.3ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 14:02:50 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SPBIqaxaAxzOM/hNHTp39lgFXcT03rHVCqrqAquO9bCP1C/AocovEeJyWROrRF0m6Ot6bl+pR1M+wFTyUAC3YQ==", "search"=>"toots"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 605ms (Views: 22.6ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 14:03:09 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SPBIqaxaAxzOM/hNHTp39lgFXcT03rHVCqrqAquO9bCP1C/AocovEeJyWROrRF0m6Ot6bl+pR1M+wFTyUAC3YQ==", "search"=>"toots"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 642ms (Views: 25.9ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 14:04:47 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SPBIqaxaAxzOM/hNHTp39lgFXcT03rHVCqrqAquO9bCP1C/AocovEeJyWROrRF0m6Ot6bl+pR1M+wFTyUAC3YQ==", "search"=>"toots"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 665ms (Views: 28.0ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 14:05:42 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SPBIqaxaAxzOM/hNHTp39lgFXcT03rHVCqrqAquO9bCP1C/AocovEeJyWROrRF0m6Ot6bl+pR1M+wFTyUAC3YQ==", "search"=>"toots"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 730ms (Views: 25.5ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 14:06:55 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SPBIqaxaAxzOM/hNHTp39lgFXcT03rHVCqrqAquO9bCP1C/AocovEeJyWROrRF0m6Ot6bl+pR1M+wFTyUAC3YQ==", "search"=>"toots"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 1085ms (Views: 24.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 14:08:04 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SPBIqaxaAxzOM/hNHTp39lgFXcT03rHVCqrqAquO9bCP1C/AocovEeJyWROrRF0m6Ot6bl+pR1M+wFTyUAC3YQ==", "search"=>"toots"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 637ms (Views: 24.5ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/bouquets/create" for 127.0.0.1 at 2017-08-20 14:11:22 -0500
+Processing by BouquetsController#create as HTML
+  Parameters: {"authenticity_token"=>"zaL+V//8zKE0fuVesloQaOFBLVuHiE5CNxGGoUD4PlwKhpk+8mzgrBg/RAAEJDq4Ua8K8Sz/uMQDezhRu3Z8jQ=="}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+No template found for BouquetsController#create, rendering head :no_content
+Completed 204 No Content in 115ms (ActiveRecord: 0.7ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 14:11:52 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SPBIqaxaAxzOM/hNHTp39lgFXcT03rHVCqrqAquO9bCP1C/AocovEeJyWROrRF0m6Ot6bl+pR1M+wFTyUAC3YQ==", "search"=>"toots"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 1052ms (Views: 22.5ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 14:12:28 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SPBIqaxaAxzOM/hNHTp39lgFXcT03rHVCqrqAquO9bCP1C/AocovEeJyWROrRF0m6Ot6bl+pR1M+wFTyUAC3YQ==", "search"=>"toots"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 1009ms (Views: 24.7ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 14:12:43 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SPBIqaxaAxzOM/hNHTp39lgFXcT03rHVCqrqAquO9bCP1C/AocovEeJyWROrRF0m6Ot6bl+pR1M+wFTyUAC3YQ==", "search"=>"toots"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 620ms (Views: 28.4ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 14:13:05 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SPBIqaxaAxzOM/hNHTp39lgFXcT03rHVCqrqAquO9bCP1C/AocovEeJyWROrRF0m6Ot6bl+pR1M+wFTyUAC3YQ==", "search"=>"toots"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 1080ms (Views: 25.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 14:13:59 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SPBIqaxaAxzOM/hNHTp39lgFXcT03rHVCqrqAquO9bCP1C/AocovEeJyWROrRF0m6Ot6bl+pR1M+wFTyUAC3YQ==", "search"=>"toots"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 617ms (Views: 23.9ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 14:14:13 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SPBIqaxaAxzOM/hNHTp39lgFXcT03rHVCqrqAquO9bCP1C/AocovEeJyWROrRF0m6Ot6bl+pR1M+wFTyUAC3YQ==", "search"=>"toots"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 1054ms (Views: 26.5ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 14:14:22 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SPBIqaxaAxzOM/hNHTp39lgFXcT03rHVCqrqAquO9bCP1C/AocovEeJyWROrRF0m6Ot6bl+pR1M+wFTyUAC3YQ==", "search"=>"toots"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 679ms (Views: 38.1ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 14:14:38 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SPBIqaxaAxzOM/hNHTp39lgFXcT03rHVCqrqAquO9bCP1C/AocovEeJyWROrRF0m6Ot6bl+pR1M+wFTyUAC3YQ==", "search"=>"toots"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 1015ms (Views: 24.0ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 14:38:32 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SPBIqaxaAxzOM/hNHTp39lgFXcT03rHVCqrqAquO9bCP1C/AocovEeJyWROrRF0m6Ot6bl+pR1M+wFTyUAC3YQ==", "search"=>"smashing pumkins"}
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 1042ms (Views: 213.2ms | ActiveRecord: 3.1ms)
+
+
+Started POST "/spotify_search" for 127.0.0.1 at 2017-08-20 14:38:39 -0500
+Processing by SpotifySearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SPBIqaxaAxzOM/hNHTp39lgFXcT03rHVCqrqAquO9bCP1C/AocovEeJyWROrRF0m6Ot6bl+pR1M+wFTyUAC3YQ==", "search"=>"smashing pumpkins"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering spotify_search/results.html.erb within layouts/application
+  Rendered spotify_search/results.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 574ms (Views: 19.6ms | ActiveRecord: 0.3ms)
+
+
