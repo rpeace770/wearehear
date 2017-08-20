@@ -9,7 +9,7 @@
 require 'faker'
 
 10.times do
-  Location.create(lat: Faker::Address.latitude, lng: Faker::Address.longitude, city: Faker::Address.city, state: Faker::Address.state, country: Faker::Address.country)
+  Location.create(lat: Faker::Address.latitude, lng: Faker::Address.longitude)
 end
 
 Song.create(artist: "Daughter", album: "Not To Disappear", track: "No Care", spotify_id: "26Ggcaz8arFAehpsfFTiRj")
@@ -28,5 +28,5 @@ Song.create(artist: "Kanye West", album: "The Life of Pablo", track: "Ultralight
 end
 
 10.times do
-  Bouquet.create(sender_id: rand(1..30), receiver_id: rand(1..30), sender_name: Faker::Name.first_name, receiver_name: Faker::Name.first_name, song_id: rand(1..10), custom_location: Faker::Hipster.word, location_id: rand(1..10), expiration_date: (Time.now + 700000), comment: Faker::Hipster.sentence(5), photo: "lightbulb.png")
+  Bouquet.create(sender_id: rand(1..30), sender_name: Faker::Name.first_name, receiver_name: Faker::Name.first_name, song_id: rand(1..10), custom_location: Faker::Hipster.word, location_id: rand(1..10), expiration_date: (Time.now + 700000), comment: Faker::Hipster.sentence(5), photo: "lightbulb.png")
 end
