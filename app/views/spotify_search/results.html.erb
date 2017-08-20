@@ -1,0 +1,31 @@
+<h1>Results</h1>
+<div>
+	<%if @artist_data != nil %>	
+	<h2> Artist </h2>
+		<% @tracks_info.each do |track| %>
+		  
+		  <iframe src="https://open.spotify.com/embed?uri=spotify:track:<%=track[:track_id] %>"
+		        frameborder="0" allowtransparency="true" width="250" height="100"></iframe>
+		  
+		<% end %>
+
+	<% else %>
+	  <h2>Zero results</h2>
+	<%end %>
+</div>
+
+<div>
+	<%if @tracks != nil %>
+			<h2>tracks</h2>
+
+				<% @tracks.each do |track| %>
+				<iframe src="https://open.spotify.com/embed?uri=spotify:track:<%=track['id'] %>"
+				        frameborder="0" allowtransparency="true" width="250" height="100"></iframe>
+				  
+			       
+			<%end %>
+
+	<% else %>
+		<h2>Zero results</h2>
+	<%end %>
+</div>
