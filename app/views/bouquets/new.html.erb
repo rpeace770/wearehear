@@ -19,7 +19,7 @@
 
 
 <div id="person">
-  <form action="/bouquets/create" method="post">
+  <form action="/bouquets/create" method="post" enctype="multipart/form-data">
     <p>Sender Name: <input type="text" name="bouquet[sender_name]" required></p>
     <p>Receiver Name: <input type="text" name="bouquet[receiver_name]" required></p>
     <p>Custom Location Name: <input type="text" name="bouquet[custom_location]" required></p>
@@ -34,6 +34,10 @@
     <p>Song Artist: <input type="text" name="song[artist]" required></p>
     <p>Song Album: <input type="text" name="song[album]" required></p>
     <p>Comment: <input type="text" name="bouquet[comment]" required></p>
+    <p>Comment: <input type="file" name="bouquet[image]" accept="image/*"></p>
     <p><input type="submit" value="Create Bouquet"></p>
+
   </form>
+
+
 </div>
