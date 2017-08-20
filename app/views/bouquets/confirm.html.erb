@@ -1,6 +1,7 @@
 <h1>Review Your Bouquet:</h1>
  From: <%= @bouquet.sender_name %><br>
  To: <%= @bouquet.receiver_name %><br>
+ Location: <%= @bouquet.custom_location %><br>
  Song: <%= @bouquet.song.track %><br>
  Artist: <%= @bouquet.song.artist %><br>
  Album: <%= @bouquet.song.album %><br>
@@ -9,3 +10,4 @@
 <h2>Ready to send your Bouquet?</h2>
 
 <%= render 'text_form' %>
+

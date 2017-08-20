@@ -6,7 +6,7 @@ class BouquetsController < ApplicationController
   end
 
   def create
-
+    # Use form data to create new bouquet.
   end
 
   def confirm
@@ -14,7 +14,7 @@ class BouquetsController < ApplicationController
   end
 
   def show
-
+    @bouquet = Bouquet.find(params[:id])
   end
 
 end

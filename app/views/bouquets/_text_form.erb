@@ -1,11 +1,7 @@
-
 <form action="/texts/create" method="post">
+<input type="hidden" name="text[sender]"  value=<%=@bouquet.sender_name%>><br>
 Phone number to text to:<br>
 <input type="text"
 name="text[number]"><br><br>
-Your name:<br>
-<input type="text"
-name="text[sender]"><br><br>
-
  <input type="submit" value="Send Bouquet!">
 </form>

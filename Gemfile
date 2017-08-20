@@ -5,8 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'jquery-rails'
 gem 'pry-rails'
-gem 'therubyracer'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-spotify'
@@ -22,7 +22,16 @@ gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
+
+
 # gem 'therubyracer', platforms: :ruby
+gem 'rest-client'
+
+
+# gem 'therubyracer', platforms: :ruby
+gem 'rspotify'
+gem 'therubyracer', platforms: :ruby
+
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -30,6 +39,7 @@ gem 'coffee-rails', '~> 4.2'
 # gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+gem 'dotenv'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
