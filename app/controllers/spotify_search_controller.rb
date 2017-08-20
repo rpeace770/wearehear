@@ -4,8 +4,8 @@ class SpotifySearchController < ApplicationController
   def index
 
   	spotify_url = "https://api.spotify.com/v1/"
-    artist = params[:search].gsub(/ /, "+")
-    searchURL = "#{spotify_url}search?q=#{artist}&type=artist,track"
+    query = params[:search].gsub(/ /, "%20")
+    searchURL = "#{spotify_url}search?q=#{query}&type=artist,track&limit=50"
 
     access_token = ENV['ACCESS_TOKEN']
 
@@ -21,16 +21,21 @@ class SpotifySearchController < ApplicationController
     # return that artist's top tracks
     @artist_data = JSON.parse(response)["artists"]["items"][0]
 
-    top_tracks_url = "https://api.spotify.com/v1/artists/#{@artist_data["id"]}/top-tracks?country=US"
+    #binding.pry
+    if @artist_data == nil
+      @tracks = ["No results found"]
+    else
+      top_tracks_url = "https://api.spotify.com/v1/artists/#{@artist_data["id"]}/top-tracks?country=US"
 
-    top_tracks_results = JSON.parse(RestClient.get(top_tracks_url, {"Authorization": "Bearer #{parsed_token["access_token"]}"}))
+      top_tracks_results = JSON.parse(RestClient.get(top_tracks_url, {"Authorization": "Bearer #{parsed_token["access_token"]}"}))
 
-     @tracks = JSON.parse(response)["tracks"]["items"]
+       @tracks = JSON.parse(response)["tracks"]["items"]
 
- # binding.pry
-    @tracks_info = top_tracks_results["tracks"].map do |track|
-      {track_id:track["id"], title: track["name"],  album_id:track["album"]["id"], album_name: track["album"]["name"], album_image: track["album"]["images"][1]["url"]}
-    end.flatten
+     # binding.pry
+      @tracks_info = top_tracks_results["tracks"].map do |track|
+        {track_id:track["id"], title: track["name"],  album_id:track["album"]["id"], album_name: track["album"]["name"], album_image: track["album"]["images"][1]["url"]}
+      end.flatten
+    end
 
     #render json: {tracks: @tracks_info, artist_data: @artist_data}
     render :results
