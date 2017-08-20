@@ -20,6 +20,7 @@ class SpotifySearchController < ApplicationController
     response = RestClient.get(searchURL, {"Authorization": "Bearer #{parsed_token["access_token"]}"})
     # return that artist's top tracks
     @artist_data = JSON.parse(response)["artists"]["items"][0]
+
     #binding.pry
     if @artist_data == nil
       @tracks = ["No results found"]
@@ -35,6 +36,7 @@ class SpotifySearchController < ApplicationController
         {track_id:track["id"], title: track["name"],  album_id:track["album"]["id"], album_name: track["album"]["name"], album_image: track["album"]["images"][1]["url"]}
       end.flatten
     end
+
     #render json: {tracks: @tracks_info, artist_data: @artist_data}
     render :results
   end
