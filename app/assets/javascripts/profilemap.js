@@ -1,8 +1,5 @@
+$(document).ready(initProfileMap);
 var profilemap;
-
-$(document).ready(function() {
-  initProfileMap();
-});
 
   function initProfileMap() {
     $.ajax({
@@ -16,14 +13,14 @@ $(document).ready(function() {
       zoom: 4
     });
 
-  var image = "assets/lightbulb.png";
+  // var image = "../assets/images/lightbulb.png";
   // var secretMessages = ["hi", "how", "are", "you", "now"];
     for(var i = 0; i < response.length; i++) {
       var latLng = new google.maps.LatLng(response[i].lat, response[i].lng);
       var marker = new google.maps.Marker({
         position: latLng,
-        map: profilemap,
-        icon: image
+        map: profilemap
+        // icon: image
       });
       // attachSecretMessage(marker, secretMessages[i]);
     }
