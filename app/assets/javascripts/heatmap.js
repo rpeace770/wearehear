@@ -1,8 +1,19 @@
-var map;
+var heatmap;
 
-  function initMap() {
+$(document).ready(function() {
+
+  function initHeatMap() {
+
+    $.ajax({
+      url: "/bouquets/all",
+      method: "get"
+    })
+    .done(function(response) {
+      console.log(response);
+    });
+
     var place = {lat: 28.526, lng: -100.492};
-    map = new google.maps.Map(document.getElementById("heatmap"), {
+    heatmap = new google.maps.Map(document.getElementById("heatmap"), {
       center: place,
       zoom: 5
     });
@@ -14,7 +25,7 @@ var map;
       var latLng = new google.maps.LatLng(json_object[i].lat, json_object[i].lng);
       var marker = new google.maps.Marker({
         position: latLng,
-        map: map,
+        map: heatmap,
         icon: image
       });
       attachSecretMessage(marker, secretMessages[i]);
@@ -25,7 +36,11 @@ var map;
       });
 
       marker.addListener('click', function() {
-        infowindow.open(marker.get('map'), marker);
+        infowindow.open(marker.get('heatmap'), marker);
       });
   }
 }
+
+initHeatMap();
+
+});

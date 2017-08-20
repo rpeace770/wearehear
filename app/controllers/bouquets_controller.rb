@@ -1,5 +1,10 @@
 class BouquetsController < ApplicationController
 
+  def all
+    @bouquets = Bouquet.all
+    render json: @bouquets.to_json
+  end
+
   def new
   end
 
