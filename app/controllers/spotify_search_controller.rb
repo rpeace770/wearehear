@@ -2,7 +2,7 @@
 
 class SpotifySearchController < ApplicationController
   def index
-  	
+
   	spotify_url = "https://api.spotify.com/v1/"
     artist = params[:search].gsub(/ /, "+")
     searchURL = "#{spotify_url}search?q=#{artist}&type=artist,track"
@@ -11,7 +11,7 @@ class SpotifySearchController < ApplicationController
 
     # getting client token
     client_token = Base64.strict_encode64("7a4280c69bd540d588a6540f043ffa48:b07dd2e7bab84c498c5e804b64a267eb")
-    
+
     spotify_token = RestClient.post("https://accounts.spotify.com/api/token",{"grant_type": "client_credentials"}, {"Authorization": "Basic #{client_token}"})
 
     parsed_token = JSON.parse(spotify_token)
@@ -20,22 +20,22 @@ class SpotifySearchController < ApplicationController
     response = RestClient.get(searchURL, {"Authorization": "Bearer #{parsed_token["access_token"]}"})
     # return that artist's top tracks
     @artist_data = JSON.parse(response)["artists"]["items"][0]
-    binding.pry
+
     top_tracks_url = "https://api.spotify.com/v1/artists/#{@artist_data["id"]}/top-tracks?country=US"
 
     top_tracks_results = JSON.parse(RestClient.get(top_tracks_url, {"Authorization": "Bearer #{parsed_token["access_token"]}"}))
-   
+
      @tracks = JSON.parse(response)["tracks"]["items"]
 
  # binding.pry
     @tracks_info = top_tracks_results["tracks"].map do |track|
       {track_id:track["id"], title: track["name"],  album_id:track["album"]["id"], album_name: track["album"]["name"], album_image: track["album"]["images"][1]["url"]}
     end.flatten
-       
+
     #render json: {tracks: @tracks_info, artist_data: @artist_data}
     render :results
   end
- #  
+ #
 end
 
 
