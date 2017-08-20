@@ -9,7 +9,7 @@ class BouquetsController < ApplicationController
   def locations
     locations = []
     user = User.find(current_user.id)
-    bouquets = user.sent_bouquets + user.received_bouquets
+    bouquets = user.sent_bouquets
     bouquets.each do |bouquet|
       locations << Location.find(bouquet.location_id)
     end
@@ -21,15 +21,17 @@ class BouquetsController < ApplicationController
   end
 
   def create
-    # Use form data to create new bouquet.
+
   end
 
   def confirm
     @bouquet = Bouquet.find(params[:id])
+    @location = Location.find(@bouquet.location_id)
   end
 
   def show
     @bouquet = Bouquet.find(params[:id])
+    @location = Location.find(@bouquet.location_id)
   end
 
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170819192637) do
+ActiveRecord::Schema.define(version: 20170820173206) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20170819192637) do
     t.string "sender_name"
     t.string "receiver_name"
     t.integer "sender_id"
-    t.integer "receiver_id"
     t.integer "song_id"
     t.string "custom_location"
     t.integer "location_id"
@@ -33,9 +32,6 @@ ActiveRecord::Schema.define(version: 20170819192637) do
   create_table "locations", force: :cascade do |t|
     t.integer "lat"
     t.integer "lng"
-    t.string "city"
-    t.string "state"
-    t.string "country"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

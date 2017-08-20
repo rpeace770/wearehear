@@ -1,5 +1,9 @@
 var profilemap;
 
+$(document).ready(function() {
+  initProfileMap();
+});
+
   function initProfileMap() {
     $.ajax({
       url: "/bouquets/locations",
