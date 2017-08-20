@@ -20,15 +20,20 @@
 
 <div id="person">
   <form action="/bouquets/create" method="post">
-    <p>Sender Name: <input type="text" name="bouquet[sender_name]"></p>
-    <p>Custom Location Name: <input type="text" name="bouquet[custom_location]"></p>
+    <p>Sender Name: <input type="text" name="bouquet[sender_name]" required></p>
+    <p>Receiver Name: <input type="text" name="bouquet[receiver_name]" required></p>
+    <p>Custom Location Name: <input type="text" name="bouquet[custom_location]" required></p>
     <div id="map"></div>
-    <input id="lat_coord" name="location[lat]" type="hidden" value="">
-    <input id="lng_coord" name="location[lng]" type="hidden" value="">
-    <p>Song Title: <input type="text" name="song[title]"></p>
-    <p>Song Artist: <input type="text" name="song[artist]"></p>
-    <p>Song Album: <input type="text" name="song[album]"></p>
-    <p>Comment: <input type="text" name="bouquet[comment]"></p>
+
+    <input id="lat_coord" name="location[lat]" type="hidden" value="" required>
+    <input id="lng_coord" name="location[lng]" type="hidden" value="" required>
+    <!-- <p>City: <input type="text" name="location[city]" id="city"></p>
+    <p>State: <input type="text" name="location[state]" id="state"></p>
+    <p>Country: <input type="text" name="location[country]" id="country"></p> -->
+    <p>Song Title: <input type="text" name="song[track]" required></p>
+    <p>Song Artist: <input type="text" name="song[artist]" required></p>
+    <p>Song Album: <input type="text" name="song[album]" required></p>
+    <p>Comment: <input type="text" name="bouquet[comment]" required></p>
     <p><input type="submit" value="Create Bouquet"></p>
   </form>
 </div>
