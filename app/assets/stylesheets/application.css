@@ -22,21 +22,31 @@ div#person {
   border: 1px solid black;
   padding: 20px;
   margin-top: 10px;
+
+  min-width: 1000px;
 }
 
 #map {
-  width: 30%;
-  height: 400px;
+  width: 900px;
+  height: 600px;
   background-color: grey;
   margin: auto;
+
 }
 button{
   background-color: none;
   border:none;
 }
 
-.add_song_button {
+div#results{
+  float:right;
+}
 
+
+
+
+input {
+    background-color: transparent;
     border-radius: 2px;
     cursor: pointer;
     display: block;
@@ -59,10 +69,12 @@ button{
 .artist-container{
   display: inline-block;
   float: left;
+  margin: 8px;
 }
 .track-container{
   display: inline-block;
   float:left;
+  margin: 8px;
 }
 
 
