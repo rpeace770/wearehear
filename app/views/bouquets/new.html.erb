@@ -1,4 +1,5 @@
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDo2l9bHOpF6W1lxwIdI0njMBESuZEhzk&callback=initMap&libraries=places" type="text/javascript" async defer></script>
+<% value = ENV["GOOGLE_MAP_KEY"] %>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= value %>&callback=initMap&libraries=places" type="text/javascript" async defer></script>
 
 <h1>Create a new Bouquet</h1>
 
