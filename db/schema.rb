@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20170821220254) do
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "secret"
   end
 
   create_table "locations", force: :cascade do |t|

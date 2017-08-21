@@ -1,3 +1,8 @@
+<% if session[:notice] %>
+  <div class="notice"><%= session[:notice] %></div>
+  <% session[:notice] = nil %>
+<% end %>
+
 <h1>This is the show page</h1>
 
   <h2>From <%= @bouquet.sender_name %> to <%= @bouquet.receiver_name %></h2>

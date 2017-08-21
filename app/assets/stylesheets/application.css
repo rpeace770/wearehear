@@ -13,6 +13,17 @@
  *= require_tree .
  *= require_self
  */
+body {
+  background-color: #FFFFFF;
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  background-image: url("music-sound-audio-recording.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: white;
+}
 
 h1 {
   text-align: center;
@@ -22,48 +33,70 @@ div#person {
   border: 1px solid black;
   padding: 20px;
   margin-top: 10px;
+
+  min-width: 1000px;
 }
 
 #map {
-  width: 30%;
-  height: 400px;
+  width: 900px;
+  height: 600px;
   background-color: grey;
   margin: auto;
+  border: 10px solid white;
+  border-radius: 15px;
+  position: fixed;
+
 }
 button{
   background-color: none;
   border:none;
 }
 
-.add_song_button {
+div#results{
+  /*float:right;*/
+}
 
+
+
+
+input {
+    background-color: transparent;
     border-radius: 2px;
     cursor: pointer;
     display: block;
     height: 40px;
     width: 250px;
     transition: all .3s;
-    border: 2px solid #008000;
+    border: 2px solid #1DB954;
     font-size: 1em;
     letter-spacing: 2px;
     text-transform: uppercase;
-
     margin-top: 0;
     margin-bottom: 20px;
-    color: #008000;
+    color: #1DB954;
     overflow: hidden;
     font-family: 'Open Sans', sans-serif;
 }
 .container{
   margin-bottom: 0px;
 }
-.artist-container{
-  display: inline-block;
-  float: left;
+
+.scroll-container {
+  width: 160px;
+  height: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transform: rotate(-90deg);
+  transform-origin: right top;
 }
-.track-container{
-  display: inline-block;
-  float:left;
+
+.artist-container, .track-container{
+/*  display: inline-block;
+  float: left;*/
+
+  transform: rotate(90deg);
+  transform-origin: right top;
+
 }
 
 
@@ -72,6 +105,8 @@ button{
   height: 400px;
   background-color: grey;
   margin: auto;
+  border: 10px solid white;
+  border-radius: 15px;
 }
 
 #show-map {
@@ -79,6 +114,8 @@ button{
   height: 400px;
   background-color: grey;
   margin: auto;
+  border: 10px solid white;
+  border-radius: 15px;
 }
 
 #pac-input {
@@ -90,6 +127,8 @@ button{
   height: 400px;
   background-color: grey;
   margin: auto;
+  border: 10px solid white;
+  border-radius: 15px;
 }
 
 #floating-panel {
@@ -113,4 +152,12 @@ button{
   position: absolute;
   top: 10px;
   z-index: 5;
+}
+
+.profile_picture {
+  border-top-left-radius: 50% 50%;
+  border-top-right-radius: 50% 50%;
+  border-bottom-right-radius: 50% 50%;
+  border-bottom-left-radius: 50% 50%;
+  border: 10px solid white;
 }

@@ -8,9 +8,9 @@
       <h1>Hiya!</h1>
     <% end %>
     <% if @user.picture_url %>
-      <%= image_tag(@user.picture_url, alt: "profile_picture")%>
+      <%= image_tag(@user.picture_url, alt: "profile_picture", class: "profile_picture")%>
     <% else %>
-      <%= image_tag("/assets/generic-profile-pic.png", alt: "profile_picture")%>
+      <%= image_tag("/assets/generic-profile-pic.png", alt: "profile_picture", class: "profile_picture")%>
     <% end %>
     <h4>Bouquets sent: <%= @user.sent_bouquets.count %></h4>
     <h4>Member since: <%= pretty_date(@user.created_at) %></h4>

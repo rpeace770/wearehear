@@ -2,23 +2,6 @@
 
 <h1>Create a new Bouquet</h1>
 
-<!-- <div id="floating-panel">
-    <button onclick="toggleHeatmap()">Toggle Heatmap</button>
-    <button onclick="changeGradient()">Change gradient</button>
-    <button onclick="changeRadius()">Change radius</button>
-    <button onclick="changeOpacity()">Change opacity</button>
-</div>
-
-<div id="mapbase"></div> -->
-
-<%= form_tag spotify_search_path, :method => 'post', id: "search_submit" do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
-  </p>
-<% end %>
-
-
 <div id="person">
   <form action="/bouquets/create" method="post" enctype="multipart/form-data">
     <p>Sender Name: <input type="text" name="bouquet[sender_name]" required></p>
@@ -28,18 +11,27 @@
     <div id="map"></div>
     <input id="lat_coord" name="location[lat]" type="hidden" value="" required>
     <input id="lng_coord" name="location[lng]" type="hidden" value="" required>
-    <p>Song Title: <input type="text" id="song_title" name="song[track]" required></p>
     <input id="spot_id" name="song[spotify_id]" type="hidden" value="" required>
-    <p>Song Artist: <input type="text" id="artist" name="song[artist]" required></p>
-    <p>Song Album: <input type="text" id="album" name="song[album]" required></p>
+    <input id="song_title" name="song[track]" type="hidden" value="" required>
+    <input id="artist" name="song[artist]" type="hidden" value="" required>
+    <input id="album" name="song[album]" type="hidden" value="" required>
     <p>Comment: <input type="text" id="comment" name="bouquet[comment]" required></p>
 
     <p><input type="submit" value="Create Bouquet"></p>
 
   </form>
+    <h3>Song Choice:</h3>
+    <p id="show-song"></p>
+    <p id="show-artist"></p>
+    <p id="show-album"></p>
 
+<%= form_tag spotify_search_path, :method => 'post', id: "search_submit" do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil, :id => "search_button" %>
+  </p>
+<% end %>
 
-</div>
-<div id="results">
-
+    <div id="results">
+    </div>
 </div>

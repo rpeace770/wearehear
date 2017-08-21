@@ -9,15 +9,21 @@ class BouquetsController < ApplicationController
   def locations
     locations = []
     user = User.find(current_user.id)
-    bouquets = user.sent_bouquets
+    bouquets = user.sent_bouquets.order("created_at")
     bouquets.each do |bouquet|
       locations << Location.find(bouquet.location_id)
     end
     render json: locations.to_json
   end
 
-  def new
+  def messages
+    comments = []
+    user = User.find(current_user.id)
+    bouquets = user.sent_bouquets.order("created_at")
+    render json: bouquets.to_json
+  end
 
+  def new
   end
 
   def create
@@ -28,6 +34,7 @@ class BouquetsController < ApplicationController
     @bouquet.location_id = @location.id
     @bouquet.song_id = @song.id
     if @bouquet.save
+      session[:notice] = "Your bouquet was sent!"
       redirect_to "/bouquets/confirm/#{@bouquet.id}"
     else
       redirect_to "/bouquets/new"
@@ -41,7 +48,11 @@ class BouquetsController < ApplicationController
 
   def show
     @bouquet = Bouquet.find(params[:id])
-    @location = Location.find(@bouquet.location_id)
+    if current_user.id == @bouquet.sender_id || params[:secret] == @bouquet.secret
+      @location = Location.find(@bouquet.location_id)
+    else
+      redirect_to '/'
+    end
   end
 
   private
