@@ -81,7 +81,7 @@ button{
   margin: auto;
 }
 
-/*#mapbase {
+#mapbase {
   width: 30%;
   height: 400px;
   background-color: grey;
@@ -109,7 +109,7 @@ button{
   position: absolute;
   top: 10px;
   z-index: 5;
-}*/
+}
 
 
 /* CSS FOR THE SEARCH MAP */
