@@ -18,7 +18,6 @@ $(document).ready(function(){
     e.preventDefault();
     console.log($(this))
     var children = $(this).children();
-    console.log(children[3].defaultValue);
     $("#album").val(children[2].defaultValue);
     $("#artist").val(children[3].defaultValue);
     $("#spot_id").val(children[4].defaultValue);

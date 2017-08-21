@@ -1,3 +1,5 @@
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDo2l9bHOpF6W1lxwIdI0njMBESuZEhzk&callback=initProfileMap&libraries=visualization" type="text/javascript" async defer></script>
+
 <% if current_user && @user && current_user.id == @user.id %>
   <div class="container">
     <% if @user.username %>
@@ -5,14 +7,16 @@
     <% else %>
       <h1>Hiya!</h1>
     <% end %>
-    <% if @user.picture_url != nil %>
-      <img src="<%= @user.picture_url %>" alt="profile_picture">
+    <% if @user.picture_url %>
+      <%= image_tag(@user.picture_url, alt: "profile_picture")%>
+    <% else %>
+      <%= image_tag("/assets/generic-profile-pic.png", alt: "profile_picture")%>
     <% end %>
     <h4>Bouquets sent: <%= @user.sent_bouquets.count %></h4>
     <h4>Member since: <%= pretty_date(@user.created_at) %></h4>
     <h3 style="text-align: center;">Your bouquets:</h3>
     <% @user.sent_bouquets.each do |bouquet| %>
-      <p style="text-align: center;"><%= link_to "to " + bouquet.receiver_name + " on" + pretty_date(bouquet.created_at), "/bouquets/" + bouquet.id.to_s %></p>
+      <p style="text-align: center;"><%= link_to "to " + bouquet.receiver_name + " on " + pretty_date(bouquet.created_at), "/bouquets/" + bouquet.id.to_s %></p>
     <% end %>
     <div id="profilemap"></div>
   </div>
