@@ -28,6 +28,7 @@ class BouquetsController < ApplicationController
     @bouquet.location_id = @location.id
     @bouquet.song_id = @song.id
     if @bouquet.save
+      session[:notice] = "Your bouquet was sent!"
       redirect_to "/bouquets/confirm/#{@bouquet.id}"
     else
       redirect_to "/bouquets/new"
