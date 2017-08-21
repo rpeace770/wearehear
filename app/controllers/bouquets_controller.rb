@@ -9,15 +9,21 @@ class BouquetsController < ApplicationController
   def locations
     locations = []
     user = User.find(current_user.id)
-    bouquets = user.sent_bouquets
+    bouquets = user.sent_bouquets.order("created_at")
     bouquets.each do |bouquet|
       locations << Location.find(bouquet.location_id)
     end
     render json: locations.to_json
   end
 
-  def new
+  def messages
+    comments = []
+    user = User.find(current_user.id)
+    bouquets = user.sent_bouquets.order("created_at")
+    render json: bouquets.to_json
+  end
 
+  def new
   end
 
   def create
