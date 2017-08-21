@@ -1,4 +1,4 @@
-$(document).ready(initProfileMap);
+
 var profilemap;
 
   function initProfileMap() {

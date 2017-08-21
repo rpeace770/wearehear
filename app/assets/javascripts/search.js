@@ -1,6 +1,7 @@
 $(document).ready(function(){
   $("#search_submit").on('submit', function(e){
     e.preventDefault();
+    console.log("works")
     var formData = $(this).serialize();
     $.ajax({
       url: "/spotify_search",
@@ -16,7 +17,6 @@ $(document).ready(function(){
   });
   $("#results").on("submit", "form", function(e) {
     e.preventDefault();
-    console.log($(this))
     var children = $(this).children();
     $("#album").val(children[2].defaultValue);
     $("#artist").val(children[3].defaultValue);
