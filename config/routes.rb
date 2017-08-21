@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'bouquets/all', to: 'bouquets#index'
   get 'bouquets/new', to: 'bouquets#new'
   get 'bouquets/confirm/:id', to: 'bouquets#confirm'
   get 'bouquets/:id', to: 'bouquets#show'
@@ -13,6 +14,6 @@ Rails.application.routes.draw do
   post 'bouquets/locations', to: 'bouquets#locations'
   post 'texts/create', to: 'texts#create'
   get 'users/:id', to: 'users#show'
-  root 'bouquets#new'
+  root 'bouquets#index'
 
 end

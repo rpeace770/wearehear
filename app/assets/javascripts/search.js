@@ -15,7 +15,6 @@ $(document).ready(function(){
   $("#results").on("submit", "form", function(e) {
     e.preventDefault();
     var children = $(this).children();
-    console.log(children[2].defaultValue)
     $("#album").val(children[2].defaultValue);
     $("#artist").val(children[3].defaultValue);
     $("#spot_id").val(children[4].defaultValue);
