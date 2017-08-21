@@ -38255,3 +38255,1251 @@ Twilio::REST::RestError (Unable to create record: Media urls: /system/bouquets/i
   
 app/models/text.rb:21:in `send_sms'
 app/controllers/texts_controller.rb:7:in `create'
+  [1m[35m (16.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (143.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "wearehear_development"[0m
+  [1m[35m (360.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "wearehear_test"[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7926829025639619690)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateLocations (20170817223237)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (17.4ms)[0m  [1m[35mCREATE TABLE "locations" ("id" bigserial primary key, "lat" integer, "lng" integer, "city" character varying, "state" character varying, "country" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170817223237"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSongs (20170817223348)
+  [1m[35m (15.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (17.9ms)[0m  [1m[35mCREATE TABLE "songs" ("id" bigserial primary key, "artist" character varying, "album" character varying, "track" character varying, "spotify_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170817223348"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBouquets (20170818165654)
+  [1m[35m (15.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (17.6ms)[0m  [1m[35mCREATE TABLE "bouquets" ("id" bigserial primary key, "sender_name" character varying, "receiver_name" character varying, "sender_id" integer, "receiver_id" integer, "song_id" integer, "custom_location" character varying, "location_id" integer, "expiration_date" timestamp, "comment" text, "photo" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170818165654"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to DeviseCreateUsers (20170818173145)
+  [1m[35m (15.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (18.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170818173145"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddColumnsToUsers (20170818173638)
+  [1m[35m (15.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "provider" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "uid" character varying[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170818173638"]]
+  [1m[35m (14.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddNewColumnsToUsers (20170818173845)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "phone" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "username" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "picture_url" character varying[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170818173845"]]
+  [1m[35m (15.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTexts (20170818184716)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "texts" ("id" bigserial primary key, "number" character varying, "sender" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170818184716"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddBirthdateToUsers (20170818221536)
+  [1m[35m (16.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "birthdate" timestamp[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170818221536"]]
+  [1m[35m (15.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to ChangeColumnTypeOnSongsTable (20170819192637)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (18.5ms)[0m  [1m[35mALTER TABLE "songs" ALTER COLUMN "spotify_id" TYPE character varying[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170819192637"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to RemoveColumn (20170820172945)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "locations" DROP "city"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "locations" DROP "state"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "locations" DROP "country"[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170820172945"]]
+  [1m[35m (15.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to RemoveColumnBouquet (20170820173206)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "bouquets" DROP "receiver_id"[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170820173206"]]
+  [1m[35m (15.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddAttachmentImageToBouquets (20170820232526)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "bouquets" ADD "image_file_name" character varying[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "bouquets" ADD "image_content_type" character varying[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "bouquets" ADD "image_file_size" integer[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "bouquets" ADD "image_updated_at" timestamp[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170820232526"]]
+  [1m[35m (15.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to RemoveImageColumnFromBouquet (20170820232656)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "bouquets" DROP "photo"[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170820232656"]]
+  [1m[35m (15.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddImageUrlColumnToText (20170821001828)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "texts" ADD "image_url" character varying[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170821001828"]]
+  [1m[35m (15.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-08-21 14:28:48.956826"], ["updated_at", "2017-08-21 14:28:48.956826"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7926829025639619690)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["lat", -28], ["lng", -35], ["created_at", "2017-08-21 14:28:55.261028"], ["updated_at", "2017-08-21 14:28:55.261028"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["lat", 39], ["lng", 156], ["created_at", "2017-08-21 14:28:55.263959"], ["updated_at", "2017-08-21 14:28:55.263959"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["lat", -39], ["lng", -123], ["created_at", "2017-08-21 14:28:55.265882"], ["updated_at", "2017-08-21 14:28:55.265882"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["lat", -22], ["lng", -59], ["created_at", "2017-08-21 14:28:55.268069"], ["updated_at", "2017-08-21 14:28:55.268069"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["lat", 68], ["lng", -113], ["created_at", "2017-08-21 14:28:55.270127"], ["updated_at", "2017-08-21 14:28:55.270127"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["lat", -88], ["lng", 50], ["created_at", "2017-08-21 14:28:55.272860"], ["updated_at", "2017-08-21 14:28:55.272860"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["lat", -25], ["lng", 92], ["created_at", "2017-08-21 14:28:55.274737"], ["updated_at", "2017-08-21 14:28:55.274737"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["lat", 2], ["lng", 12], ["created_at", "2017-08-21 14:28:55.276819"], ["updated_at", "2017-08-21 14:28:55.276819"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["lat", 40], ["lng", -39], ["created_at", "2017-08-21 14:28:55.278508"], ["updated_at", "2017-08-21 14:28:55.278508"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["lat", 69], ["lng", 61], ["created_at", "2017-08-21 14:28:55.280221"], ["updated_at", "2017-08-21 14:28:55.280221"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "spotify_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["artist", "Daughter"], ["album", "Not To Disappear"], ["track", "No Care"], ["spotify_id", "26Ggcaz8arFAehpsfFTiRj"], ["created_at", "2017-08-21 14:28:55.294003"], ["updated_at", "2017-08-21 14:28:55.294003"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "spotify_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["artist", "Beyoncé"], ["album", "Beyoncé"], ["track", "Partition"], ["spotify_id", "5hgnY0mVcVetszbb85qeDg"], ["created_at", "2017-08-21 14:28:55.296545"], ["updated_at", "2017-08-21 14:28:55.296545"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "spotify_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["artist", "Joseph"], ["album", "I'm Alone,No You're Not"], ["track", "Blood & Tears"], ["spotify_id", "7B4iQ8RPM3U7gKgySIq8yv"], ["created_at", "2017-08-21 14:28:55.298675"], ["updated_at", "2017-08-21 14:28:55.298675"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "spotify_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["artist", "The Big Moon"], ["album", "Love in the 4th Dimension"], ["track", "The End"], ["spotify_id", "6Eq7yjlMipfXATKb2ggndn"], ["created_at", "2017-08-21 14:28:55.300829"], ["updated_at", "2017-08-21 14:28:55.300829"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "spotify_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["artist", "Balmorhea"], ["album", "All Is Wild, All Is Silent"], ["track", "Truth"], ["spotify_id", "52IFQxFkt9fyYmIu1omQ69"], ["created_at", "2017-08-21 14:28:55.302792"], ["updated_at", "2017-08-21 14:28:55.302792"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "spotify_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["artist", "Marika Hackman"], ["album", "I'm Not Your Man"], ["track", "Boyfriend"], ["spotify_id", "68wm2y2dmgLzlwSIEi5IaD"], ["created_at", "2017-08-21 14:28:55.305249"], ["updated_at", "2017-08-21 14:28:55.305249"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "spotify_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["artist", "John Van Deusen"], ["album", "The Universal Sigh"], ["track", "I Was Sick"], ["spotify_id", "2QA0rBbtFRuxQpI7HbXtDf"], ["created_at", "2017-08-21 14:28:55.307936"], ["updated_at", "2017-08-21 14:28:55.307936"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "spotify_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["artist", "Warpaint"], ["album", "Warpaint"], ["track", "Disco//very"], ["spotify_id", "37Oojxm0tKyUFiyfn52LHU"], ["created_at", "2017-08-21 14:28:55.310549"], ["updated_at", "2017-08-21 14:28:55.310549"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "spotify_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["artist", "Angel Olsen"], ["album", "Burn Your Fire For No Witness"], ["track", "Forgive/Forgotten"], ["spotify_id", "2QGSwm7GoxcIcDDFpH8USV"], ["created_at", "2017-08-21 14:28:55.312651"], ["updated_at", "2017-08-21 14:28:55.312651"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "spotify_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["artist", "Kanye West"], ["album", "The Life of Pablo"], ["track", "Ultralight Beam"], ["spotify_id", "1eQBEelI2NCy7AUTerX0KS"], ["created_at", "2017-08-21 14:28:55.314768"], ["updated_at", "2017-08-21 14:28:55.314768"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "priscilla.hegmann@dach.biz"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "priscilla.hegmann@dach.biz"], ["encrypted_password", "$2a$11$jI/uR6cuRTTLK0SUluewlOGza2iyMhihvh/LnxwYChuhnCmGNJOCG"], ["created_at", "2017-08-21 14:28:56.175798"], ["updated_at", "2017-08-21 14:28:56.175798"], ["provider", "spotify"], ["uid", "6hLnT9MtYxWhL"], ["username", "shanelle_thompson"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-21 14:28:55.977415"]]
+  [1m[35m (15.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "pietro.schuster@lehner.co"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "pietro.schuster@lehner.co"], ["encrypted_password", "$2a$11$DS5M7QNzhhOkRBCbLj6Shu25EsP.An.sNn4kOkcZJc/yAXspEEAQW"], ["created_at", "2017-08-21 14:28:56.335692"], ["updated_at", "2017-08-21 14:28:56.335692"], ["provider", "spotify"], ["uid", "OwYoTeTaO2XoF"], ["username", "llewellyn_crooks"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-21 14:28:56.193865"]]
+  [1m[35m (14.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jerod.bruen@kuhn.io"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "jerod.bruen@kuhn.io"], ["encrypted_password", "$2a$11$DnP77KF18bThUSyVY2Yqouz.Vys.OGPKJ3NS0qxbJmcKoR.eAlJH."], ["created_at", "2017-08-21 14:28:56.492316"], ["updated_at", "2017-08-21 14:28:56.492316"], ["provider", "spotify"], ["uid", "P060KvGo7"], ["username", "rosendo_marquardt"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-21 14:28:56.352809"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "shad@koepp.biz"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "shad@koepp.biz"], ["encrypted_password", "$2a$11$ilaUbVxx5HJM.s/7Oh1XKeYs4Us1amFxhfvwj7Kx/79ymWHMPC0HC"], ["created_at", "2017-08-21 14:28:56.631567"], ["updated_at", "2017-08-21 14:28:56.631567"], ["provider", "spotify"], ["uid", "KgGzVh4dPiDs4aE"], ["username", "henri_kub"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-21 14:28:56.494928"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ward@kautzer.info"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "ward@kautzer.info"], ["encrypted_password", "$2a$11$Nvi092eFXmdIMbe1otigs.UBKR1m/GgGRjIuE9q3Jac5d4MsJgQPq"], ["created_at", "2017-08-21 14:28:56.773556"], ["updated_at", "2017-08-21 14:28:56.773556"], ["provider", "spotify"], ["uid", "Ux49Yr36Oq9o58S"], ["username", "elwin_daugherty"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-21 14:28:56.634451"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "kelley@lemkelangosh.name"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "kelley@lemkelangosh.name"], ["encrypted_password", "$2a$11$lAbiHjtHsbbAGx1dQPuOteXGox45tCqSe7dN5d16eSUMBDx9yAj9."], ["created_at", "2017-08-21 14:28:56.911433"], ["updated_at", "2017-08-21 14:28:56.911433"], ["provider", "spotify"], ["uid", "Pu5aBy1jZnFp"], ["username", "agnes.hintz"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-21 14:28:56.776401"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ewald@larsonconsidine.name"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "ewald@larsonconsidine.name"], ["encrypted_password", "$2a$11$vsZIv.BbbHFKXvb4kTfMbu26bbT4HQVIx5m6ecnJl/xd7eLLiVy.q"], ["created_at", "2017-08-21 14:28:57.049906"], ["updated_at", "2017-08-21 14:28:57.049906"], ["provider", "spotify"], ["uid", "9yAwK0YxAo6i"], ["username", "stephan.okeefe"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-21 14:28:56.914323"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "pietro@faheyjacobs.co"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "pietro@faheyjacobs.co"], ["encrypted_password", "$2a$11$Nf8J.9GFReQ4MQnTXFrL8uzcB6xo3Uyrg555U3k/XAT35CPE5y806"], ["created_at", "2017-08-21 14:28:57.187532"], ["updated_at", "2017-08-21 14:28:57.187532"], ["provider", "spotify"], ["uid", "RdU5Qo6uBa4qD"], ["username", "ozzie"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-21 14:28:57.052411"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "laria_rutherford@skileskutch.co"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "laria_rutherford@skileskutch.co"], ["encrypted_password", "$2a$11$YZuGljyxX3d.qQV5NNvifOQi53A1NrM8nKQ2lcEFnnQgt/6wKR9Li"], ["created_at", "2017-08-21 14:28:57.325098"], ["updated_at", "2017-08-21 14:28:57.325098"], ["provider", "spotify"], ["uid", "Gh4sYcUb"], ["username", "reilly_johns"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-21 14:28:57.190247"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "tad_kuvalis@schaefer.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "tad_kuvalis@schaefer.com"], ["encrypted_password", "$2a$11$6E1uDbPQdeGvU5Gs6dLwh.Yi3y55auxpVjcFAPiUVAmLAO5N0svo6"], ["created_at", "2017-08-21 14:28:57.461447"], ["updated_at", "2017-08-21 14:28:57.461447"], ["provider", "spotify"], ["uid", "NbBaH84r2a35Xc5"], ["username", "leanna_mohr"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-21 14:28:57.327314"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "marlee@labadie.co"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "marlee@labadie.co"], ["encrypted_password", "$2a$11$7Z81n0Z/tVfPz4MNx4ulweeO1QWkZRnDvAHkGyJd8cA7nU8484BAW"], ["created_at", "2017-08-21 14:28:57.598718"], ["updated_at", "2017-08-21 14:28:57.598718"], ["provider", "spotify"], ["uid", "V07o4nD6A6"], ["username", "davin"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-21 14:28:57.464076"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "savannah@emarddaugherty.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "savannah@emarddaugherty.com"], ["encrypted_password", "$2a$11$lK.T0Fc.4d7PaszwOvsKi.sftz1mx/jyH7kDTsXLq0.A98or2dcaa"], ["created_at", "2017-08-21 14:28:57.735783"], ["updated_at", "2017-08-21 14:28:57.735783"], ["provider", "spotify"], ["uid", "K9CoO8Tu3sCmF34"], ["username", "will"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-21 14:28:57.601387"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "nash.batz@auerabbott.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "nash.batz@auerabbott.com"], ["encrypted_password", "$2a$11$RN1XErZuQJ9UFvwTqYzzqet4dYANVeSbVymd7NFnh37sdMyBb4yBG"], ["created_at", "2017-08-21 14:28:57.872821"], ["updated_at", "2017-08-21 14:28:57.872821"], ["provider", "spotify"], ["uid", "Dl61UgZj7sCi0h5"], ["username", "donald"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-21 14:28:57.738215"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "antonia_bartoletti@beerkeeling.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "antonia_bartoletti@beerkeeling.org"], ["encrypted_password", "$2a$11$Jzi5C8mFKTSw5tmZc4BQsunvEnr9pAy/K88OL0cNh9v9nER6SdZuq"], ["created_at", "2017-08-21 14:28:58.010173"], ["updated_at", "2017-08-21 14:28:58.010173"], ["provider", "spotify"], ["uid", "NaF74gUp91L"], ["username", "icie_tromp"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-21 14:28:57.875270"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "americo@greenholt.co"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "americo@greenholt.co"], ["encrypted_password", "$2a$11$QLpkOpW9qjx8cNE3ZLIgcexoi1eNosdC3DaJUCIIujX4EoB50u6s."], ["created_at", "2017-08-21 14:28:58.147199"], ["updated_at", "2017-08-21 14:28:58.147199"], ["provider", "spotify"], ["uid", "SnLa601mI2A"], ["username", "mario.streich"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-21 14:28:58.012991"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "julien_keebler@braunnolan.net"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "julien_keebler@braunnolan.net"], ["encrypted_password", "$2a$11$iCP6XUff3Aaf7.0CYa0uHOsPWBRJDM4FNpPFaACJVvC6Nimz655mW"], ["created_at", "2017-08-21 14:28:58.285340"], ["updated_at", "2017-08-21 14:28:58.285340"], ["provider", "spotify"], ["uid", "SlPyWoOiMoSg6zZ"], ["username", "dianna_stoltenberg"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-21 14:28:58.149625"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "mateo@ullrich.biz"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "mateo@ullrich.biz"], ["encrypted_password", "$2a$11$cdSanNqLIllsJyLDRPQUjO35Nu28TZ4l2AK2/qT0oHTrJ9IT6834u"], ["created_at", "2017-08-21 14:28:58.422887"], ["updated_at", "2017-08-21 14:28:58.422887"], ["provider", "spotify"], ["uid", "K9H0InN56s"], ["username", "meaghan.ryan"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-21 14:28:58.288174"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "lela@fritsch.biz"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "lela@fritsch.biz"], ["encrypted_password", "$2a$11$YETXR9gcnMA4HdWGeXMwbe5ibcmWPturXhOvwgi15N1o4vXJIz/QG"], ["created_at", "2017-08-21 14:28:58.560948"], ["updated_at", "2017-08-21 14:28:58.560948"], ["provider", "spotify"], ["uid", "961c0uGs89H"], ["username", "newell.bednar"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-21 14:28:58.425297"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "charley.leffler@mann.info"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "charley.leffler@mann.info"], ["encrypted_password", "$2a$11$Z5QLigRS9Tj3LOgYkCGa5.GN7t9kYJOBDYUIzwCQ/g7nUmeUKd8De"], ["created_at", "2017-08-21 14:28:58.702289"], ["updated_at", "2017-08-21 14:28:58.702289"], ["provider", "spotify"], ["uid", "9y58IoLd8xZe4l7h"], ["username", "pamela.daniel"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-21 14:28:58.563690"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "gustave.gulgowski@paucek.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "gustave.gulgowski@paucek.org"], ["encrypted_password", "$2a$11$f.Q3AYyAwziic35Oc2BZ5uE7lZN1hfCMcCWSdE.4a0aaaJVIi4eKa"], ["created_at", "2017-08-21 14:28:58.844148"], ["updated_at", "2017-08-21 14:28:58.844148"], ["provider", "spotify"], ["uid", "Ku00SfQsB"], ["username", "lulu.wolff"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-21 14:28:58.705299"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "elijah.streich@corkery.co"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "elijah.streich@corkery.co"], ["encrypted_password", "$2a$11$6ulEh5wUd7/KXk5KLHeSnOY.PMDlEC2GBED9w3hGkPWAtRELO9vFe"], ["created_at", "2017-08-21 14:28:58.984496"], ["updated_at", "2017-08-21 14:28:58.984496"], ["provider", "spotify"], ["uid", "PxQc4iVmD9K6TnBh"], ["username", "fletcher.dach"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-21 14:28:58.846645"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "alexzander.cain@runolfonlindgren.net"], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "alexzander.cain@runolfonlindgren.net"], ["encrypted_password", "$2a$11$oKZXsGg3IsiIveimh4uzWeoGALrFwV6wEOXgGLkWsJLf0g9u8sG/K"], ["created_at", "2017-08-21 14:28:59.125879"], ["updated_at", "2017-08-21 14:28:59.125879"], ["provider", "spotify"], ["uid", "WySk4aXkToQf"], ["username", "gardner"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-21 14:28:58.987812"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "zelda@mantemedhurst.name"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "zelda@mantemedhurst.name"], ["encrypted_password", "$2a$11$KmR0JE/82KjtL3GEITuE8ux4ek2WpLoxuSdllEg7PwhVnFk2V.g52"], ["created_at", "2017-08-21 14:28:59.267349"], ["updated_at", "2017-08-21 14:28:59.267349"], ["provider", "spotify"], ["uid", "Bw7bAo5c9iRmO3Rv"], ["username", "elmore_bogan"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-21 14:28:59.128312"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "hadley@smithklocko.info"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "hadley@smithklocko.info"], ["encrypted_password", "$2a$11$RU4Hqb.EwL632a67NElK.eyS9QAoloElTgyYtNOJeexGfKEtum5vW"], ["created_at", "2017-08-21 14:28:59.407780"], ["updated_at", "2017-08-21 14:28:59.407780"], ["provider", "spotify"], ["uid", "PtK2XmIkPwPeA"], ["username", "rocio"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-21 14:28:59.270070"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "darrin_bogan@kuphal.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "darrin_bogan@kuphal.org"], ["encrypted_password", "$2a$11$WtGsFJSfGAeUhV3qLrrL..7WclP0S6hr3ClFevP84nsXH2iPc/Zhi"], ["created_at", "2017-08-21 14:28:59.548517"], ["updated_at", "2017-08-21 14:28:59.548517"], ["provider", "spotify"], ["uid", "G5EsItOa9pR81fA"], ["username", "precious"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-21 14:28:59.410747"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "eleazar.blanda@skilesheidenreich.io"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "eleazar.blanda@skilesheidenreich.io"], ["encrypted_password", "$2a$11$gCxCyqJ5eNoyJTOt7gvl0OpnPUzJ7uHOW887ys1H2m9PZ.jzgMvpu"], ["created_at", "2017-08-21 14:28:59.688915"], ["updated_at", "2017-08-21 14:28:59.688915"], ["provider", "spotify"], ["uid", "ChKiWxIyLc8r"], ["username", "fabiola"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-21 14:28:59.551105"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "vincent@hermann.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "vincent@hermann.org"], ["encrypted_password", "$2a$11$as2vnP.uHblC.vQkQMukveGt.a6RnapvmeqOGC9ev7cJZwUwKjo4m"], ["created_at", "2017-08-21 14:28:59.829698"], ["updated_at", "2017-08-21 14:28:59.829698"], ["provider", "spotify"], ["uid", "LyZiTqLiHe9u"], ["username", "nya.pollich"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-21 14:28:59.691650"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "wayne@heaneygoyette.info"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "wayne@heaneygoyette.info"], ["encrypted_password", "$2a$11$sGAWtPrv0rj0brQJj6DVaOtItp6PYZ0f.zheN8oKLvmxu7xmMCFtO"], ["created_at", "2017-08-21 14:28:59.970596"], ["updated_at", "2017-08-21 14:28:59.970596"], ["provider", "spotify"], ["uid", "06S0IkN0D"], ["username", "bertha_goyette"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-21 14:28:59.832463"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "vito.heaney@harris.info"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "vito.heaney@harris.info"], ["encrypted_password", "$2a$11$JOhAhFG./IfZuzEbT6qhCOcdYFVFSe7wukbEPBIF135QdbDTC.iaS"], ["created_at", "2017-08-21 14:29:00.112278"], ["updated_at", "2017-08-21 14:29:00.112278"], ["provider", "spotify"], ["uid", "T7N3ShLlWkO3"], ["username", "enrique"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-21 14:28:59.973024"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "lilly.ondricka@gleasonoconner.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "username", "picture_url", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "lilly.ondricka@gleasonoconner.org"], ["encrypted_password", "$2a$11$WBPDU.oayhBWB40F1XnfgOgUodNPLikecKQqG05ekdsNzBuSTkBuC"], ["created_at", "2017-08-21 14:29:00.252368"], ["updated_at", "2017-08-21 14:29:00.252368"], ["provider", "spotify"], ["uid", "Y8Ic3aTxMyR3Mo"], ["username", "abby"], ["picture_url", "lightbulb.png"], ["birthdate", "2017-08-21 14:29:00.114643"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "song_id", "custom_location", "location_id", "expiration_date", "comment", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["sender_name", "Desmond"], ["receiver_name", "Zaria"], ["sender_id", 16], ["song_id", 7], ["custom_location", "flannel"], ["location_id", 5], ["expiration_date", "2017-08-29 16:55:40.286579"], ["comment", "Blog gastropub neutra occupy schlitz."], ["created_at", "2017-08-21 14:29:00.332260"], ["updated_at", "2017-08-21 14:29:00.332260"]]
+  [1m[35m (15.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mSong Load (0.3ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "song_id", "custom_location", "location_id", "expiration_date", "comment", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["sender_name", "Jarret"], ["receiver_name", "Caitlyn"], ["sender_id", 12], ["song_id", 1], ["custom_location", "yr"], ["location_id", 6], ["expiration_date", "2017-08-29 16:55:40.350047"], ["comment", "Gastropub tacos seitan cliche cardigan hoodie kitsch pitchfork butcher."], ["created_at", "2017-08-21 14:29:00.355567"], ["updated_at", "2017-08-21 14:29:00.355567"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mSong Load (0.3ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "song_id", "custom_location", "location_id", "expiration_date", "comment", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["sender_name", "Noble"], ["receiver_name", "Lesly"], ["sender_id", 10], ["song_id", 1], ["custom_location", "tumblr"], ["location_id", 9], ["expiration_date", "2017-08-29 16:55:40.357745"], ["comment", "Knausgaard tousled organic franzen flannel trust fund."], ["created_at", "2017-08-21 14:29:00.374015"], ["updated_at", "2017-08-21 14:29:00.374015"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "song_id", "custom_location", "location_id", "expiration_date", "comment", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["sender_name", "Darius"], ["receiver_name", "Greta"], ["sender_id", 2], ["song_id", 6], ["custom_location", "meggings"], ["location_id", 7], ["expiration_date", "2017-08-29 16:55:40.376642"], ["comment", "Dreamcatcher photo booth flexitarian cold-pressed seitan flannel chia."], ["created_at", "2017-08-21 14:29:00.381163"], ["updated_at", "2017-08-21 14:29:00.381163"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "song_id", "custom_location", "location_id", "expiration_date", "comment", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["sender_name", "Jordon"], ["receiver_name", "Reid"], ["sender_id", 8], ["song_id", 6], ["custom_location", "carry"], ["location_id", 6], ["expiration_date", "2017-08-29 16:55:40.383038"], ["comment", "Cardigan single-origin coffee wolf cray microdosing bespoke shoreditch plaid."], ["created_at", "2017-08-21 14:29:00.387712"], ["updated_at", "2017-08-21 14:29:00.387712"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "song_id", "custom_location", "location_id", "expiration_date", "comment", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["sender_name", "Braulio"], ["receiver_name", "Marlee"], ["sender_id", 22], ["song_id", 6], ["custom_location", "disrupt"], ["location_id", 2], ["expiration_date", "2017-08-29 16:55:40.389856"], ["comment", "Occupy lumbersexual echo 90's typewriter offal pour-over bushwick cliche small batch."], ["created_at", "2017-08-21 14:29:00.395403"], ["updated_at", "2017-08-21 14:29:00.395403"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.1ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mSong Load (0.1ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "song_id", "custom_location", "location_id", "expiration_date", "comment", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["sender_name", "Keon"], ["receiver_name", "Ursula"], ["sender_id", 29], ["song_id", 9], ["custom_location", "DIY"], ["location_id", 6], ["expiration_date", "2017-08-29 16:55:40.397303"], ["comment", "Meditation celiac next level craft beer bitters."], ["created_at", "2017-08-21 14:29:00.401226"], ["updated_at", "2017-08-21 14:29:00.401226"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.1ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mSong Load (0.1ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "song_id", "custom_location", "location_id", "expiration_date", "comment", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["sender_name", "Deon"], ["receiver_name", "Garfield"], ["sender_id", 10], ["song_id", 8], ["custom_location", "fingerstache"], ["location_id", 9], ["expiration_date", "2017-08-29 16:55:40.403313"], ["comment", "Ethical brunch bespoke vegan godard."], ["created_at", "2017-08-21 14:29:00.407278"], ["updated_at", "2017-08-21 14:29:00.407278"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.1ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mSong Load (0.1ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "song_id", "custom_location", "location_id", "expiration_date", "comment", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["sender_name", "Cathrine"], ["receiver_name", "Tate"], ["sender_id", 28], ["song_id", 1], ["custom_location", "goth"], ["location_id", 3], ["expiration_date", "2017-08-29 16:55:40.409232"], ["comment", "Chambray retro kitsch locavore cornhole irony."], ["created_at", "2017-08-21 14:29:00.413637"], ["updated_at", "2017-08-21 14:29:00.413637"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.1ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "song_id", "custom_location", "location_id", "expiration_date", "comment", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["sender_name", "Timothy"], ["receiver_name", "Jaylan"], ["sender_id", 20], ["song_id", 6], ["custom_location", "+1"], ["location_id", 5], ["expiration_date", "2017-08-29 16:55:40.415777"], ["comment", "Hella tilde cornhole pitchfork meditation direct trade."], ["created_at", "2017-08-21 14:29:00.420598"], ["updated_at", "2017-08-21 14:29:00.420598"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for 127.0.0.1 at 2017-08-21 09:52:31 -0500
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+Completed 401 Unauthorized in 18ms (ActiveRecord: 4.1ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-21 09:52:32 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (1.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (17.7ms)
+Completed 200 OK in 1217ms (Views: 1189.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/bouquets/locations" for 127.0.0.1 at 2017-08-21 09:52:33 -0500
+Processing by BouquetsController#locations as */*
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/spotify" for 127.0.0.1 at 2017-08-21 09:52:36 -0500
+Started GET "/auth/spotify/callback?code=AQD-lWovSMTzrT2z1DPUiPIi8Hxihkr4nQ1Pk6Qj_X-t-szWGT0YoIOY_z93SzkAzcOVpnLB6PacwY3oEGkN6forjn0A_LYMotRT17ihpgZya5juhf4T2iH1-wF-r_9OgnaO9wbMYRE33oJKQ2I_rNfHnmeJ8-JQJviGPSVg9D9nVpj8I6W3MXcwascqBYukstusmtKI5kCKTlCutZiidccuwPHZ21nTlRNV2KJKm-NUz5-mc01aaqA6W9i61xJNEZle2Qrr_GsXsHhzqQklvYNB7mrhWxpL3X_oY9ANGP03vXSdzARvFxs&state=2d5749f12b91afaadbafa81003ecbc137a9de054f742eb73" for 127.0.0.1 at 2017-08-21 09:52:36 -0500
+Processing by CallbacksController#spotify as HTML
+  Parameters: {"code"=>"AQD-lWovSMTzrT2z1DPUiPIi8Hxihkr4nQ1Pk6Qj_X-t-szWGT0YoIOY_z93SzkAzcOVpnLB6PacwY3oEGkN6forjn0A_LYMotRT17ihpgZya5juhf4T2iH1-wF-r_9OgnaO9wbMYRE33oJKQ2I_rNfHnmeJ8-JQJviGPSVg9D9nVpj8I6W3MXcwascqBYukstusmtKI5kCKTlCutZiidccuwPHZ21nTlRNV2KJKm-NUz5-mc01aaqA6W9i61xJNEZle2Qrr_GsXsHhzqQklvYNB7mrhWxpL3X_oY9ANGP03vXSdzARvFxs", "state"=>"2d5749f12b91afaadbafa81003ecbc137a9de054f742eb73"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2 ORDER BY "users"."id" ASC LIMIT $3[0m  [["provider", "spotify"], ["uid", "kstarr0092"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "kstarr0092@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid", "birthdate") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["email", "kstarr0092@gmail.com"], ["encrypted_password", "$2a$11$DhzZ1b0wz4DIbEqGLGCreuWVFxBedrhB9B7U/dlXHW/PnRKdeckzW"], ["created_at", "2017-08-21 14:52:37.222923"], ["updated_at", "2017-08-21 14:52:37.222923"], ["provider", "spotify"], ["uid", "kstarr0092"], ["birthdate", "1984-04-09 00:00:00"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2017-08-21 14:52:37.226268"], ["last_sign_in_at", "2017-08-21 14:52:37.226268"], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["updated_at", "2017-08-21 14:52:37.226859"], ["id", 31]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 159ms (ActiveRecord: 3.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-21 09:52:37 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 26ms (Views: 21.1ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/bouquets/locations" for 127.0.0.1 at 2017-08-21 09:52:37 -0500
+Processing by BouquetsController#locations as */*
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (0.6ms)[0m  [1m[34mSELECT "bouquets".* FROM "bouquets" WHERE "bouquets"."sender_id" = $1[0m  [["sender_id", 31]]
+Completed 200 OK in 64ms (Views: 0.2ms | ActiveRecord: 4.6ms)
+
+
+Started POST "/bouquets/create" for 127.0.0.1 at 2017-08-21 09:52:52 -0500
+Processing by BouquetsController#create as HTML
+  Parameters: {"bouquet"=>{"sender_name"=>"dfg", "receiver_name"=>"fsdg", "custom_location"=>"fdgs", "comment"=>"fgsd", "image"=>#<ActionDispatch::Http::UploadedFile:0x007faacd0043d8 @tempfile=#<Tempfile:/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/RackMultipart20170821-41099-1edspay.png>, @original_filename="the-end.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"bouquet[image]\"; filename=\"the-end.png\"\r\nContent-Type: image/png\r\n">}, "location"=>{"lat"=>"30.277557948193156", "lng"=>"-97.73666694760323"}, "song"=>{"track"=>"fsgd", "artist"=>"gfds", "album"=>"fgd"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mSong Load (0.4ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."track" = $1 AND "songs"."artist" = $2 AND "songs"."album" = $3 LIMIT $4[0m  [["track", "fsgd"], ["artist", "gfds"], ["album", "fgd"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "gfds"], ["album", "fgd"], ["track", "fsgd"], ["created_at", "2017-08-21 14:52:52.821872"], ["updated_at", "2017-08-21 14:52:52.821872"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."lat" = $1 AND "locations"."lng" = $2 LIMIT $3[0m  [["lat", 30], ["lng", -97], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "locations" ("lat", "lng", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["lat", 30], ["lng", -97], ["created_at", "2017-08-21 14:52:52.834688"], ["updated_at", "2017-08-21 14:52:52.834688"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-41099-dp99n8.png'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-41099-1w9euoq.png[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-41099-1w9euoq.png[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-41099-1w9euoq.png[0]' -auto-orient -resize "600x600>" '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/b05a942edd1214298fc7e2e9bacb188720170821-41099-m9nn8l'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-41099-1w9euoq.png[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-41099-1w9euoq.png[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-41099-1w9euoq.png[0]' -auto-orient -resize "300x300>" '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/b05a942edd1214298fc7e2e9bacb188720170821-41099-1n2eiy3'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-41099-1w9euoq.png[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-41099-1w9euoq.png[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-41099-1w9euoq.png[0]' -auto-orient -resize "150x150>" '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/b05a942edd1214298fc7e2e9bacb188720170821-41099-4nz1jt'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-41099-gfqagq.png'
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "song_id", "custom_location", "location_id", "comment", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["sender_name", "dfg"], ["receiver_name", "fsdg"], ["sender_id", 31], ["song_id", 11], ["custom_location", "fdgs"], ["location_id", 11], ["comment", "fgsd"], ["created_at", "2017-08-21 14:52:53.471970"], ["updated_at", "2017-08-21 14:52:53.471970"], ["image_file_name", "the-end.png"], ["image_content_type", "image/png"], ["image_file_size", 181355], ["image_updated_at", "2017-08-21 14:52:52.874373"]]
+  [1m[35m (15.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/bouquets/confirm/11
+Completed 302 Found in 693ms (ActiveRecord: 26.2ms)
+
+
+Started GET "/bouquets/confirm/11" for 127.0.0.1 at 2017-08-21 09:52:53 -0500
+Processing by BouquetsController#confirm as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (0.2ms)[0m  [1m[34mSELECT  "bouquets".* FROM "bouquets" WHERE "bouquets"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering bouquets/confirm.html.erb within layouts/application
+  [1m[36mSong Load (0.6ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  Rendered bouquets/_text_form.erb (0.6ms)
+  Rendered bouquets/confirm.html.erb within layouts/application (7.1ms)
+Completed 200 OK in 41ms (Views: 33.2ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/bouquets/locations" for 127.0.0.1 at 2017-08-21 09:52:53 -0500
+Processing by BouquetsController#locations as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (0.3ms)[0m  [1m[34mSELECT "bouquets".* FROM "bouquets" WHERE "bouquets"."sender_id" = $1[0m  [["sender_id", 31]]
+  [1m[36mLocation Load (0.4ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+Completed 200 OK in 10ms (Views: 0.3ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/texts/create" for 127.0.0.1 at 2017-08-21 09:53:02 -0500
+Processing by TextsController#create as HTML
+  Parameters: {"text"=>{"sender"=>"dfg", "image_url"=>"/system/bouquets/images/000/000/011/original/the-end.png?1503327172", "number"=>"9038144150"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 112655ms (ActiveRecord: 2.9ms)
+
+
+  
+Twilio::REST::RestError (Unable to create record: Media urls: /system/bouquets/images/000/000/011/original/the-end.png?1503327172 are invalid. Please use only valid http and https urls):
+  
+app/models/text.rb:21:in `send_sms'
+app/controllers/texts_controller.rb:8:in `create'
+Started GET "/" for 127.0.0.1 at 2017-08-21 11:02:01 -0500
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 428ms (Views: 383.5ms | ActiveRecord: 4.3ms)
+
+
+Started POST "/bouquets/locations" for 127.0.0.1 at 2017-08-21 11:02:02 -0500
+Processing by BouquetsController#locations as */*
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (0.3ms)[0m  [1m[34mSELECT "bouquets".* FROM "bouquets" WHERE "bouquets"."sender_id" = $1[0m  [["sender_id", 31]]
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+Completed 200 OK in 139ms (Views: 0.2ms | ActiveRecord: 9.7ms)
+
+
+Started POST "/bouquets/create" for 127.0.0.1 at 2017-08-21 11:02:17 -0500
+Processing by BouquetsController#create as HTML
+  Parameters: {"bouquet"=>{"sender_name"=>"adsf", "receiver_name"=>"dfas", "custom_location"=>"afsd", "comment"=>"asdf"}, "location"=>{"lat"=>"30.273406984145634", "lng"=>"-97.7479536831379"}, "song"=>{"track"=>"fads", "artist"=>"dfas", "album"=>"afds"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mSong Load (0.5ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."track" = $1 AND "songs"."artist" = $2 AND "songs"."album" = $3 LIMIT $4[0m  [["track", "fads"], ["artist", "dfas"], ["album", "afds"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "dfas"], ["album", "afds"], ["track", "fads"], ["created_at", "2017-08-21 16:02:17.494472"], ["updated_at", "2017-08-21 16:02:17.494472"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."lat" = $1 AND "locations"."lng" = $2 LIMIT $3[0m  [["lat", 30], ["lng", -97], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "song_id", "custom_location", "location_id", "comment", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["sender_name", "adsf"], ["receiver_name", "dfas"], ["sender_id", 31], ["song_id", 12], ["custom_location", "afsd"], ["location_id", 11], ["comment", "asdf"], ["created_at", "2017-08-21 16:02:17.538241"], ["updated_at", "2017-08-21 16:02:17.538241"]]
+  [1m[35m (15.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/bouquets/confirm/12
+Completed 302 Found in 92ms (ActiveRecord: 21.1ms)
+
+
+Started GET "/bouquets/confirm/12" for 127.0.0.1 at 2017-08-21 11:02:17 -0500
+Processing by BouquetsController#confirm as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (0.2ms)[0m  [1m[34mSELECT  "bouquets".* FROM "bouquets" WHERE "bouquets"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering bouquets/confirm.html.erb within layouts/application
+  [1m[36mSong Load (0.3ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  Rendered bouquets/_text_form.erb (0.4ms)
+  Rendered bouquets/confirm.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 33ms (Views: 27.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/images/medium/missing.png" for 127.0.0.1 at 2017-08-21 11:02:17 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/images/medium/missing.png"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `call'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started POST "/bouquets/locations" for 127.0.0.1 at 2017-08-21 11:02:17 -0500
+Processing by BouquetsController#locations as */*
+  [1m[36mUser Load (25.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (0.4ms)[0m  [1m[34mSELECT "bouquets".* FROM "bouquets" WHERE "bouquets"."sender_id" = $1[0m  [["sender_id", 31]]
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Location Load (0.1ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+Completed 200 OK in 34ms (Views: 0.1ms | ActiveRecord: 27.3ms)
+
+
+Started POST "/texts/create" for 127.0.0.1 at 2017-08-21 11:02:24 -0500
+Processing by TextsController#create as HTML
+  Parameters: {"text"=>{"sender"=>"adsf", "image_url"=>"/images/original/missing.png", "number"=>"9038144150"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+Redirected to http://localhost:3000/users/current_user.id
+Completed 302 Found in 707ms (ActiveRecord: 3.2ms)
+
+
+Started GET "/users/current_user.id" for 127.0.0.1 at 2017-08-21 11:02:24 -0500
+Processing by UsersController#show as 
+  Parameters: {"id"=>"current_user"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 54ms (Views: 29.7ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/bouquets/locations" for 127.0.0.1 at 2017-08-21 11:02:25 -0500
+Processing by BouquetsController#locations as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (0.3ms)[0m  [1m[34mSELECT "bouquets".* FROM "bouquets" WHERE "bouquets"."sender_id" = $1[0m  [["sender_id", 31]]
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Location Load (0.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/bouquets/locations" for 127.0.0.1 at 2017-08-21 12:15:09 -0500
+Processing by BouquetsController#locations as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (0.4ms)[0m  [1m[34mSELECT "bouquets".* FROM "bouquets" WHERE "bouquets"."sender_id" = $1[0m  [["sender_id", 31]]
+  [1m[36mLocation Load (1.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Location Load (0.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+Completed 200 OK in 15ms (Views: 0.2ms | ActiveRecord: 2.9ms)
+
+
+Started POST "/bouquets/locations" for 127.0.0.1 at 2017-08-21 12:15:11 -0500
+Processing by BouquetsController#locations as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (0.4ms)[0m  [1m[34mSELECT "bouquets".* FROM "bouquets" WHERE "bouquets"."sender_id" = $1[0m  [["sender_id", 31]]
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Location Load (0.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-21 12:15:22 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 55ms (Views: 31.3ms | ActiveRecord: 3.2ms)
+
+
+Started POST "/bouquets/locations" for 127.0.0.1 at 2017-08-21 12:15:22 -0500
+Processing by BouquetsController#locations as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (0.9ms)[0m  [1m[34mSELECT "bouquets".* FROM "bouquets" WHERE "bouquets"."sender_id" = $1[0m  [["sender_id", 31]]
+  [1m[36mLocation Load (0.5ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Location Load (0.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+Completed 200 OK in 66ms (Views: 0.4ms | ActiveRecord: 11.4ms)
+
+
+Started POST "/bouquets/create" for 127.0.0.1 at 2017-08-21 12:15:36 -0500
+Processing by BouquetsController#create as HTML
+  Parameters: {"bouquet"=>{"sender_name"=>"fsdg", "receiver_name"=>"gsfd", "custom_location"=>"sfgd", "comment"=>"gfds", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fe382eed910 @tempfile=#<Tempfile:/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/RackMultipart20170821-43466-1r6vx99.gif>, @original_filename="giphy.gif", @content_type="image/gif", @headers="Content-Disposition: form-data; name=\"bouquet[image]\"; filename=\"giphy.gif\"\r\nContent-Type: image/gif\r\n">}, "location"=>{"lat"=>"30.275667798834366", "lng"=>"-97.74366214871407"}, "song"=>{"track"=>"sdg", "artist"=>"dfgs", "album"=>"fgd"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mSong Load (0.3ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."track" = $1 AND "songs"."artist" = $2 AND "songs"."album" = $3 LIMIT $4[0m  [["track", "sdg"], ["artist", "dfgs"], ["album", "fgd"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "dfgs"], ["album", "fgd"], ["track", "sdg"], ["created_at", "2017-08-21 17:15:36.937511"], ["updated_at", "2017-08-21 17:15:36.937511"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."lat" = $1 AND "locations"."lng" = $2 LIMIT $3[0m  [["lat", 30], ["lng", -97], ["LIMIT", 1]]
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-43466-1qsxq1k.gif'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-43466-2fb4gh.gif[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-43466-2fb4gh.gif[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-43466-2fb4gh.gif' -coalesce -auto-orient -resize "600x600>" -layers "optimize" '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/02319848c114152c77801bcc9085623120170821-43466-1um0r9u'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-43466-2fb4gh.gif[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-43466-2fb4gh.gif[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-43466-2fb4gh.gif' -coalesce -auto-orient -resize "300x300>" -layers "optimize" '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/02319848c114152c77801bcc9085623120170821-43466-cmxp74'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-43466-2fb4gh.gif[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-43466-2fb4gh.gif[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-43466-2fb4gh.gif' -coalesce -auto-orient -resize "150x150>" -layers "optimize" '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/02319848c114152c77801bcc9085623120170821-43466-5h7zn5'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mSong Load (0.3ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-43466-10mg76r.gif'
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "song_id", "custom_location", "location_id", "comment", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["sender_name", "fsdg"], ["receiver_name", "gsfd"], ["sender_id", 31], ["song_id", 13], ["custom_location", "sfgd"], ["location_id", 11], ["comment", "gfds"], ["created_at", "2017-08-21 17:15:41.544694"], ["updated_at", "2017-08-21 17:15:41.544694"], ["image_file_name", "giphy.gif"], ["image_content_type", "image/gif"], ["image_file_size", 1225221], ["image_updated_at", "2017-08-21 17:15:36.942679"]]
+  [1m[35m (15.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/bouquets/confirm/13
+Completed 302 Found in 4647ms (ActiveRecord: 21.4ms)
+
+
+Started GET "/bouquets/confirm/13" for 127.0.0.1 at 2017-08-21 12:15:41 -0500
+Processing by BouquetsController#confirm as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (0.3ms)[0m  [1m[34mSELECT  "bouquets".* FROM "bouquets" WHERE "bouquets"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering bouquets/confirm.html.erb within layouts/application
+  [1m[36mSong Load (0.3ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  Rendered bouquets/_text_form.erb (0.6ms)
+  Rendered bouquets/confirm.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 31ms (Views: 24.8ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/bouquets/locations" for 127.0.0.1 at 2017-08-21 12:15:41 -0500
+Processing by BouquetsController#locations as */*
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (0.2ms)[0m  [1m[34mSELECT "bouquets".* FROM "bouquets" WHERE "bouquets"."sender_id" = $1[0m  [["sender_id", 31]]
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Location Load (0.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Location Load (0.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 2.2ms)
+
+
+Started POST "/texts/create" for 127.0.0.1 at 2017-08-21 12:15:48 -0500
+Processing by TextsController#create as HTML
+  Parameters: {"text"=>{"sender"=>"fsdg", "image_url"=>"/system/bouquets/images/000/000/013/original/giphy.gif?1503335736", "number"=>"9038144150"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 348ms (ActiveRecord: 3.2ms)
+
+
+  
+Twilio::REST::RestError (Unable to create record: Media urls: /system/bouquets/images/000/000/013/original/giphy.gif?1503335736 are invalid. Please use only valid http and https urls):
+  
+app/models/text.rb:21:in `send_sms'
+app/controllers/texts_controller.rb:8:in `create'
+Started GET "/" for 127.0.0.1 at 2017-08-21 12:39:11 -0500
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 483ms (Views: 430.8ms | ActiveRecord: 4.3ms)
+
+
+Started POST "/bouquets/locations" for 127.0.0.1 at 2017-08-21 12:39:12 -0500
+Processing by BouquetsController#locations as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (0.6ms)[0m  [1m[34mSELECT "bouquets".* FROM "bouquets" WHERE "bouquets"."sender_id" = $1[0m  [["sender_id", 31]]
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Location Load (0.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Location Load (0.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+Completed 200 OK in 196ms (Views: 0.3ms | ActiveRecord: 14.3ms)
+
+
+Started POST "/bouquets/create" for 127.0.0.1 at 2017-08-21 12:39:35 -0500
+Processing by BouquetsController#create as HTML
+  Parameters: {"bouquet"=>{"sender_name"=>"adfs", "receiver_name"=>"asdfdsa", "custom_location"=>"afsd", "comment"=>"adsf", "image"=>#<ActionDispatch::Http::UploadedFile:0x007f8260c44778 @tempfile=#<Tempfile:/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/RackMultipart20170821-48796-8erkyq.gif>, @original_filename="giphy.gif", @content_type="image/gif", @headers="Content-Disposition: form-data; name=\"bouquet[image]\"; filename=\"giphy.gif\"\r\nContent-Type: image/gif\r\n">}, "location"=>{"lat"=>"30.277409702500243", "lng"=>"-97.74670913815498"}, "song"=>{"track"=>"adsf", "artist"=>"adsf", "album"=>"asdf"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mSong Load (0.5ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."track" = $1 AND "songs"."artist" = $2 AND "songs"."album" = $3 LIMIT $4[0m  [["track", "adsf"], ["artist", "adsf"], ["album", "asdf"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "adsf"], ["album", "asdf"], ["track", "adsf"], ["created_at", "2017-08-21 17:39:35.160793"], ["updated_at", "2017-08-21 17:39:35.160793"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."lat" = $1 AND "locations"."lng" = $2 LIMIT $3[0m  [["lat", 30], ["lng", -97], ["LIMIT", 1]]
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-48796-1wkzub1.gif'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-48796-4og3rk.gif[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-48796-4og3rk.gif[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-48796-4og3rk.gif' -coalesce -auto-orient -resize "600x600>" -layers "optimize" '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/86dc4d9d90c6fd41df54d8eb186a247920170821-48796-s2des2'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-48796-4og3rk.gif[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-48796-4og3rk.gif[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-48796-4og3rk.gif' -coalesce -auto-orient -resize "300x300>" -layers "optimize" '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/86dc4d9d90c6fd41df54d8eb186a247920170821-48796-1fm78ru'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-48796-4og3rk.gif[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-48796-4og3rk.gif[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-48796-4og3rk.gif' -coalesce -auto-orient -resize "150x150>" -layers "optimize" '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/86dc4d9d90c6fd41df54d8eb186a247920170821-48796-qhi7ht'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.7ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-48796-1valn5d.gif'
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "song_id", "custom_location", "location_id", "comment", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["sender_name", "adfs"], ["receiver_name", "asdfdsa"], ["sender_id", 31], ["song_id", 14], ["custom_location", "afsd"], ["location_id", 11], ["comment", "adsf"], ["created_at", "2017-08-21 17:39:39.724132"], ["updated_at", "2017-08-21 17:39:39.724132"], ["image_file_name", "giphy.gif"], ["image_content_type", "image/gif"], ["image_file_size", 1225221], ["image_updated_at", "2017-08-21 17:39:35.166514"]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 4584ms (ActiveRecord: 7.0ms)
+
+
+  
+Errno::EACCES (Permission denied @ dir_s_mkdir - /bouquets):
+  
+app/controllers/bouquets_controller.rb:30:in `create'
+Started GET "/" for 127.0.0.1 at 2017-08-21 12:42:03 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 27ms (Views: 21.3ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/bouquets/locations" for 127.0.0.1 at 2017-08-21 12:42:03 -0500
+Processing by BouquetsController#locations as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (0.4ms)[0m  [1m[34mSELECT "bouquets".* FROM "bouquets" WHERE "bouquets"."sender_id" = $1[0m  [["sender_id", 31]]
+  [1m[36mLocation Load (0.4ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Location Load (0.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Location Load (0.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/bouquets/create" for 127.0.0.1 at 2017-08-21 12:42:38 -0500
+Processing by BouquetsController#create as HTML
+  Parameters: {"bouquet"=>{"sender_name"=>"dfa", "receiver_name"=>"fgsd", "custom_location"=>"fgds", "comment"=>"fgds", "image"=>#<ActionDispatch::Http::UploadedFile:0x007f82605b69b0 @tempfile=#<Tempfile:/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/RackMultipart20170821-48796-bbeibe.png>, @original_filename="the-end.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"bouquet[image]\"; filename=\"the-end.png\"\r\nContent-Type: image/png\r\n">}, "location"=>{"lat"=>"30.27366642454188", "lng"=>"-97.74100139737129"}, "song"=>{"track"=>"gfsd", "artist"=>"fgds", "album"=>"fgds"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mSong Load (0.3ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."track" = $1 AND "songs"."artist" = $2 AND "songs"."album" = $3 LIMIT $4[0m  [["track", "gfsd"], ["artist", "fgds"], ["album", "fgds"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "fgds"], ["album", "fgds"], ["track", "gfsd"], ["created_at", "2017-08-21 17:42:38.257320"], ["updated_at", "2017-08-21 17:42:38.257320"]]
+  [1m[35m (15.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."lat" = $1 AND "locations"."lng" = $2 LIMIT $3[0m  [["lat", 30], ["lng", -97], ["LIMIT", 1]]
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-48796-wa8dlu.png'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-48796-17u060b.png[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-48796-17u060b.png[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-48796-17u060b.png[0]' -auto-orient -resize "600x600>" '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/c04747ee8d994692f6cb2f4f3501949820170821-48796-11mtdgz'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-48796-17u060b.png[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-48796-17u060b.png[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-48796-17u060b.png[0]' -auto-orient -resize "300x300>" '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/c04747ee8d994692f6cb2f4f3501949820170821-48796-6c88r6'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-48796-17u060b.png[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-48796-17u060b.png[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-48796-17u060b.png[0]' -auto-orient -resize "150x150>" '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/c04747ee8d994692f6cb2f4f3501949820170821-48796-1kph0fg'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-48796-lw5ob0.png'
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "song_id", "custom_location", "location_id", "comment", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["sender_name", "dfa"], ["receiver_name", "fgsd"], ["sender_id", 31], ["song_id", 15], ["custom_location", "fgds"], ["location_id", 11], ["comment", "fgds"], ["created_at", "2017-08-21 17:42:38.650920"], ["updated_at", "2017-08-21 17:42:38.650920"], ["image_file_name", "the-end.png"], ["image_content_type", "image/png"], ["image_file_size", 181355], ["image_updated_at", "2017-08-21 17:42:38.276735"]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 404ms (ActiveRecord: 18.6ms)
+
+
+  
+Errno::EACCES (Permission denied @ dir_s_mkdir - /bouquets):
+  
+app/controllers/bouquets_controller.rb:30:in `create'
+Started GET "/" for 127.0.0.1 at 2017-08-21 12:44:28 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 47ms (Views: 21.8ms | ActiveRecord: 2.9ms)
+
+
+Started POST "/bouquets/locations" for 127.0.0.1 at 2017-08-21 12:44:28 -0500
+Processing by BouquetsController#locations as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (0.3ms)[0m  [1m[34mSELECT "bouquets".* FROM "bouquets" WHERE "bouquets"."sender_id" = $1[0m  [["sender_id", 31]]
+  [1m[36mLocation Load (0.4ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Location Load (0.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Location Load (0.1ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+Completed 200 OK in 69ms (Views: 0.2ms | ActiveRecord: 9.8ms)
+
+
+Started POST "/bouquets/create" for 127.0.0.1 at 2017-08-21 12:44:41 -0500
+Processing by BouquetsController#create as HTML
+  Parameters: {"bouquet"=>{"sender_name"=>"rg", "receiver_name"=>"wrt", "custom_location"=>"ert", "comment"=>"ret", "image"=>#<ActionDispatch::Http::UploadedFile:0x007f8265aa1e20 @tempfile=#<Tempfile:/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/RackMultipart20170821-48796-14xwm50.gif>, @original_filename="giphy.gif", @content_type="image/gif", @headers="Content-Disposition: form-data; name=\"bouquet[image]\"; filename=\"giphy.gif\"\r\nContent-Type: image/gif\r\n">}, "location"=>{"lat"=>"30.276631408938453", "lng"=>"-97.74713829159737"}, "song"=>{"track"=>"rte", "artist"=>"ert", "album"=>"ret"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mSong Load (0.3ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."track" = $1 AND "songs"."artist" = $2 AND "songs"."album" = $3 LIMIT $4[0m  [["track", "rte"], ["artist", "ert"], ["album", "ret"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "ert"], ["album", "ret"], ["track", "rte"], ["created_at", "2017-08-21 17:44:41.047915"], ["updated_at", "2017-08-21 17:44:41.047915"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."lat" = $1 AND "locations"."lng" = $2 LIMIT $3[0m  [["lat", 30], ["lng", -97], ["LIMIT", 1]]
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-48796-164myh5.gif'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-48796-1xgytl6.gif[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-48796-1xgytl6.gif[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-48796-1xgytl6.gif' -coalesce -auto-orient -resize "600x600>" -layers "optimize" '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/d8c1806b04d59ed9f3c5316eab56864920170821-48796-bha49j'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-48796-1xgytl6.gif[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-48796-1xgytl6.gif[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-48796-1xgytl6.gif' -coalesce -auto-orient -resize "300x300>" -layers "optimize" '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/d8c1806b04d59ed9f3c5316eab56864920170821-48796-1spwmrx'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-48796-1xgytl6.gif[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-48796-1xgytl6.gif[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-48796-1xgytl6.gif' -coalesce -auto-orient -resize "150x150>" -layers "optimize" '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/d8c1806b04d59ed9f3c5316eab56864920170821-48796-1wwdfq5'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mSong Load (0.3ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-48796-25ipzd.gif'
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "song_id", "custom_location", "location_id", "comment", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["sender_name", "rg"], ["receiver_name", "wrt"], ["sender_id", 31], ["song_id", 16], ["custom_location", "ert"], ["location_id", 11], ["comment", "ret"], ["created_at", "2017-08-21 17:44:45.550353"], ["updated_at", "2017-08-21 17:44:45.550353"], ["image_file_name", "giphy.gif"], ["image_content_type", "image/gif"], ["image_file_size", 1225221], ["image_updated_at", "2017-08-21 17:44:41.053614"]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 4526ms (ActiveRecord: 5.6ms)
+
+
+  
+Errno::EACCES (Permission denied @ dir_s_mkdir - /bouquets):
+  
+app/controllers/bouquets_controller.rb:30:in `create'
+Started GET "/" for 127.0.0.1 at 2017-08-21 13:44:37 -0500
+  [1m[35m (16.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 716ms (Views: 658.2ms | ActiveRecord: 5.4ms)
+
+
+Started POST "/bouquets/locations" for 127.0.0.1 at 2017-08-21 13:44:38 -0500
+Processing by BouquetsController#locations as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (0.6ms)[0m  [1m[34mSELECT "bouquets".* FROM "bouquets" WHERE "bouquets"."sender_id" = $1[0m  [["sender_id", 31]]
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Location Load (0.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Location Load (0.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+Completed 200 OK in 227ms (Views: 0.2ms | ActiveRecord: 9.2ms)
+
+
+Started POST "/bouquets/create" for 127.0.0.1 at 2017-08-21 13:44:54 -0500
+Processing by BouquetsController#create as HTML
+  Parameters: {"bouquet"=>{"sender_name"=>"fghdfhg", "receiver_name"=>"hgfd", "custom_location"=>"hgfd", "comment"=>"hgdf", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fd40857aa10 @tempfile=#<Tempfile:/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/RackMultipart20170821-51260-1rplctt.gif>, @original_filename="giphy.gif", @content_type="image/gif", @headers="Content-Disposition: form-data; name=\"bouquet[image]\"; filename=\"giphy.gif\"\r\nContent-Type: image/gif\r\n">}, "location"=>{"lat"=>"30.276409038215714", "lng"=>"-97.74301841855049"}, "song"=>{"track"=>"hgdf", "artist"=>"hgdf", "album"=>"hgd"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mSong Load (0.4ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."track" = $1 AND "songs"."artist" = $2 AND "songs"."album" = $3 LIMIT $4[0m  [["track", "hgdf"], ["artist", "hgdf"], ["album", "hgd"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "hgdf"], ["album", "hgd"], ["track", "hgdf"], ["created_at", "2017-08-21 18:44:54.246761"], ["updated_at", "2017-08-21 18:44:54.246761"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mLocation Load (0.4ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."lat" = $1 AND "locations"."lng" = $2 LIMIT $3[0m  [["lat", 30], ["lng", -97], ["LIMIT", 1]]
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-51260-m5ozt0.gif'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-51260-1fycbs3.gif[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-51260-1fycbs3.gif[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-51260-1fycbs3.gif' -coalesce -auto-orient -resize "600x600>" -layers "optimize" '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/10e3ee846b0ef386f87ca36ff69a5c5320170821-51260-1wrtaot'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-51260-1fycbs3.gif[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-51260-1fycbs3.gif[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-51260-1fycbs3.gif' -coalesce -auto-orient -resize "300x300>" -layers "optimize" '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/10e3ee846b0ef386f87ca36ff69a5c5320170821-51260-13guhyv'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-51260-1fycbs3.gif[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-51260-1fycbs3.gif[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-51260-1fycbs3.gif' -coalesce -auto-orient -resize "150x150>" -layers "optimize" '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/10e3ee846b0ef386f87ca36ff69a5c5320170821-51260-1b0zhhn'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-51260-w2vsl6.gif'
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "song_id", "custom_location", "location_id", "comment", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["sender_name", "fghdfhg"], ["receiver_name", "hgfd"], ["sender_id", 31], ["song_id", 17], ["custom_location", "hgfd"], ["location_id", 11], ["comment", "hgdf"], ["created_at", "2017-08-21 18:44:59.024789"], ["updated_at", "2017-08-21 18:44:59.024789"], ["image_file_name", "giphy.gif"], ["image_content_type", "image/gif"], ["image_file_size", 1225221], ["image_updated_at", "2017-08-21 18:44:54.253405"]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 4815ms (ActiveRecord: 6.5ms)
+
+
+  
+Errno::EACCES (Permission denied @ dir_s_mkdir - /bouquets):
+  
+app/controllers/bouquets_controller.rb:30:in `create'
+Started GET "/" for 127.0.0.1 at 2017-08-21 13:46:11 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 49ms (Views: 45.5ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/bouquets/locations" for 127.0.0.1 at 2017-08-21 13:46:11 -0500
+Processing by BouquetsController#locations as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (0.4ms)[0m  [1m[34mSELECT "bouquets".* FROM "bouquets" WHERE "bouquets"."sender_id" = $1[0m  [["sender_id", 31]]
+  [1m[36mLocation Load (0.4ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Location Load (0.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Location Load (0.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+Completed 200 OK in 11ms (Views: 0.3ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-21 13:46:40 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 23ms (Views: 20.0ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/bouquets/locations" for 127.0.0.1 at 2017-08-21 13:46:40 -0500
+Processing by BouquetsController#locations as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (0.4ms)[0m  [1m[34mSELECT "bouquets".* FROM "bouquets" WHERE "bouquets"."sender_id" = $1[0m  [["sender_id", 31]]
+  [1m[36mLocation Load (0.4ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Location Load (0.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Location Load (0.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/bouquets/create" for 127.0.0.1 at 2017-08-21 13:46:53 -0500
+Processing by BouquetsController#create as HTML
+  Parameters: {"bouquet"=>{"sender_name"=>"dgfh", "receiver_name"=>"hgfd", "custom_location"=>"hgdf", "comment"=>"hgfd", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fd408fb1e20 @tempfile=#<Tempfile:/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/RackMultipart20170821-51260-171d8o0.gif>, @original_filename="giphy.gif", @content_type="image/gif", @headers="Content-Disposition: form-data; name=\"bouquet[image]\"; filename=\"giphy.gif\"\r\nContent-Type: image/gif\r\n">}, "location"=>{"lat"=>"30.27744676394448", "lng"=>"-97.7477391064167"}, "song"=>{"track"=>"hdfg", "artist"=>"hdfg", "album"=>"hfgd"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mSong Load (0.3ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."track" = $1 AND "songs"."artist" = $2 AND "songs"."album" = $3 LIMIT $4[0m  [["track", "hdfg"], ["artist", "hdfg"], ["album", "hfgd"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "hdfg"], ["album", "hfgd"], ["track", "hdfg"], ["created_at", "2017-08-21 18:46:53.676432"], ["updated_at", "2017-08-21 18:46:53.676432"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."lat" = $1 AND "locations"."lng" = $2 LIMIT $3[0m  [["lat", 30], ["lng", -97], ["LIMIT", 1]]
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-51260-qjmvyy.gif'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-51260-u2j94l.gif[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-51260-u2j94l.gif[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-51260-u2j94l.gif' -coalesce -auto-orient -resize "600x600>" -layers "optimize" '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/58a7b8a810f3b8e723dd015d67f5ee6220170821-51260-m3219m'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-51260-u2j94l.gif[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-51260-u2j94l.gif[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-51260-u2j94l.gif' -coalesce -auto-orient -resize "300x300>" -layers "optimize" '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/58a7b8a810f3b8e723dd015d67f5ee6220170821-51260-1a9yzdt'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-51260-u2j94l.gif[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-51260-u2j94l.gif[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-51260-u2j94l.gif' -coalesce -auto-orient -resize "150x150>" -layers "optimize" '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/58a7b8a810f3b8e723dd015d67f5ee6220170821-51260-18tqpcx'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mSong Load (0.3ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-51260-i62vas.gif'
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "song_id", "custom_location", "location_id", "comment", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["sender_name", "dgfh"], ["receiver_name", "hgfd"], ["sender_id", 31], ["song_id", 18], ["custom_location", "hgdf"], ["location_id", 11], ["comment", "hgfd"], ["created_at", "2017-08-21 18:46:58.046417"], ["updated_at", "2017-08-21 18:46:58.046417"], ["image_file_name", "giphy.gif"], ["image_content_type", "image/gif"], ["image_file_size", 1225221], ["image_updated_at", "2017-08-21 18:46:53.681479"]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 4379ms (ActiveRecord: 3.4ms)
+
+
+  
+Errno::EACCES (Permission denied @ dir_s_mkdir - /bouquets):
+  
+app/controllers/bouquets_controller.rb:30:in `create'
+Started GET "/" for 127.0.0.1 at 2017-08-21 13:48:54 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 51ms (Views: 22.0ms | ActiveRecord: 3.6ms)
+
+
+Started POST "/bouquets/locations" for 127.0.0.1 at 2017-08-21 13:48:54 -0500
+Processing by BouquetsController#locations as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (2.3ms)[0m  [1m[34mSELECT "bouquets".* FROM "bouquets" WHERE "bouquets"."sender_id" = $1[0m  [["sender_id", 31]]
+  [1m[36mLocation Load (0.8ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Location Load (0.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Location Load (0.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+Completed 200 OK in 83ms (Views: 0.5ms | ActiveRecord: 17.3ms)
+
+
+Started POST "/bouquets/create" for 127.0.0.1 at 2017-08-21 13:49:08 -0500
+Processing by BouquetsController#create as HTML
+  Parameters: {"bouquet"=>{"sender_name"=>"gdfs", "receiver_name"=>"sdfg", "custom_location"=>"gdfs", "comment"=>"gfds", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fd4067062c8 @tempfile=#<Tempfile:/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/RackMultipart20170821-51260-1n1616m.gif>, @original_filename="giphy.gif", @content_type="image/gif", @headers="Content-Disposition: form-data; name=\"bouquet[image]\"; filename=\"giphy.gif\"\r\nContent-Type: image/gif\r\n">}, "location"=>{"lat"=>"30.27600135724877", "lng"=>"-97.74700954556465"}, "song"=>{"track"=>"sfgd", "artist"=>"gfds", "album"=>"fgds"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mSong Load (0.4ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."track" = $1 AND "songs"."artist" = $2 AND "songs"."album" = $3 LIMIT $4[0m  [["track", "sfgd"], ["artist", "gfds"], ["album", "fgds"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "gfds"], ["album", "fgds"], ["track", "sfgd"], ["created_at", "2017-08-21 18:49:08.865866"], ["updated_at", "2017-08-21 18:49:08.865866"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."lat" = $1 AND "locations"."lng" = $2 LIMIT $3[0m  [["lat", 30], ["lng", -97], ["LIMIT", 1]]
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-51260-1yxqviq.gif'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-51260-uojta0.gif[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-51260-uojta0.gif[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-51260-uojta0.gif' -coalesce -auto-orient -resize "600x600>" -layers "optimize" '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/3db5c29f99096bf1fdfac7f627ba84cb20170821-51260-1qlxiux'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-51260-uojta0.gif[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-51260-uojta0.gif[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-51260-uojta0.gif' -coalesce -auto-orient -resize "300x300>" -layers "optimize" '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/3db5c29f99096bf1fdfac7f627ba84cb20170821-51260-1tib27p'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-51260-uojta0.gif[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-51260-uojta0.gif[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-51260-uojta0.gif' -coalesce -auto-orient -resize "150x150>" -layers "optimize" '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/3db5c29f99096bf1fdfac7f627ba84cb20170821-51260-998mt3'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mSong Load (0.3ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-51260-aaov38.gif'
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "song_id", "custom_location", "location_id", "comment", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["sender_name", "gdfs"], ["receiver_name", "sdfg"], ["sender_id", 31], ["song_id", 19], ["custom_location", "gdfs"], ["location_id", 11], ["comment", "gfds"], ["created_at", "2017-08-21 18:49:13.238748"], ["updated_at", "2017-08-21 18:49:13.238748"], ["image_file_name", "giphy.gif"], ["image_content_type", "image/gif"], ["image_file_size", 1225221], ["image_updated_at", "2017-08-21 18:49:08.871228"]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 4393ms (ActiveRecord: 5.8ms)
+
+
+  
+Errno::EACCES (Permission denied @ dir_s_mkdir - /bouquets):
+  
+app/controllers/bouquets_controller.rb:30:in `create'
+Started GET "/" for 127.0.0.1 at 2017-08-21 13:49:44 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 47ms (Views: 21.1ms | ActiveRecord: 3.0ms)
+
+
+Started POST "/bouquets/locations" for 127.0.0.1 at 2017-08-21 13:49:45 -0500
+Processing by BouquetsController#locations as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (0.5ms)[0m  [1m[34mSELECT "bouquets".* FROM "bouquets" WHERE "bouquets"."sender_id" = $1[0m  [["sender_id", 31]]
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Location Load (0.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Location Load (0.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+Completed 200 OK in 75ms (Views: 0.2ms | ActiveRecord: 13.7ms)
+
+
+Started POST "/bouquets/create" for 127.0.0.1 at 2017-08-21 13:50:00 -0500
+Processing by BouquetsController#create as HTML
+  Parameters: {"bouquet"=>{"sender_name"=>"cvxz", "receiver_name"=>"zcvx", "custom_location"=>"cvx", "comment"=>"zvcx", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fd40159ae98 @tempfile=#<Tempfile:/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/RackMultipart20170821-51260-1ge9gbb.png>, @original_filename="the-end.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"bouquet[image]\"; filename=\"the-end.png\"\r\nContent-Type: image/png\r\n">}, "location"=>{"lat"=>"30.27652022364007", "lng"=>"-97.74962738156319"}, "song"=>{"track"=>"vzcx", "artist"=>"vzcx", "album"=>"vcxz"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mSong Load (0.3ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."track" = $1 AND "songs"."artist" = $2 AND "songs"."album" = $3 LIMIT $4[0m  [["track", "vzcx"], ["artist", "vzcx"], ["album", "vcxz"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "vzcx"], ["album", "vcxz"], ["track", "vzcx"], ["created_at", "2017-08-21 18:50:00.986181"], ["updated_at", "2017-08-21 18:50:00.986181"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."lat" = $1 AND "locations"."lng" = $2 LIMIT $3[0m  [["lat", 30], ["lng", -97], ["LIMIT", 1]]
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-51260-1woau6o.png'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-51260-1a0ne6a.png[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-51260-1a0ne6a.png[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-51260-1a0ne6a.png[0]' -auto-orient -resize "600x600>" '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/7415dd51dac760001c8c6db1942a453f20170821-51260-1ibt2bn'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-51260-1a0ne6a.png[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-51260-1a0ne6a.png[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-51260-1a0ne6a.png[0]' -auto-orient -resize "300x300>" '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/7415dd51dac760001c8c6db1942a453f20170821-51260-xtff51'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-51260-1a0ne6a.png[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-51260-1a0ne6a.png[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-51260-1a0ne6a.png[0]' -auto-orient -resize "150x150>" '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/7415dd51dac760001c8c6db1942a453f20170821-51260-ci5z3j'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mSong Load (0.3ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-51260-z6ut5k.png'
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "song_id", "custom_location", "location_id", "comment", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["sender_name", "cvxz"], ["receiver_name", "zcvx"], ["sender_id", 31], ["song_id", 20], ["custom_location", "cvx"], ["location_id", 11], ["comment", "zvcx"], ["created_at", "2017-08-21 18:50:01.426012"], ["updated_at", "2017-08-21 18:50:01.426012"], ["image_file_name", "the-end.png"], ["image_content_type", "image/png"], ["image_file_size", 181355], ["image_updated_at", "2017-08-21 18:50:00.991575"]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 462ms (ActiveRecord: 5.7ms)
+
+
+  
+Errno::EACCES (Permission denied @ dir_s_mkdir - /bouquets):
+  
+app/controllers/bouquets_controller.rb:30:in `create'
+Started GET "/" for 127.0.0.1 at 2017-08-21 13:50:15 -0500
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 47ms (Views: 19.4ms | ActiveRecord: 3.0ms)
+
+
+Started POST "/bouquets/locations" for 127.0.0.1 at 2017-08-21 13:50:15 -0500
+Processing by BouquetsController#locations as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (0.5ms)[0m  [1m[34mSELECT "bouquets".* FROM "bouquets" WHERE "bouquets"."sender_id" = $1[0m  [["sender_id", 31]]
+  [1m[36mLocation Load (0.4ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Location Load (0.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Location Load (0.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+Completed 200 OK in 64ms (Views: 0.2ms | ActiveRecord: 11.4ms)
+
+
+Started POST "/bouquets/create" for 127.0.0.1 at 2017-08-21 13:50:35 -0500
+Processing by BouquetsController#create as HTML
+  Parameters: {"bouquet"=>{"sender_name"=>"fgds", "receiver_name"=>"fgds", "custom_location"=>"gfsd", "comment"=>"fgds", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fd408685180 @tempfile=#<Tempfile:/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/RackMultipart20170821-51260-120wnzv.png>, @original_filename="the-end.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"bouquet[image]\"; filename=\"the-end.png\"\r\nContent-Type: image/png\r\n">}, "location"=>{"lat"=>"30.275111865624524", "lng"=>"-97.74452045559883"}, "song"=>{"track"=>"fsgd", "artist"=>"fgds", "album"=>"fgds"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."track" = $1 AND "songs"."artist" = $2 AND "songs"."album" = $3 LIMIT $4[0m  [["track", "fsgd"], ["artist", "fgds"], ["album", "fgds"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "fgds"], ["album", "fgds"], ["track", "fsgd"], ["created_at", "2017-08-21 18:50:35.085902"], ["updated_at", "2017-08-21 18:50:35.085902"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."lat" = $1 AND "locations"."lng" = $2 LIMIT $3[0m  [["lat", 30], ["lng", -97], ["LIMIT", 1]]
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-51260-1eqi914.png'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-51260-10b0456.png[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-51260-10b0456.png[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-51260-10b0456.png[0]' -auto-orient -resize "600x600>" '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/afe60ad1a0200033c76d65378419b64220170821-51260-n9jy5i'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-51260-10b0456.png[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-51260-10b0456.png[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-51260-10b0456.png[0]' -auto-orient -resize "300x300>" '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/afe60ad1a0200033c76d65378419b64220170821-51260-7902wl'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-51260-10b0456.png[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-51260-10b0456.png[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-51260-10b0456.png[0]' -auto-orient -resize "150x150>" '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/afe60ad1a0200033c76d65378419b64220170821-51260-1jf3yyy'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mSong Load (0.3ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/15bba1694eca542c50d0fec15297650120170821-51260-1e9uh7p.png'
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "song_id", "custom_location", "location_id", "comment", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["sender_name", "fgds"], ["receiver_name", "fgds"], ["sender_id", 31], ["song_id", 21], ["custom_location", "gfsd"], ["location_id", 11], ["comment", "fgds"], ["created_at", "2017-08-21 18:50:35.441003"], ["updated_at", "2017-08-21 18:50:35.441003"], ["image_file_name", "the-end.png"], ["image_content_type", "image/png"], ["image_file_size", 181355], ["image_updated_at", "2017-08-21 18:50:35.090723"]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 375ms (ActiveRecord: 5.9ms)
+
+
+  
+Errno::EACCES (Permission denied @ dir_s_mkdir - /bouquets):
+  
+app/controllers/bouquets_controller.rb:30:in `create'
+Started GET "/" for 127.0.0.1 at 2017-08-21 14:04:44 -0500
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BouquetsController#new as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bouquets/new.html.erb within layouts/application
+  Rendered bouquets/new.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 341ms (Views: 304.0ms | ActiveRecord: 4.0ms)
+
+
+Started POST "/bouquets/locations" for 127.0.0.1 at 2017-08-21 14:04:44 -0500
+Processing by BouquetsController#locations as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (0.4ms)[0m  [1m[34mSELECT "bouquets".* FROM "bouquets" WHERE "bouquets"."sender_id" = $1[0m  [["sender_id", 31]]
+  [1m[36mLocation Load (0.4ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Location Load (0.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Location Load (0.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+Completed 200 OK in 144ms (Views: 0.2ms | ActiveRecord: 9.0ms)
+
+
+Started POST "/bouquets/create" for 127.0.0.1 at 2017-08-21 14:05:00 -0500
+Processing by BouquetsController#create as HTML
+  Parameters: {"bouquet"=>{"sender_name"=>"sdfg", "receiver_name"=>"fgds", "custom_location"=>"fgds", "comment"=>"fgds", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fb008965658 @tempfile=#<Tempfile:/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/RackMultipart20170821-52799-1edh0hm.gif>, @original_filename="giphy.gif", @content_type="image/gif", @headers="Content-Disposition: form-data; name=\"bouquet[image]\"; filename=\"giphy.gif\"\r\nContent-Type: image/gif\r\n">}, "location"=>{"lat"=>"30.282598168505828", "lng"=>"-97.74971321225166"}, "song"=>{"track"=>"fdgs", "artist"=>"dfs", "album"=>"dfgs"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mSong Load (0.5ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."track" = $1 AND "songs"."artist" = $2 AND "songs"."album" = $3 LIMIT $4[0m  [["track", "fdgs"], ["artist", "dfs"], ["album", "dfgs"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "songs" ("artist", "album", "track", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "dfs"], ["album", "dfgs"], ["track", "fdgs"], ["created_at", "2017-08-21 19:05:00.867228"], ["updated_at", "2017-08-21 19:05:00.867228"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."lat" = $1 AND "locations"."lng" = $2 LIMIT $3[0m  [["lat", 30], ["lng", -97], ["LIMIT", 1]]
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-52799-n8ogqk.gif'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-52799-591d9n.gif[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-52799-591d9n.gif[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-52799-591d9n.gif' -coalesce -auto-orient -resize "600x600>" -layers "optimize" '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/7360b319e33ed802a8b8ac879631bde820170821-52799-64v0o2'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-52799-591d9n.gif[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-52799-591d9n.gif[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-52799-591d9n.gif' -coalesce -auto-orient -resize "300x300>" -layers "optimize" '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/7360b319e33ed802a8b8ac879631bde820170821-52799-8zn3vf'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-52799-591d9n.gif[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-52799-591d9n.gif[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-52799-591d9n.gif' -coalesce -auto-orient -resize "150x150>" -layers "optimize" '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/7360b319e33ed802a8b8ac879631bde820170821-52799-j5yk8i'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_w/btzn3j5n3s7f409vt0zj50_00000gn/T/5f05721cc8991c96f75d45c7360eb85820170821-52799-adebey.gif'
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "bouquets" ("sender_name", "receiver_name", "sender_id", "song_id", "custom_location", "location_id", "comment", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["sender_name", "sdfg"], ["receiver_name", "fgds"], ["sender_id", 31], ["song_id", 22], ["custom_location", "fgds"], ["location_id", 11], ["comment", "fgds"], ["created_at", "2017-08-21 19:05:05.367864"], ["updated_at", "2017-08-21 19:05:05.367864"], ["image_file_name", "giphy.gif"], ["image_content_type", "image/gif"], ["image_file_size", 1225221], ["image_updated_at", "2017-08-21 19:05:00.873981"]]
+  [1m[35m (15.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/bouquets/confirm/22
+Completed 302 Found in 4554ms (ActiveRecord: 22.6ms)
+
+
+Started GET "/bouquets/confirm/22" for 127.0.0.1 at 2017-08-21 14:05:05 -0500
+Processing by BouquetsController#confirm as HTML
+  Parameters: {"id"=>"22"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (0.2ms)[0m  [1m[34mSELECT  "bouquets".* FROM "bouquets" WHERE "bouquets"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering bouquets/confirm.html.erb within layouts/application
+  [1m[36mSong Load (0.3ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  Rendered bouquets/_text_form.erb (0.6ms)
+  Rendered bouquets/confirm.html.erb within layouts/application (19.5ms)
+Completed 200 OK in 71ms (Views: 41.5ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/bouquets/locations" for 127.0.0.1 at 2017-08-21 14:05:05 -0500
+Processing by BouquetsController#locations as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (0.4ms)[0m  [1m[34mSELECT "bouquets".* FROM "bouquets" WHERE "bouquets"."sender_id" = $1[0m  [["sender_id", 31]]
+  [1m[36mLocation Load (0.4ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Location Load (0.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Location Load (0.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Location Load (0.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+Completed 200 OK in 13ms (Views: 0.2ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/bouquets/confirm/22" for 127.0.0.1 at 2017-08-21 14:05:33 -0500
+Processing by BouquetsController#confirm as HTML
+  Parameters: {"id"=>"22"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (0.2ms)[0m  [1m[34mSELECT  "bouquets".* FROM "bouquets" WHERE "bouquets"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering bouquets/confirm.html.erb within layouts/application
+  [1m[36mSong Load (0.3ms)[0m  [1m[34mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  Rendered bouquets/_text_form.erb (0.5ms)
+  Rendered bouquets/confirm.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 29ms (Views: 22.6ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/bouquets/locations" for 127.0.0.1 at 2017-08-21 14:05:33 -0500
+Processing by BouquetsController#locations as */*
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (0.4ms)[0m  [1m[34mSELECT "bouquets".* FROM "bouquets" WHERE "bouquets"."sender_id" = $1[0m  [["sender_id", 31]]
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Location Load (0.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Location Load (0.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Location Load (0.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+Completed 200 OK in 16ms (Views: 0.2ms | ActiveRecord: 3.1ms)
+
+
+Started POST "/texts/create" for 127.0.0.1 at 2017-08-21 14:06:19 -0500
+Processing by TextsController#create as HTML
+  Parameters: {"text"=>{"sender"=>"sdfg", "image_url"=>"/system/bouquets/images/000/000/022/original/giphy.gif?1503342300", "number"=>"9038144150"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+Unpermitted parameter: :image_url
+Redirected to http://localhost:3000/users/current_user.id
+Completed 302 Found in 994ms (ActiveRecord: 2.6ms)
+
+
+Started GET "/users/current_user.id" for 127.0.0.1 at 2017-08-21 14:06:20 -0500
+Processing by UsersController#show as 
+  Parameters: {"id"=>"current_user"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 55ms (Views: 30.5ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/bouquets/locations" for 127.0.0.1 at 2017-08-21 14:06:20 -0500
+Processing by BouquetsController#locations as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mBouquet Load (1.5ms)[0m  [1m[34mSELECT "bouquets".* FROM "bouquets" WHERE "bouquets"."sender_id" = $1[0m  [["sender_id", 31]]
+  [1m[36mLocation Load (0.5ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Location Load (0.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Location Load (0.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Location Load (0.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+Completed 200 OK in 13ms (Views: 0.2ms | ActiveRecord: 2.8ms)
+
+
