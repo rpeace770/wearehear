@@ -41,8 +41,12 @@ gem 'jbuilder', '~> 2.5'
 gem 'dotenv'
 
 gem 'twilio-ruby'
+# we still need paperclip gem even though we removed that feature- the gem is still needed to run the migrations
+gem 'paperclip'
 
-# gem 'figaro'
+gem 'carrierwave'
+gem 'cloudinary'
+
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
