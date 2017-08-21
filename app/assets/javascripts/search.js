@@ -1,6 +1,7 @@
 $(document).ready(function(){
   $("#search_submit").on('submit', function(e){
     e.preventDefault();
+    console.log("works")
     var formData = $(this).serialize();
     $.ajax({
       url: "/spotify_search",
@@ -16,15 +17,14 @@ $(document).ready(function(){
   });
   $("#results").on("submit", "form", function(e) {
     e.preventDefault();
-    console.log($(this))
     var children = $(this).children();
     $("#album").val(children[2].defaultValue);
     $("#artist").val(children[3].defaultValue);
     $("#spot_id").val(children[4].defaultValue);
     $("#song_title").val(children[5].defaultValue);
-
-  });;
-
-
+    $("#show-song").text(children[5].defaultValue);
+    $("#show-artist").text(children[3].defaultValue);
+    $("#show-album").text(children[2].defaultValue);
+  });
 
 });

@@ -13,6 +13,10 @@
  *= require_tree .
  *= require_self
  */
+body {
+  background-color: #FFFFFF;
+  font-family: 'Open Sans', sans-serif;
+}
 
 body {
   background-image: url("music-sound-audio-recording.png");
@@ -40,6 +44,7 @@ div#person {
   margin: auto;
   border: 10px solid white;
   border-radius: 15px;
+  position: fixed;
 
 }
 button{
@@ -48,7 +53,7 @@ button{
 }
 
 div#results{
-  float:right;
+  /*float:right;*/
 }
 
 
@@ -75,15 +80,23 @@ input {
 .container{
   margin-bottom: 0px;
 }
-.artist-container{
-  display: inline-block;
-  float: left;
-  margin: 8px;
+
+.scroll-container {
+  width: 160px;
+  height: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transform: rotate(-90deg);
+  transform-origin: right top;
 }
-.track-container{
-  display: inline-block;
-  float:left;
-  margin: 8px;
+
+.artist-container, .track-container{
+/*  display: inline-block;
+  float: left;*/
+
+  transform: rotate(90deg);
+  transform-origin: right top;
+
 }
 
 
