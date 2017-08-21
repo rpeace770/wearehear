@@ -14,6 +14,13 @@
  *= require_self
  */
 
+body {
+  background-image: url("music-sound-audio-recording.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: white;
+}
+
 h1 {
   text-align: center;
 }
@@ -31,6 +38,8 @@ div#person {
   height: 600px;
   background-color: grey;
   margin: auto;
+  border: 10px solid white;
+  border-radius: 15px;
 
 }
 button{
@@ -83,6 +92,8 @@ input {
   height: 400px;
   background-color: grey;
   margin: auto;
+  border: 10px solid white;
+  border-radius: 15px;
 }
 
 #show-map {
@@ -90,6 +101,8 @@ input {
   height: 400px;
   background-color: grey;
   margin: auto;
+  border: 10px solid white;
+  border-radius: 15px;
 }
 
 #pac-input {
@@ -101,6 +114,8 @@ input {
   height: 400px;
   background-color: grey;
   margin: auto;
+  border: 10px solid white;
+  border-radius: 15px;
 }
 
 #floating-panel {
@@ -124,4 +139,12 @@ input {
   position: absolute;
   top: 10px;
   z-index: 5;
+}
+
+.profile_picture {
+  border-top-left-radius: 50% 50%;
+  border-top-right-radius: 50% 50%;
+  border-bottom-right-radius: 50% 50%;
+  border-bottom-left-radius: 50% 50%;
+  border: 10px solid white;
 }
