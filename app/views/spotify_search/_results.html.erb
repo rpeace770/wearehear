@@ -27,7 +27,7 @@
 	        <div class="track-container" id="<%=track[:track_id] %> data">
 						<iframe src="https://open.spotify.com/embed?uri=spotify:track:<%=track['id'] %>"
 						        frameborder="0" allowtransparency="true" width="250" height="330"></iframe>
-						<%=button_to "add song to bouquet", bouquets_create_path,  form_class:"add_song_button" %>
+		     <%= button_to "add song to bouquet", bouquets_create_path,  form_class:"add_song_button"  %>
 					</div>
 			<%end %>
 
