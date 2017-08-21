@@ -7,7 +7,6 @@ class CallbacksController < Devise::OmniauthCallbacksController
       @user.picture_url = request.env["omniauth.auth"].info.images.first["url"]
     end
     @user.username = request.env["omniauth.auth"].info.display_name
-    # binding.pry
     sign_in_and_redirect @user
   end
 end
