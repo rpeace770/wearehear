@@ -41,7 +41,11 @@ class BouquetsController < ApplicationController
 
   def show
     @bouquet = Bouquet.find(params[:id])
-    @location = Location.find(@bouquet.location_id)
+    if current_user.id == @bouquet.sender_id || params[:secret] == @bouquet.secret
+      @location = Location.find(@bouquet.location_id)
+    else
+      redirect_to '/'
+    end
   end
 
   private
