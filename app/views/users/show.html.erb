@@ -1,3 +1,23 @@
-<h1>This is the user show page</h1>
-
-<div id="profilemap"></div>
+<% if current_user && @user && current_user.id == @user.id %>
+  <div class="container">
+    <% if @user.username %>
+      <h1>Hiya, <%= @user.username %>!</h1>
+    <% else %>
+      <h1>Hiya!</h1>
+    <% end %>
+    <% if @user.picture_url %>
+      <%= image_tag(@user.picture_url, alt: "profile_picture")%>
+    <% else %>
+      <%= image_tag("/assets/generic-profile-pic.png", alt: "profile_picture")%>
+    <% end %>
+    <h4>Bouquets sent: <%= @user.sent_bouquets.count %></h4>
+    <h4>Member since: <%= pretty_date(@user.created_at) %></h4>
+    <h3 style="text-align: center;">Your bouquets:</h3>
+    <% @user.sent_bouquets.each do |bouquet| %>
+      <p style="text-align: center;"><%= link_to "to " + bouquet.receiver_name + " on" + pretty_date(bouquet.created_at), "/bouquets/" + bouquet.id.to_s %></p>
+    <% end %>
+    <div id="profilemap"></div>
+  </div>
+<% else %>
+  <h3>Nothing to see here...</h3>
+<% end %>
