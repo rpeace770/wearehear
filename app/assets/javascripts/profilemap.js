@@ -1,4 +1,3 @@
-
 var profilemap;
 
   function initProfileMap() {

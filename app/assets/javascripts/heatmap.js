@@ -1,4 +1,3 @@
-
 var mapbase, heatmap;
 
 function initHeatMap() {
