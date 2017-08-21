@@ -50,7 +50,7 @@ class BouquetsController < ApplicationController
     end
 
     def song_params
-      params.require(:song).permit(:track, :artist, :album)
+      params.require(:song).permit(:track, :artist, :album, :spotify_id)
     end
 
     def location_params
