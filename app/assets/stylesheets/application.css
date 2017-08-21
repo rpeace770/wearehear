@@ -43,14 +43,13 @@ button{
     height: 40px;
     width: 250px;
     transition: all .3s;
-    border: 2px solid #008000;
+    border: 2px solid #1DB954;
     font-size: 1em;
     letter-spacing: 2px;
     text-transform: uppercase;
-
     margin-top: 0;
     margin-bottom: 20px;
-    color: #008000;
+    color: #1DB954;
     overflow: hidden;
     font-family: 'Open Sans', sans-serif;
 }
