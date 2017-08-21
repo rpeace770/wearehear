@@ -1,8 +1,5 @@
+$(document).ready(initProfileMap);
 var profilemap;
-
-$(document).ready(function() {
-  initProfileMap();
-});
 
   function initProfileMap() {
     $.ajax({
@@ -15,6 +12,7 @@ $(document).ready(function() {
       center: place,
       zoom: 4
     });
+
 
   // var image = "assets/lightbulb.png";
   // var secretMessages = ["hi", "how", "are", "you", "now"];

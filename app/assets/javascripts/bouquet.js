@@ -54,6 +54,8 @@ function clearOverlays() {
         position: latLng,
         map: map
       });
+      document.getElementById("lat_coord").value = pos.lat;
+      document.getElementById("lng_coord").value = pos.lng;
       markersArray.push(marker);
       // infoWindow.setContent('Set pin?');
       // infoWindow.open(map);
