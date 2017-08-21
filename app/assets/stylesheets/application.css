@@ -43,21 +43,28 @@ button{
     height: 40px;
     width: 250px;
     transition: all .3s;
-    border: 2px solid #6AE368;
+    border: 2px solid #008000;
     font-size: 1em;
     letter-spacing: 2px;
     text-transform: uppercase;
 
     margin-top: 0;
     margin-bottom: 20px;
-    color: #6AE368;
+    color: #008000;
     overflow: hidden;
     font-family: 'Open Sans', sans-serif;
 }
 .container{
   margin-bottom: 0px;
 }
-
+.artist-container{
+  display: inline-block;
+  float: left;
+}
+.track-container{
+  display: inline-block;
+  float:left;
+}
 
 
 #profilemap {

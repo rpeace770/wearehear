@@ -2,43 +2,35 @@
 
 class SpotifySearchController < ApplicationController
   def index
-
+    # binding.pry
   	spotify_url = "https://api.spotify.com/v1/"
     query = params[:search].gsub(/ /, "%20")
-    searchURL = "#{spotify_url}search?q=#{query}&type=artist,track&limit=50"
-
+    searchURL = "#{spotify_url}search?q=#{query}&type=artist,track&limit=10"
     access_token = ENV['ACCESS_TOKEN']
-
     # getting client token
     client_token = Base64.strict_encode64("7a4280c69bd540d588a6540f043ffa48:b07dd2e7bab84c498c5e804b64a267eb")
 
     spotify_token = RestClient.post("https://accounts.spotify.com/api/token",{"grant_type": "client_credentials"}, {"Authorization": "Basic #{client_token}"})
 
     parsed_token = JSON.parse(spotify_token)
-
     # grab the spotify data for the corresponding artist
     response = RestClient.get(searchURL, {"Authorization": "Bearer #{parsed_token["access_token"]}"})
     # return that artist's top tracks
-    @artist_data = JSON.parse(response)["artists"]["items"][0]
-
-    #binding.pry
-    if @artist_data == nil
-      @tracks = ["No results found"]
-    else
-      top_tracks_url = "https://api.spotify.com/v1/artists/#{@artist_data["id"]}/top-tracks?country=US"
-
-      top_tracks_results = JSON.parse(RestClient.get(top_tracks_url, {"Authorization": "Bearer #{parsed_token["access_token"]}"}))
-
-       @tracks = JSON.parse(response)["tracks"]["items"]
-
-     # binding.pry
-      @tracks_info = top_tracks_results["tracks"].map do |track|
-        {track_id:track["id"], title: track["name"],  album_id:track["album"]["id"], album_name: track["album"]["name"], album_image: track["album"]["images"][1]["url"]}
-      end.flatten
-    end
-
+    @artist_data = JSON.parse(response)["artists"]["items"]
+    @artist_return = @artist_data.slice(0,10)
+    @tracks = JSON.parse(response)["tracks"]["items"]
+    #create a new song object from search results
+     top_tracks_results = []
+     @artist_return.each do |artist|
+      top_tracks_url = "https://api.spotify.com/v1/artists/#{artist["id"]}/top-tracks?country=US&limit=1"
+      top_tracks_results << JSON.parse(RestClient.get(top_tracks_url, {"Authorization": "Bearer #{parsed_token["access_token"]}"}))
+     end
+      @tracks_info = []
+       top_tracks_results.each do |track|
+         @tracks_info <<  {track_id:track["tracks"][0]["id"], song_title: track["tracks"][0]["name"], album_name: track["tracks"][0]["album"]["name"], artist_name:track["tracks"][0]["artists"][0]["name"] }
+       end
     #render json: {tracks: @tracks_info, artist_data: @artist_data}
-    render :results
+    render :_results, locals: { artist: @tracks_info, tracks: @tracks}, layout: false
   end
  #
 end
