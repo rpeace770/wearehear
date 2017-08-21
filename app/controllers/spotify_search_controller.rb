@@ -71,18 +71,5 @@ end
 
 
 
-	# uri = URI.parse("https://api.spotify.com/v1/search")
-	# request = Net::HTTP::Get.new(uri)
-	# request["Accept"] = "application/json"
-	# request["Authorization"] = "Bearer BQBJZwWgnvG44Iat8GK-_wwUandZaBLjZL8Tw88TvO_286QdWHfrEMsB0oPE5LVNXotd1S6_KauRndTbf7L59DfLIVX3JlFBEVJ1bX1iIK8WNlsR0YiZkHC_EUnJLloBsWHK-RwUA8pkXqLJ_AyzpGIJp3dyQXESHQe3njMEalP5tgHRn9rlMKarDQplotGOIDDdWQwYCbKTnm7guQaq5NbONEF1ElypctznW0rBXueAKYl6N0yAqFiDkytL1JPqvn6qRzeyA4-8l07Q4k1coELDh5pJK_lQC1nUhfjO_nYQ5YnKYlKd6Z7i-Q_8agN9vKSVFQ"
 
-	# req_options = {
-	#   use_ssl: uri.scheme == "https",
-	# }
-
-	# response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
-	#   http.request(request)
-	# end
-
- #  end
 
