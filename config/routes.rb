@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   post 'search', to: 'spotify_search#search'
   post 'bouquets/all', to: 'bouquets#all'
   post 'bouquets/locations', to: 'bouquets#locations'
+  post 'bouquets/messages', to: 'bouquets#messages'
   post 'texts/create', to: 'texts#create'
   get 'users/:id', to: 'users#show'
   root 'bouquets#index'
