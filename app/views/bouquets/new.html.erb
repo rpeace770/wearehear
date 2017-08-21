@@ -2,13 +2,6 @@
 
 <h1>Create a new Bouquet</h1>
 
-<%= form_tag spotify_search_path, :method => 'post', id: "search_submit" do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil, :id => "search_button" %>
-  </p>
-<% end %>
-
 <div id="person">
   <form action="/bouquets/create" method="post" enctype="multipart/form-data">
     <p>Sender Name: <input type="text" name="bouquet[sender_name]" required></p>
@@ -33,7 +26,13 @@
     <p id="show-artist"></p>
     <p id="show-album"></p>
 
-    <div id="results">
+<%= form_tag spotify_search_path, :method => 'post', id: "search_submit" do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil, :id => "search_button" %>
+  </p>
+<% end %>
 
+    <div id="results">
     </div>
 </div>
