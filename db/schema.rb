@@ -24,9 +24,12 @@ ActiveRecord::Schema.define(version: 20170821153324) do
     t.integer "location_id"
     t.datetime "expiration_date"
     t.text "comment"
-    t.string "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -50,6 +53,7 @@ ActiveRecord::Schema.define(version: 20170821153324) do
     t.string "sender"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image_url"
   end
 
   create_table "users", force: :cascade do |t|

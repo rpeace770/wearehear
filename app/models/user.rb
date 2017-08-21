@@ -8,6 +8,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :trackable, :validatable,
         :omniauthable, :omniauth_providers => [:spotify]
 
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
         user.provider = auth.provider

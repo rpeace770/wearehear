@@ -1,6 +1,7 @@
 <h1>This is the show page</h1>
 
   <h2>From <%= @bouquet.sender_name %> to <%= @bouquet.receiver_name %></h2>
+  <%= image_tag @bouquet.image.url(:large) %>
   <h4>Comment: <%= @bouquet.comment %></h4>
   <h4>Remember to listen to this song at <%= @bouquet.custom_location %></h4>
 
