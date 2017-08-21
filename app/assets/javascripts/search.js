@@ -21,7 +21,9 @@ $(document).ready(function(){
     $("#artist").val(children[3].defaultValue);
     $("#spot_id").val(children[4].defaultValue);
     $("#song_title").val(children[5].defaultValue);
-
+    $("#show-song").text(children[5].defaultValue);
+    $("#show-artist").text(children[3].defaultValue);
+    $("#show-album").text(children[2].defaultValue);
   });
 
 });
