@@ -81,7 +81,11 @@ button{
   margin: auto;
 }
 
-#mapbase {
+#pac-input {
+  width: 400px;
+}
+
+/*#mapbase {
   width: 30%;
   height: 400px;
   background-color: grey;
