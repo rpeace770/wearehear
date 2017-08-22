@@ -7,6 +7,8 @@ class Bouquet < ApplicationRecord
 
   before_save :randomize
 
+  mount_uploader :image, ImageUploader
+
   def randomize
     self.secret = SecureRandom.hex(3)
   end
