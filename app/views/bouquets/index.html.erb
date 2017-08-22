@@ -4,4 +4,12 @@
 
 <a href="/bouquets/new">Make a new bouquet</a>
 
+<p><%= @bouquets.count %> bouquets have been sent!</p>
+
+<% @locations.each do |location| %>
+<ul>
+  <li><%= location.lat %></li>
+</ul>
+<% end %>
+
 <div id="mapbase"></div>

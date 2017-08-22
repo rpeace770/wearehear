@@ -1,6 +1,15 @@
 
 class BouquetsController < ApplicationController
 
+  def index
+    @bouquets = Bouquet.all
+    @locations = []
+    all_locations = @bouquets.group(:location_id, :id)
+    all_locations.each do |bouquet|
+      @locations << Location.find(bouquet.location_id)
+    end
+  end
+
   def all
     @locations = Location.all
     render json: @locations.to_json
