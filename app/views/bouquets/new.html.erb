@@ -1,4 +1,4 @@
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDo2l9bHOpF6W1lxwIdI0njMBESuZEhzk&callback=initMap&libraries=places" type="text/javascript" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDo2l9bHOpF6W1lxwIdI0njMBESuZEhzk&libraries=places" type="text/javascript" async defer></script>
 
 <h1>Create a new Bouquet</h1>
 
@@ -35,7 +35,7 @@
 <div class="choose-section">
     <a href="bouquets/create" class="choose-link">Add Location</a>
 </div>
-<div class="new-bouquet-section">
+<div class="new-bouquet-section map-class">
     <p>Custom Location Name: <input type="text" name="bouquet[custom_location]" required></p>
     <input id="pac-input" class="controls" type="text" placeholder="Search Box">
     <div id="map"></div>
@@ -53,7 +53,7 @@
 </div>
 <div class="new-bouquet-section">
     <p>Comment: <input type="text" id="comment" name="bouquet[comment]" required></p>
-    <p><input type="submit" value="Create Bouquet"></p>
 </div>
+    <p><input type="submit" value="Create Bouquet"></p>
   </form>
 

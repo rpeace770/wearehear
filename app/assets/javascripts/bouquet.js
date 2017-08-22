@@ -2,6 +2,7 @@ var map, infoWindow;
 var markersArray = [];
 
 function initMap() {
+
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 30.279, lng: -97.742},
     zoom: 15
@@ -14,6 +15,7 @@ function initMap() {
     // map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
     var markers = [];
+
 
 searchBox.addListener('places_changed', function() {
   var places = searchBox.getPlaces();
@@ -30,7 +32,8 @@ searchBox.addListener('places_changed', function() {
     } else {
       bounds.extend(place.geometry.location);
     }
-map.fitBounds(bounds);
+  map.fitBounds(bounds);
+
 });
 
 function clearOverlays() {

@@ -5,5 +5,9 @@ $(document).ready(function() {
     $(this).hide();
     $(".new-bouquet-section").hide();
     $(this).parent().next().show();
+
+    if($("#lat_coord").val() === "" && $(this).parent().next().hasClass("map-class")) {
+      initMap();
+    }
   });
 });
