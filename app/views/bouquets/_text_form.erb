@@ -1,12 +1,12 @@
 <form action="/texts/create" method="post">
-<input type="hidden" name="text[sender]"  value=<%=@bouquet.sender_name%>><br>
-<input type="hidden" name="text[special_path]"  value=<%=@bouquet.special_path%>><br>
-<input type="hidden" name="text[image]"  value=<%=@bouquet.image%>><br>
+  <input type="hidden" name="text[sender]"  value=<%=@bouquet.sender_name%>><br>
+  <input type="hidden" name="text[special_path]"  value=<%=@bouquet.special_path%>><br>
+  <input type="hidden" name="text[image]"  value=<%=@bouquet.image%>><br>
 
-Phone number to text to:<br>
-<input type="text"
-name="text[number]" required=""><br><br>
- <input type="submit" value="Send Bouquet!">
+  Phone number to text to:<br>
+  <input type="text"
+  name="text[number]" required=""><br><br>
+  <input type="submit" value="Send Bouquet!">
 </form>
 
 <form action="/bouquets/<%= @bouquet.id %>" method="post">

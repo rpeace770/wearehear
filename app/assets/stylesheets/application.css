@@ -121,12 +121,14 @@ input {
 }
 
 #show-map {
-  width: 30%;
-  height: 400px;
+  min-width: 30%;
+  height: auto;
   background-color: grey;
   margin: auto;
   border: 10px solid white;
   border-radius: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 #pac-input {
@@ -170,6 +172,7 @@ input {
   border-top-right-radius: 50% 50%;
   border-bottom-right-radius: 50% 50%;
   border-bottom-left-radius: 50% 50%;
-  border: 10px solid white;
+  border: 3px solid white;
+  max-width: 300px;
 }
 */*/*/
