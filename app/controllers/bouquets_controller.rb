@@ -4,8 +4,21 @@ class BouquetsController < ApplicationController
   def index
     # need to group by artist and location name
     @bouquets = Bouquet.all
-    @songs = Song.limit(5)
-    @locations = Location.limit(5)
+    @locations = []
+    location_hash = Bouquet.group("location_id").count
+    new_location_hash = location_hash.sort_by {|key, value| value}.reverse.to_h
+    location_array = new_location_hash.keys.slice(0, 5)
+    location_array.each do |location|
+      @locations << Location.find(location)
+    end
+
+    @songs = []
+    song_hash = Song.group("artist").count
+    new_song_hash = song_hash.sort_by {|key, value| value}.reverse.to_h
+    song_array = new_song_hash.keys.slice(0, 5)
+    song_array.each do |song|
+      @songs << Song.find_by(artist: song)
+    end
   end
 
   def all
