@@ -1,9 +1,19 @@
 
 class BouquetsController < ApplicationController
 
+  def index
+    # need to group by artist and location name
+    @bouquets = Bouquet.all
+    @songs = Song.limit(5)
+    @locations = Location.limit(5)
+  end
+
   def all
     @locations = Location.all
     render json: @locations.to_json
+  end
+
+  def about
   end
 
   def locations
@@ -54,6 +64,12 @@ class BouquetsController < ApplicationController
     else
       redirect_to '/'
     end
+  end
+
+  def destroy
+    bouquet = Bouquet.find(params[:id])
+    bouquet.destroy
+    redirect_to '/bouquets/new'
   end
 
   private

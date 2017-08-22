@@ -8,3 +8,8 @@ Phone number to text to:<br>
 name="text[number]" required=""><br><br>
  <input type="submit" value="Send Bouquet!">
 </form>
+
+<form action="/bouquets/<%= @bouquet.id %>" method="post">
+  <input name="_method" type="hidden" value="delete">
+  <input type="submit" value="Cancel Bouquet">
+</form>

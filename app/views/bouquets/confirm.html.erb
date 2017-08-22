@@ -3,7 +3,7 @@
  From: <%= @bouquet.sender_name %><br>
  To: <%= @bouquet.receiver_name %><br>
  Location: <%= @bouquet.custom_location %><br>
- <div id="show-map-container"><img src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @location.lat %>,<%= @location.lng %>&zoom=5&size=600x400&markers=color:green%7C<%= @location.lat %>,<%= @location.lng %>&key=AIzaSyDDo2l9bHOpF6W1lxwIdI0njMBESuZEhzk" id="show-map"></div>
+ <div id="show-map-container"><img src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @location.lat %>,<%= @location.lng %>&zoom=16&size=600x400&markers=color:green%7C<%= @location.lat %>,<%= @location.lng %>&key=AIzaSyDDo2l9bHOpF6W1lxwIdI0njMBESuZEhzk" id="show-map"></div>
  Song: <%= @bouquet.song.track %><br>
  Artist: <%= @bouquet.song.artist %><br>
  Album: <%= @bouquet.song.album %><br>

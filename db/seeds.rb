@@ -8,9 +8,18 @@
 
 require 'faker'
 
-10.times do
-  Location.create(lat: Faker::Address.latitude, lng: Faker::Address.longitude)
-end
+Location.create(lat: 40.712, lng: -74.005)
+Location.create(lat: 34.052, lng: -118.243)
+Location.create(lat: 41.878, lng: -87.629)
+Location.create(lat: 29.760, lng: -95.369)
+Location.create(lat: 29.424, lng: -98.493)
+Location.create(lat: 32.776, lng: -96.796)
+Location.create(lat: 37.774, lng: -122.419)
+Location.create(lat: 32.755, lng: -97.330)
+Location.create(lat: 30.267, lng: -97.743)
+Location.create(lat: 32.735, lng: -97.108)
+Location.create(lat: 37.871, lng: -122.272)
+
 
 Song.create(artist: "Daughter", album: "Not To Disappear", track: "No Care", spotify_id: "26Ggcaz8arFAehpsfFTiRj")
 Song.create(artist: "Beyoncé", album: "Beyoncé", track: "Partition", spotify_id: "5hgnY0mVcVetszbb85qeDg")
@@ -27,6 +36,6 @@ Song.create(artist: "Kanye West", album: "The Life of Pablo", track: "Ultralight
   User.create(provider: "spotify", uid: Faker::Internet.password, email: Faker::Internet.email, password: "password", username: Faker::Internet.user_name, birthdate: Time.now, picture_url: "lightbulb.png")
 end
 
-10.times do
-  Bouquet.create(sender_id: rand(1..30), sender_name: Faker::Name.first_name, receiver_name: Faker::Name.first_name, song_id: rand(1..10), custom_location: Faker::Hipster.word, location_id: rand(1..10), expiration_date: (Time.now + 700000), comment: Faker::Hipster.sentence(5))
+500.times do
+  Bouquet.create(sender_id: rand(1..30), sender_name: Faker::Name.first_name, receiver_name: Faker::Name.first_name, song_id: rand(1..10), custom_location: Faker::Hipster.word, location_id: rand(1..11), expiration_date: (Time.now + 700000), comment: Faker::Hipster.sentence(5))
 end
