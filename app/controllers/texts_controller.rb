@@ -2,6 +2,7 @@ require 'twilio-ruby'
 
 class TextsController <  ApplicationController
 
+
   def create
     @text = Text.new(text_params)
     # @text.image_url = 'https://s3.amazonaws.com/wearehear/giphy.gif'

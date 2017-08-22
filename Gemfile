@@ -11,6 +11,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-spotify'
 
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.3'
 # Use postgresql as the database for Active Record
@@ -39,7 +40,14 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'dotenv'
 
-gem 'paperclip', '~> 5.0.0'
+gem 'paperclip'
+gem 'twilio-ruby'
+
+gem 'twilio-ruby'
+
+
+# for precompiling asset pipeline for heroku
+gem 'rails_12factor', group: :production
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
@@ -56,6 +64,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+
 end
 
 group :development do
@@ -65,8 +74,6 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-
-  gem 'twilio-ruby'
 
 
 end
