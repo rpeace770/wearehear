@@ -47,12 +47,13 @@ function clearOverlays() {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
-
+      var image = "/assets/notes.png";
       infoWindow.setPosition(pos);
       var latLng = new google.maps.LatLng(pos.lat, pos.lng);
       var marker = new google.maps.Marker({
         position: latLng,
-        map: map
+        map: map,
+        icon: image
       });
       document.getElementById("lat_coord").value = pos.lat;
       document.getElementById("lng_coord").value = pos.lng;
@@ -103,9 +104,11 @@ function clearOverlays() {
   });
 
   function placeMarker(location) {
+    var image = "/assets/notes.png";
     var marker = new google.maps.Marker({
       position: location,
-      map: map
+      map: map,
+      icon: image
     });
     markersArray.push(marker);
   }

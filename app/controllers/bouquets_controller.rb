@@ -2,8 +2,8 @@
 class BouquetsController < ApplicationController
 
   def index
-    # need to group by artist and location name
     @bouquets = Bouquet.all
+
     @locations = []
     location_hash = Bouquet.group("location_id").count
     new_location_hash = location_hash.sort_by {|key, value| value}.reverse.to_h
