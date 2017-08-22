@@ -3,7 +3,6 @@ class BouquetsController < ApplicationController
 
   def index
     @bouquets = Bouquet.all
-
     @locations = []
     location_hash = Bouquet.group("location_id").count
     new_location_hash = location_hash.sort_by {|key, value| value}.reverse.to_h
@@ -19,6 +18,7 @@ class BouquetsController < ApplicationController
     song_array.each do |song|
       @songs << Song.find(song)
     end
+
   end
 
   def all
