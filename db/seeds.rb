@@ -18,6 +18,7 @@ Location.create(lat: 37.774, lng: -122.419)
 Location.create(lat: 32.755, lng: -97.330)
 Location.create(lat: 30.267, lng: -97.743)
 Location.create(lat: 32.735, lng: -97.108)
+Location.create(lat: 37.871, lng: -122.272)
 
 
 Song.create(artist: "Daughter", album: "Not To Disappear", track: "No Care", spotify_id: "26Ggcaz8arFAehpsfFTiRj")

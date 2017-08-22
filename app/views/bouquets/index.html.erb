@@ -1,4 +1,4 @@
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDo2l9bHOpF6W1lxwIdI0njMBESuZEhzk&callback=initHeatMap&libraries=visualization" type="text/javascript" async defer></script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDo2l9bHOpF6W1lxwIdI0njMBESuZEhzk&callback=initHeatMap&libraries=visualization" type="text/javascript" async defer></script> -->
 
 <h1>Index page</h1>
 
@@ -9,7 +9,8 @@
 <p>Top Five Locations: </p>
 <% @locations.each do |location| %>
 <ul>
-  <li><%= location.reverse_geocode %></li>
+<!-- only good for us cities -->
+  <li><%= location.reverse_geocode.split(",")[1] %></li>
 </ul>
 <% end %>
 
