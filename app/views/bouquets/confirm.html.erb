@@ -8,7 +8,7 @@
  Artist: <%= @bouquet.song.artist %><br>
  Album: <%= @bouquet.song.album %><br>
  Message: <%= @bouquet.comment %><br>
- <%= cl_image_tag @bouquet.image %><br>
+ <%= cl_image_tag(@bouquet.image.file.public_id) %>
 <h2>Ready to send your Bouquet?</h2>
 
 <%= render 'text_form' %>
