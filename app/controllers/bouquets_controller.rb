@@ -6,10 +6,6 @@ class BouquetsController < ApplicationController
     @bouquets = Bouquet.all
     @songs = Song.limit(5)
     @locations = Location.limit(5)
-    # @bouquets.each do |bouquet|
-    #   @locations << Location.find(bouquet.location_id).reverse_geocode.split(",")[-1]
-    # end
-    # @locations.uniq!.slice(0, 5)
   end
 
   def all
