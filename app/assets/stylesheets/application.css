@@ -38,12 +38,6 @@ h1 {
   display: none;
 }
 
-/*div#person {
-  border: 1px solid black;
-  padding: 20px;
-  margin-top: 10px;
-  min-width: 1000px;
-}
 
 #map {
   width: 600px;
@@ -60,12 +54,9 @@ button{
   border:none;
 }
 
-div#results{
-  /*float:right;*/
-}
-
-
-
+/*div#results{
+  float:right;
+}*/
 
 input {
     background-color: transparent;
@@ -89,23 +80,23 @@ input {
   margin-bottom: 0px;
 }
 
-.scroll-container {
+/*.scroll-container {
   width: 160px;
   height: auto;
   overflow-y: auto;
   overflow-x: hidden;
   transform: rotate(-90deg);
   transform-origin: right top;
-}
+}*/
 
-.artist-container, .track-container{
-/*  display: inline-block;
-  float: left;*/
+/*.artist-container, .track-container{
+  display: inline-block;
+  float: left;
 
   transform: rotate(90deg);
   transform-origin: right top;
 
-}
+}*/
 
 
 #profilemap {
@@ -170,4 +161,3 @@ input {
   border-bottom-left-radius: 50% 50%;
   border: 10px solid white;
 }
-*/*/*/
