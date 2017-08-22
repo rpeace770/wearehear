@@ -6,7 +6,7 @@ class BouquetsController < ApplicationController
     @bouquets = Bouquet.all
     @songs = Song.limit(5)
     @locations = Location.limit(5)
-    # binding.pry
+     # binding.pry
   end
 
   def all
