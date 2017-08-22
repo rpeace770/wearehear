@@ -1,5 +1,7 @@
 {
   "name": "wearehear",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "dotenv": "^4.0.0"
+  }
 }
