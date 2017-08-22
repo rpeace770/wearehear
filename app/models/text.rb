@@ -6,15 +6,14 @@ class Text < ApplicationRecord
     number unless number.length != 10
   end
 
-  def send_sms(number, sender)
+  def send_sms(number, sender, link)
 
     twilio_account_sid = 'AC95dba1864d9daff62e736a02d0402d21'
     twilio_auth_token = '1674fdd30ce800454e03c0c5f2834e3b'
     from = '5128317223'
-    link = 'www.google.com'
+    # link = 'www.google.com'
     image_url = 'https://media.giphy.com/media/SRO0ZwmImic0/giphy.gif'
-    #replace link with unique url and bouquet.photo, passed in as params
-    # image_url = 'https://s3.amazonaws.com/wearehear/giphy.gif'
+
 
     @client = Twilio::REST::Client.new twilio_account_sid, twilio_auth_token
 

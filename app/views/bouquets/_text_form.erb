@@ -1,6 +1,8 @@
 <form action="/texts/create" method="post">
 <input type="hidden" name="text[sender]"  value=<%=@bouquet.sender_name%>><br>
 <input type="hidden" name="text[image_url]"  value=<%=@bouquet.image%>><br>
+<input type="hidden" name="text[special_path]"  value=<%=@bouquet.special_path%>><br>
+
 
 Phone number to text to:<br>
 <input type="text"
