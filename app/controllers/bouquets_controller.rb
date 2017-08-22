@@ -13,11 +13,11 @@ class BouquetsController < ApplicationController
     end
 
     @songs = []
-    song_hash = Song.group("artist").count
+    song_hash = Bouquet.group("song_id").count
     new_song_hash = song_hash.sort_by {|key, value| value}.reverse.to_h
     song_array = new_song_hash.keys.slice(0, 5)
     song_array.each do |song|
-      @songs << Song.find_by(artist: song)
+      @songs << Song.find(song)
     end
   end
 
