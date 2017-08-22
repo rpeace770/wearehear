@@ -27,7 +27,7 @@ gem 'rest-client'
 
 
 # gem 'therubyracer', platforms: :ruby
-gem 'rspotify'
+# gem 'rspotify'
 gem 'therubyracer', platforms: :ruby
 
 
