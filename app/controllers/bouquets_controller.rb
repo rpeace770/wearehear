@@ -57,7 +57,7 @@ class BouquetsController < ApplicationController
 
   private
     def bouquet_params
-      params.require(:bouquet).permit(:sender_name, :receiver_name, :custom_location, :comment)
+      params.require(:bouquet).permit(:sender_name, :receiver_name, :custom_location, :comment, :image)
     end
 
     def song_params

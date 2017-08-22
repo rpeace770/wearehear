@@ -43,9 +43,8 @@ gem 'dotenv'
 gem 'paperclip'
 gem 'twilio-ruby'
 
-gem 'twilio-ruby'
-
-
+gem 'carrierwave', '~> 1.0'
+gem 'cloudinary'
 # for precompiling asset pipeline for heroku
 gem 'rails_12factor', group: :production
 

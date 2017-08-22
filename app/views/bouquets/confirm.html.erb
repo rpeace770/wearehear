@@ -1,3 +1,4 @@
+
 <h1>Review Your Bouquet:</h1>
  From: <%= @bouquet.sender_name %><br>
  To: <%= @bouquet.receiver_name %><br>
@@ -7,6 +8,7 @@
  Artist: <%= @bouquet.song.artist %><br>
  Album: <%= @bouquet.song.album %><br>
  Message: <%= @bouquet.comment %><br>
+ <%= image_tag @bouquet.image %><br>
 <h2>Ready to send your Bouquet?</h2>
 
 <%= render 'text_form' %>

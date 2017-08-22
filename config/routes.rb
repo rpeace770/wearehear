@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   post 'bouquets/messages', to: 'bouquets#messages'
   post 'texts/create', to: 'texts#create'
   get 'users/:id', to: 'users#show'
+
   root 'bouquets#index'
 
 end
