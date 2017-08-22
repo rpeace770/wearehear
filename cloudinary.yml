@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: wearehear
+  api_key: '879148432626684'
+  api_secret: Kq9gJfZSz2zfPdH7RozYPc7o8-Y
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: wearehear
+  api_key: '879148432626684'
+  api_secret: Kq9gJfZSz2zfPdH7RozYPc7o8-Y
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: wearehear
+  api_key: '879148432626684'
+  api_secret: Kq9gJfZSz2zfPdH7RozYPc7o8-Y
+  enhance_image_tag: true
+  static_image_support: false
