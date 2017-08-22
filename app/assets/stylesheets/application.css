@@ -1,4 +1,4 @@
-/*
+/*/*/*/*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -25,6 +25,11 @@ body {
   color: white;
 }
 
+nav{
+  background-color: #543659;
+  opacity: .8;
+}
+
 h1 {
   text-align: center;
 }
@@ -36,6 +41,11 @@ div#person {
 
   min-width: 1000px;
 }
+#trending-info{
+  width:40%;
+}
+
+
 
 #map {
   width: 900px;
@@ -162,3 +172,4 @@ input {
   border-bottom-left-radius: 50% 50%;
   border: 10px solid white;
 }
+*/*/*/
