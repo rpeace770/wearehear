@@ -1,38 +1,60 @@
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDo2l9bHOpF6W1lxwIdI0njMBESuZEhzk&callback=initMap&libraries=places" type="text/javascript" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDo2l9bHOpF6W1lxwIdI0njMBESuZEhzk&libraries=places" type="text/javascript" async defer></script>
 
 <h1>Create a new Bouquet</h1>
 
-<div id="person">
-  <form action="/bouquets/create" method="post" enctype="multipart/form-data">
-    <p>Sender Name: <input type="text" name="bouquet[sender_name]" required></p>
-    <p>Receiver Name: <input type="text" name="bouquet[receiver_name]" required></p>
-    <p>Custom Location Name: <input type="text" name="bouquet[custom_location]" required></p>
-    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-    <div id="map"></div>
-    <input id="lat_coord" name="location[lat]" type="hidden" value="" required>
-    <input id="lng_coord" name="location[lng]" type="hidden" value="" required>
-    <input id="spot_id" name="song[spotify_id]" type="hidden" value="" required>
-    <input id="song_title" name="song[track]" type="hidden" value="" required>
-    <input id="artist" name="song[artist]" type="hidden" value="" required>
-    <input id="album" name="song[album]" type="hidden" value="" required>
-
-    <p>Comment: <input type="text" id="comment" name="bouquet[comment]" required></p>
-    <p>Upload an Image: <input type="file" name="bouquet[image]" accept="image/*">
-    <p><input type="submit" value="Create Bouquet"></p>
-
-  </form>
+<div class="choose-section">
+    <a href="bouquets/create" class="choose-link">Add Song</a>
+</div>
+<div class="new-bouquet-section">
     <h3>Song Choice:</h3>
     <p id="show-song"></p>
     <p id="show-artist"></p>
     <p id="show-album"></p>
 
-<%= form_tag spotify_search_path, :method => 'post', id: "search_submit" do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil, :id => "search_button" %>
-  </p>
-<% end %>
+    <%= form_tag spotify_search_path, :method => 'post', id: "search_submit" do %>
+      <p>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Search", :name => nil, :id => "search_button" %>
+      </p>
+    <% end %>
 
     <div id="results">
     </div>
 </div>
+
+<form action="/bouquets/create" method="post" enctype="multipart/form-data">
+
+<div class="choose-section">
+    <a href="bouquets/create" class="choose-link">Add Person</a>
+</div>
+<div class="new-bouquet-section">
+    <p>Sender Name: <input type="text" name="bouquet[sender_name]" required></p>
+    <p>Receiver Name: <input type="text" name="bouquet[receiver_name]" required></p>
+</div>
+
+<div class="choose-section">
+    <a href="bouquets/create" class="choose-link">Add Location</a>
+</div>
+<div class="new-bouquet-section map-class">
+    <p>Custom Location Name: <input type="text" name="bouquet[custom_location]" ></p>
+    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+    <div id="map"></div>
+    <input id="lat_coord" name="location[lat]" type="hidden" value="" required>
+    <input id="lng_coord" name="location[lng]" type="hidden" value="" required>
+</div>
+
+    <input id="spot_id" name="song[spotify_id]" type="hidden" value="" required>
+    <input id="song_title" name="song[track]" type="hidden" value="" required>
+    <input id="artist" name="song[artist]" type="hidden" value="" required>
+    <input id="album" name="song[album]" type="hidden" value="" required>
+
+<div class="choose-section">
+    <a href="bouquets/create" class="choose-link">Add Comment</a>
+</div>
+<div class="new-bouquet-section">
+    <p>Comment: <input type="text" id="comment" name="bouquet[comment]" required></p>
+    <p>Upload an Image: <input type="file" name="bouquet[image]" accept="image/*">
+</div>
+    <p><input type="submit" value="Create Bouquet"></p>
+  </form>
+

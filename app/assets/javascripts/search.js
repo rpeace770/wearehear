@@ -1,7 +1,6 @@
 $(document).ready(function(){
   $("#search_submit").on('submit', function(e){
     e.preventDefault();
-    console.log("works")
     var formData = $(this).serialize();
     $.ajax({
       url: "/spotify_search",
@@ -12,7 +11,6 @@ $(document).ready(function(){
       $("#results").html(response);
       $("#search_button").prop('disabled',false);
       $("#search_submit").trigger("reset");
-
     });
   });
   $("#results").on("submit", "form", function(e) {
