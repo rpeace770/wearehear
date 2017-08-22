@@ -1,31 +1,36 @@
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDo2l9bHOpF6W1lxwIdI0njMBESuZEhzk&callback=initHeatMap&libraries=visualization" type="text/javascript" async defer></script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDo2l9bHOpF6W1lxwIdI0njMBESuZEhzk&callback=initHeatMap&libraries=visualization" type="text/javascript" async defer></script> -->
 <div>
   <h1>Index page</h1>
 </div>
-<a href="/bouquets/new" class="f4 fw6 db white link hover-light-green ">Make a new bouquet</a>
-=======
-<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDo2l9bHOpF6W1lxwIdI0njMBESuZEhzk&callback=initHeatMap&libraries=visualization" type="text/javascript" async defer></script> -->
+    <p class=" black-60  lh-copy br4 pa3 shadow-5   fn w-10 pa2 mt4 ba "><%= @bouquets.count %> bouquets have been sent!</p>
+<a href="/bouquets/new" class="f5 fw6 db black-60 link br4 pa3 shadow-5 fn w-10 mb2 ba ">Make a new bouquet</a>
 
-<h1>Index page</h1>
+<div class="  mw9 br4 ph3-ns shadow-5 fl w-40 pa2 mh4" id="trending-info">
 
-<a href="/bouquets/new">Make a new bouquet</a>
+  <div class="fl w-50 pa3">
 
+      <p class="f5 fw4 black-60 "><h3 class="black-60">Top Five Locations</h3> </p>
 
-<p><%= @bouquets.count %> bouquets have been sent!</p>
+      <% @locations.each do |location| %>
+        <ul class="list f6 pl0 mt3 mb0">
+        <!-- only good for us cities -->
+          <li class=" ph3 pv2 b--dotted br-0 bt-0 bl-0 ba black-60"> <%= location.reverse_geocode.split(",")[1] %> </li>
+      <% end %>
+      </ul>
+  </div>
 
-<p>Top Five Locations: </p>
-<% @locations.each do |location| %>
-<ul>
-<!-- only good for us cities -->
-  <li><%= location.reverse_geocode.split(",")[1] %></li>
-</ul>
-<% end %>
+  <div class="fr  w-50 pa3">
 
-<p>Top Five Artists: </p>
-<% @songs.each do |song| %>
-<ul>
-  <li><%= song.artist %></li>
-</ul>
-<% end %>
-<div id="mapbase"></div>
+      <p class="f5 fw4 black-60 "><h3 class="black-60">Top Five Artists</h3> </p>
+
+      <% @songs.each do |song| %>
+        <ul class="list f6 pl0 mt3 mb0">
+          <li class="ph3 pv2 b--dotted br-0 bt-0 bl-0 ba black-60"><%= song.artist %></li>
+        </ul>
+        <% end %>
+  </div>
+
+</div>
+
+<div class="fr w-30  ma2" id="mapbase"></div>
