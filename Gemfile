@@ -41,6 +41,12 @@ gem 'dotenv'
 
 gem 'paperclip', '~> 5.0.0'
 
+gem 'twilio-ruby'
+
+
+# for precompiling asset pipeline for heroku
+gem 'rails_12factor', group: :production
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -66,7 +72,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
-  gem 'twilio-ruby'
 
 
 end
