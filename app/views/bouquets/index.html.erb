@@ -1,7 +1,23 @@
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDo2l9bHOpF6W1lxwIdI0njMBESuZEhzk&callback=initHeatMap&libraries=visualization" type="text/javascript" async defer></script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDo2l9bHOpF6W1lxwIdI0njMBESuZEhzk&callback=initHeatMap&libraries=visualization" type="text/javascript" async defer></script> -->
 
 <h1>Index page</h1>
 
 <a href="/bouquets/new">Make a new bouquet</a>
 
+<p><%= @bouquets.count %> bouquets have been sent!</p>
+
+<p>Top Five Locations: </p>
+<% @locations.each do |location| %>
+<ul>
+<!-- only good for us cities -->
+  <li><%= location.reverse_geocode.split(",")[1] %></li>
+</ul>
+<% end %>
+
+<p>Top Five Artists: </p>
+<% @songs.each do |song| %>
+<ul>
+  <li><%= song.artist %></li>
+</ul>
+<% end %>
 <div id="mapbase"></div>
