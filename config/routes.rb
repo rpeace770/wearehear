@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   post 'bouquets/all', to: 'bouquets#all'
   post 'bouquets/locations', to: 'bouquets#locations'
   post 'bouquets/messages', to: 'bouquets#messages'
+  delete 'bouquets/:id', to: 'bouquets#destroy'
   post 'texts/create', to: 'texts#create'
   get 'users/:id', to: 'users#show'
   root 'bouquets#index'

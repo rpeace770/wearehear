@@ -58,6 +58,12 @@ class BouquetsController < ApplicationController
     end
   end
 
+  def destroy
+    bouquet = Bouquet.find(params[:id])
+    bouquet.destroy
+    redirect_to '/bouquets/new'
+  end
+
   private
     def bouquet_params
       params.require(:bouquet).permit(:sender_name, :receiver_name, :custom_location, :comment, :image)
