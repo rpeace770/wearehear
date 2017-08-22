@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= depend_on_asset "music-sound-audio-recording.png"
  */
 body {
   background-color: #FFFFFF;
@@ -19,7 +20,7 @@ body {
 }
 
 body {
-  background-image: url("music-sound-audio-recording.png");
+  background-image: url('<%= asset_path("music-sound-audio-recording.png") %>');
   background-repeat: no-repeat;
   background-attachment: fixed;
   color: white;
