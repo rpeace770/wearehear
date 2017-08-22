@@ -7,9 +7,9 @@ class Text < ApplicationRecord
   end
 
 
-  def send_sms(number, sender)
+  def send_sms(number, sender, link)
     twilio_number = "5128317223"
-    link = 'www.google.com'
+    # link = 'www.google.com'
     image_url = 'https://media.giphy.com/media/SRO0ZwmImic0/giphy.gif'
     # image_url = 'https://s3.amazonaws.com/wearehear/giphy.gif'
 
