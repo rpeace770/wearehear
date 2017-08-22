@@ -40,13 +40,10 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'dotenv'
 
-gem 'twilio-ruby'
+
 # we still need paperclip gem even though we removed that feature- the gem is still needed to run the migrations
 gem 'paperclip'
-
-gem 'carrierwave'
-gem 'cloudinary'
-
+gem 'twilio-ruby'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
@@ -63,6 +60,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+
 end
 
 group :development do
@@ -72,9 +70,6 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-
-
-
 
 end
 
