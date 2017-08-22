@@ -29,17 +29,20 @@ h1 {
   text-align: center;
 }
 
-div#person {
+.new-bouquet-section {
+  display: none;
+}
+
+/*div#person {
   border: 1px solid black;
   padding: 20px;
   margin-top: 10px;
-
   min-width: 1000px;
-}
+}*/
 
 #map {
-  width: 900px;
-  height: 600px;
+  width: 600px;
+  height: 400px;
   background-color: grey;
   margin: auto;
   border: 10px solid white;
