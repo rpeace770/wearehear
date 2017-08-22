@@ -37,6 +37,7 @@ class BouquetsController < ApplicationController
   end
 
   def create
+    @image = Cloudinary::Uploader.upload(params[:bouquet][:image])
     @song = Song.find_or_create_by(song_params)
     @location = Location.find_or_create_by(location_params)
     @bouquet = Bouquet.new(bouquet_params)
@@ -73,7 +74,7 @@ class BouquetsController < ApplicationController
 
   private
     def bouquet_params
-      params.require(:bouquet).permit(:sender_name, :receiver_name, :custom_location, :comment)
+      params.require(:bouquet).permit(:sender_name, :receiver_name, :custom_location, :comment, :image)
     end
 
     def song_params
