@@ -6,10 +6,17 @@
 
 <p><%= @bouquets.count %> bouquets have been sent!</p>
 
+<p>Top Five Locations: </p>
 <% @locations.each do |location| %>
 <ul>
   <li><%= location.reverse_geocode %></li>
 </ul>
 <% end %>
 
+<p>Top Five Artists: </p>
+<% @songs.each do |song| %>
+<ul>
+  <li><%= song.artist %></li>
+</ul>
+<% end %>
 <div id="mapbase"></div>

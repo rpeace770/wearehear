@@ -2,12 +2,14 @@
 class BouquetsController < ApplicationController
 
   def index
+    # need to group by artist and location name
     @bouquets = Bouquet.all
-    @locations = []
-    all_locations = @bouquets.group(:location_id, :id).limit(5)
-    all_locations.each do |bouquet|
-      @locations << Location.find(bouquet.location_id)
-    end
+    @songs = Song.limit(5)
+    @locations = Location.limit(5)
+    # @bouquets.each do |bouquet|
+    #   @locations << Location.find(bouquet.location_id).reverse_geocode.split(",")[-1]
+    # end
+    # @locations.uniq!.slice(0, 5)
   end
 
   def all
