@@ -40,8 +40,6 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'dotenv'
 
-
-# we still need paperclip gem even though we removed that feature- the gem is still needed to run the migrations
 gem 'paperclip'
 gem 'twilio-ruby'
 
