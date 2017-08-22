@@ -1,0 +1,23 @@
+development:
+  cloud_name: wearehear
+  api_key: '879148432626684'
+  api_secret: Kq9gJfZSz2zfPdH7RozYPc7o8-Y
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: wearehear
+  api_key: '879148432626684'
+  api_secret: Kq9gJfZSz2zfPdH7RozYPc7o8-Y
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: wearehear
+  api_key: '879148432626684'
+  api_secret: Kq9gJfZSz2zfPdH7RozYPc7o8-Y
+  enhance_image_tag: true
+  static_image_support: false
+
+TWILIO_ACCOUNT_SID=AC95dba1864d9daff62e736a02d0402d21
+TWILIO_AUTH_TOKEN=1674fdd30ce800454e03c0c5f2834e3b
+
+GOOGLE_MAP_KEY=AIzaSyDDo2l9bHOpF6W1lxwIdI0njMBESuZEhzk
