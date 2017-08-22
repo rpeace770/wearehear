@@ -107,6 +107,7 @@ input {
   margin: auto;
   border: 10px solid white;
   border-radius: 15px;
+  color: black;
 }
 
 #show-map {

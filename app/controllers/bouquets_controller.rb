@@ -6,6 +6,9 @@ class BouquetsController < ApplicationController
     render json: @locations.to_json
   end
 
+  def about
+  end
+
   def locations
     locations = []
     user = User.find(current_user.id)

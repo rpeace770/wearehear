@@ -10,7 +10,7 @@
   <h4>Comment: <%= @bouquet.comment %></h4>
   <h4>Remember to listen to this song at <%= @bouquet.custom_location %></h4>
 
-  <div id="show-map-container"><img src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @location.lat %>,<%= @location.lng %>&zoom=5&size=600x400&markers=color:green%7C<%= @location.lat %>,<%= @location.lng %>&key=AIzaSyDDo2l9bHOpF6W1lxwIdI0njMBESuZEhzk" id="show-map"></div>
+  <div id="show-map-container"><img src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @location.lat %>,<%= @location.lng %>&zoom=16&size=600x400&markers=color:green%7C<%= @location.lat %>,<%= @location.lng %>&key=AIzaSyDDo2l9bHOpF6W1lxwIdI0njMBESuZEhzk" id="show-map"></div>
 
   <p><iframe src="https://open.spotify.com/embed?uri=spotify%3Atrack%3A<%= @bouquet.song.spotify_id %>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe></p>
 
