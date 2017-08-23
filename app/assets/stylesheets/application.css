@@ -38,6 +38,10 @@ h1 {
   display: none;
 }
 
+.choose-section {
+  margin-bottom:30px;
+}
+
 
 #map {
   width: 600px;
@@ -47,8 +51,13 @@ h1 {
   border: 10px solid white;
   border-radius: 15px;
   position: fixed;
-
+  display: none;
 }
+
+#pac-input {
+  display: none;
+}
+
 button{
   background-color: none;
   border:none;
@@ -81,30 +90,25 @@ input {
 }
 
 .scroll-container {
-  width: 450px;
-  height: 800px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  transform: rotate(-90deg);
-  transform-origin: right top;
-  margin: 55px;
-  float: left;
+    width: 567px;
+    height: 762px;
+    overflow-x: auto;
+    transform-origin: 45% 21%;
+    transform: rotate(-90deg) translateY(-94px) translateX(-135px);
 }
 
 .artist-container, .track-container{
-  height: 300px;
-  transform: rotate(90deg);
-  transform-origin: right top;
-  margin:10px;
-
+    height: 310px;
+    transform: rotate(450deg) translateY(-125px) translateX(137px);
 }
 
 iframe {
   margin: 0px;
 }
 
-.add_song_button {
+form.add_song_button {
   background-color: none;
+  transform: translateY(35px) translateX(-237px);
 }
 
 button, [type="submit"] {
