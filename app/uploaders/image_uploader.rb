@@ -1,5 +1,11 @@
 class ImageUploader < CarrierWave::Uploader::Base
   include Cloudinary::CarrierWave
+
+
+  def default_url(*args)
+   'http://res.cloudinary.com/wearehear/image/upload/v1503508218/guitar-cat_bmskia.gif'
+  end
+
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick

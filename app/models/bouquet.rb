@@ -17,5 +17,11 @@ class Bouquet < ApplicationRecord
     "http://localhost:3000/bouquets/#{self.id}/?secret=" + self.secret
   end
 
+  def upload_image(image)
+    if !image.nil?
+      Cloudinary::Uploader.upload(params[:bouquet][:image])
+    end
+  end
+
 end
 
