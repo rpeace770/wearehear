@@ -6,10 +6,10 @@
   Phone number to text to:<br>
   <input type="text"
   name="text[number]" required=""><br><br>
-  <input type="submit" value="Send Bouquet!">
+  <input type="submit" value="Send Bouquet!" class="choose-link f5 fw6 black-70 fl mh3 link br1 pa3  mt3  shadow-5 mb2  br-pill ph3 pv2 mb2 dib">
 </form>
 
 <form action="/bouquets/<%= @bouquet.id %>" method="post">
   <input name="_method" type="hidden" value="delete">
-  <input type="submit" value="Cancel Bouquet">
+  <input type="submit" value="Cancel Bouquet" class="choose-link f5 fw6 black-70 fl mh3 link br1 pa3  mt3  shadow-5 mb2  br-pill ph3 pv2 mb2 dib">
 </form>
