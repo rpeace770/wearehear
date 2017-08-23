@@ -59,7 +59,7 @@ button{
 }*/
 
 input {
-    background-color: transparent;
+/*    background-color: transparent;
     border-radius: 2px;
     cursor: pointer;
     display: block;
@@ -74,7 +74,7 @@ input {
     margin-bottom: 20px;
     color: #1DB954;
     overflow: hidden;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;*/
 }
 .container{
   margin-bottom: 0px;
@@ -120,9 +120,9 @@ input {
   margin-right: 10px;
 }
 
-#pac-input {
+/*#pac-input {
   width: 400px;
-}
+}*/
 
 #mapbase {
 
