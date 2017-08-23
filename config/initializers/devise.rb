@@ -277,5 +277,5 @@ Devise.setup do |config|
 
   keys = Rails.application.secrets
 
-  config.omniauth :spotify, '7a4280c69bd540d588a6540f043ffa48', 'b07dd2e7bab84c498c5e804b64a267eb', scope: 'user-read-birthdate user-read-email user-read-private user-top-read', show_dialog: true
+  config.omniauth :spotify, '7a4280c69bd540d588a6540f043ffa48', 'b07dd2e7bab84c498c5e804b64a267eb', scope: 'user-read-birthdate user-read-email user-read-private user-top-read playlist-modify-public playlist-modify-private', show_dialog: true
 end
