@@ -12,11 +12,9 @@
     <% else %>
       <%= image_tag("/assets/generic-profile-pic.png", alt: "profile_picture", class: "profile_picture")%>
     <% end %>
-    <% if @user.sent_bouquets %>
-    <div>
-      <iframe src="https://open.spotify.com/embed?uri=spotify:user:<%= current_user.uid %>:playlist:<%= current_user.playlist %>" frameborder="0" allowtransparency="true" width="300" height="380"></iframe>
-    </div>
-    <% end %>
+      <div>
+        <iframe src="https://open.spotify.com/embed?uri=spotify:user:<%= current_user.uid %>:playlist:<%= current_user.playlist %>" frameborder="0" allowtransparency="true" width="300" height="380"></iframe>
+      </div>
     <h4>Bouquets sent: <%= @user.sent_bouquets.count %></h4>
     <h4>Member since: <%= pretty_date(@user.created_at) %></h4>
     <h3 style="text-align: center;">Your bouquets:</h3>
