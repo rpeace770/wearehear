@@ -80,23 +80,37 @@ input {
   margin-bottom: 0px;
 }
 
-/*.scroll-container {
-  width: 160px;
-  height: auto;
+.scroll-container {
+  width: 450px;
+  height: 800px;
   overflow-y: auto;
   overflow-x: hidden;
   transform: rotate(-90deg);
   transform-origin: right top;
-}*/
-
-/*.artist-container, .track-container{
-  display: inline-block;
+  margin: 55px;
   float: left;
+}
 
+.artist-container, .track-container{
+  height: 300px;
   transform: rotate(90deg);
   transform-origin: right top;
+  margin:10px;
 
-}*/
+}
+
+iframe {
+  margin: 0px;
+}
+
+.add_song_button {
+  background-color: none;
+}
+
+button, [type="submit"] {
+  background-color: transparent;
+  border: none;
+}
 
 
 #profilemap {
@@ -118,9 +132,9 @@ input {
   border-radius: 15px;
 }
 
-/*#pac-input {
-  width: 400px;
-}*/
+form.add_song_button {
+
+}
 
 #mapbase {
 

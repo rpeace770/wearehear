@@ -1,35 +1,32 @@
+<div class="results ">
 <h1>Results</h1>
-	<%if @artist_data != nil %>
-	<h2> Artist </h2>
-	<p>
-    <%=link_to "back to search", bouquets_new_path %>
-  </p>
-<div class="scroll-container">
+<%if @artist_data != nil %>
+<h2> Artist </h2>
+<div class="scroll-container  ">
 		<% @tracks_info.each do |track| %>
 			<div class="artist-container" id="<%=track[:track_id] %>">
 				 <iframe src="https://open.spotify.com/embed?uri=spotify:track:<%=track[:track_id] %>"
-				        frameborder="0" allowtransparency="true" width="300" height="80"></iframe>
+				        frameborder="0" allowtransparency="true" width="300" height="380"></iframe>
 
 				 <%  song = {track: track[:song_title] , artist:track[:artist_name] , spotify_id: track[:track_id], album: track[:album_name] } %>
-		     <%= button_to "add song to bouquet", bouquets_create_path,  form_class:"add_song_button", params: song  %>
+		     <%= button_to "add song to bouquet", bouquets_create_path,  form_class:" add_song_button b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib", params: song  %>
 	    </div>
 		<% end %>
-
 	<% else %>
 	  <h2>Zero results</h2>
 	  <%=link_to "search again", bouquets_new_path %>
 	<%end %>
 </div>
-
-<div class="scroll-container">
+<h1>Tracks</h1>
+<div class="scroll-container  ">
 	<%if @songs != nil %>
 				<% @songs.each do |track| %>
 	        <div class="track-container" id="<%=track[:track_id] %> data">
 						<iframe src="https://open.spotify.com/embed?uri=spotify:track:<%=track[:track_id] %>"
-						        frameborder="0" allowtransparency="true" width="300" height="80"></iframe>
+						        frameborder="0" allowtransparency="true" width="300" height="380"></iframe>
 
 				 <%  song = {	track: track[:song_title] , artist: track[:artists_name] , spotify_id: track[:track_id],album: track[:album_name] } %>
-		     <%= button_to "add song to bouquet", bouquets_create_path,  form_class:"add_song_button", params: song  %>
+		     <%= button_to "add song to bouquet", bouquets_create_path,  form_class:"add_song_button b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib", params: song  %>
 
 					</div>
 			<%end %>
@@ -38,4 +35,4 @@
 		<h2>Zero results</h2>
 	<%end %>
 </div>
-
+</div>
