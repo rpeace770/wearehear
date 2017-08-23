@@ -43,7 +43,18 @@ h1 {
   margin-bottom:30px;
 }
 
-
+.button_div{
+  width: auto%;
+  float: left;
+}
+.results_div {
+  width:auto;
+  float: left;
+}
+.stats_div {
+  width:auto;
+  float: left;
+}
 
 #map {
   width: 600px;
