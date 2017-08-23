@@ -1,46 +1,44 @@
 <%= cloudinary_js_config %>
-<div class="mw9 center ph3-ns">
-  <div class="cf ph2-ns">
-   <article class="black-60 fl w-100 w-50-ns pa2" data-name="slab-stat">
-      <h1 class="f1 tl">bouquet details</h1>
-      <dl class="dib mr0">
-        <dd class="f6 f5-ns b ml0">From</dd>
-        <dd class="f4 f2-ns b ml0"><%= @bouquet.sender_name %></dd>
-      </dl><br>
-      <dl class="dib mr0">
-        <dd class="f6 f5-ns b ml0">To</dd>
-        <dd class="f3 f2-ns b ml1"><%= @bouquet.receiver_name %></dd>
-      </dl><br>
-      <dl class="dib mr0">
-        <dd class="f6 f5-ns b ml0">Location</dd>
-        <dd class="f3 f2-ns b ml1"><%= @bouquet.custom_location %></dd>
-      </dl><br>
-      <dl class="dib mr0">
-        <dd class="f6 f5-ns b ml0">Song</dd>
-        <dd class="f3 f2-ns b ml1"><%= @bouquet.song.track %></dd>
-      </dl><br>
-      <dl class="dib mr0">
-        <dd class="f6 f5-ns b ml0">Artist</dd>
-        <dd class="f3 f2-ns b ml1"><%= @bouquet.song.artist %></dd>
-      </dl><br>
-      <dl class="dib mr0">
-        <dd class="f6 f5-ns b ml0">Album</dd>
-        <dd class="f3 f2-ns b ml1"><%= @bouquet.song.album %></dd>
-      </dl><br>
-      <dl class="dib mr0">
-        <dd class="f6 f5-ns b ml0">Message</dd>
-        <dd class="f3 f2-ns b ml1">"<%= @bouquet.comment %>"</dd>
-      </dl>
-    </article>
-    <div class="fl w-100 w-50-ns pa2 mr0">
-      <div id="show-map-container" class="">
+  <article class="black-60 pa3 pa5-ns" data-name="slab-stat">
+    <h1 class="f1 tc">Ready to send your Bouquet?</h1>
+    <dl class="dib mr5">
+      <dd class="f6 f5-ns b ml0">From</dd>
+      <dd class="f4 f2-ns b ml0"><%= @bouquet.sender_name %></dd>
+    </dl>
+    <dl class="dib mr5">
+      <dd class="f6 f5-ns b ml0">To</dd>
+      <dd class="f3 f2-ns b ml0"><%= @bouquet.receiver_name %></dd>
+    </dl>
+    <dl class="dib mr5">
+      <dd class="f6 f5-ns b ml0">Location</dd>
+      <dd class="f3 f2-ns b ml0"><%= @bouquet.custom_location %></dd>
+    </dl>
+    <dl class="dib mr5">
+      <dd class="f6 f5-ns b ml0">Song</dd>
+      <dd class="f3 f2-ns b ml0"><%= @bouquet.song.track %></dd>
+    </dl>
+    <dl class="dib mr5">
+      <dd class="f6 f5-ns b ml0">Artist</dd>
+      <dd class="f3 f2-ns b ml0"><%= @bouquet.song.artist %></dd>
+    </dl>
+    <dl class="dib mr5">
+      <dd class="f6 f5-ns b ml0">Album</dd>
+      <dd class="f3 f2-ns b ml0"><%= @bouquet.song.album %></dd>
+    </dl>
+    <dl class="dib mr5">
+      <dd class="f6 f5-ns b ml0">Message</dd>
+      <dd class="f3 f2-ns b ml0">"<%= @bouquet.comment %>"</dd>
+    </dl>
+  </article>
+  <article class="cf">
+    <div class="fl w-100 w-50-ns tc">
+      <div id="show-map-container">
         <img src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @location.lat %>,<%= @location.lng %>&zoom=16&size=600x400&markers=color:green%7C<%= @location.lat %>,<%= @location.lng %>&key=AIzaSyDDo2l9bHOpF6W1lxwIdI0njMBESuZEhzk" id="show-map">
       </div>
-      <div class="">
-        <h2>Ready to send your Bouquet?</h2>
-        <%= render 'text_form' %>
-        <%= cl_image_tag(@bouquet.image.file.try(:public_id) || @bouquet.image.default_url) %>
-      </div>
     </div>
-  </div>
+    <div class="fl w-100 w-50-ns tc">
+        <%= cl_image_tag(@bouquet.image.file.try(:public_id) || @bouquet.image.default_url) %>
+        <%= render 'text_form' %>
+    </div>
+  </article>
 </div>
