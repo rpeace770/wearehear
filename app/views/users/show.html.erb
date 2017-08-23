@@ -1,38 +1,37 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDo2l9bHOpF6W1lxwIdI0njMBESuZEhzk&callback=initProfileMap&libraries=visualization" type="text/javascript" async defer></script>
 
 <% if current_user && @user && current_user.id == @user.id %>
-  <div class="container">
-<!--     <% if @user.username %>
-      <h1>Hiya, <%= @user.username %>!</h1>
-    <% else %>
-      <h1>Hiya!</h1>
-    <% end %> -->
-    <article class="pa3 pa5-ns" data-name="slab-stat">
-      <dl class="dib mr5">
-        <dd class="f6 f5-ns b ml0">Bouquets sent</dd>
-        <dd class="f3 f2-ns b ml0"><%= @user.sent_bouquets.count %></dd>
-      </dl>
-      <dl class="dib mr5">
-        <dd class="f6 f5-ns b ml0">Member since</dd>
-        <dd class="f3 f2-ns b ml0"><%= pretty_date(@user.created_at) %></dd>
-      </dl>
-    </article>
-    <% if @user.picture_url %>
-      <%= image_tag(@user.picture_url, alt: "profile_picture", class: "profile_picture")%>
-    <% else %>
-      <%= image_tag("/assets/generic-profile-pic.png", alt: "profile_picture", class: "profile_picture")%>
-    <% end %>
-      <div>
-        <iframe src="https://open.spotify.com/embed?uri=spotify:user:<%= current_user.uid %>:playlist:<%= current_user.playlist %>" frameborder="0" allowtransparency="true" width="300" height="380"></iframe>
-      </div>
-    <h4>Bouquets sent: <%= @user.sent_bouquets.count %></h4>
-    <h4>Member since: <%= pretty_date(@user.created_at) %></h4>
-    <h3 style="text-align: center;">Your bouquets:</h3>
-    <% @user.sent_bouquets.each do |bouquet| %>
-      <p style="text-align: center;"><%= link_to "to " + bouquet.receiver_name + " on " + pretty_date(bouquet.created_at), "/bouquets/" + bouquet.id.to_s %></p>
-    <% end %>
-    <div id="profilemap"></div>
+<div class="dt-ns dt--fixed-ns">
+
+<div class="dtc-ns tc pv4">
+  <% if @user.picture_url %>
+    <%= image_tag(@user.picture_url, alt: "profile_picture", class: "profile_picture")%>
+  <% else %>
+    <%= image_tag("/assets/generic-profile-pic.png", alt: "profile_picture", class: "profile_picture")%>
+  <% end %>
+
+  <article class="pa3 pa5-ns" data-name="slab-stat">
+    <dl class="dib mr5">
+      <dd class="f6 f5-ns b ml0">Bouquets sent</dd>
+      <dd class="f3 f2-ns b ml0"><%= @user.sent_bouquets.count %></dd>
+    </dl>
+    <dl class="dib mr5">
+      <dd class="f6 f5-ns b ml0">Member since</dd>
+      <dd class="f3 f2-ns b ml0"><%= pretty_date(@user.created_at) %></dd>
+    </dl>
+  </article>
+
+  <h3 style="text-align: center;">Your bouquets:</h3>
+  <% @user.sent_bouquets.each do |bouquet| %>
+    <p><%= link_to "to " + bouquet.receiver_name + " on " + pretty_date(bouquet.created_at), "/bouquets/" + bouquet.id.to_s %></p>
+  <% end %>
+  <div id="profilemap"></div>
+
+  <div>
+    <iframe src="https://open.spotify.com/embed?uri=spotify:user:<%= current_user.uid %>:playlist:<%= current_user.playlist %>" frameborder="0" allowtransparency="true" width="300" height="380"></iframe>
   </div>
+
+</div>
 <% else %>
   <h3>Nothing to see here...</h3>
 <% end %>
