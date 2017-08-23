@@ -39,7 +39,7 @@
       <div class="">
         <h2>Ready to send your Bouquet?</h2>
         <%= render 'text_form' %>
-        <%= cl_image_tag(@bouquet.image.file.public_id) %>
+        <%= cl_image_tag(@bouquet.image.file.try(:public_id) || @bouquet.image.default_url) %>
       </div>
     </div>
   </div>
