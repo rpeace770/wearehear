@@ -5,7 +5,7 @@
 <div class="choose-section ">
     <a href="bouquets/create" class="choose-link f5 fw6 black-70 fl  mh3 link br1 pa3  mt3 shadow-5 mb2  br-pill ph3 pv2 mb2 dib">Add Song</a>
 </div>
-<div class="new-bouquet-section f5 fw6 black-70 mh3   grow br-pill ph3 pv2 mb2 dib">
+<div class="new-bouquet-section f5 fw6 black-70 mh3   br-pill ph3 pv2 mb2 dib">
     <h3>Song Choice:</h3>
     <p id="show-song" ></p>
     <p id="show-artist"></p>
@@ -14,7 +14,7 @@
     <%= form_tag spotify_search_path, :method => 'post', id: "search_submit" do %>
       <p>
         <%= text_field_tag :search, params[:search], :class => "b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib mb2" %>
-        <%= submit_tag "Search", :name => nil, :id => "search_button", :class => "b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" %>
+        <%= submit_tag "Search", :name => nil, :id => "search_button", :class => "b ph3 pv2 input-reset ba b--black bg-transparent pointer f6 dib" %>
       </p>
     <% end %>
 

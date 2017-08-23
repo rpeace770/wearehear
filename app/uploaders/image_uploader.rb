@@ -3,9 +3,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
 
   def default_url(*args)
-    # asset_path("/images/fallback/" + [version_name, "guitar-cat.gif"].compact.join('_'))
-    'http://res.cloudinary.com/wearehear/image/upload/v1503490795/sample.jpg'
-    # ActionController::Base.helpers.asset_path("/images/fallback/guitar-cat.gif")
+   'http://res.cloudinary.com/wearehear/image/upload/v1503508218/guitar-cat_bmskia.gif'
   end
 
   # Include RMagick or MiniMagick support:

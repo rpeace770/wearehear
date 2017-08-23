@@ -50,17 +50,14 @@ class BouquetsController < ApplicationController
   end
 
   def create
-
     @song = Song.find_or_create_by(song_params)
     @location = Location.find_or_create_by(location_params)
     @bouquet = Bouquet.new(bouquet_params)
-    @bouquet.upload_image(params[:bouquet][:image])
     @bouquet.sender_id = current_user.id
     @bouquet.location_id = @location.id
     @bouquet.song_id = @song.id
     if @bouquet.save
       session[:notice] = "Your bouquet was sent!"
-       binding.pry
       redirect_to "/bouquets/confirm/#{@bouquet.id}"
     else
       redirect_to "/bouquets/new"
