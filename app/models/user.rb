@@ -18,6 +18,8 @@ class User < ApplicationRecord
         user.username = auth.info.nickname
         user.token = auth.credentials.token
         user.refresh_token = auth.credentials.refresh_token
+        # expiration in seconds
+        user.expiration = auth.credentials.expires_at
       if auth.info.birthdate
         user.birthdate = auth.info.birthdate
       end
@@ -25,6 +27,14 @@ class User < ApplicationRecord
       if auth.info.image
         user.picture_url = auth.info.image
       end
+    end
+  end
+
+  def token_expired?
+    if (Time.now.to_i - self.expiration) > 0
+      return false
+    else
+      return true
     end
   end
 
