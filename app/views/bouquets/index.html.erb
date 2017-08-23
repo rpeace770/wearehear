@@ -15,8 +15,9 @@
       <% @locations.each do |location| %>
         <ul class="list f6 pl0 mt3 mb0">
         <!-- only good for us cities -->
-          <li class=" ph3 pv2 b--dotted br-0 bt-0 bl-0 ba black-60"> <%= location.reverse_geocode.split(",")[1] %> </li>
+<li class=" ph3 pv2 b--dotted br-0 bt-0 bl-0 ba black-60"> <%= location.reverse_geocode.split(",")[1] %> </li>
       <% end %>
+
       </ul>
   </div>
 
