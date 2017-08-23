@@ -5,7 +5,7 @@ $(document).ready(function() {
     });
 
   $('#new-bouquet-form').on("change", '#upload', function(){
-    $('#upload-msg').append('your file is uploaded!');
+    $('#upload-msg').append('your image is uploaded!');
   });
 
 });
