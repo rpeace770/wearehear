@@ -1,8 +1,12 @@
 $(document).ready(function() {
    $("#new-bouquet-form").on('click', "#upload_link", function(e){
         e.preventDefault();
-        console.log("button clicked!");
          $("#upload").trigger('click');
     });
+
+  $('#new-bouquet-form').on("change", '#upload', function(){
+    $('#upload-msg').append('your file is uploaded!');
   });
+
+});
 
