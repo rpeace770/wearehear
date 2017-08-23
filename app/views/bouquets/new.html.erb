@@ -1,38 +1,60 @@
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDo2l9bHOpF6W1lxwIdI0njMBESuZEhzk&callback=initMap&libraries=places" type="text/javascript" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDo2l9bHOpF6W1lxwIdI0njMBESuZEhzk&libraries=places" type="text/javascript" async defer></script>
 
 <h1>Create a new Bouquet</h1>
+<div class="w-20">
+<div class="choose-section ">
+    <a href="bouquets/create" class="choose-link f5 fw6 black-70 fl  mh3 link br1 pa3  mt3 shadow-5 mb2  br-pill ph3 pv2 mb2 dib">Add Song</a>
+</div>
+<div class="new-bouquet-section f5 fw6 black-70 mh3   grow br-pill ph3 pv2 mb2 dib">
+    <h3>Song Choice:</h3>
+    <p id="show-song" ></p>
+    <p id="show-artist"></p>
+    <p id="show-album"></p>
 
-<div id="person">
-  <form action="/bouquets/create" method="post" enctype="multipart/form-data">
-    <p>Sender Name: <input type="text" name="bouquet[sender_name]" required></p>
-    <p>Receiver Name: <input type="text" name="bouquet[receiver_name]" required></p>
-    <p>Custom Location Name: <input type="text" name="bouquet[custom_location]" required></p>
-    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+    <%= form_tag spotify_search_path, :method => 'post', id: "search_submit" do %>
+      <p>
+        <%= text_field_tag :search, params[:search], :class => "b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib mb2" %>
+        <%= submit_tag "Search", :name => nil, :id => "search_button", :class => "b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" %>
+      </p>
+    <% end %>
+
+    <div id="results">
+    </div>
+</div>
+
+<form action="/bouquets/create" method="post" enctype="multipart/form-data">
+
+<div class="choose-section">
+    <a href="bouquets/create" class="choose-link f5 fw6 black-70 fl mh3 link br1 pa3  mt3  shadow-5 mb2  br-pill ph3 pv2 mb2 dib">Add Person</a>
+</div>
+<div class="new-bouquet-section">
+    <p class="f5 fw6 black-70 mh3   grow br-pill ph3 pv2 mb2 dib">Sender Name: <input type="text" name="bouquet[sender_name]" class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"  required></p>
+    <p class="f5 fw6 black-70 mh3   grow br-pill ph3 pv2 mb2 dib">Receiver Name: <input type="text" name="bouquet[receiver_name]" class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" required></p>
+</div>
+
+<div class="choose-section">
+    <a href="bouquets/create" class="choose-link f5 fw6 black-70 fl  mh3 link br1 pa3  mt3  shadow-5 mb2  br-pill ph3 pv2 mb2 dib">Add Location</a>
+</div>
+<div class="new-bouquet-section map-class">
+    <p class="f5 fw6 black-70 mh3   grow br-pill ph3 pv2 mb2 dib">Custom Location Name: <input type="text" name="bouquet[custom_location]" class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" ></p>
+    <input id="pac-input" class="controls b ph3 pv2 input-reset mb2 ml4 ba b--black bg-transparent grow pointer f6 dib " type="text" placeholder="Search Box">
     <div id="map"></div>
     <input id="lat_coord" name="location[lat]" type="hidden" value="" required>
     <input id="lng_coord" name="location[lng]" type="hidden" value="" required>
+</div>
+
     <input id="spot_id" name="song[spotify_id]" type="hidden" value="" required>
     <input id="song_title" name="song[track]" type="hidden" value="" required>
     <input id="artist" name="song[artist]" type="hidden" value="" required>
     <input id="album" name="song[album]" type="hidden" value="" required>
 
-    <p>Comment: <input type="text" id="comment" name="bouquet[comment]" required></p>
-    <p>Upload an Image: <input type="file" name="bouquet[image]" accept="image/*">
-    <p><input type="submit" value="Create Bouquet"></p>
-
+<div class="choose-section">
+    <a href="bouquets/create" class="choose-link f5 fw6 black-70 fl  mh3 link br1 pa3  mt3  shadow-5 mb2  br-pill ph3 pv2 mb2 dib">Add Comment</a>
+</div>
+<div class="new-bouquet-section">
+    <p class="f5 fw6 black-70 mh3   grow br-pill ph3 pv2 mb2 dib" >Comment: <input type="text" id="comment" name="bouquet[comment]" class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" required></p>
+    <p class="f5 fw6 black-70 mh3   grow br-pill ph3 pv2 mb2 dib">Upload an Image: <input type="file" name="bouquet[image]"  class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" accept="image/*"></p>
+</div>
+    <p ><input type="submit" value="Create Bouquet" class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"></p>
   </form>
-    <h3>Song Choice:</h3>
-    <p id="show-song"></p>
-    <p id="show-artist"></p>
-    <p id="show-album"></p>
-
-<%= form_tag spotify_search_path, :method => 'post', id: "search_submit" do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil, :id => "search_button" %>
-  </p>
-<% end %>
-
-    <div id="results">
-    </div>
 </div>

@@ -1,4 +1,4 @@
-/*/*/*/*
+/*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -34,22 +34,14 @@ h1 {
   text-align: center;
 }
 
-div#person {
-  border: 1px solid black;
-  padding: 20px;
-  margin-top: 10px;
-
-  min-width: 1000px;
+.new-bouquet-section {
+  display: none;
 }
-#trending-info{
-  width:40%;
-}
-
 
 
 #map {
-  width: 900px;
-  height: 600px;
+  width: 600px;
+  height: 400px;
   background-color: grey;
   margin: auto;
   border: 10px solid white;
@@ -62,15 +54,12 @@ button{
   border:none;
 }
 
-div#results{
-  /*float:right;*/
-}
-
-
-
+/*div#results{
+  float:right;
+}*/
 
 input {
-    background-color: transparent;
+/*    background-color: transparent;
     border-radius: 2px;
     cursor: pointer;
     display: block;
@@ -85,29 +74,29 @@ input {
     margin-bottom: 20px;
     color: #1DB954;
     overflow: hidden;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;*/
 }
 .container{
   margin-bottom: 0px;
 }
 
-.scroll-container {
+/*.scroll-container {
   width: 160px;
   height: auto;
   overflow-y: auto;
   overflow-x: hidden;
   transform: rotate(-90deg);
   transform-origin: right top;
-}
+}*/
 
-.artist-container, .track-container{
-/*  display: inline-block;
-  float: left;*/
+/*.artist-container, .track-container{
+  display: inline-block;
+  float: left;
 
   transform: rotate(90deg);
   transform-origin: right top;
 
-}
+}*/
 
 
 #profilemap {
@@ -129,12 +118,12 @@ input {
   border-radius: 15px;
 }
 
-#pac-input {
+/*#pac-input {
   width: 400px;
-}
+}*/
 
 #mapbase {
-  width: 30%;
+
   height: 400px;
   background-color: grey;
   margin: auto;
@@ -172,4 +161,3 @@ input {
   border-bottom-left-radius: 50% 50%;
   border: 10px solid white;
 }
-*/*/*/
