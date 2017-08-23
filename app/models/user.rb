@@ -16,7 +16,8 @@ class User < ApplicationRecord
         user.email = auth.info.email
         user.password = Devise.friendly_token[0,20]
         user.username = auth.info.nickname
-
+        user.token = auth.credentials.token
+        user.refresh_token = auth.credentials.refresh_token
       if auth.info.birthdate
         user.birthdate = auth.info.birthdate
       end
