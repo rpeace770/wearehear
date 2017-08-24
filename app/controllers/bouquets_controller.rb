@@ -43,6 +43,7 @@ class BouquetsController < ApplicationController
     comments = []
     user = User.find(current_user.id)
     bouquets = user.sent_bouquets.order("created_at")
+    binding.pry
     render json: bouquets.to_json
   end
 
