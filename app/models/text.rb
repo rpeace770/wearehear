@@ -10,7 +10,7 @@ class Text < ApplicationRecord
   def send_sms
   twilio_number = "5128317223"
   @client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
-
+ #binding.pry
   @client.messages.create({
     from: twilio_number,
     to: '+1'+clean_number,
