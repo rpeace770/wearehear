@@ -147,7 +147,7 @@ button, [type="submit"] {
 }
 
 #show-map {
-  min-width: 30%;
+/*  min-width: 30%;
   max-width: 100%;
   width: 600px;
   height: auto;
@@ -156,7 +156,7 @@ button, [type="submit"] {
   border: 10px solid white;
   border-radius: 15px;
   margin-left: 10px;
-  margin-right: 10px;
+  margin-right: 10px;*/
 }
 
 #mapbase {
