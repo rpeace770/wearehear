@@ -70,6 +70,7 @@ h1 {
 #pac-input {
   display: none;
   width: 80%;
+>>>>>>> master
 }
 
 button{
@@ -108,8 +109,8 @@ input {
     height: 762px;
     overflow-x: auto;
     transform-origin: 45% 21%;
-    transform: rotate(-90deg) translateY(-49px) translateX(-130px);
-}
+    transform: rotate(-90deg) translateY(-94px) translateX(-135px);
+  }
 
 .artist-container, .track-container{
     height: 310px;
@@ -142,12 +143,16 @@ button, [type="submit"] {
 }
 
 #show-map {
-  width: 30%;
-  height: 400px;
+  /*min-width: 30%;*/
+  /*max-width: 100%;*/
+  /*width: 600px;*/
+/*  height: auto;
   background-color: grey;
   margin: auto;
   border: 10px solid white;
   border-radius: 15px;
+  margin-left: 10px;
+  margin-right: 10px;*/
 }
 
 form.add_song_button {
@@ -191,7 +196,8 @@ form.add_song_button {
   border-top-right-radius: 50% 50%;
   border-bottom-right-radius: 50% 50%;
   border-bottom-left-radius: 50% 50%;
-  border: 10px solid white;
+  border: 3px solid white;
+  max-width: 150px;
 }
 
 #upload_link {
@@ -205,16 +211,4 @@ form.add_song_button {
     text-decoration: none;
 }
 
-/*
-input[type="file"] {
-    display: none;
-}*/
-/*
-.custom-file-upload {
-    border: 1px solid #ccc;
-    display: inline-block;
-    padding: 6px 12px;
-    cursor: pointer;
-}
 
-*/

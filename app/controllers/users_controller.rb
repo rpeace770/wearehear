@@ -3,7 +3,11 @@ require 'json'
 class UsersController < ApplicationController
 
   def show
-    @user = User.find(params[:id])
+    if User.where(id: params[:id]).exists?
+      @user = User.find(params[:id])
+    else
+      @user = User.find(current_user.id)
+    end
     if current_user.id != @user.id
       redirect_to "/"
     end
@@ -13,7 +17,7 @@ class UsersController < ApplicationController
       spotify_token = RestClient.post("https://accounts.spotify.com/api/token",{"grant_type": "client_credentials"}, {"Authorization": "Basic #{client_token}"})
       parsed_token = JSON.parse(spotify_token)
     if @user.playlist == nil
-      playlist = RestClient.post("https://api.spotify.com/v1/users/#{current_user.uid}/playlists",{name: 'New Thing' }.to_json, {"Authorization": "Bearer #{current_user.token}","Content-Type": "application/json"})
+      playlist = RestClient.post("https://api.spotify.com/v1/users/#{current_user.uid}/playlists",{name: 'We Are Hear' }.to_json, {"Authorization": "Bearer #{current_user.token}","Content-Type": "application/json"})
       parse_playlist = JSON.parse(playlist)
       @user.playlist = parse_playlist["id"]
       @user.save
