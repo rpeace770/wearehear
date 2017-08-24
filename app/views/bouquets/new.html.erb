@@ -1,63 +1,101 @@
+
+
+
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDo2l9bHOpF6W1lxwIdI0njMBESuZEhzk&libraries=places" type="text/javascript" async defer></script>
 
-<h1>Create a new Bouquet</h1>
-<div class="w-20">
-<div class="choose-section ">
-    <a href="bouquets/create" class="choose-link f5 fw6 black-70 fl  mh3 link br1 pa3  mt3 shadow-5 mb2  br-pill ph3 pv2 mb2 dib">Add Song</a>
+
+<div class="dt-ns w-100 dt--fixed-ns">
+
+<div class="dtc-ns w-25 pv4 bg-black-10 fl button_div">
+<div class="outline- bg-transparent pv4"><div class="choose-section ">
+    <a href="bouquets/create" class="choose-link f5 fw6 black-70   mh3 link br1 pa3  mt3 shadow-5 mb2 input-reset  br-pill ph3 pv2 mb2 ">Add Song</a>
 </div>
-<div class="new-bouquet-section f5 fw6 black-70 mh3   br-pill ph3 pv2 mb2 dib">
-    <h3>Song Choice:</h3>
-    <p id="show-song" ></p>
-    <p id="show-artist"></p>
-    <p id="show-album"></p>
 
-    <%= form_tag spotify_search_path, :method => 'post', id: "search_submit" do %>
-      <p>
-        <%= text_field_tag :search, params[:search], :class => "b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib mb2" %>
-        <%= submit_tag "Search", :name => nil, :id => "search_button", :class => "b ph3 pv2 input-reset ba b--black bg-transparent pointer f6 dib" %>
-      </p>
-    <% end %>
+    <div class="new-bouquet-section song-show f5 fw6 black-70 mh3 br-pill ph3 pv2 mb2 ">
 
-    <div id="results">
+        <%= form_tag spotify_search_path, :method => 'post', id: "search_submit" do %>
+          <p >
+            <%= text_field_tag :search, params[:search], :class => "b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6  mb2" %>
+            <%= submit_tag "Search", :name => nil, :id => "search_button", :class => "b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 " %>
+          </p>
+        <% end %>
+    </div> <form action="/bouquets/create" method="post" enctype="multipart/form-data">
+        <div class="choose-section">
+            <a href="bouquets/create" class="choose-link f5 fw6 black-70 link br1 ph3 pv2 mh3 mt3 mb2 shadow-5 br-pill  ">Add Person</a>
+        </div>
+        <div class="new-bouquet-section">
+            <p class="f5 fw6 black-70 mh3   grow br-pill ph3 pv2 mb2 ">Sender Name: <input type="text" name="bouquet[sender_name]" class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 "  required></p>
+            <p class="f5 fw6 black-70 mh3   grow br-pill ph3 pv2 mb2 ">Receiver Name: <input type="text" name="bouquet[receiver_name]" class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 " required></p>
+        </div>
+
+        <div class="choose-section">
+            <a href="bouquets/create" class="choose-link f5 fw6 black-70 link br1 ph3 pv2 mh3 mt3 mb2 shadow-5   br-pill  ">Add Location</a>
+        </div>
+        <div class="new-bouquet-section map-class">
+            <p class="f5 fw6 black-70 mh3   br-pill ph3 pv2 mb2 ">Custom Location Name: <input type="text" name="bouquet[custom_location]" id="locale" class="b ph3 pv2 custom_location_name  ba b--black bg-transparent pointer f6 "   ></p>
+
+            <input id="lat_coord" name="location[lat]" type="hidden" value="" required>
+            <input id="lng_coord" name="location[lng]" type="hidden" value="" required>
+        </div>
+
+            <input id="spot_id" name="song[spotify_id]" type="hidden" value="" required>
+            <input id="song_title" name="song[track]" type="hidden" value="" required>
+            <input id="artist" name="song[artist]" type="hidden" value="" required>
+            <input id="album" name="song[album]" type="hidden" value="" required>
+
+        <div class="choose-section">
+            <a href="bouquets/create" class="choose-link f5 fw6 black-70 link br1 ph3 pv2 mh3 mt3 mb2  shadow-5 br-pill">Add Comment</a>
+        </div>
+        <div class="new-bouquet-section">
+            <p class="f5 fw6 black-70 mh3  br-pill ph3 pv2 mb2 " >Comment: <input type="text" id="comment" name="bouquet[comment] " class="b ph3 pv2  ba b--black bg-transparent grow pointer f6 " required ></p>
+            <p class="f5 fw6 black-70 mh3   grow br-pill ph3 pv2 mb2 ">Upload an Image: <input type="file" name="bouquet[image]"  class="b ph3 pv2  ba b--black bg-transparent grow pointer f6 " accept="image/*"></p>
+        </div>
+            <p ><input type="submit" value="Create Bouquet" class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 "></p>
+    </form></div>
+</div>
+
+
+<div class=" dtc-ns tc pv4 bg-black-05 fl w-50-ns w-100 results_div">
+
+      <div class="songs_results" id="results" ></div>
+           <input id="pac-input" class="controls b ph3 pv2 input-reset mb2 ba br2 white-80 bg-transparent pointer f6   " type="text" placeholder="enter location">
+          <div id="map"></div>
+
+
+</div>
+
+
+
+<div class=" dtc-ns tl pv4 bg-black-10 w-25-ns fr w-100 stats_div">
+
+    <article class="pa3 pa5-ns  w-100 w-25-ns mr2" data-name="slab-stat-large">
+      <h3 class="f4 ttu tracked">Song</h3>
+          <div class="cf">
+            <dl class="db  w-auto-l lh-title mr6-l">
+              <dd class="f2 tc lh-copy fw6 ml0"><p id="show-song" ></p>
+            </dl>
+            <dl class="db  w-auto-l lh-title mr6-l">
+              <dd class="f6 fw4 ml0">Artist</dd>
+              <dd class="f2  lh-copy fw6 ml0"><p id="show-artist"></p></dd>
+            </dl>
+            <dl class="db  w-auto-l lh-title mr6-l">
+              <dd class="f6 fw4 ml0">Album</dd>
+              <dd class="f2  lh-copy fw6 ml0"><p id="show-album"></p></dd></dd>
+            </dl>
+            <dl class="db  w-auto-l lh-title mr6-l">
+              <dd class="f6 fw4 ml0">Location</dd>
+              <dd class="f2  lh-copy fw6 ml0 " id="input_location"></dd>
+            </dl>
+            <dl class="db  w-auto-l lh-title mr6-l">
+              <dd class="f6 fw4 ml0">Favorite Cat</dd>
+              <dd class="f2  lh-copy fw6 ml0">All of Them</dd>
+            </dl>
+            <dl class="db w-auto-l lh-title">
+              <dd class="f6 fw4 ml0">App Downloads</dd>
+              <dd class="f2  lh-copy fw6 ml0">1,200</dd>
+            </dl>
+          </div>
+    </article>
     </div>
-</div>
 
-<form action="/bouquets/create" method="post" enctype="multipart/form-data" id="new-bouquet-form">
 
-<div class="choose-section">
-    <a href="bouquets/create" class="choose-link f5 fw6 black-70 fl mh3 link br1 pa3  mt3  shadow-5 mb2  br-pill ph3 pv2 mb2 dib">Add Person</a>
-</div>
-<div class="new-bouquet-section">
-    <p class="f5 fw6 black-70 mh3   grow br-pill ph3 pv2 mb2 dib">Sender Name: <input type="text" name="bouquet[sender_name]" class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"  required></p>
-    <p class="f5 fw6 black-70 mh3   grow br-pill ph3 pv2 mb2 dib">Receiver Name: <input type="text" name="bouquet[receiver_name]" class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" required></p>
-</div>
-
-<div class="choose-section">
-    <a href="bouquets/create" class="choose-link f5 fw6 black-70 fl  mh3 link br1 pa3  mt3  shadow-5 mb2  br-pill ph3 pv2 mb2 dib">Add Location</a>
-</div>
-<div class="new-bouquet-section map-class">
-    <p class="f5 fw6 black-70 mh3   grow br-pill ph3 pv2 mb2 dib">Custom Location Name: <input type="text" name="bouquet[custom_location]" class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" ></p>
-    <input id="pac-input" class="controls b ph3 pv2 input-reset mb2 ml4 ba b--black bg-transparent grow pointer f6 dib " type="text" placeholder="Search Box">
-    <div id="map"></div>
-    <input id="lat_coord" name="location[lat]" type="hidden" value="" required>
-    <input id="lng_coord" name="location[lng]" type="hidden" value="" required>
-</div>
-
-    <input id="spot_id" name="song[spotify_id]" type="hidden" value="" required>
-    <input id="song_title" name="song[track]" type="hidden" value="" required>
-    <input id="artist" name="song[artist]" type="hidden" value="" required>
-    <input id="album" name="song[album]" type="hidden" value="" required>
-
-<div class="choose-section">
-    <a href="bouquets/create" class="choose-link f5 fw6 black-70 fl  mh3 link br1 pa3  mt3  shadow-5 mb2  br-pill ph3 pv2 mb2 dib">Add Comment</a>
-</div>
-<div class="new-bouquet-section">
-    <p class="f5 fw6 black-70 mh3   grow br-pill ph3 pv2 mb2 dib" >Comment: <input type="text" id="comment" name="bouquet[comment]" class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" required></p>
-
-    <p class="f5 fw6 black-70 mh3 br-pill ph3 pv2 mb2 dib"><input type="file" id="upload" style="display:none" name="bouquet[image]" class="b ph3 pv2 input-reset ba b--black bg-transparent pointer f6 dib" accept="image/*"><a href="#" id="upload_link" class="b input-reset ba b--black bg-transparent grow pointer f6 dib">Upload an Image</a></p>
-    <div id="upload-msg" class="f5 fw6 black-70 mh3 br-pill ph3 pv2 mb2 dib">
-    </div>
-</div>
-    <p ><input type="submit" value="Create Bouquet" class=" button b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"></p>
-  </form>
-</div>
