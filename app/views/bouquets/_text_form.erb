@@ -8,7 +8,7 @@
   <input type="submit" value="Send Bouquet!" class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6">
 </form>
 
-<form action="/bouquets/<%= @bouquet.id %>" method="post">
+<form action="/bouquets/<%= @bouquet.id %>" method="post" class="center">
   <input name="_method" type="hidden" value="delete">
   <input type="submit" value="Cancel Bouquet" class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6">
 </form>
