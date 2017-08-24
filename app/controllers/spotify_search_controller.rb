@@ -8,7 +8,6 @@ class SpotifySearchController < ApplicationController
     searchURL = "#{spotify_url}search?q=#{query}&type=artist,track&limit=10"
     access_token = ENV['ACCESS_TOKEN']
     # getting client token
-    # client_token = Base64.strict_encode64("7a4280c69bd540d588a6540f043ffa48:b07dd2e7bab84c498c5e804b64a267eb")
     client_token = Base64.strict_encode64(ENV['SPOTIFY_CLIENT_ID'] + ":" + ENV['SPOTIFY_CLIENT_SECRET'])
 
     spotify_token = RestClient.post("https://accounts.spotify.com/api/token",{"grant_type": "client_credentials"}, {"Authorization": "Basic #{client_token}"})

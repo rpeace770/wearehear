@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       redirect_to "/"
     end
 # this refreshes the user token, do not fuck with it :)
-    client_token = Base64.strict_encode64("7a4280c69bd540d588a6540f043ffa48:b07dd2e7bab84c498c5e804b64a267eb")
+    client_token = Base64.strict_encode64(ENV['SPOTIFY_CLIENT_ID'] + ":" + ENV['SPOTIFY_CLIENT_SECRET'])
       begin
         RestClient.post("https://accounts.spotify.com/api/token", { "grant_type": 'refresh_token', "refresh_token": "#{current_user.refresh_token}" }, { "Authorization": "Basic #{client_token}" })
       rescue RestClient::ExceptionWithResponse => err
