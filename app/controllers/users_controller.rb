@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     client_token = Base64.strict_encode64("7a4280c69bd540d588a6540f043ffa48:b07dd2e7bab84c498c5e804b64a267eb")
 
       if current_user.token_expired?
-        token_info = RestClient.post("https://accounts.spotify.com/api/token",{"Authorization": "Basic #{client_token}"}, {"grant_type": "refresh_token", "refresh_token": "#{current_user.refresh_token}"}.to_json)
+        RestClient.get("http://localhost:3000/auth/spotify/callback", :grant_type => 'refresh_token', :refresh_token => current_user.refresh_token, :client_id => "7a4280c69bd540d588a6540f043ffa48", :client_secret => "b07dd2e7bab84c498c5e804b64a267eb")
         binding.pry
       end
 
