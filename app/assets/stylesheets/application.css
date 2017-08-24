@@ -38,16 +38,41 @@ h1 {
   display: none;
 }
 
+
+.choose-section {
+  margin-bottom:30px;
+}
+
+.button_div{
+  width: auto%;
+  float: left;
+}
+.results_div {
+  width:auto;
+  float: left;
+}
+.stats_div {
+  width:auto;
+  float: left;
+}
+
 #map {
-  width: 600px;
+  width: 95%;
   height: 400px;
   background-color: grey;
   margin: auto;
   border: 10px solid white;
   border-radius: 15px;
   position: fixed;
-
+  display: none;
 }
+
+#pac-input {
+  display: none;
+  width: 80%;
+>>>>>>> master
+}
+
 button{
   background-color: none;
   border:none;
@@ -79,23 +104,32 @@ input {
   margin-bottom: 0px;
 }
 
-/*.scroll-container {
-  width: 160px;
-  height: auto;
-  overflow-y: auto;
-  overflow-x: hidden;
-  transform: rotate(-90deg);
-  transform-origin: right top;
-}*/
+.scroll-container {
+    width: 567px;
+    height: 762px;
+    overflow-x: auto;
+    transform-origin: 45% 21%;
+    transform: rotate(-90deg) translateY(-94px) translateX(-135px);
+  }
 
-/*.artist-container, .track-container{
-  display: inline-block;
-  float: left;
+.artist-container, .track-container{
+    height: 310px;
+    transform: rotate(450deg) translateY(-125px) translateX(137px);
+}
 
-  transform: rotate(90deg);
-  transform-origin: right top;
+iframe {
+  margin: 0px;
+}
 
-}*/
+form.add_song_button {
+  background-color: none;
+  transform: translateY(35px) translateX(-237px);
+}
+
+button, [type="submit"] {
+  background-color: transparent;
+  border: none;
+}
 
 
 #profilemap {
@@ -109,17 +143,21 @@ input {
 }
 
 #show-map {
-  width: 30%;
-  height: 400px;
+  /*min-width: 30%;*/
+  /*max-width: 100%;*/
+  /*width: 600px;*/
+/*  height: auto;
   background-color: grey;
   margin: auto;
   border: 10px solid white;
   border-radius: 15px;
+  margin-left: 10px;
+  margin-right: 10px;*/
 }
 
-/*#pac-input {
-  width: 400px;
-}*/
+form.add_song_button {
+
+}
 
 #mapbase {
 
@@ -158,5 +196,19 @@ input {
   border-top-right-radius: 50% 50%;
   border-bottom-right-radius: 50% 50%;
   border-bottom-left-radius: 50% 50%;
-  border: 10px solid white;
+  border: 3px solid white;
+  max-width: 150px;
 }
+
+#upload_link {
+   display: block;
+    width: 150px;
+    height: 35px;
+    background: none;
+    padding: 10px;
+    text-align: center;
+    color: black;
+    text-decoration: none;
+}
+
+

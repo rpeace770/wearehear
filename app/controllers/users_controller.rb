@@ -3,11 +3,14 @@ require 'json'
 class UsersController < ApplicationController
 
   def show
-    @user = User.find(params[:id])
+    if User.where(id: params[:id]).exists?
+      @user = User.find(params[:id])
+    else
+      @user = User.find(current_user.id)
+    end
     if current_user.id != @user.id
       redirect_to "/"
     end
-
 # this refreshes the user token, do not fuck with it :)
     client_token = Base64.strict_encode64("7a4280c69bd540d588a6540f043ffa48:b07dd2e7bab84c498c5e804b64a267eb")
       begin
@@ -34,8 +37,6 @@ class UsersController < ApplicationController
         @playlist_tracks_id = parsed_tracks["snapshot_id"]
         end
       end
-
-
   end
 
 end
