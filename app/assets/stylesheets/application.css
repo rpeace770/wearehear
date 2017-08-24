@@ -57,7 +57,7 @@ h1 {
 }
 
 #map {
-  width: 600px;
+  width: 95%;
   height: 400px;
   background-color: grey;
   margin: auto;
@@ -69,6 +69,7 @@ h1 {
 
 #pac-input {
   display: none;
+  width: 80%;
 }
 
 button{
@@ -107,7 +108,7 @@ input {
     height: 762px;
     overflow-x: auto;
     transform-origin: 45% 21%;
-    transform: rotate(-90deg) translateY(-94px) translateX(-135px);
+    transform: rotate(-90deg) translateY(-49px) translateX(-130px);
 }
 
 .artist-container, .track-container{
