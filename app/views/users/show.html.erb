@@ -1,4 +1,4 @@
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDo2l9bHOpF6W1lxwIdI0njMBESuZEhzk&callback=initProfileMap&libraries=visualization" type="text/javascript" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAP_KEY']%>&callback=initProfileMap&libraries=visualization" type="text/javascript" async defer></script>
 <div class="black-60">
   <% if current_user && @user && current_user.id == @user.id %>
   <h1 class="black-60 f1">Welcome back!</h1>
@@ -23,7 +23,6 @@
         </dl>
       </article>
     </div>
-
     <div class="dtc-ns tc pv4 v-top">
       <div id="profilemap"></div>
       <h2 style="text-align: center;">Your bouquets:</h3>
