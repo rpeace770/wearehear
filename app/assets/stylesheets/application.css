@@ -70,7 +70,6 @@ h1 {
 #pac-input {
   display: none;
   width: 80%;
->>>>>>> master
 }
 
 button{
@@ -133,7 +132,8 @@ button, [type="submit"] {
 
 
 #profilemap {
-  width: 30%;
+  max-width: 100%;
+  /*min-width: 50%;*/
   height: 400px;
   background-color: grey;
   margin: auto;
