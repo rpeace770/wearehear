@@ -70,6 +70,16 @@ h1 {
 #pac-input {
   display: none;
   width: 80%;
+
+
+}
+
+.track-cat {
+  transform: translateX(23px) translateY(47px);
+}
+.artist-cat {
+  transform: translateX(23px) translateY(47px);
+
 }
 
 button{
