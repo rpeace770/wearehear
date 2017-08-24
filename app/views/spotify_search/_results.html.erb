@@ -1,8 +1,7 @@
 
-<h1>Results</h1>
+
 <%if @artist_data != nil %>
 <div class="scroll-container ">
-<h1> Artist </h1>
 		<% @tracks_info.each do |track| %>
 			<div class="artist-container" id="<%=track[:track_id] %>">
 				 <iframe src="https://open.spotify.com/embed?uri=spotify:track:<%=track[:track_id] %>"
@@ -17,7 +16,7 @@
 	  <%=link_to "search again", bouquets_new_path %>
 	<%end %>
 
-<h1>Tracks</h1>
+
 
 	<%if @songs != nil %>
 				<% @songs.each do |track| %>
