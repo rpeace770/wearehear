@@ -5,21 +5,49 @@
 <div class="choose-section ">
     <a href="bouquets/create" class="choose-link f5 fw6 black-70 fl  mh3 link br1 pa3  mt3 shadow-5 mb2  br-pill ph3 pv2 mb2 dib">Add Song</a>
 </div>
-<div class="new-bouquet-section f5 fw6 black-70 mh3   br-pill ph3 pv2 mb2 dib">
-    <h3>Song Choice:</h3>
-    <p id="show-song" ></p>
-    <p id="show-artist"></p>
-    <p id="show-album"></p>
 
-    <%= form_tag spotify_search_path, :method => 'post', id: "search_submit" do %>
-      <p>
-        <%= text_field_tag :search, params[:search], :class => "b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib mb2" %>
-        <%= submit_tag "Search", :name => nil, :id => "search_button", :class => "b ph3 pv2 input-reset ba b--black bg-transparent pointer f6 dib" %>
-      </p>
-    <% end %>
 
-    <div id="results">
-    </div>
+    <div class="new-bouquet-section song-show f5 fw6 black-70 mh3 br-pill ph3 pv2 mb2 ">
+        <%= form_tag spotify_search_path, :method => 'post', id: "search_submit" do %>
+          <p >
+            <%= text_field_tag :search, params[:search], :class => "b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6  mb2" %>
+            <%= submit_tag "Search", :name => nil, :id => "search_button", :class => "b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 " %>
+          </p>
+        <% end %>
+    </div> <form action="/bouquets/create" method="post" enctype="multipart/form-data">
+        <div class="choose-section">
+            <a href="bouquets/create" class="choose-link f5 fw6 black-70 link br1 ph3 pv2 mh3 mt3 mb2 shadow-5 br-pill  ">Add Person</a>
+        </div>
+        <div class="new-bouquet-section">
+            <p class="f5 fw6 black-70 mh3   grow br-pill ph3 pv2 mb2 ">Sender Name: <input type="text" name="bouquet[sender_name]" class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 "  required></p>
+            <p class="f5 fw6 black-70 mh3   grow br-pill ph3 pv2 mb2 ">Receiver Name: <input type="text" name="bouquet[receiver_name]" class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 " required></p>
+        </div>
+
+        <div class="choose-section">
+            <a href="bouquets/create" class="choose-link f5 fw6 black-70 link br1 ph3 pv2 mh3 mt3 mb2 shadow-5   br-pill  ">Add Location</a>
+        </div>
+        <div class="new-bouquet-section map-class">
+            <p class="f5 fw6 black-70 mh3   br-pill ph3 pv2 mb2 ">Custom Location Name: <input type="text" name="bouquet[custom_location]" id="locale" class="b ph3 pv2 custom_location_name  ba b--black bg-transparent pointer f6 "   ></p>
+
+            <input id="lat_coord" name="location[lat]" type="hidden" value="" required>
+            <input id="lng_coord" name="location[lng]" type="hidden" value="" required>
+        </div>
+
+            <input id="spot_id" name="song[spotify_id]" type="hidden" value="" required>
+            <input id="song_title" name="song[track]" type="hidden" value="" required>
+            <input id="artist" name="song[artist]" type="hidden" value="" required>
+            <input id="album" name="song[album]" type="hidden" value="" required>
+
+        <div class="choose-section">
+            <a href="bouquets/create" class="choose-link f5 fw6 black-70 link br1 ph3 pv2 mh3 mt3 mb2  shadow-5 br-pill">Add Comment</a>
+        </div>
+        <div class="new-bouquet-section">
+            <p class="f5 fw6 black-70 mh3  br-pill ph3 pv2 mb2 " >Comment: <input type="text" id="comment" name="bouquet[comment] " class="b ph3 pv2  ba b--black bg-transparent grow pointer f6 " required ></p>
+            <p class="f5 fw6 black-70 mh3   grow br-pill ph3 pv2 mb2 ">Upload an Image: <input type="file" name="bouquet[image]"  class="b ph3 pv2  ba b--black bg-transparent grow pointer f6 " accept="image/*"></p>
+        </div>
+            <p ><input type="submit" value="Create Bouquet" class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 "></p>
+    </form></div>
+
 </div>
 
 <form action="/bouquets/create" method="post" enctype="multipart/form-data" id="new-bouquet-form">
