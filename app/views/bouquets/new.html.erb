@@ -12,6 +12,7 @@
 </div>
 
     <div class="new-bouquet-section song-show f5 fw6 black-70 mh3 br-pill ph3 pv2 mb2 ">
+
         <%= form_tag spotify_search_path, :method => 'post', id: "search_submit" do %>
           <p >
             <%= text_field_tag :search, params[:search], :class => "b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6  mb2" %>
@@ -59,7 +60,7 @@
 </div>
 
 
-<div class=" dtc-ns tc pv4 bg-black-05 fl w-50 results_div">
+<div class=" dtc-ns tc pv4 bg-black-05 fl w-50-ns w-100 results_div">
 
       <div class="songs_results" id="results" ></div>
            <input id="pac-input" class="controls b ph3 pv2 input-reset mb2 ba br2 white-80 bg-transparent pointer f6   " type="text" placeholder="enter location">
