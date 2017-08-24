@@ -61,8 +61,6 @@ h1 {
   height: 400px;
   background-color: grey;
   margin: auto;
-  border: 10px solid white;
-  border-radius: 15px;
   position: fixed;
   display: none;
 }
@@ -151,8 +149,6 @@ button, [type="submit"] {
   height: 400px;
   background-color: grey;
   margin: auto;
-  border: 10px solid white;
-  border-radius: 15px;
   color: black;
 }
 
@@ -170,13 +166,24 @@ button, [type="submit"] {
 }
 
 #mapbase {
-
   height: 400px;
   background-color: grey;
   margin: auto;
-  border: 10px solid white;
-  border-radius: 15px;
 }
+
+/*@media (min-width: 1400px) {
+  #mapbase {
+    height: 350px;
+    width: 550px;
+  }
+}
+
+@media (min-width: 768px) {
+  #mapbase {
+  height: 200px;
+  width: 314px;
+  }
+}*/
 
 #floating-panel {
   position: absolute;

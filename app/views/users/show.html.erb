@@ -10,7 +10,7 @@
           <% if @user.picture_url %>
             <%= image_tag(@user.picture_url, alt: "profile_picture", class: "profile_picture mb4")%>
           <% else %>
-            <%= image_tag("/assets/generic-profile-pic.png", alt: "profile_picture", class: "profile_picture")%>
+            <%= image_tag("generic-profile-pic.png", alt: "profile_picture", class: "profile_picture")%>
           <% end %>
         </d1>
         <br>
