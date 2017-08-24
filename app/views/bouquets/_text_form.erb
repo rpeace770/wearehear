@@ -1,10 +1,10 @@
-<form action="/texts/create" method="post" class="center">
+<form action="/texts/create" method="post" class="center" style="margin-top: -60px;">
   <input type="hidden" name="text[sender]"  value=<%=@bouquet.sender_name%>><br>
   <input type="hidden" name="text[special_path]"  value=<%=@bouquet.special_path%>><br>
   <input type="hidden" name="text[image]"  value=<%=@bouquet.image%>><br>
 
   <h2 class="black-60" >Phone number to text to:</h2><br>
-  <input type="text" name="text[number]" required=""><br><br>
+  <input type="text" name="text[number]" required="" class="b ph3 pv2 custom_location_name  ba b--black bg-transparent pointer f6 "><br><br>
   <input type="submit" value="Send Bouquet!" class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6">
 </form>
 
