@@ -1,29 +1,46 @@
 <!-- <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAP_KEY']%>&callback=initHeatMap&libraries=visualization" type="text/javascript" async defer></script> -->
 
-<div class="cf ph2-ns">
-   <div class="rand-song fl w-100 w-25-ns  mr2 ">
-   <iframe src="https://open.spotify.com/embed?uri=spotify:track:<%=@songs.sample.spotify_id %>"
-                frameborder="0" allowtransparency="true" width="300" height="380"></iframe>
-   </div>
+<header class="tc ph4 pb4">
+  <h2 class="f4 f4-m f3-l fw6 black-60 mt0 lh-copy">
+    The possibilities are endless. The memories are priceless.
+  </h2>
+  <h1 class="f3 f2-m f1-l black-60 mv3">
+    Pick a Song. Pick a Friend. Pick a Place.
+  </h1>
+</header>
 
-  <div class="fl w-100 w-40-ns pa2 ma2" id="mapbase"></div>
 
-  <article class="fl w-100 w-25-ns  black-60 tr  " data-name="slab-stat">
-    <dl class="dib mr0">
-      <dd class="f6 f5-ns b ml0">Bouquets sent</dd>
-      <dd class="f4 f2-ns b ml0"><%= @bouquets.count %></dd>
-    </dl><br>
-    <dl class="dib mr0">
-      <dd class="f6 f5-ns b ml1">Top 5 locations</dd>
-      <% @locations.each do |location| %>
-      <dd class="f3 f2-ns b ml1"><%= location.reverse_geocode %></dd>
-      <% end %>
-    </dl>
-    <dl class="dib mr0">
-      <dd class="f6 f5-ns b ml1">Top 5 Songs</dd>
-      <% @songs.each do |song| %>
-      <dd class="f3 f2-ns b ml1"><%= song.artist %></dd>
-      <% end %>
-    </dl>
-  </article>
+
+
+<div class="dt-ns dt--fixed-ns">
+  <div class="dtc-ns tc v-top">
+    <iframe src="https://open.spotify.com/embed?uri=spotify:track:<%=@songs.sample.spotify_id %>"
+                frameborder="0" allowtransparency="true" width="300" height="380" ></iframe>
+  </div>
+
+  <div class="dtc-ns tc v-top">
+    <div id="mapbase" class="center">
+    </div>
+  </div>
+
+  <div class="dtc-ns tc v-top center">
+    <article class="w-100 w-50-ns black-60 tr center" data-name="slab-stat">
+      <dl class="dib mr0">
+        <dd class="f6 f5-ns b ml0">Bouquets sent</dd>
+        <dd class="f4 f2-ns b ml0"><%= @bouquets.count %></dd>
+      </dl><br>
+      <dl class="dib mr0">
+        <dd class="f6 f5-ns b ml1">Top 5 locations</dd>
+        <% @locations.each do |location| %>
+        <dd class="f3 f2-ns b ml1"><%= location.reverse_geocode.split(",")[1] %></dd>
+        <% end %>
+      </dl>
+      <dl class="dib mr0">
+        <dd class="f6 f5-ns b ml1">Top 5 Artists</dd>
+        <% @songs.each do |song| %>
+        <dd class="f3 f2-ns b ml1"><%= song.artist %></dd>
+        <% end %>
+      </dl>
+    </article>
+  </div>
 </div>
