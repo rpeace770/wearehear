@@ -141,14 +141,16 @@ button, [type="submit"] {
 }
 
 #show-map {
-  min-width: 30%;
-  height: auto;
+  /*min-width: 30%;*/
+  /*max-width: 100%;*/
+  /*width: 600px;*/
+/*  height: auto;
   background-color: grey;
   margin: auto;
   border: 10px solid white;
   border-radius: 15px;
   margin-left: 10px;
-  margin-right: 10px;
+  margin-right: 10px;*/
 }
 
 form.add_song_button {

@@ -30,15 +30,17 @@
       <dd class="f3 f2-ns b ml0">"<%= @bouquet.comment %>"</dd>
     </dl>
   </article>
-  <article class="cf">
-    <div class="fl w-100 w-50-ns tc">
+  <div class="center">
+    <%= render 'text_form' %>
+  </div>
+  <article class="cf mb5 pa0">
+    <div class="fl w-100 w-50-ns tc pa0">
       <div id="show-map-container">
-        <img src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @location.lat %>,<%= @location.lng %>&zoom=16&size=600x400&markers=color:green%7C<%= @location.lat %>,<%= @location.lng %>&key=AIzaSyDDo2l9bHOpF6W1lxwIdI0njMBESuZEhzk" id="show-map">
+        <img src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @location.lat %>,<%= @location.lng %>&zoom=16&size=600x400&markers=color:green%7C<%= @location.lat %>,<%= @location.lng %>&key=AIzaSyDDo2l9bHOpF6W1lxwIdI0njMBESuZEhzk" id="show-map", class="mw-100">
       </div>
     </div>
-    <div class="fl w-100 w-50-ns tc">
-        <%= cl_image_tag(@bouquet.image.file.try(:public_id) || @bouquet.image.default_url) %>
-        <%= render 'text_form' %>
+    <div class="fl w-100 w-50-ns v-mid pa0">
+        <%= cl_image_tag(@bouquet.image.file.try(:public_id) || @bouquet.image.default_url, class: "mw-100 tc") %>
     </div>
   </article>
 </div>

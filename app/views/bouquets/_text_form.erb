@@ -1,15 +1,14 @@
-<form action="/texts/create" method="post">
+<form action="/texts/create" method="post" class="center">
   <input type="hidden" name="text[sender]"  value=<%=@bouquet.sender_name%>><br>
   <input type="hidden" name="text[special_path]"  value=<%=@bouquet.special_path%>><br>
   <input type="hidden" name="text[image]"  value=<%=@bouquet.image%>><br>
 
-  <h4>Phone number to text to:</h4><br>
-  <input type="text"
-  name="text[number]" required=""><br><br>
-  <input type="submit" value="Send Bouquet!">
+  <h2 class="black-60" >Phone number to text to:</h2><br>
+  <input type="text" name="text[number]" required=""><br><br>
+  <input type="submit" value="Send Bouquet!" class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6">
 </form>
 
 <form action="/bouquets/<%= @bouquet.id %>" method="post">
   <input name="_method" type="hidden" value="delete">
-  <input type="submit" value="Cancel Bouquet">
+  <input type="submit" value="Cancel Bouquet" class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6">
 </form>
