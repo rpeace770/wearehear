@@ -8,4 +8,3 @@ class CallbacksController < Devise::OmniauthCallbacksController
     sign_in_and_redirect @user
   end
 end
-

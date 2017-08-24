@@ -11,11 +11,11 @@ class SpotifySearchController < ApplicationController
     client_token = Base64.strict_encode64("7a4280c69bd540d588a6540f043ffa48:b07dd2e7bab84c498c5e804b64a267eb")
 
     spotify_token = RestClient.post("https://accounts.spotify.com/api/token",{"grant_type": "client_credentials"}, {"Authorization": "Basic #{client_token}"})
-
     parsed_token = JSON.parse(spotify_token)
     # grab the spotify data for the corresponding artist
     response = RestClient.get(searchURL, {"Authorization": "Bearer #{parsed_token["access_token"]}"})
     # return that artist's top tracks
+
     @artist_data = JSON.parse(response)["artists"]["items"]
 
     @artist_return = @artist_data.slice(0,10)
