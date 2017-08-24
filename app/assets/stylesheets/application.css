@@ -71,6 +71,7 @@ h1 {
   display: none;
   width: 80%;
 
+
 }
 
 .track-cat {
@@ -78,6 +79,7 @@ h1 {
 }
 .artist-cat {
   transform: translateX(23px) translateY(47px);
+
 }
 
 button{
@@ -140,7 +142,8 @@ button, [type="submit"] {
 
 
 #profilemap {
-  width: 30%;
+  max-width: 100%;
+  /*min-width: 50%;*/
   height: 400px;
   background-color: grey;
   margin: auto;

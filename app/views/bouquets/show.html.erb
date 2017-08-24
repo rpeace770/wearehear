@@ -3,13 +3,49 @@
   <% session[:notice] = nil %>
 <% end %>
 
-<h1>This is the show page</h1>
-
-  <h2>From <%= @bouquet.sender_name %> to <%= @bouquet.receiver_name %></h2>
-  <h4>Comment: <%= @bouquet.comment %></h4>
-  <h4>Remember to listen to this song at <%= @bouquet.custom_location %></h4>
-
-  <div id="show-map-container"><img src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @location.lat %>,<%= @location.lng %>&zoom=16&size=400x400&markers=color:green%7C<%= @location.lat %>,<%= @location.lng %>&key=AIzaSyDDo2l9bHOpF6W1lxwIdI0njMBESuZEhzk" id="show-map"></div>
-
-  <p><iframe src="https://open.spotify.com/embed?uri=spotify%3Atrack%3A<%= @bouquet.song.spotify_id %>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe></p>
+<article class="black-60 ph5 center" data-name="slab-stat">
+    <dl class="dib mr5">
+      <dd class="f6 f5-ns b ml0">From</dd>
+      <dd class="f4 f2-ns b ml0"><%= @bouquet.sender_name %></dd>
+    </dl>
+    <dl class="dib mr5">
+      <dd class="f6 f5-ns b ml0">To</dd>
+      <dd class="f3 f2-ns b ml0"><%= @bouquet.receiver_name %></dd>
+    </dl>
+    <dl class="dib mr5">
+      <dd class="f6 f5-ns b ml0">Location</dd>
+      <dd class="f3 f2-ns b ml0"><%= @bouquet.custom_location %></dd>
+    </dl>
+    <dl class="dib mr5">
+      <dd class="f6 f5-ns b ml0">Song</dd>
+      <dd class="f3 f2-ns b ml0"><%= @bouquet.song.track %></dd>
+    </dl>
+    <dl class="dib mr5">
+      <dd class="f6 f5-ns b ml0">Artist</dd>
+      <dd class="f3 f2-ns b ml0"><%= @bouquet.song.artist %></dd>
+    </dl>
+    <dl class="dib mr5">
+      <dd class="f6 f5-ns b ml0">Album</dd>
+      <dd class="f3 f2-ns b ml0"><%= @bouquet.song.album %></dd>
+    </dl>
+    <dl class="dib mr5">
+      <dd class="f6 f5-ns b ml0">Message</dd>
+      <dd class="f3 f2-ns b ml0">"<%= @bouquet.comment %>"</dd>
+    </dl>
+  </article>
+  <div class="dt-ns dt--fixed-ns">
+    <div class="dtc-ns tc pv4">
+      <div id="show-map-container">
+        <img src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @location.lat %>,<%= @location.lng %>&zoom=16&size=400x400&markers=color:green%7C<%= @location.lat %>,<%= @location.lng %>&key=AIzaSyDDo2l9bHOpF6W1lxwIdI0njMBESuZEhzk" id="show-map">
+      </div>
+    </div>
+    <div class="dtc-ns tc pv4">
+      <p>
+        <iframe src="https://open.spotify.com/embed?uri=spotify%3Atrack%3A<%= @bouquet.song.spotify_id %>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+      </p>
+    </div>
+    <div class="dtc-ns tc pv4">
+        <%= cl_image_tag(@bouquet.image.file.try(:public_id) || @bouquet.image.default_url, class: "mw-100 tc") %>
+    </div>
+  </div>
 
