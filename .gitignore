@@ -52,4 +52,3 @@ build-iPhoneSimulator/
 # Ignore application configuration
 /config/application.yml
 
-/cloudinary.yml

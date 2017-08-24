@@ -1,5 +1,5 @@
-<!-- <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAP_KEY']%>&callback=initHeatMap&libraries=visualization" type="text/javascript" async defer></script>
- -->
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAP_KEY']%>&callback=initHeatMap&libraries=visualization" type="text/javascript" async defer></script> -->
+
 <div class="cf ph2-ns">
    <div class="rand-song fl w-100 w-25-ns  mr2 ">
    <iframe src="https://open.spotify.com/embed?uri=spotify:track:<%=@songs.sample.spotify_id %>"
@@ -16,7 +16,7 @@
     <dl class="dib mr0">
       <dd class="f6 f5-ns b ml1">Top 5 locations</dd>
       <% @locations.each do |location| %>
-      <dd class="f3 f2-ns b ml1"><%= location.reverse_geocode.split(",")[1] %></dd>
+      <dd class="f3 f2-ns b ml1"><%= location.reverse_geocode %></dd>
       <% end %>
     </dl>
     <dl class="dib mr0">

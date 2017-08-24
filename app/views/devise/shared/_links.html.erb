@@ -22,7 +22,7 @@
   <%- resource_class.omniauth_providers.each do |provider| %>
 
   <div class="tc shadow-5 center w-30 pa4 grow" >
-    <%= link_to image_tag("/assets/Spotify_Icon_Black.png", alt: "spotify_logo", class: "h4 w4 dib pa2"),  omniauth_authorize_path(resource_name, provider), class: "f3 mb2"  %><br />
+    <%= link_to image_tag("Spotify_Icon_Black.png", alt: "spotify_logo", class: "h4 w4 dib pa2"),  omniauth_authorize_path(resource_name, provider), class: "f3 mb2"  %><br />
     <h1 class="f3 mb2">Sign In With Spotify</h1>
   </div>
 
