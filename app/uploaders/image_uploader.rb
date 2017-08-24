@@ -3,7 +3,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
 
   def default_url(*args)
-   'http://res.cloudinary.com/wearehear/image/upload/v1503508218/guitar-cat_bmskia.gif'
+   'http://res.cloudinary.com/wearehear/image/upload/v1503523644/qysudnd7ozhjypimuayw.gif'
   end
 
   # Include RMagick or MiniMagick support:

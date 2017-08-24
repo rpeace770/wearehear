@@ -1,27 +1,29 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#### *We Are Hear* :
+##### Send song bouquets through Twilio texts to friends and family by utilizing a Spotify account and tying memories to specific locations through Google Maps.
 
-Things you may want to cover:
+* *Ruby version*: 2.2.5
 
-* Ruby version
+* *System dependencies*:
+    * Carrier Wave
+    * Cloudinary
+    * Twilio
+    * Geocoder
+    * Rest-Client
+    * Jquery
+    * Devise
+    * Onmiauth
+    * Spotify API
+    * Tachyons
 
-* System dependencies
+* *Database*: Postgresql
 
-* Configuration
+* *Services*:
+    * Spotify Search
+    * Twilio Texts
+    * Google Map Search and Geolocation
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# wearehear
-Rails App that saves songs to specific locations
+* *Deployment instructions*:
+    * Deploy to wearehear on Heroku
 
