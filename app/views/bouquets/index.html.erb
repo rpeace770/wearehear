@@ -16,7 +16,7 @@
     <dl class="dib mr0">
       <dd class="f6 f5-ns b ml1">Top 5 locations</dd>
       <% @locations.each do |location| %>
-      <dd class="f3 f2-ns b ml1"><%= location.reverse_geocode.split(",")[1] %></dd>
+      <dd class="f3 f2-ns b ml1"><%= location.reverse_geocode %></dd>
       <% end %>
     </dl>
     <dl class="dib mr0">
