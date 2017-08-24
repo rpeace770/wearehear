@@ -6,7 +6,7 @@ development:
   enhance_image_tag: true
   static_image_support: false
 production:
-  cloud_name: <%= wearehear %>
+  cloud_name: wearehear
   api_key: <%= ENV["CLOUD_KEY"] %>
   api_secret: <%= ENV["CLOUD_SECRET"] %>
   enhance_image_tag: true
