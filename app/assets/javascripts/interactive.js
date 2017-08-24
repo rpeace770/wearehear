@@ -1,7 +1,6 @@
 $(document).ready(function() {
   $(".choose-link").on("click", function(e) {
     e.preventDefault();
-    console.log("high")
     $(".choose-link").show();
     $(this).hide();
     $(".new-bouquet-section").hide();

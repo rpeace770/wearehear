@@ -44,7 +44,7 @@ h1 {
 }
 
 .button_div{
-  width: auto%;
+  width: auto;
   float: left;
 }
 .results_div {
@@ -68,6 +68,16 @@ h1 {
 #pac-input {
   display: none;
   width: 80%;
+
+
+}
+
+.track-cat {
+  transform: translateX(23px) translateY(47px);
+}
+.artist-cat {
+  transform: translateX(23px) translateY(47px);
+
 }
 
 button{
@@ -75,12 +85,16 @@ button{
   border:none;
 }
 
+.errorMessages {
+  color: red;
+ }
+
 /*div#results{
   float:right;
 }*/
 
-input {
-/*    background-color: transparent;
+/*input {
+*//*    background-color: transparent;
     border-radius: 2px;
     cursor: pointer;
     display: block;
@@ -96,8 +110,8 @@ input {
     color: #1DB954;
     overflow: hidden;
     font-family: 'Open Sans', sans-serif;*/
-}
-.container{
+/*}
+*/.container{
   margin-bottom: 0px;
 }
 
@@ -139,20 +153,16 @@ button, [type="submit"] {
 }
 
 #show-map {
-  /*min-width: 30%;*/
-  /*max-width: 100%;*/
-  /*width: 600px;*/
-/*  height: auto;
+/*  min-width: 30%;
+  max-width: 100%;
+  width: 600px;
+  height: auto;
   background-color: grey;
   margin: auto;
   border: 10px solid white;
   border-radius: 15px;
   margin-left: 10px;
   margin-right: 10px;*/
-}
-
-form.add_song_button {
-
 }
 
 #mapbase {
