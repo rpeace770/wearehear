@@ -77,12 +77,16 @@ button{
   border:none;
 }
 
+.errorMessages {
+  color: red;
+ }
+
 /*div#results{
   float:right;
 }*/
 
-input {
-/*    background-color: transparent;
+/*input {
+*//*    background-color: transparent;
     border-radius: 2px;
     cursor: pointer;
     display: block;
@@ -98,8 +102,8 @@ input {
     color: #1DB954;
     overflow: hidden;
     font-family: 'Open Sans', sans-serif;*/
-}
-.container{
+/*}
+*/.container{
   margin-bottom: 0px;
 }
 
