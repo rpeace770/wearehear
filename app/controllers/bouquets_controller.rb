@@ -40,7 +40,6 @@ class BouquetsController < ApplicationController
   end
 
   def messages
-    comments = []
     user = User.find(current_user.id)
     bouquets = user.sent_bouquets.order("created_at")
     render json: bouquets.to_json
