@@ -10,16 +10,12 @@ class User < ApplicationRecord
 
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+    user = where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
         user.provider = auth.provider
         user.uid = auth.uid
         user.email = auth.info.email
         user.password = Devise.friendly_token[0,20]
         user.username = auth.info.nickname
-        user.token = auth.credentials.token
-        user.refresh_token = auth.credentials.refresh_token
-        # expiration in seconds
-        user.expiration = auth.credentials.expires_at
       if auth.info.birthdate
         user.birthdate = auth.info.birthdate
       end
@@ -28,6 +24,14 @@ class User < ApplicationRecord
         user.picture_url = auth.info.image
       end
     end
+
+    # whyyy
+    user.token = auth.credentials.token
+    user.refresh_token = auth.credentials.refresh_token
+    # expiration in seconds
+    user.expiration = auth.credentials.expires_at
+
+    return user
   end
 
   def token_expired?

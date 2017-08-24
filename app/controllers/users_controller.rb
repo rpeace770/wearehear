@@ -8,19 +8,22 @@ class UsersController < ApplicationController
       redirect_to "/"
     end
 
+# this refreshes the user token, do not fuck with it :)
     client_token = Base64.strict_encode64("7a4280c69bd540d588a6540f043ffa48:b07dd2e7bab84c498c5e804b64a267eb")
-
-      if current_user.token_expired?
-        RestClient.get("http://localhost:3000/auth/spotify/callback", :grant_type => 'refresh_token', :refresh_token => current_user.refresh_token, :client_id => "7a4280c69bd540d588a6540f043ffa48", :client_secret => "b07dd2e7bab84c498c5e804b64a267eb")
-        binding.pry
+      begin
+        RestClient.post("https://accounts.spotify.com/api/token", { "grant_type": 'refresh_token', "refresh_token": "#{current_user.refresh_token}" }, { "Authorization": "Basic #{client_token}" })
+      rescue RestClient::ExceptionWithResponse => err
+        puts err.response
       end
 
+
       if @user.playlist == nil
-        playlist = RestClient.post("https://api.spotify.com/v1/users/#{current_user.uid}/playlists",{name: 'We Are Hear' }.to_json, {"Authorization": "Bearer #{current_user.token}","Content-Type": "application/json"})
+        playlist = RestClient.post("https://api.spotify.com/v1/users/#{current_user.uid}/playlists",{name: "We Are Hear" }.to_json, {"Authorization": "Bearer #{current_user.token}","Content-Type": "application/json"})
         parse_playlist = JSON.parse(playlist)
         @user.playlist = parse_playlist["id"]
         @user.save
       end
+
       if @user.sent_bouquets
         tracks_array = []
         current_user.sent_bouquets.each do |bouquet|
