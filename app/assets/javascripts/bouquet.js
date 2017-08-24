@@ -50,7 +50,7 @@ function clearOverlays() {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
-      var image = "/assets/notes.png";
+      var image = "/notes.png";
       infoWindow.setPosition(pos);
       var latLng = new google.maps.LatLng(pos.lat, pos.lng);
       var marker = new google.maps.Marker({
