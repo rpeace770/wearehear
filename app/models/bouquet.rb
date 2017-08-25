@@ -14,7 +14,7 @@ class Bouquet < ApplicationRecord
   end
 
   def special_path
-    "http://localhost:3000/bouquets/#{self.id}/?secret=" + self.secret
+    "https://wearehear.herokuapp.com/bouquets/#{self.id}/?secret=" + self.secret
   end
 
   def upload_image(image)
