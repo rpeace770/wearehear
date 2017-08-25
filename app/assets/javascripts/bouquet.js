@@ -107,7 +107,7 @@ function clearOverlays() {
   });
 
   function placeMarker(location) {
-    var image = "/assets/notes.png";
+    var image = "/notes.png";
     var marker = new google.maps.Marker({
       position: location,
       map: map,
