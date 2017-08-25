@@ -36,7 +36,7 @@
   <div class="dt-ns dt--fixed-ns">
     <div class="dtc-ns tc pv4">
       <div id="show-map-container">
-        <img src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @location.lat %>,<%= @location.lng %>&zoom=16&size=400x400&markers=color:green%7C<%= @location.lat %>,<%= @location.lng %>&key=AIzaSyDDo2l9bHOpF6W1lxwIdI0njMBESuZEhzk" id="show-map">
+        <img src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @location.lat %>,<%= @location.lng %>&zoom=16&size=400x400&markers=color:green%7C<%= @location.lat %>,<%= @location.lng %>&key=<%=ENV['GOOGLE_MAP_KEY']%>" id="show-map">
       </div>
     </div>
     <div class="dtc-ns tc pv4">

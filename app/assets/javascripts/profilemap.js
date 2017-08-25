@@ -17,7 +17,7 @@ var profilemap;
       method: "post"
     })
     .done(function(messages) {
-      var image = "/assets/notes.png";
+      var image = "/notes.png";
       var secretMessages = [];
       messages.forEach(function(message) {
         secretMessages.push(message.comment);
