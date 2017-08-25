@@ -15,14 +15,17 @@
     <nav class="flex justify-between bb b--white-10">
       <div class="flex-grow pa3 flex items-center">
         <% if current_user %>
-        <p><%= link_to "Sign The Fuck Out", destroy_user_session_path, :method => :delete, class: "f6 link dib white dim mr3 mr4-ns" %></p>
-        <p><%= link_to "Profile", "/users/#{current_user.id}",  class: "f6 link dib white dim mr3 mr4-ns" %></p>
-         <% else %>
-          <p><%= link_to "About",root_path, class:"f6 link dib white dim mr3 mr4-ns" %>  </p>
-         <% end %>
+          <p><%= link_to "Sign Out", destroy_user_session_path, :method => :delete, class: "f6 link dib white dim mr3 mr4-ns" %></p>
+          <p><%= link_to "Profile", "/users/#{current_user.id}",  class: "f6 link dib white dim mr3 mr4-ns" %></p>
+        <% end %>
 
-        <p><%=link_to "Go The Fuck Home", root_path, class: "f6 link dib white dim mr3 mr4-ns" %></p>
-        <a href="/bouquets/new" class="f5 fw6 white-90 fr w-15 mh3 link br1 pa3 ba mt3 br2 shadow-5 mb2 grow  ph3 pv2 mb2 dib">Make a new bouquet</a>
+
+        <p><%=link_to "Home", root_path, class: "f6 link dib white dim mr3 mr4-ns" %></p>
+        <a href="/bouquets/new" class="f5 fw6 white-80 fr w-15 mh3 link br1 pa3 ba mt3 br2 shadow-5 mb2 grow  ph3 pv2 mb2 dib">Make a new bouquet</a>
+
+      </div>
+      <div>
+        <%= link_to(image_tag("/assets/logo-white.png", class: "logo"), root_path) %>
       </div>
     </nav>
   <body>
