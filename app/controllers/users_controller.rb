@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     if current_user.id != @user.id
       redirect_to "/"
     end
+    # binding.pry
 # this refreshes the user token, do not fuck with it :)
     client_token = Base64.strict_encode64(ENV['SPOTIFY_CLIENT_ID'] + ":" + ENV['SPOTIFY_CLIENT_SECRET'])
       begin
@@ -21,6 +22,7 @@ class UsersController < ApplicationController
 
 
       if @user.playlist == nil
+        binding.pry
         playlist = RestClient.post("https://api.spotify.com/v1/users/#{current_user.uid}/playlists",{name: "We Are Hear" }.to_json, {"Authorization": "Bearer #{current_user.token}","Content-Type": "application/json"})
         parse_playlist = JSON.parse(playlist)
         @user.playlist = parse_playlist["id"]

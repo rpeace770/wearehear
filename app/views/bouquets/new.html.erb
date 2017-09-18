@@ -1,6 +1,38 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAP_KEY']%>&libraries=places" type="text/javascript" async defer></script>
 
 <ul class="errorMessages"></ul>
+<div class="  pv4 bg-black-10  w-100 stats_div ">
+
+    <article class="pa3 pa5-ns" data-name="slab-stat">
+      <h3 class="f4 ttu tracked">Bouquet Details</h3>
+          <div class="cf">
+            <dl class="fl fn-l w-50 dib-l w-auto-l lh-title mr5-l">
+            <dd class="f6 fw4 ml0">Song</dd>
+              <dd class="f3 fw6 ml0"><p id="show-song" ></p>
+            </dl>
+            <dl class="fl fn-l w-50 dib-l w-auto-l lh-title mr5-l">
+              <dd class="f6 fw4 ml0">Artist</dd>
+              <dd class="f3 fw6 ml"><p id="show-artist"></p></dd>
+            </dl>
+            <dl class="fl fn-l w-50 dib-l w-auto-l lh-title mr5-l">
+              <dd class="f6 fw4 ml0">Album</dd>
+              <dd class="f3 fw6 ml"><p id="show-album"></p></dd></dd>
+            </dl>
+            <dl class="fl fn-l w-50 dib-l w-auto-l lh-title mr5-l">
+              <dd class="f6 fw4 ml0">Location</dd>
+              <dd class="f3 fw6 ml " id="location_confirm"></dd>
+            </dl>
+            <dl class="fl fn-l w-50 dib-l w-auto-l lh-title mr5-l">
+              <dd class="f6 fw4 ml0">Person</dd>
+              <dd class="f3 fw6 ml" id="person_confirm"></dd>
+            </dl>
+            <dl class="fl fn-l w-50 dib-l w-auto-l lh-title mr5-l">
+              <dd class="f6 fw4 ml0">Comment</dd>
+              <dd class="f3 fw6 ml  " id="comment_confirm"></dd>
+            </dl>
+          </div>
+    </article>
+    </div>
 
 <div class="dt-ns w-100 dt--fixed-ns button_div">
 
@@ -67,7 +99,7 @@
 </div>
 
 
-<div class=" dtc-ns tc pv4 bg-black-05 fl w-50-ns w-100 results_div">
+<div class=" dtc-ns tc pv4 bg-black-05 w-50-ns w-100 results_div">
 
       <div class="songs_results" id="results" ></div>
            <input id="pac-input" class="controls b ph3 pv2 input-reset mb2 ba br2 white-80 bg-transparent pointer f6   " type="text" placeholder="enter location">
@@ -75,37 +107,6 @@
 </div>
 
 
-<div class=" dtc-ns tl pv4 bg-black-10 w-25-ns fr w-100 stats_div">
 
-    <article class="pa3 pa5-ns  w-100 w-25-ns mr2" data-name="slab-stat-large">
-      <h3 class="f4 ttu tracked">Bouquet Details</h3>
-          <div class="cf">
-            <dl class="db  w-auto-l lh-title mr6-l">
-            <dd class="f6 fw4 ml0">Song</dd>
-              <dd class="f2 tc lh-copy fw6 ml0"><p id="show-song" ></p>
-            </dl>
-            <dl class="db  w-auto-l lh-title mr6-l">
-              <dd class="f6 fw4 ml0">Artist</dd>
-              <dd class="f2  lh-copy fw6 ml0"><p id="show-artist"></p></dd>
-            </dl>
-            <dl class="db  w-auto-l lh-title mr6-l">
-              <dd class="f6 fw4 ml0">Album</dd>
-              <dd class="f2  lh-copy fw6 ml0"><p id="show-album"></p></dd></dd>
-            </dl>
-            <dl class="db  w-auto-l lh-title mr6-l">
-              <dd class="f6 fw4 ml0">Location</dd>
-              <dd class="f2  lh-copy fw6 ml0 " id="location_confirm"></dd>
-            </dl>
-            <dl class="db  w-auto-l lh-title mr6-l">
-              <dd class="f6 fw4 ml0">Person</dd>
-              <dd class="f2  lh-copy fw6 ml0" id="person_confirm"></dd>
-            </dl>
-            <dl class="db w-auto-l lh-title mr6-l">
-              <dd class="f6 fw4 ml0">Comment</dd>
-              <dd class="f2  lh-copy fw6 ml0  " id="comment_confirm"></dd>
-            </dl>
-          </div>
-    </article>
-    </div>
 
 

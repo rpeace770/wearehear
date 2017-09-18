@@ -1,5 +1,5 @@
 <%if @artist_data != nil %>
-<div class="scroll-container ">
+<div class="scroll-container nowrap overflow-x-auto ">
 <h1 class="artist-cat">Artist</h1>
 		<% @tracks_info.each do |track| %>
 			<div class="artist-container" id="<%=track[:track_id] %>">
