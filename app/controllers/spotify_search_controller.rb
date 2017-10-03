@@ -31,7 +31,7 @@ class SpotifySearchController < ApplicationController
                   artists_name: song["artists"][0]["name"]
                   }
     end
-
+     
 
      top_tracks_results = []
      @artist_return.each do |artist|

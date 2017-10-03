@@ -1,48 +1,60 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAP_KEY']%>&libraries=places" type="text/javascript" async defer></script>
 
 <ul class="errorMessages"></ul>
-<div class="  pv4 bg-black-10  w-100 stats_div ">
 
-    <article class="pa3 pa5-ns" data-name="slab-stat">
-      <h3 class="f4 ttu tracked">Bouquet Details</h3>
-          <div class="cf">
-            <dl class="fl fn-l w-50 dib-l w-auto-l lh-title mr5-l">
-            <dd class="f6 fw4 ml0">Song</dd>
-              <dd class="f3 fw6 ml0"><p id="show-song" ></p>
+<article class="mw5 br3 pa3 pa4-ns mv3 ba b--black-10 v-top">
+  <div class="lh-copy measure  f7 black-70">
+    <img src= <%= @user.picture_url %> class="br-100 h4 w4 dib" title="userphoto">
+    <h1 class="f7 tr">Birthday:<%= pretty_date(@user.birthdate) %></h1>
+    <h1 class="f7 tr">Member since:<%=pretty_date(@user.created_at) %> </h1>
+    <hr class="mw3 bb bw1 b--black-10">
+  </div>
+  
+</article>
+
+
+
+<div class=" v-top stats_div dib ">
+
+    <article class="" data-name="slab-stat">
+          <div class="">
+            <dl class=" ">
+            <dd class="">Song:</dd>
+              <dd class="" id="show-song" >
             </dl>
-            <dl class="fl fn-l w-50 dib-l w-auto-l lh-title mr5-l">
-              <dd class="f6 fw4 ml0">Artist</dd>
-              <dd class="f3 fw6 ml"><p id="show-artist"></p></dd>
+            <dl class=" ">
+              <dd class="">Artist:</dd>
+              <dd class="" id="show-artist"> </dd>
             </dl>
-            <dl class="fl fn-l w-50 dib-l w-auto-l lh-title mr5-l">
-              <dd class="f6 fw4 ml0">Album</dd>
-              <dd class="f3 fw6 ml"><p id="show-album"></p></dd></dd>
+            <dl class=" ">
+              <dd class="">Album:</dd>
+              <dd class="" id="show-album"> </dd>
             </dl>
-            <dl class="fl fn-l w-50 dib-l w-auto-l lh-title mr5-l">
-              <dd class="f6 fw4 ml0">Location</dd>
-              <dd class="f3 fw6 ml " id="location_confirm"></dd>
+            <dl class=" ">
+              <dd class="">Location:</dd>
+              <dd class=" " id="location_confirm"></dd>
             </dl>
-            <dl class="fl fn-l w-50 dib-l w-auto-l lh-title mr5-l">
-              <dd class="f6 fw4 ml0">Person</dd>
-              <dd class="f3 fw6 ml" id="person_confirm"></dd>
+            <dl class=" ">
+              <dd class="">Person:</dd>
+              <dd class="" id="person_confirm"></dd>
             </dl>
-            <dl class="fl fn-l w-50 dib-l w-auto-l lh-title mr5-l">
-              <dd class="f6 fw4 ml0">Comment</dd>
-              <dd class="f3 fw6 ml  " id="comment_confirm"></dd>
+            <dl class=" ">
+              <dd class="">Comment:</dd>
+              <dd class=" " id="comment_confirm"></dd>
             </dl>
           </div>
     </article>
     </div>
 
-<div class="dt-ns w-100 dt--fixed-ns button_div">
+<div class="">
 
-<div class="dtc-ns w-25 pv4 bg-black-10 fl button_div">
-<div class="outline- bg-transparent pv4"><div class="choose-section grow ">
-    <a href="bouquets/create" class="choose-link f5 fw6 black-70   mh3 link br1 pa3  mt3 shadow-5 mb2 input-reset ba  ph3 pv2 mb2 ">Add Song</a>
-</div>
+<div class="">
+  <div class="outline- bg-transparent pv4 ">
+    <div class="choose-section grow ">
+      <a href="bouquets/create" class="choose-link  input-reset  ">Add Song</a>
+  </div>
 
-    <div class="new-bouquet-section song-show f5 fw6 black-70 mh3  ph3 pv2 mb2 ">
-
+    <div class="new-bouquet-section song-show  ">
         <%= form_tag spotify_search_path, :method => 'post', id: "search_submit" do %>
           <p >
             <%= text_field_tag :search, params[:search], :class => "b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6  mb2" %>
@@ -50,21 +62,22 @@
           </p>
         <% end %>
 
-    </div> <form action="/bouquets/create" method="post" enctype="multipart/form-data">
+    </div> 
+    <form action="/bouquets/create" method="post" enctype="multipart/form-data">
         <div class="choose-section grow">
-            <a href="bouquets/create" class="choose-link f5 fw6 black-70 link br1 ph3 pv2 mh3 mt3 mb2 shadow-5 ba ">Add Person</a>
+            <a href="bouquets/create" class="choose-link  ">Add Person</a>
         </div>
         <div class="new-bouquet-section">
-            <p class="f5 fw6 black-70 mh3     ph3 pv2 mb2 ">Sender Name: <input type="text" name="bouquet[sender_name]" class="b ph3 pv2 input-reset ba b--black bg-transparent  pointer f6 "  required></p>
-            <p class="f5 fw6 black-70 mh3     ph3 pv2 mb2 ">Receiver Name: <input type="text" name="bouquet[receiver_name]" id="person" class="b ph3 pv2 input-reset ba b--black bg-transparent  pointer f6 " required></p>
+            <p class=" ">Sender Name: <input type="text" name="bouquet[sender_name]" class=" input-reset   "  required></p>
+            <p class=" ">Receiver Name: <input type="text" name="bouquet[receiver_name]" id="person" class=" input-reset   " required></p>
 
         </div>
 
         <div class="choose-section grow">
-            <a href="bouquets/create" class="choose-link f5 fw6 black-70 link br1 ph3 pv2 mh3 mt3 mb2 shadow-5  ba   ">Add Location</a>
+            <a href="bouquets/create" class="choose-link  link ">Add Location</a>
         </div>
         <div class="new-bouquet-section map-class">
-            <p class="f5 fw6 black-70 mh3   ph3 pv2 mb2 ">Custom Location Name: <input type="text" name="bouquet[custom_location]" id="locale" class="b ph3 pv2 custom_location_name  ba b--black bg-transparent pointer f6 "   ></p>
+            <p class=" ">Custom Location Name: <input type="text" name="bouquet[custom_location]" id="locale" class=" custom_location_name    "   ></p>
 
             <input id="lat_coord" name="location[lat]" type="hidden" value="" required>
             <input id="lng_coord" name="location[lng]" type="hidden" value="" required>
@@ -76,34 +89,34 @@
             <input id="album" name="song[album]" type="hidden" value="" required>
 
         <div class="choose-section grow">
-            <a href="bouquets/create" class="choose-link f5 fw6 black-70 link br1 ph3 pv2 mh3 mt3 mb2  shadow-5 ba ">Add Message</a>
+            <a href="bouquets/create" class="choose-linklink  ">Add Message</a>
         </div>
         <div class="new-bouquet-section">
 
-            <p class="f5 fw6 black-70 mh3   ph3 pv2 mb2 " >Message: <input type="text" id="comment" name="bouquet[comment]" class="b ph3 pv2  ba b--black bg-transparent  pointer f6 " required ></p>
+            <p class=" " >Message: <input type="text" id="comment" name="bouquet[comment]" class="" required ></p>
 
-            <p class="f5 fw6 black-70 mh3   ph3 pv2 mb2 "><input type="file" name="bouquet[image]"  class="b ph3 pv2  ba b--black bg-transparent pointer f6" style="display:none" accept="image/*"></p>
-            <p class="f5 fw6 black-70 mh3 br-pill ph3 pv2 mb2"><input type="file" id="upload" style="display:none" name="bouquet[image]"  class="b ph3 pv2  ba b--black bg-transparent pointer f6 " accept="image/*"><a href="#" id="upload_link" class="b input-reset ba b--black bg-transparent pointer f6 dib">Upload an Image</a></p>
+            <p class=" "><input type="file" name="bouquet[image]"  class="" style="display:none" accept="image/*"></p>
+            <p class=""><input type="file" id="upload" style="display:none" name="bouquet[image]"  class=" " accept="image/*"><a href="#" id="upload_link" class=" input-reset ">Upload an Image</a></p>
 
-           <div id="upload-msg" class="f5 fw6 black-70 mh3 br-pill ph3 pv2 mb2 dib">
+           <div id="upload-msg" class="">
            </div>
 
         </div>
 
 
-            <p><input type="submit" value="Create Bouquet" class="b ph3 mh3 pv2 input-reset ba b--black bg-transparent grow pointer f6" id="error-button"></p>
+            <p><input type="submit" value="Create Bouquet" class=" input-reset " id="error-button"></p>
 
     </form>
-    </div>
+  </div>
 
 </div>
 
 
-<div class=" dtc-ns tc pv4 bg-black-05 w-50-ns w-100 results_div">
+<div class="   results_div">
 
       <div class="songs_results" id="results" ></div>
-           <input id="pac-input" class="controls b ph3 pv2 input-reset mb2 ba br2 white-80 bg-transparent pointer f6   " type="text" placeholder="enter location">
-          <div id="map"></div>
+           <input id="pac-input" class="controls  input-reset" type="text" placeholder="enter location">
+      <div id="map"></div>
 </div>
 
 

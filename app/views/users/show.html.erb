@@ -1,12 +1,12 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAP_KEY']%>&callback=initProfileMap&libraries=visualization" type="text/javascript" async defer></script>
 
-<div class="black-60">
+<div class="black-60 f6">
   <% if current_user && @user && current_user.id == @user.id %>
-  <h1 class="black-60 f1">Welcome back!</h1>
-  <div class="dt-ns dt--fixed-ns">
-    <div class="dtc-ns tc pv5 v-top">
-      <article class="center" data-name="slab-stat">
-        <d1 class="dib mr5">
+  <h1 class="black-60 ">Welcome back!</h1>
+  <div class="">
+    <div class="">
+      <article class="" data-name="slab-stat">
+        <d1 class="">
           <% if @user.picture_url %>
             <%= image_tag(@user.picture_url, alt: "profile_picture", class: "profile_picture mb4")%>
           <% else %>
@@ -14,25 +14,25 @@
           <% end %>
         </d1>
         <br>
-        <dl class="dib mr5">
-          <dd class="f6 f5-ns b ml0">Bouquets sent</dd>
-          <dd class="f3 f2-ns b ml0"><%= @user.sent_bouquets.count %></dd>
+        <dl class="">
+          <dd class="">Bouquets sent</dd>
+          <dd class=""><%= @user.sent_bouquets.count %></dd>
         </dl>
-        <dl class="dib mr5">
-          <dd class="f6 f5-ns b ml0">Member since</dd>
-          <dd class="f3 f2-ns b ml0"><%= pretty_date(@user.created_at) %></dd>
+        <dl class="">
+          <dd class="">Member since</dd>
+          <dd class=""><%= pretty_date(@user.created_at) %></dd>
         </dl>
       </article>
     </div>
-    <div class="dtc-ns tc pv4 v-top">
+    <div class="f6 lh-copy">
       <div id="profilemap"></div>
-      <h2 style="text-align: center;">Your bouquets:</h3>
+      <h3 style="">Your bouquets:</h3>
       <% @user.sent_bouquets.each do |bouquet| %>
-        <h4><%= link_to "to " + bouquet.receiver_name + " on " + pretty_date(bouquet.created_at), "/bouquets/" + bouquet.id.to_s, class: "link dim black-60" %></h4>
+        <p><%= link_to "to " + bouquet.receiver_name + " on " + pretty_date(bouquet.created_at), "/bouquets/" + bouquet.id.to_s, class: "link  f6 black-60" %></p>
       <% end %>
     </div>
 
-    <div class="dtc-ns tc pv5 v-top">
+    <div class="">
       <div>
         <iframe src="https://open.spotify.com/embed?uri=spotify:user:<%= current_user.uid %>:playlist:<%= current_user.playlist %>" frameborder="0" allowtransparency="true" width="300" height="380"></iframe>
       </div>
